@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Intelligence Report — One Education Consulting</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #f4f5f7;
+      color: #1a1a2e;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── Cover ── */
+    .cover {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 64px 80px 56px;
+    }
+    .cover-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e94560;
+      margin-bottom: 16px;
+    }
+    .cover h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .cover h2 {
+      font-size: 18px;
+      font-weight: 400;
+      color: #a8b2d8;
+      margin-bottom: 40px;
+    }
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+    }
+    .cover-meta div { display: flex; flex-direction: column; gap: 4px; }
+    .cover-meta .label { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #a8b2d8; }
+    .cover-meta .value { font-size: 14px; font-weight: 600; }
+
+    /* ── Layout ── */
+    .container { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Section ── */
+    .section { margin-bottom: 40px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e8eaf0;
+    }
+    .section-header .icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .section-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .section-header .subtitle {
+      font-size: 12px;
+      color: #666;
+      margin-left: auto;
+    }
+
+    /* ── Summary card ── */
+    .summary-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 28px;
+      border-left: 4px solid #e94560;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      margin-bottom: 40px;
+    }
+    .summary-card h3 {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #e94560;
+      margin-bottom: 12px;
+    }
+    .summary-card p {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.7;
+    }
+
+    /* ── Actions section ── */
+    .actions-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+    .actions-header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .actions-icon { font-size: 18px; }
+    .actions-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .action-card {
+      display: flex;
+      gap: 20px;
+      padding: 22px 28px;
+      border-bottom: 1px solid #f0f0f0;
+      align-items: flex-start;
+    }
+    .action-card:last-child { border-bottom: none; }
+    .action-card.urgent { border-left: 5px solid #e53935; }
+    .action-card.high   { border-left: 5px solid #f57c00; }
+    .action-card.medium { border-left: 5px solid #1976d2; }
+    .action-rank {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      min-width: 52px;
+    }
+    .rank-badge {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 800; color: #fff;
+    }
+    .urgent-badge { background: #e53935; }
+    .high-badge   { background: #f57c00; }
+    .medium-badge { background: #1976d2; }
+    .urgency-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .urgent-tag { background: #fdecea; color: #b71c1c; }
+    .high-tag   { background: #fff3e0; color: #e65100; }
+    .medium-tag { background: #e3f2fd; color: #0d47a1; }
+    .action-body { flex: 1; }
+    .action-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 8px;
+    }
+    .action-desc {
+      font-size: 13.5px;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .action-data-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f5f5f5;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 11.5px;
+      color: #555;
+    }
+    .data-label {
+      font-weight: 700;
+      color: #333;
+    }
+
+    /* ── Stat grid ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 20px 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .stat-card.tiktok::before  { background: #69C9D0; }
+    .stat-card.maps::before    { background: #34A853; }
+    .stat-card.youtube::before { background: #FF0000; }
+    .stat-card.neutral::before { background: #a8b2d8; }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1;
+      color: #1a1a2e;
+    }
+    .stat-sub {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 4px;
+    }
+
+    /* ── Data table ── */
+    .data-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead { background: #f8f9fc; }
+    th {
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #888;
+      font-weight: 600;
+      border-bottom: 1px solid #eee;
+    }
+    td {
+      padding: 12px 16px;
+      font-size: 13px;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafbfd; }
+
+    .rank { font-weight: 700; color: #1a1a2e; font-size: 15px; }
+    .video-title { color: #333; max-width: 380px; }
+    .channel-badge {
+      display: inline-block;
+      background: #f0f2f8;
+      color: #555;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .channel-badge.own { background: #e94560; color: #fff; }
+    .views-bar-wrap { display: flex; align-items: center; gap: 10px; min-width: 140px; }
+    .views-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: #e8eaf0;
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .views-bar-fill {
+      position: absolute;
+      top: 0; left: 0; height: 100%;
+      border-radius: 3px;
+    }
+    .bar-tiktok  { background: #69C9D0; }
+    .bar-youtube { background: #FF0000; }
+    .views-num { font-size: 12px; font-weight: 600; color: #333; white-space: nowrap; }
+
+    .engagement-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .pill-high   { background: #d4edda; color: #155724; }
+    .pill-medium { background: #fff3cd; color: #856404; }
+    .pill-low    { background: #f8d7da; color: #721c24; }
+
+    /* ── Maps card ── */
+    .maps-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 24px 28px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    .maps-rating-block { text-align: center; flex-shrink: 0; }
+    .maps-rating-number {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      color: #1a1a2e;
+      line-height: 1;
+    }
+    .stars { font-size: 20px; color: #FBBC05; letter-spacing: 2px; margin: 4px 0; }
+    .maps-rating-sub { font-size: 12px; color: #888; }
+    .maps-details { flex: 1; }
+    .maps-details h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .maps-details .address { font-size: 13px; color: #555; margin-bottom: 16px; line-height: 1.5; }
+    .maps-details .benchmark {
+      background: #f4f5f7;
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 13px;
+      color: #444;
+    }
+    .maps-details .benchmark strong { color: #1a1a2e; }
+
+    /* ── Insight boxes ── */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .insight-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 20px 18px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      border-left: 3px solid transparent;
+    }
+    .insight-card.positive { border-left-color: #34A853; }
+    .insight-card.warning  { border-left-color: #FBBC05; }
+    .insight-card.action   { border-left-color: #e94560; }
+    .insight-tag {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .insight-card.positive .insight-tag { color: #34A853; }
+    .insight-card.warning  .insight-tag { color: #b48a00; }
+    .insight-card.action   .insight-tag { color: #e94560; }
+    .insight-card p { font-size: 13px; color: #444; line-height: 1.6; }
+
+    /* ── Competitor Profile Cards ── */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .profile-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+    .profile-card.self {
+      grid-column: 1 / -1;
+      border: 2px solid #e94560;
+    }
+    .profile-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid #f0f0f0;
+      gap: 10px;
+    }
+    .profile-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+    .profile-handles {
+      font-size: 11px;
+      color: #888;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .handle-chip {
+      background: #f0f2f8;
+      border-radius: 3px;
+      padding: 1px 6px;
+      font-size: 11px;
+      color: #555;
+    }
+    .overall-badge {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-strong { background: #e8f5e9; color: #1b5e20; }
+    .badge-medium { background: #fff8e1; color: #e65100; }
+    .badge-weak   { background: #fdecea; color: #b71c1c; }
+    .badge-self   { background: #fce4ec; color: #880e4f; }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .platform-cell {
+      padding: 12px 10px;
+      text-align: center;
+      border-right: 1px solid #f0f0f0;
+    }
+    .platform-cell:last-child { border-right: none; }
+    .platform-icon {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .platform-name {
+      font-size: 9px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 5px;
+    }
+    .platform-rating {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    .pr-strong  { background: #e8f5e9; color: #2e7d32; }
+    .pr-average { background: #fff8e1; color: #f57f17; }
+    .pr-weak    { background: #fdecea; color: #c62828; }
+    .pr-none    { background: #f0f2f8; color: #9e9e9e; }
+    .platform-stat {
+      font-size: 10px;
+      color: #aaa;
+      margin-top: 3px;
+    }
+
+    .profile-body {
+      padding: 14px 20px;
+    }
+    .profile-strategy {
+      font-size: 12.5px;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .profile-intel {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      line-height: 1.5;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+    .profile-intel.threat     { background: #fdecea; color: #c62828; }
+    .profile-intel.opportunity{ background: #e8f5e9; color: #2e7d32; }
+    .profile-intel.watch      { background: #fff8e1; color: #e65100; }
+    .intel-label {
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: #1a1a2e;
+      color: #a8b2d8;
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      margin-top: 60px;
+    }
+    .footer strong { color: #fff; }
+    /* ── Alert banner ── */
+    .alert-banner {
+      background: linear-gradient(135deg, #1a1a2e, #0f3460);
+      color: #fff;
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      box-shadow: 0 4px 20px rgba(233,69,96,0.25);
+      border: 1px solid rgba(233,69,96,0.4);
+    }
+    .alert-icon { font-size: 40px; flex-shrink: 0; }
+    .alert-body h4 {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #e94560;
+      margin-bottom: 6px;
+    }
+    .alert-body p { font-size: 15px; line-height: 1.6; color: #e8eaf0; }
+    .alert-body strong { color: #fff; }
+    .alert-stat {
+      text-align: center;
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 16px 24px;
+      min-width: 140px;
+    }
+    .alert-stat .big { font-size: 32px; font-weight: 800; color: #e94560; letter-spacing: -1px; }
+    .alert-stat .small { font-size: 11px; color: #a8b2d8; margin-top: 2px; }
+
+    /* ── Competitor table extras ── */
+    .you-row td { background: #fffbf0 !important; }
+    .you-row td:first-child { border-left: 3px solid #e94560; }
+    .rank-medal { font-size: 16px; }
+    .bar-competitor { background: #69C9D0; }
+    .bar-you { background: #e94560; }
+    .na-cell { color: #bbb; font-style: italic; font-size: 12px; }
+    .delta-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .delta-ahead  { background: #d4edda; color: #155724; }
+    .delta-behind { background: #f8d7da; color: #721c24; }
+    .delta-na     { background: #f0f0f0; color: #888; }
+    .stars-small { color: #FBBC05; font-size: 13px; }
+    .rating-num { font-weight: 700; font-size: 14px; }
+
+    /* ── Market position grid ── */
+    .market-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .market-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 22px 24px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .market-card h4 {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .market-card.leads h4  { color: #34A853; }
+    .market-card.behind h4 { color: #e94560; }
+    .market-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .market-card ul li {
+      font-size: 13px;
+      color: #333;
+      line-height: 1.5;
+      padding-left: 18px;
+      position: relative;
+    }
+    .market-card.leads  ul li::before { content: "✓"; position: absolute; left: 0; color: #34A853; font-weight: 700; }
+    .market-card.behind ul li::before { content: "✗"; position: absolute; left: 0; color: #e94560; font-weight: 700; }
+
+  </style>
+</head>
+<body>
+
+<!-- Cover -->
+<div class="cover">
+  <div class="cover-label">Digital Intelligence Report</div>
+  <h1>One Education Consulting</h1>
+  <h2>Social Media & Business Profile Analysis</h2>
+  <div class="cover-meta">
+    <div><span class="label">Report Date</span><span class="value">12 April 2026</span></div>
+    <div><span class="label">Platforms</span><span class="value">TikTok · YouTube · Google Maps</span></div>
+    <div><span class="label">Data Source</span><span class="value">Apify Scrapers + Google Places API</span></div>
+    <div><span class="label">Classification</span><span class="value">Internal — Leadership Only</span></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Executive Summary -->
+  <div class="summary-card" style="margin-top:40px;">
+    <h3>Executive Summary</h3>
+    <p>
+      One Education Consulting maintains an active presence across TikTok, YouTube, and Google Maps.
+      On TikTok, the account <strong>@oneeducationthailand</strong> demonstrates consistent posting with a
+      standout video reaching <strong>11,500 views</strong> — roughly 7× the account average — suggesting
+      strong potential in video content. On Google Maps, the business holds a <strong>4.8 ★ rating</strong>
+      across 72 reviews, placing it among the top-rated education consultants in Bangkok. YouTube presence
+      exists but remains nascent, with most owned videos under 2,000 views; the channel benefits from
+      appearing in broader study-abroad search results alongside higher-traffic Thai creators.
+    </p>
+  </div>
+
+  <!-- Top 3 Actions This Week -->
+  <div class="actions-section">
+    <div class="actions-header">
+      <span class="actions-icon">⚡</span>
+      Top 3 Actions This Week
+    </div>
+    <div class="actions-grid">
+
+      <div class="action-card urgent">
+        <div class="action-rank">
+          <span class="rank-badge urgent-badge">1</span>
+          <span class="urgency-tag urgent-tag">URGENT</span>
+        </div>
+        <div class="action-body">
+          <div class="action-title">TikTok Content Audit — Close the 130× View Gap</div>
+          <div class="action-desc">
+            Study Mango Learning Express's top-performing video format this week (1,500,000 views vs your 11,500).
+            Brief your content team to produce <strong>3 videos in the same style</strong> — same length, hook structure,
+            and topic angle — and schedule them for the next 7 days.
+          </div>
+          <div class="action-data-tag">
+            <span class="data-label">Data:</span> Mango 1.5M views · One Education 11.5K · 130× gap
+          </div>
+        </div>
+      </div>
+
+      <div class="action-card high">
+        <div class="action-rank">
+          <span class="rank-badge high-badge">2</span>
+          <span class="urgency-tag high-tag">HIGH</span>
+        </div>
+        <div class="action-body">
+          <div class="action-title">Google Maps Review Push — Target 100 Reviews</div>
+          <div class="action-desc">
+            Send a personalised review request via Line and email to all clients who completed their application
+            in the last 6 months. You are 28 reviews from 100 — crossing that milestone puts you <strong>6× ahead</strong>
+            of the nearest pure-play competitor (GoUni: 15 reviews).
+          </div>
+          <div class="action-data-tag">
+            <span class="data-label">Data:</span> One Education 72 reviews · GoUni 15 · IDP 9 · nearest rivals &lt;20
+          </div>
+        </div>
+      </div>
+
+      <div class="action-card medium">
+        <div class="action-rank">
+          <span class="rank-badge medium-badge">3</span>
+          <span class="urgency-tag medium-tag">MEDIUM</span>
+        </div>
+        <div class="action-body">
+          <div class="action-title">YouTube Influencer Outreach — WOODY Collaboration</div>
+          <div class="action-desc">
+            Reach out to creator <strong>WOODY</strong> this week about a sponsored video or co-production on
+            UK/Australia study-abroad topics. Their study-abroad video reached 12,020 views — nearly
+            <strong>7× your best-performing owned video</strong> (1,740 views). A single sponsored post
+            could double your YouTube footprint overnight.
+          </div>
+          <div class="action-data-tag">
+            <span class="data-label">Data:</span> WOODY 12,020 views · One Education top video 1,740 views
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- KPI Strip -->
+  <div class="stat-grid">
+    <div class="stat-card tiktok">
+      <div class="stat-label">TikTok Total Views</div>
+      <div class="stat-value">15,861</div>
+      <div class="stat-sub">Last 10 videos</div>
+    </div>
+    <div class="stat-card tiktok">
+      <div class="stat-label">TikTok Avg Views</div>
+      <div class="stat-value">1,586</div>
+      <div class="stat-sub">Per video</div>
+    </div>
+    <div class="stat-card tiktok">
+      <div class="stat-label">TikTok Top Video</div>
+      <div class="stat-value">11.5K</div>
+      <div class="stat-sub">7× account average</div>
+    </div>
+    <div class="stat-card maps">
+      <div class="stat-label">Google Rating</div>
+      <div class="stat-value">4.8★</div>
+      <div class="stat-sub">72 reviews</div>
+    </div>
+    <div class="stat-card youtube">
+      <div class="stat-label">YouTube Videos Found</div>
+      <div class="stat-value">10</div>
+      <div class="stat-sub">Search: Thai study abroad</div>
+    </div>
+  </div>
+
+  <!-- TikTok Section -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#e8fafa;">🎵</div>
+      <h3>TikTok Performance</h3>
+      <span class="subtitle">@oneeducationthailand · 10 most recent videos</span>
+    </div>
+    <div class="data-card">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Views</th>
+            <th>Likes</th>
+            <th>Engagement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-tiktok" style="width:100%"></div></div>
+                <span class="views-num">11,500</span>
+              </div>
+            </td>
+            <td>11</td>
+            <td><span class="engagement-pill pill-low">0.10%</span></td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-tiktok" style="width:8%"></div></div>
+                <span class="views-num">885</span>
+              </div>
+            </td>
+            <td>19</td>
+            <td><span class="engagement-pill pill-high">2.15%</span></td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-tiktok" style="width:6%"></div></div>
+                <span class="views-num">684</span>
+              </div>
+            </td>
+            <td>25</td>
+            <td><span class="engagement-pill pill-high">3.65%</span></td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-tiktok" style="width:5%"></div></div>
+                <span class="views-num">452</span>
+              </div>
+            </td>
+            <td>8</td>
+            <td><span class="engagement-pill pill-medium">1.77%</span></td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-tiktok" style="width:4%"></div></div>
+                <span class="views-num">419</span>
+              </div>
+            </td>
+            <td>9</td>
+            <td><span class="engagement-pill pill-medium">2.15%</span></td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-tiktok" style="width:4%"></div></div>
+                <span class="views-num">393</span>
+              </div>
+            </td>
+            <td>8</td>
+            <td><span class="engagement-pill pill-medium">2.04%</span></td>
+          </tr>
+          <tr>
+            <td class="rank">7</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-tiktok" style="width:4%"></div></div>
+                <span class="views-num">392</span>
+              </div>
+            </td>
+            <td>10</td>
+            <td><span class="engagement-pill pill-medium">2.55%</span></td>
+          </tr>
+          <tr>
+            <td class="rank">8</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-tiktok" style="width:4%"></div></div>
+                <span class="views-num">390</span>
+              </div>
+            </td>
+            <td>15</td>
+            <td><span class="engagement-pill pill-high">3.85%</span></td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-tiktok" style="width:4%"></div></div>
+                <span class="views-num">384</span>
+              </div>
+            </td>
+            <td>20</td>
+            <td><span class="engagement-pill pill-high">5.21%</span></td>
+          </tr>
+          <tr>
+            <td class="rank">10</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-tiktok" style="width:3%"></div></div>
+                <span class="views-num">362</span>
+              </div>
+            </td>
+            <td>13</td>
+            <td><span class="engagement-pill pill-high">3.59%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#888;margin-top:10px;padding-left:4px;">
+      Engagement rate = likes ÷ views. Industry benchmark for TikTok education accounts: 2–4%.
+      Video #1 is a clear outlier — likely benefiting from the algorithm; content analysis recommended.
+    </p>
+  </div>
+
+  <!-- Google Maps Section -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#e6f4ea;">📍</div>
+      <h3>Google Business Profile</h3>
+      <span class="subtitle">Google Places API · Live data</span>
+    </div>
+    <div class="maps-card">
+      <div class="maps-rating-block">
+        <div class="maps-rating-number">4.8</div>
+        <div class="stars">★★★★★</div>
+        <div class="maps-rating-sub">72 reviews</div>
+      </div>
+      <div class="maps-details">
+        <h4>One Education เรียนต่อต่างประเทศ ปรึกษาฟรี</h4>
+        <p class="address">
+          518/3 อาคารมณียาเซ็นเตอร์ นอธ ชั้น 4, Khwaeng Lumphini,<br/>
+          Pathum Wan, Bangkok 10330, Thailand
+        </p>
+        <div class="benchmark">
+          A 4.8★ rating with 72+ reviews is <strong>above average</strong> for Bangkok education consultants.
+          For context, most competitors in this category average 4.3–4.6★ with fewer than 20 reviews.
+          This profile is a meaningful trust signal for prospective students researching options on Google Maps.
+          <br/><br/>
+          <strong>Recommendation:</strong> Continue actively collecting reviews. Crossing 100 reviews
+          increases visibility in local search rankings.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- YouTube Section -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#fff0f0;">▶️</div>
+      <h3>YouTube Presence</h3>
+      <span class="subtitle">Search: "One Education Consulting Thailand เรียนต่อ"</span>
+    </div>
+    <div class="data-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Channel</th>
+            <th>Title</th>
+            <th>Views</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="channel-badge own">One Education</span></td>
+            <td class="video-title">เรียนต่อ RMIT University ที่ออสเตรเลีย</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-youtube" style="width:100%"></div></div>
+                <span class="views-num">1,740</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="channel-badge own">One Education</span></td>
+            <td class="video-title">แนะนำ UNSW Sydney หนึ่งในมหาวิทยาลัยกลุ่ม Group of Eight</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-youtube" style="width:33%"></div></div>
+                <span class="views-num">570</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="channel-badge own">One Education</span></td>
+            <td class="video-title">น้องแคร์ มาแชร์ประสบการณ์ เรียนต่อ St. George's, University of London</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-youtube" style="width:15%"></div></div>
+                <span class="views-num">263</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="channel-badge own">One Education</span></td>
+            <td class="video-title">Insight Education Consulting</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-youtube" style="width:3%"></div></div>
+                <span class="views-num">53</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="channel-badge">WOODY</span></td>
+            <td class="video-title">เอเจนซี่เรียนต่ออังกฤษ มีไปทำไม?</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-youtube" style="width:69%"></div></div>
+                <span class="views-num">12,020</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="channel-badge">Thai Study Abroad</span></td>
+            <td class="video-title">เรียนต่อออสพร้อมทำงาน เรียนภาษา 6 เดือน+หลักสูตรวิชาชีพ</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-youtube" style="width:28%"></div></div>
+                <span class="views-num">4,847</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="channel-badge">Thai Study Abroad</span></td>
+            <td class="video-title">TSAB พาทัวร์สถาบัน Greenwich Melbourne ประเทศออสเตรเลีย</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-youtube" style="width:19%"></div></div>
+                <span class="views-num">3,320</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="channel-badge">NichaWong</span></td>
+            <td class="video-title">เรียนนอกบอกต่อ EP.54 คุยกับที่ปรึกษาเรียนต่อ</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-youtube" style="width:10%"></div></div>
+                <span class="views-num">1,741</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#888;margin-top:10px;padding-left:4px;">
+      <span style="background:#e94560;color:#fff;border-radius:3px;padding:1px 5px;font-size:10px;font-weight:700;">ONE EDUCATION</span>
+      = owned channel.&nbsp; Third-party creators such as WOODY (12K views) dominate the search landscape —
+      indicating an influencer/creator partnership opportunity.
+    </p>
+  </div>
+
+  <!-- Strategic Insights -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#f0f2f8;">💡</div>
+      <h3>Strategic Insights & Recommendations</h3>
+    </div>
+    <div class="insights-grid">
+      <div class="insight-card positive">
+        <div class="insight-tag">Strength</div>
+        <p>Google Maps rating of <strong>4.8★ / 72 reviews</strong> is among the highest in the Bangkok education consultant category — a credibility asset that converts high-intent searchers.</p>
+      </div>
+      <div class="insight-card positive">
+        <div class="insight-tag">Strength</div>
+        <p>TikTok video #1 at <strong>11,500 views</strong> shows the algorithm will amplify content when it resonates. Study the format and topic of this video and replicate it systematically.</p>
+      </div>
+      <div class="insight-card warning">
+        <div class="insight-tag">Watch</div>
+        <p>TikTok videos 2–10 average only <strong>~480 views</strong> — a significant drop-off from the top video. Posting frequency and consistency need to improve to train the algorithm.</p>
+      </div>
+      <div class="insight-card warning">
+        <div class="insight-tag">Watch</div>
+        <p>YouTube owned-channel views are low (under 1,800 per video). Third-party creator <strong>WOODY</strong> reaches 12K views on a related topic — direct collaboration or sponsorship should be explored.</p>
+      </div>
+      <div class="insight-card action">
+        <div class="insight-tag">Action Required</div>
+        <p>Push Google Maps reviews from 72 toward <strong>100+</strong> to strengthen local SEO ranking. A post-consultation email/Line nudge asking satisfied clients to leave a review is the fastest path.</p>
+      </div>
+      <div class="insight-card action">
+        <div class="insight-tag">Action Required</div>
+        <p>Instagram follower data is currently unavailable via scraping. Access the <strong>Instagram Graph API</strong> (requires Meta Business account) to track follower growth and post reach accurately.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════
+     COMPETITOR COMPARISON SECTION
+     ════════════════════════════════════════════════ -->
+<div style="background:#1a1a2e;padding:40px 0 0;">
+  <div style="max-width:960px;margin:0 auto;padding:0 24px;">
+    <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#e94560;margin-bottom:8px;">Competitive Intelligence</div>
+    <h2 style="font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;margin-bottom:4px;">Market Landscape</h2>
+    <p style="font-size:14px;color:#a8b2d8;padding-bottom:32px;">10-company comparison · Bangkok education consultants · Data collected April 2026</p>
+  </div>
+</div>
+
+<div class="container" style="padding-top:40px;">
+
+  <!-- Alert Banner -->
+  <div class="alert-banner">
+    <div class="alert-icon">⚠️</div>
+    <div class="alert-body">
+      <h4>Critical Gap Identified</h4>
+      <p>
+        <strong>Mango Learning Express</strong> has a TikTok video with <strong>1,500,000 views</strong>
+        — and a second at 1,000,000 — while One Education's top video stands at <strong>11,500 views</strong>.
+        That is a <strong>130× gap</strong> on a single piece of content. Mango's total views across
+        10 videos (<strong>2.7M</strong>) exceed One Education's total by <strong>171×</strong>.
+        TikTok is currently the dominant organic discovery channel for Thai students researching study abroad,
+        and this gap represents the single most urgent competitive risk.
+      </p>
+    </div>
+    <div class="alert-stat">
+      <div class="big">130×</div>
+      <div class="small">Mango vs One Education<br>top video views</div>
+    </div>
+  </div>
+
+  <!-- TikTok Comparison -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#e8fafa;">🎵</div>
+      <h3>TikTok — Competitor Comparison</h3>
+      <span class="subtitle">Ranked by top video views · last 10 videos each</span>
+    </div>
+    <div class="data-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Company</th>
+            <th>Handle</th>
+            <th>Top Video Views</th>
+            <th>Total Views (10 videos)</th>
+            <th>vs One Education</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="rank-medal">🥇</span></td>
+            <td><strong>Mango Learning Express</strong></td>
+            <td style="color:#888;font-size:12px;">@mangolearningexpress</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-competitor" style="width:100%"></div></div>
+                <span class="views-num">1,500,000</span>
+              </div>
+            </td>
+            <td><strong>2,711,123</strong></td>
+            <td><span class="delta-pill delta-behind">+130×</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-medal">🥈</span></td>
+            <td><strong>GoUni</strong></td>
+            <td style="color:#888;font-size:12px;">@gouni.official</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-competitor" style="width:32%"></div></div>
+                <span class="views-num">474,500</span>
+              </div>
+            </td>
+            <td><strong>582,051</strong></td>
+            <td><span class="delta-pill delta-behind">+41×</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-medal">🥉</span></td>
+            <td><strong>Hands On Education</strong></td>
+            <td style="color:#888;font-size:12px;">@handsoneducation</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-competitor" style="width:15%"></div></div>
+                <span class="views-num">219,100</span>
+              </div>
+            </td>
+            <td><strong>450,066</strong></td>
+            <td><span class="delta-pill delta-behind">+19×</span></td>
+          </tr>
+          <tr>
+            <td style="color:#888;">4</td>
+            <td>IEC Abroad</td>
+            <td style="color:#888;font-size:12px;">@iecabroadthailand</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-competitor" style="width:1.5%"></div></div>
+                <span class="views-num">22,100</span>
+              </div>
+            </td>
+            <td>30,027</td>
+            <td><span class="delta-pill delta-behind">+1.9×</span></td>
+          </tr>
+          <tr class="you-row">
+            <td style="color:#e94560;font-weight:700;">5 ◀ YOU</td>
+            <td><strong>One Education</strong></td>
+            <td style="color:#888;font-size:12px;">@oneeducationthailand</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-you" style="width:0.8%"></div></div>
+                <span class="views-num">11,500</span>
+              </div>
+            </td>
+            <td><strong>15,861</strong></td>
+            <td><span class="delta-pill delta-ahead">Baseline</span></td>
+          </tr>
+          <tr>
+            <td style="color:#888;">6</td>
+            <td>AECC Thailand</td>
+            <td style="color:#888;font-size:12px;">@aeccglobalthailand</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-competitor" style="width:0.2%"></div></div>
+                <span class="views-num">2,448</span>
+              </div>
+            </td>
+            <td>4,753</td>
+            <td><span class="delta-pill delta-ahead">−5×</span></td>
+          </tr>
+          <tr>
+            <td style="color:#888;">7</td>
+            <td>StudyIn Thailand</td>
+            <td style="color:#888;font-size:12px;">@th.studyin</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill bar-competitor" style="width:0.04%"></div></div>
+                <span class="views-num">570</span>
+              </div>
+            </td>
+            <td>3,449</td>
+            <td><span class="delta-pill delta-ahead">−20×</span></td>
+          </tr>
+          <tr>
+            <td style="color:#888;">—</td>
+            <td>IDP Thailand</td>
+            <td class="na-cell">no account found</td>
+            <td class="na-cell">N/A</td>
+            <td class="na-cell">N/A</td>
+            <td><span class="delta-pill delta-na">N/A</span></td>
+          </tr>
+          <tr>
+            <td style="color:#888;">—</td>
+            <td>Education for Life</td>
+            <td class="na-cell">no account found</td>
+            <td class="na-cell">N/A</td>
+            <td class="na-cell">N/A</td>
+            <td><span class="delta-pill delta-na">N/A</span></td>
+          </tr>
+          <tr>
+            <td style="color:#888;">—</td>
+            <td>Brit Education</td>
+            <td class="na-cell">no account found</td>
+            <td class="na-cell">N/A</td>
+            <td class="na-cell">N/A</td>
+            <td><span class="delta-pill delta-na">N/A</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#888;margin-top:10px;padding-left:4px;">
+      View counts from most recent 10 videos per account. Highlighted row = One Education Consulting.
+      "−20×" means One Education has 20× more views than that competitor.
+    </p>
+  </div>
+
+  <!-- Google Maps Comparison -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#e6f4ea;">📍</div>
+      <h3>Google Maps — Ratings Comparison</h3>
+      <span class="subtitle">Sorted by review count · Google Places API</span>
+    </div>
+    <div class="data-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Rating</th>
+            <th>Reviews</th>
+            <th>Review Volume</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>IDP Thailand <span style="font-size:10px;color:#888;">(IELTS centre)</span></td>
+            <td><span class="stars-small">★★★★★</span> <span class="rating-num">4.8</span></td>
+            <td><strong>699</strong></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:100%;background:#34A853;"></div></div>
+                <span class="views-num">699</span>
+              </div>
+            </td>
+            <td style="font-size:11px;color:#666;">Silom, Bang Rak</td>
+          </tr>
+          <tr class="you-row">
+            <td><strong>One Education ◀ YOU</strong></td>
+            <td><span class="stars-small">★★★★★</span> <span class="rating-num">4.8</span></td>
+            <td><strong>72</strong></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:10%;background:#e94560;"></div></div>
+                <span class="views-num">72</span>
+              </div>
+            </td>
+            <td style="font-size:11px;color:#666;">Lumphini, Pathum Wan</td>
+          </tr>
+          <tr>
+            <td>Mango Learning Express</td>
+            <td><span class="stars-small">★★★★★</span> <span class="rating-num">4.8</span></td>
+            <td>15</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:2%;background:#34A853;"></div></div>
+                <span class="views-num">15</span>
+              </div>
+            </td>
+            <td style="font-size:11px;color:#666;">Ratchathewi</td>
+          </tr>
+          <tr>
+            <td>GoUni</td>
+            <td><span class="stars-small">★★★★☆</span> <span class="rating-num">4.7</span></td>
+            <td>15</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:2%;background:#34A853;"></div></div>
+                <span class="views-num">15</span>
+              </div>
+            </td>
+            <td style="font-size:11px;color:#666;">Sukhumvit, Watthana</td>
+          </tr>
+          <tr>
+            <td>Education for Life</td>
+            <td><span class="stars-small">★★★★☆</span> <span class="rating-num">4.6</span></td>
+            <td>9</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:1%;background:#34A853;"></div></div>
+                <span class="views-num">9</span>
+              </div>
+            </td>
+            <td style="font-size:11px;color:#666;">Ratchathewi</td>
+          </tr>
+          <tr>
+            <td>Hands On Education</td>
+            <td><span class="stars-small">★★★★☆</span> <span class="rating-num">4.3</span></td>
+            <td>6</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:0.9%;background:#34A853;"></div></div>
+                <span class="views-num">6</span>
+              </div>
+            </td>
+            <td style="font-size:11px;color:#666;">Klongtoey, Sukhumvit 40</td>
+          </tr>
+          <tr>
+            <td>Brit Education</td>
+            <td><span class="stars-small">★★★★☆</span> <span class="rating-num">4.0</span></td>
+            <td>4</td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:0.6%;background:#34A853;"></div></div>
+                <span class="views-num">4</span>
+              </div>
+            </td>
+            <td style="font-size:11px;color:#666;">Sukhumvit 13, Nana</td>
+          </tr>
+          <tr>
+            <td>IEC Abroad</td>
+            <td class="na-cell">—</td>
+            <td class="na-cell">No rating</td>
+            <td class="na-cell">Unverified listing</td>
+            <td style="font-size:11px;color:#666;">Phloen Chit, Lumphini</td>
+          </tr>
+          <tr>
+            <td>AECC Thailand</td>
+            <td class="na-cell">—</td>
+            <td class="na-cell">No rating</td>
+            <td class="na-cell">Unverified listing</td>
+            <td style="font-size:11px;color:#666;">Samyan Mitrtown, Pathumwan</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:#888;margin-top:10px;padding-left:4px;">
+      IDP result reflects their IELTS test centre listing, not a pure consultancy — volume not directly comparable.
+      One Education's 72 reviews leads all pure-play education consultants in this set by a wide margin.
+    </p>
+  </div>
+
+  <!-- Market Position -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#f0f2f8;">🏆</div>
+      <h3>Market Position Summary</h3>
+      <span class="subtitle">One Education Consulting vs. 9 Bangkok competitors</span>
+    </div>
+    <div class="market-grid">
+      <div class="market-card leads">
+        <h4>✅ Where One Education Leads</h4>
+        <ul>
+          <li><strong>Google Maps credibility:</strong> 4.8★ with 72 reviews — the highest review count among pure-play consultants in this set, ahead of Mango (15), GoUni (15), and Education for Life (9).</li>
+          <li><strong>TikTok engagement quality:</strong> While views are low, several videos achieve 3–5% engagement rates — above the 2–4% industry benchmark — suggesting the audience is genuinely interested.</li>
+          <li><strong>Established brand:</strong> Appears in YouTube search results alongside larger creators, indicating name recognition in the Thai study-abroad category.</li>
+          <li><strong>Two Bangkok locations</strong> found on Google Maps (main + Rama 2 branch), ahead of most single-location competitors.</li>
+        </ul>
+      </div>
+      <div class="market-card behind">
+        <h4>🚨 Where One Education Is Behind</h4>
+        <ul>
+          <li><strong>TikTok reach is critical:</strong> Mango Learning Express leads with 2.7M total views (171× more). GoUni has 582K (37× more). Hands On Education has 450K (28× more). One Education ranks 5th of 7 active accounts.</li>
+          <li><strong>No viral content formula:</strong> Only 1 video broke 1K views. Competitors like Mango and GoUni have cracked the algorithm repeatedly — content strategy requires urgent revision.</li>
+          <li><strong>YouTube channel is nascent:</strong> Top owned video has 1,740 views. Third-party creator WOODY reaches 12K on related content. Influencer partnerships are underutilised.</li>
+          <li><strong>No TikTok competitor data for IDP, Education for Life, Brit Education</strong> — these may have hidden social presence worth investigating before drawing final conclusions.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Competitor spotlight cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,0.06);border-top:3px solid #e94560;">
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#e94560;margin-bottom:6px;">Watch Closely</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">Mango Learning Express</div>
+        <div style="font-size:13px;color:#444;line-height:1.6;">
+          2× videos over 1M views. Strong UK focus (เรียนต่ออังกฤษ). Content formula clearly resonates — reverse-engineer their top videos immediately.
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,0.06);border-top:3px solid #FBBC05;">
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#b48a00;margin-bottom:6px;">Growing Fast</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">GoUni</div>
+        <div style="font-size:13px;color:#444;line-height:1.6;">
+          474K top video, 38.6K TikTok followers. Active event marketing (language fairs). Broader destination coverage than One Education — 16 countries.
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,0.06);border-top:3px solid #34A853;">
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#34A853;margin-bottom:6px;">Weak on Social</div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:8px;">AECC Thailand</div>
+        <div style="font-size:13px;color:#444;line-height:1.6;">
+          TikTok max 2,448 views, no Google Maps rating. Despite being a global brand, their Thailand digital presence is weak — an opportunity to out-position them locally.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       COMPETITOR PROFILES
+  ═══════════════════════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#fce4ec;">👤</div>
+      <h3>Competitor Profiles</h3>
+      <span class="subtitle">Digital presence assessment · all 10 companies · April 2026</span>
+    </div>
+
+    <div class="profile-grid">
+
+      <!-- ── ONE EDUCATION (SELF) ── -->
+      <div class="profile-card self">
+        <div class="profile-header">
+          <div>
+            <div class="profile-name">One Education Consulting <span style="font-size:11px;color:#e94560;font-weight:600;">◀ YOU</span></div>
+            <div class="profile-handles">
+              <span class="handle-chip">TikTok @oneeducationthailand</span>
+              <span class="handle-chip">IG @oneeducationthailand</span>
+              <span class="handle-chip">YouTube: One Education</span>
+            </div>
+          </div>
+          <span class="overall-badge badge-self">Medium</span>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-cell">
+            <div class="platform-icon">🎵</div>
+            <div class="platform-name">TikTok</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">11.5K top · 15.9K total</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">▶</div>
+            <div class="platform-name">YouTube</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">1,740 top owned video</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📍</div>
+            <div class="platform-name">Google Maps</div>
+            <div class="platform-rating pr-strong">Strong</div>
+            <div class="platform-stat">4.8★ · 72 reviews</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📷</div>
+            <div class="platform-name">Instagram</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Active · followers N/A</div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <p class="profile-strategy">Consistent TikTok posting with above-average engagement rates (3–5%) but limited algorithmic reach; strong Google Maps credibility that leads all pure-play competitors; YouTube presence exists but hasn't produced a breakout video; Instagram active but untracked.</p>
+          <div class="profile-intel watch">
+            <span class="intel-label">Focus:</span>
+            TikTok content formula needs urgent revision — Maps strength is a genuine competitive advantage worth protecting through active review collection toward 100+.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── MANGO LEARNING EXPRESS ── -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div>
+            <div class="profile-name">Mango Learning Express</div>
+            <div class="profile-handles">
+              <span class="handle-chip">TikTok @mangolearningexpress</span>
+              <span class="handle-chip">IG @mangolearningexpress</span>
+            </div>
+          </div>
+          <span class="overall-badge badge-strong">Strong</span>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-cell">
+            <div class="platform-icon">🎵</div>
+            <div class="platform-name">TikTok</div>
+            <div class="platform-rating pr-strong">Strong</div>
+            <div class="platform-stat">1.5M top · 2.7M total</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">▶</div>
+            <div class="platform-name">YouTube</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Some presence</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📍</div>
+            <div class="platform-name">Google Maps</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">4.8★ · 15 reviews</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📷</div>
+            <div class="platform-name">Instagram</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Active · followers N/A</div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <p class="profile-strategy">TikTok-first strategy with a repeatable UK-study content formula (เรียนต่ออังกฤษ) that has produced two videos exceeding 1 million views — demonstrating mastery of the algorithm's hook structure for Thai student audiences; other channels are secondary.</p>
+          <div class="profile-intel threat">
+            <span class="intel-label">Threat:</span>
+            130× One Education's top TikTok video; their content formula is proven and actively drawing student leads — reverse-engineer their top videos immediately.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── GOUNI ── -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div>
+            <div class="profile-name">GoUni</div>
+            <div class="profile-handles">
+              <span class="handle-chip">TikTok @gouni.official</span>
+              <span class="handle-chip">IG @gouniofficial</span>
+            </div>
+          </div>
+          <span class="overall-badge badge-strong">Strong</span>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-cell">
+            <div class="platform-icon">🎵</div>
+            <div class="platform-name">TikTok</div>
+            <div class="platform-rating pr-strong">Strong</div>
+            <div class="platform-stat">474.5K top · 582K total</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">▶</div>
+            <div class="platform-name">YouTube</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Event-driven content</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📍</div>
+            <div class="platform-name">Google Maps</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">4.7★ · 15 reviews</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📷</div>
+            <div class="platform-name">Instagram</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Active · followers N/A</div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <p class="profile-strategy">Multi-channel strategy anchored by high-volume TikTok (38.6K followers) and active event marketing including language fairs, combining broad destination coverage across 16 countries with consistent social output; maps credibility is underdeveloped relative to their social reach.</p>
+          <div class="profile-intel threat">
+            <span class="intel-label">Threat:</span>
+            Fastest-growing social competitor; broader destination portfolio than One Education attracts students who haven't yet narrowed their study destination — they win at the top of the funnel.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── HANDS ON EDUCATION ── -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div>
+            <div class="profile-name">Hands On Education</div>
+            <div class="profile-handles">
+              <span class="handle-chip">TikTok @handsoneducation</span>
+              <span class="handle-chip">IG @handsonedu</span>
+            </div>
+          </div>
+          <span class="overall-badge badge-medium">Medium</span>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-cell">
+            <div class="platform-icon">🎵</div>
+            <div class="platform-name">TikTok</div>
+            <div class="platform-rating pr-strong">Strong</div>
+            <div class="platform-stat">219.1K top · 450K total</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">▶</div>
+            <div class="platform-name">YouTube</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Campus tour content</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📍</div>
+            <div class="platform-name">Google Maps</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">4.3★ · 6 reviews</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📷</div>
+            <div class="platform-name">Instagram</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Active · followers N/A</div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <p class="profile-strategy">Strong TikTok reach driven by structured video content and a multi-location presence across Bangkok and Chiang Mai; YouTube supplements with campus tours; Google Maps credibility is notably weak given their scale, suggesting most business comes through social and referral rather than local search.</p>
+          <div class="profile-intel watch">
+            <span class="intel-label">Watch:</span>
+            Their 4-location network + strong TikTok creates high top-of-funnel capture; their Maps weakness (4.3★, 6 reviews) is where One Education can consistently outperform them in local search.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── IDP THAILAND ── -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div>
+            <div class="profile-name">IDP Thailand</div>
+            <div class="profile-handles">
+              <span class="handle-chip">IG @idp.thailand</span>
+              <span class="handle-chip">No TikTok found</span>
+            </div>
+          </div>
+          <span class="overall-badge badge-medium">Medium</span>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-cell">
+            <div class="platform-icon">🎵</div>
+            <div class="platform-name">TikTok</div>
+            <div class="platform-rating pr-none">Not Found</div>
+            <div class="platform-stat">No account detected</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">▶</div>
+            <div class="platform-name">YouTube</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Brand-level content</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📍</div>
+            <div class="platform-name">Google Maps</div>
+            <div class="platform-rating pr-strong">Strong</div>
+            <div class="platform-stat">4.8★ · 699 reviews*</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📷</div>
+            <div class="platform-name">Instagram</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Active · followers N/A</div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <p class="profile-strategy">Relies almost entirely on global brand equity and IELTS centre footfall rather than original Thailand-specific social content; Google Maps volume is inflated by their test centre listing rather than education consulting; no TikTok presence despite the platform's dominance among their target demographic.</p>
+          <div class="profile-intel opportunity">
+            <span class="intel-label">Opportunity:</span>
+            IDP's 699 Maps reviews are from an IELTS centre, not consulting — in pure consulting local search, One Education's 72 reviews already outperforms them; TikTok is completely uncontested by IDP.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── EDUCATION FOR LIFE ── -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div>
+            <div class="profile-name">Education For Life</div>
+            <div class="profile-handles">
+              <span class="handle-chip">IG @eduforlife.bkk</span>
+              <span class="handle-chip">YouTube: Education For Life</span>
+              <span class="handle-chip">No TikTok found</span>
+            </div>
+          </div>
+          <span class="overall-badge badge-medium">Medium</span>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-cell">
+            <div class="platform-icon">🎵</div>
+            <div class="platform-name">TikTok</div>
+            <div class="platform-rating pr-none">Not Found</div>
+            <div class="platform-stat">No account detected</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">▶</div>
+            <div class="platform-name">YouTube</div>
+            <div class="platform-rating pr-strong">Strong</div>
+            <div class="platform-stat">2,736 top · Thai-language tours</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📍</div>
+            <div class="platform-name">Google Maps</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">4.6★ · 9 reviews</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📷</div>
+            <div class="platform-name">Instagram</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Active · followers N/A</div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <p class="profile-strategy">YouTube-first strategy built around Thai-language campus tour videos (พาทัวร์) for Australian universities — the most consistent university-promoting content creator among all 10 companies — but zero TikTok presence leaves a large and growing demographic entirely unreached.</p>
+          <div class="profile-intel opportunity">
+            <span class="intel-label">Opportunity:</span>
+            Their proven campus tour format on YouTube has no TikTok equivalent — the first agency to replicate this format on TikTok (in Thai) owns that content category entirely; their Maps score (9 reviews) is well below One Education's.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── IEC ABROAD ── -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div>
+            <div class="profile-name">IEC Abroad</div>
+            <div class="profile-handles">
+              <span class="handle-chip">TikTok @iecabroadthailand</span>
+              <span class="handle-chip">IG @iecabroad_lgstudy</span>
+            </div>
+          </div>
+          <span class="overall-badge badge-weak">Weak</span>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-cell">
+            <div class="platform-icon">🎵</div>
+            <div class="platform-name">TikTok</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">22.1K top · 30K total</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">▶</div>
+            <div class="platform-name">YouTube</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">No data collected</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📍</div>
+            <div class="platform-name">Google Maps</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">Unverified · no rating</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📷</div>
+            <div class="platform-name">Instagram</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Active · followers N/A</div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <p class="profile-strategy">Moderate TikTok activity with one breakout video at 22K views but no consistency in reach; no verified Google Maps presence creates a significant trust gap for students researching via local search; overall digital investment appears low relative to company size.</p>
+          <div class="profile-intel opportunity">
+            <span class="intel-label">Opportunity:</span>
+            IEC's unverified Maps listing and weak YouTube presence means One Education dominates in local search and long-form content — a student comparing both agencies online will consistently favour One Education.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── AECC THAILAND ── -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div>
+            <div class="profile-name">AECC Thailand</div>
+            <div class="profile-handles">
+              <span class="handle-chip">TikTok @aeccglobalthailand</span>
+              <span class="handle-chip">IG @aecc.thailand</span>
+            </div>
+          </div>
+          <span class="overall-badge badge-weak">Weak</span>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-cell">
+            <div class="platform-icon">🎵</div>
+            <div class="platform-name">TikTok</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">2,448 top · 4,753 total</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">▶</div>
+            <div class="platform-name">YouTube</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">Outdated · last post 2021</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📍</div>
+            <div class="platform-name">Google Maps</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">Unverified · no rating</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📷</div>
+            <div class="platform-name">Instagram</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Active · followers N/A</div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <p class="profile-strategy">Global brand name with severely underdeveloped Thailand-specific digital presence; YouTube content is outdated (last Macquarie video 2021), TikTok reach is minimal, and Google Maps is unverified — indicating the Thailand office is not investing locally in digital despite the parent brand's resources.</p>
+          <div class="profile-intel opportunity">
+            <span class="intel-label">Opportunity:</span>
+            One Education outperforms AECC on every measurable local channel; students comparing agencies online will consistently find One Education more credible — lean into this in all marketing materials.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BRIT EDUCATION ── -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div>
+            <div class="profile-name">Brit Education</div>
+            <div class="profile-handles">
+              <span class="handle-chip">IG @briteduk</span>
+              <span class="handle-chip">No TikTok found</span>
+            </div>
+          </div>
+          <span class="overall-badge badge-weak">Weak</span>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-cell">
+            <div class="platform-icon">🎵</div>
+            <div class="platform-name">TikTok</div>
+            <div class="platform-rating pr-none">Not Found</div>
+            <div class="platform-stat">No account detected</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">▶</div>
+            <div class="platform-name">YouTube</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">No data collected</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📍</div>
+            <div class="platform-name">Google Maps</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">4.0★ · 4 reviews</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📷</div>
+            <div class="platform-name">Instagram</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Active · followers N/A</div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <p class="profile-strategy">UK-specialist niche agency with minimal social media investment across all platforms; no TikTok presence, lowest Google Maps rating in the set (4.0★), and appears to rely almost entirely on referrals and direct outreach rather than organic digital discovery.</p>
+          <div class="profile-intel opportunity">
+            <span class="intel-label">Opportunity:</span>
+            UK study is a shared focus — Brit's digital absence on TikTok and low Maps rating means One Education can capture UK-bound students in digital search before they ever hear of Brit Education.
+          </div>
+        </div>
+      </div>
+
+      <!-- ── STUDYIN THAILAND ── -->
+      <div class="profile-card">
+        <div class="profile-header">
+          <div>
+            <div class="profile-name">StudyIn Thailand</div>
+            <div class="profile-handles">
+              <span class="handle-chip">TikTok @th.studyin</span>
+              <span class="handle-chip">IG @th_studyin</span>
+            </div>
+          </div>
+          <span class="overall-badge badge-weak">Weak</span>
+        </div>
+        <div class="platform-grid">
+          <div class="platform-cell">
+            <div class="platform-icon">🎵</div>
+            <div class="platform-name">TikTok</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">570 top · 3,449 total</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">▶</div>
+            <div class="platform-name">YouTube</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">No data collected</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📍</div>
+            <div class="platform-name">Google Maps</div>
+            <div class="platform-rating pr-weak">Weak</div>
+            <div class="platform-stat">No data collected</div>
+          </div>
+          <div class="platform-cell">
+            <div class="platform-icon">📷</div>
+            <div class="platform-name">Instagram</div>
+            <div class="platform-rating pr-average">Average</div>
+            <div class="platform-stat">Active · followers N/A</div>
+          </div>
+        </div>
+        <div class="profile-body">
+          <p class="profile-strategy">Present across Instagram and TikTok but consistently low reach across all platforms — TikTok top video at 570 views is the weakest in the competitive set — suggesting either very recent channel launches or a content strategy that has not found its audience.</p>
+          <div class="profile-intel opportunity">
+            <span class="intel-label">Opportunity:</span>
+            StudyIn is not a meaningful digital threat; their Macquarie authorisation (Bangkok and Chiang Mai locations) is more notable than their social presence — monitor their university partnerships rather than their content.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /profile-grid -->
+
+    <p style="font-size:12px;color:#888;margin-top:16px;padding-left:4px;">
+      * IDP Maps review count reflects their IELTS test centre, not education consulting. Instagram follower counts are unavailable due to API limitations — presence ratings based on posting activity only. "Not Found" indicates no account was detected under known handles; accounts may exist under alternate names.
+    </p>
+  </div>
+
+</div><!-- end container -->
+
+<div class="footer">
+  <strong>One Education Consulting</strong> · Digital Intelligence Report · April 2026 ·
+  Generated by Social &amp; Maps Intelligence Scraper · For internal use only
+</div>
+
+</body>
+</html>
