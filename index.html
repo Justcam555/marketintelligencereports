@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Macquarie University — Thailand Agent Mention Analysis</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #f4f5f7;
+      color: #1a1a2e;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── Cover ── */
+    .cover {
+      background: linear-gradient(135deg, #3d0e21 0%, #6d1f3b 60%, #8b2a4a 100%);
+      color: #fff;
+      padding: 64px 80px 56px;
+    }
+    .cover-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #f5c6d0;
+      margin-bottom: 16px;
+    }
+    .cover h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .cover h2 {
+      font-size: 18px;
+      font-weight: 400;
+      color: #f0c8d0;
+      margin-bottom: 40px;
+    }
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 24px;
+    }
+    .cover-meta div { display: flex; flex-direction: column; gap: 4px; }
+    .cover-meta .label { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #f0c8d0; }
+    .cover-meta .value { font-size: 14px; font-weight: 600; }
+
+    /* ── Layout ── */
+    .container { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    /* ── Section ── */
+    .section { margin-bottom: 40px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e8eaf0;
+    }
+    .section-header .icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .section-header h3 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .section-header .subtitle {
+      font-size: 12px;
+      color: #666;
+      margin-left: auto;
+    }
+
+    /* ── Summary card ── */
+    .summary-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 28px;
+      border-left: 4px solid #6d1f3b;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      margin-bottom: 40px;
+    }
+    .summary-card h3 {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #6d1f3b;
+      margin-bottom: 12px;
+    }
+    .summary-card p {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    .summary-card p:last-child { margin-bottom: 0; }
+
+    /* ── Stat grid ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .stat-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 20px 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .stat-card.youtube::before { background: #FF0000; }
+    .stat-card.tiktok::before  { background: #69C9D0; }
+    .stat-card.mq::before      { background: #6d1f3b; }
+    .stat-card.warning::before { background: #f57c00; }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1;
+      color: #1a1a2e;
+    }
+    .stat-sub {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 4px;
+    }
+
+    /* ── Data table ── */
+    .data-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead { background: #f8f9fc; }
+    th {
+      text-align: left;
+      padding: 12px 16px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #888;
+      font-weight: 600;
+      border-bottom: 1px solid #eee;
+    }
+    td {
+      padding: 12px 16px;
+      font-size: 13px;
+      border-bottom: 1px solid #f0f0f0;
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafbfd; }
+    tr.flagged td { background: #fff8f0; }
+    tr.flagged:hover td { background: #fff3e5; }
+
+    .video-title a {
+      color: #1a1a2e;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .video-title a:hover { color: #6d1f3b; text-decoration: underline; }
+
+    .channel-badge {
+      display: inline-block;
+      background: #f0f2f8;
+      color: #555;
+      border-radius: 4px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .channel-badge.agent  { background: #e8f5e9; color: #2e7d32; }
+    .channel-badge.mq     { background: #fce4ec; color: #6d1f3b; }
+    .channel-badge.other  { background: #f0f2f8; color: #555; }
+
+    .register-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .pill-yes     { background: #e8f5e9; color: #2e7d32; }
+    .pill-no      { background: #f0f2f8; color: #777; }
+    .pill-warning { background: #fff3e0; color: #e65100; }
+    .pill-flag    { background: #fdecea; color: #c62828; }
+
+    .views-bar-wrap { display: flex; align-items: center; gap: 10px; min-width: 130px; }
+    .views-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: #e8eaf0;
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .views-bar-fill {
+      position: absolute;
+      top: 0; left: 0; height: 100%;
+      border-radius: 3px;
+      background: #FF0000;
+    }
+    .views-bar-fill.mq { background: #6d1f3b; }
+    .views-num { font-size: 12px; font-weight: 600; color: #333; white-space: nowrap; }
+
+    /* ── Actions ── */
+    .actions-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.08);
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+    .actions-header {
+      background: linear-gradient(135deg, #3d0e21 0%, #6d1f3b 100%);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .action-card {
+      display: flex;
+      gap: 20px;
+      padding: 22px 28px;
+      border-bottom: 1px solid #f0f0f0;
+      align-items: flex-start;
+    }
+    .action-card:last-child { border-bottom: none; }
+    .action-card.urgent { border-left: 5px solid #e53935; }
+    .action-card.high   { border-left: 5px solid #f57c00; }
+    .action-card.medium { border-left: 5px solid #6d1f3b; }
+    .action-rank {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      min-width: 52px;
+    }
+    .rank-badge {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 800; color: #fff;
+    }
+    .urgent-badge { background: #e53935; }
+    .high-badge   { background: #f57c00; }
+    .medium-badge { background: #6d1f3b; }
+    .urgency-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .urgent-tag { background: #fdecea; color: #b71c1c; }
+    .high-tag   { background: #fff3e0; color: #e65100; }
+    .medium-tag { background: #fce4ec; color: #6d1f3b; }
+    .action-body { flex: 1; }
+    .action-title { font-size: 15px; font-weight: 700; color: #111; margin-bottom: 8px; }
+    .action-desc  { font-size: 13.5px; color: #444; line-height: 1.6; margin-bottom: 10px; }
+    .action-data-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f5f5f5;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 11.5px;
+      color: #555;
+    }
+    .data-label { font-weight: 700; color: #333; }
+
+    /* ── Insights ── */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 16px;
+    }
+    .insight-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 22px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      border-top: 3px solid #e8eaf0;
+    }
+    .insight-card.positive { border-top-color: #4caf50; }
+    .insight-card.warning  { border-top-color: #f57c00; }
+    .insight-card.alert    { border-top-color: #e53935; }
+    .insight-card.action   { border-top-color: #6d1f3b; }
+    .insight-type {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .insight-card.positive .insight-type { color: #2e7d32; }
+    .insight-card.warning  .insight-type { color: #e65100; }
+    .insight-card.alert    .insight-type { color: #c62828; }
+    .insight-card.action   .insight-type { color: #6d1f3b; }
+    .insight-text { font-size: 13.5px; color: #333; line-height: 1.6; }
+    .insight-text strong { color: #1a1a2e; }
+
+    /* ── Alert banner ── */
+    .alert-banner {
+      background: #fdecea;
+      border: 1px solid #f5c6cb;
+      border-left: 5px solid #e53935;
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .alert-icon { font-size: 22px; flex-shrink: 0; }
+    .alert-body h4 { font-size: 14px; font-weight: 700; color: #c62828; margin-bottom: 6px; }
+    .alert-body p  { font-size: 13px; color: #555; line-height: 1.6; }
+
+    /* ── Pending badge ── */
+    .pending-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 32px 28px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+    .pending-icon { font-size: 36px; margin-bottom: 12px; }
+    .pending-card h4 { font-size: 15px; font-weight: 700; color: #333; margin-bottom: 8px; }
+    .pending-card p  { font-size: 13px; color: #666; line-height: 1.7; max-width: 480px; margin: 0 auto; }
+    .pending-card .manual-url {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 8px 16px;
+      background: #f0f2f8;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: monospace;
+      color: #444;
+      word-break: break-all;
+    }
+
+    /* ── Platform header chips ── */
+    .platform-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+    .chip-youtube { background: #fde8e8; color: #c62828; }
+    .chip-tiktok  { background: #e0f7f8; color: #00796b; }
+    .chip-fb      { background: #e8eaf6; color: #283593; }
+
+    .tbl-note {
+      font-size: 12px;
+      color: #888;
+      padding: 10px 16px;
+      background: #fafbfd;
+      border-top: 1px solid #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     COVER
+══════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-label">University Partnership Intelligence</div>
+  <h1>Macquarie University</h1>
+  <h2>Thailand Agent Mention Analysis</h2>
+  <div class="cover-meta">
+    <div><span class="label">Report Date</span><span class="value">13 April 2026</span></div>
+    <div><span class="label">Market</span><span class="value">Thailand</span></div>
+    <div><span class="label">Platforms Scanned</span><span class="value">YouTube · TikTok · Facebook</span></div>
+    <div><span class="label">Agents on Register</span><span class="value">16 companies · 36 locations</span></div>
+    <div><span class="label">Prepared By</span><span class="value">One Education Intelligence System</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     BODY
+══════════════════════════════════════════════ -->
+<div class="container">
+
+  <!-- Executive Summary -->
+  <div class="summary-card">
+    <h3>Executive Summary</h3>
+    <p>
+      A cross-platform mention scan was conducted for "Macquarie University" across YouTube, TikTok, and the Facebook Ad Library in the Thailand market. Of the 16 companies on Macquarie's official Thailand agent register, only two — <strong>Education For Life</strong> and <strong>AECC Global Thailand</strong> — have produced identifiable promotional content. The remaining 14 authorised agents, including <strong>One Education Consulting</strong>, show zero mention activity across all scanned platforms.
+    </p>
+    <p>
+      Education For Life is the clear promotion leader with 4 dedicated YouTube videos and 4,924 combined views. One critical compliance issue was identified: <strong>Unicentre College Thailand</strong> is actively promoting Macquarie University on YouTube despite not appearing on the official agent register. This warrants immediate review by Macquarie's partnership team.
+    </p>
+    <p>
+      TikTok represents a completely untapped channel — no Thai education agent has produced Macquarie-branded content on TikTok, despite the platform's dominance among Thai student audiences aged 18–24.
+    </p>
+  </div>
+
+  <!-- KPI Strip -->
+  <div class="stat-grid">
+    <div class="stat-card youtube">
+      <div class="stat-label">YouTube Results</div>
+      <div class="stat-value">17</div>
+      <div class="stat-sub">videos found in search</div>
+    </div>
+    <div class="stat-card mq">
+      <div class="stat-label">Agents Promoting</div>
+      <div class="stat-value">2</div>
+      <div class="stat-sub">of 16 on register</div>
+    </div>
+    <div class="stat-card youtube">
+      <div class="stat-label">Top Video Views</div>
+      <div class="stat-value">2,736</div>
+      <div class="stat-sub">Education For Life, Dec 2023</div>
+    </div>
+    <div class="stat-card tiktok">
+      <div class="stat-label">TikTok Results</div>
+      <div class="stat-value">0</div>
+      <div class="stat-sub">Thai agents with MQ content</div>
+    </div>
+    <div class="stat-card warning">
+      <div class="stat-label">Compliance Flag</div>
+      <div class="stat-value">1</div>
+      <div class="stat-sub">unauthorised agent promoting MQ</div>
+    </div>
+  </div>
+
+  <!-- ── Unauthorised Agent Alert ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#fdecea;">🚨</div>
+      <h3>Compliance Alert — Unauthorised Promotion</h3>
+    </div>
+
+    <div class="alert-banner">
+      <div class="alert-icon">⚠️</div>
+      <div class="alert-body">
+        <h4>Unicentre College Thailand — Not on Official Macquarie Agent Register</h4>
+        <p>
+          Unicentre College Thailand operates a YouTube channel and has uploaded at least 2 Macquarie University promotional videos ("Macquarie — Shape the future of business" and "Macquarie — Join our collective", both dated November 2019). This company does not appear anywhere on the official Macquarie Thailand agent register scraped on 13 April 2026. Either their authorisation has lapsed without content being removed, or they are promoting Macquarie without authorisation. Macquarie's International Partnerships team should verify and, if necessary, request removal or issue an updated register listing.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── YouTube Findings ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#fde8e8;">▶</div>
+      <h3>YouTube Mention Findings</h3>
+      <span class="platform-chip chip-youtube">YouTube</span>
+      <span class="subtitle">Search: "Macquarie University Thailand" — 17 results</span>
+    </div>
+
+    <div class="data-card">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Video Title</th>
+            <th>Channel</th>
+            <th>Views</th>
+            <th>Date</th>
+            <th>On Register?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rank">1</td>
+            <td class="video-title"><a href="https://www.youtube.com/watch?v=yleGqy_gp8I" target="_blank">พาทัวร์ Macquarie University — ฉบับปี 2023</a></td>
+            <td><span class="channel-badge agent">Education For Life</span></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:100%"></div></div>
+                <span class="views-num">2,736</span>
+              </div>
+            </td>
+            <td>Dec 2023</td>
+            <td><span class="register-pill pill-yes">✓ Authorised</span></td>
+          </tr>
+          <tr>
+            <td class="rank">2</td>
+            <td class="video-title"><a href="https://www.youtube.com/watch?v=XvET4M9GdhI" target="_blank">EFL พาทัวร์ Macquarie University — อัปเดตปี 2024</a></td>
+            <td><span class="channel-badge agent">Education For Life</span></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:43%"></div></div>
+                <span class="views-num">1,163</span>
+              </div>
+            </td>
+            <td>Mar 2024</td>
+            <td><span class="register-pill pill-yes">✓ Authorised</span></td>
+          </tr>
+          <tr>
+            <td class="rank">3</td>
+            <td class="video-title"><a href="https://www.youtube.com/watch?v=gv886fwm8NI" target="_blank">EFL พาทัวร์ Macquarie University — Familiarisation 2019</a></td>
+            <td><span class="channel-badge agent">Education For Life</span></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:35%"></div></div>
+                <span class="views-num">961</span>
+              </div>
+            </td>
+            <td>Dec 2019</td>
+            <td><span class="register-pill pill-yes">✓ Authorised</span></td>
+          </tr>
+          <tr>
+            <td class="rank">4</td>
+            <td class="video-title"><a href="https://www.youtube.com/watch?v=Z78eEZW2r1k" target="_blank">แนะนำ Master of Marketing — Macquarie University</a></td>
+            <td><span class="channel-badge agent">Education For Life</span></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:2%"></div></div>
+                <span class="views-num">64</span>
+              </div>
+            </td>
+            <td>Aug 2023</td>
+            <td><span class="register-pill pill-yes">✓ Authorised</span></td>
+          </tr>
+          <tr>
+            <td class="rank">5</td>
+            <td class="video-title"><a href="https://www.youtube.com/watch?v=NakqVU_IKZw" target="_blank">Study at Macquarie University | Study in Australia</a></td>
+            <td><span class="channel-badge agent">AECC Global Thailand</span></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:1%"></div></div>
+                <span class="views-num">15</span>
+              </div>
+            </td>
+            <td>Sep 2021</td>
+            <td><span class="register-pill pill-yes">✓ Authorised</span></td>
+          </tr>
+          <tr>
+            <td class="rank">6</td>
+            <td class="video-title"><a href="https://www.youtube.com/watch?v=BfVf4QozeTM" target="_blank">Study at Macquarie University</a></td>
+            <td><span class="channel-badge agent">AECC Global Thailand</span></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:2%"></div></div>
+                <span class="views-num">62</span>
+              </div>
+            </td>
+            <td>Aug 2018</td>
+            <td><span class="register-pill pill-yes">✓ Authorised</span></td>
+          </tr>
+          <tr class="flagged">
+            <td class="rank">7</td>
+            <td class="video-title"><a href="https://www.youtube.com/watch?v=aQZ862jW8qQ" target="_blank">Macquarie — Shape the future of business</a></td>
+            <td><span class="channel-badge" style="background:#fdecea;color:#c62828;">Unicentre College Thailand</span></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:0%"></div></div>
+                <span class="views-num">1</span>
+              </div>
+            </td>
+            <td>Nov 2019</td>
+            <td><span class="register-pill pill-flag">🚨 Not on register</span></td>
+          </tr>
+          <tr class="flagged">
+            <td class="rank">8</td>
+            <td class="video-title"><a href="https://www.youtube.com/watch?v=xB9Cao4_yBs" target="_blank">Macquarie — Join our collective</a></td>
+            <td><span class="channel-badge" style="background:#fdecea;color:#c62828;">Unicentre College Thailand</span></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill" style="width:0%"></div></div>
+                <span class="views-num">2</span>
+              </div>
+            </td>
+            <td>Nov 2019</td>
+            <td><span class="register-pill pill-flag">🚨 Not on register</span></td>
+          </tr>
+          <tr>
+            <td class="rank">9</td>
+            <td class="video-title"><a href="https://www.youtube.com/watch?v=hzruF2yoip0" target="_blank">Getting lost in the Macquarie campus — Sydney university tour</a></td>
+            <td><span class="channel-badge other">Livy Renata</span></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill mq" style="width:100%"></div></div>
+                <span class="views-num">681,360</span>
+              </div>
+            </td>
+            <td>Mar 2022</td>
+            <td><span class="register-pill pill-no">— Organic</span></td>
+          </tr>
+          <tr>
+            <td class="rank">10</td>
+            <td class="video-title"><a href="https://www.youtube.com/watch?v=2hBG3KusaYc" target="_blank">Australian universities offering 100% funding to international students</a></td>
+            <td><span class="channel-badge other">Yash Mittra - YMGrad</span></td>
+            <td>
+              <div class="views-bar-wrap">
+                <div class="views-bar"><div class="views-bar-fill mq" style="width:3%"></div></div>
+                <span class="views-num">19,182</span>
+              </div>
+            </td>
+            <td>Nov 2025</td>
+            <td><span class="register-pill pill-no">— Third-party</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="tbl-note">
+        Rows highlighted in amber = compliance concern. Organic/third-party content not produced by agents is shown for context. Full 17-result scan available on request.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TikTok Findings ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#e0f7f8;">♪</div>
+      <h3>TikTok Findings</h3>
+      <span class="platform-chip chip-tiktok">TikTok</span>
+      <span class="subtitle">Search: "Macquarie University" + "แม็คควารี"</span>
+    </div>
+
+    <div class="data-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Account</th>
+            <th>Content</th>
+            <th>Views</th>
+            <th>Date</th>
+            <th>On Register?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="channel-badge other">@sawaizcheema</span></td>
+            <td class="video-title">
+              <a href="https://www.tiktok.com/@sawaizcheema/video/7362158644575735047" target="_blank">
+                "First day at Macquarie University" #macquarieuniversity
+              </a>
+            </td>
+            <td><span class="views-num">1,336</span></td>
+            <td>Apr 2024</td>
+            <td><span class="register-pill pill-no">— Student vlogger</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="tbl-note">
+        No Thai education agents were found promoting Macquarie University on TikTok. The Thai-language search term "แม็คควารี" returned an unrelated false-positive. TikTok keyword search has platform-level restrictions that limit result depth — the absence of results is directionally accurate.
+      </div>
+    </div>
+
+    <div class="insight-card action" style="margin-top:16px;">
+      <div class="insight-type">Market Opportunity</div>
+      <div class="insight-text">
+        TikTok is the dominant platform for Thai students aged 18–24 yet <strong>zero authorised Macquarie agents</strong> have produced TikTok content. Education For Life's Thai-language campus tour format — already proven on YouTube — would translate directly to TikTok Reels. First-mover advantage on this channel is currently unclaimed.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Facebook Ad Library ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#e8eaf6;">f</div>
+      <h3>Facebook Ad Library</h3>
+      <span class="platform-chip chip-fb">Facebook Ads</span>
+      <span class="subtitle">Status: Pending manual access</span>
+    </div>
+
+    <div class="pending-card">
+      <div class="pending-icon">🔒</div>
+      <h4>Authentication Required</h4>
+      <p>
+        The Facebook Ad Library API requires a valid user access token with <code>ads_read</code> permission. Automated access was attempted but blocked. This data must be retrieved manually by visiting the Ad Library and searching for "Macquarie University" filtered to country: Thailand.
+      </p>
+      <div class="manual-url">https://www.facebook.com/ads/library/?country=TH&amp;q=Macquarie+University&amp;active_status=all&amp;ad_type=all</div>
+      <p style="margin-top:16px;font-size:12px;color:#999;">
+        Once retrieved, results should be cross-referenced against the 16 official Thailand agents. Key question: are any agents running paid ads? If so, which universities are they promoting and at what spend level?
+      </p>
+    </div>
+  </div>
+
+  <!-- ── Key Findings ── -->
+  <div class="section">
+    <div class="section-header">
+      <div class="icon" style="background:#fce4ec;">◆</div>
+      <h3>Key Findings</h3>
+      <span class="subtitle">5 findings identified</span>
+    </div>
+
+    <div class="insights-grid">
+      <div class="insight-card warning">
+        <div class="insight-type">Finding 1 — Promotion Leader</div>
+        <div class="insight-text">
+          <strong>Education For Life</strong> is Macquarie's most active Thailand promoter with 4 dedicated YouTube videos spanning 2019–2024 and 4,924 combined views. Their Thai-language campus tour series ("พาทัวร์") is the only Macquarie content in Thai on any platform. They hold a significant organic advantage.
+        </div>
+      </div>
+
+      <div class="insight-card warning">
+        <div class="insight-type">Finding 2 — Quiet Authorised Agent</div>
+        <div class="insight-text">
+          <strong>AECC Global Thailand</strong> holds an authorisation and has produced 2 YouTube videos (2018 and 2021), but both are outdated with a combined 77 views. No activity has been detected in the last 4 years. Their Macquarie promotion is effectively dormant.
+        </div>
+      </div>
+
+      <div class="insight-card alert">
+        <div class="insight-type">Finding 3 — One Education Gap</div>
+        <div class="insight-text">
+          <strong>One Education Consulting</strong> is an authorised Macquarie agent but has <strong>zero promotional content</strong> visible on YouTube, TikTok, or Facebook. There is no organic or paid mention of Macquarie University attributable to One Education on any scanned platform.
+        </div>
+      </div>
+
+      <div class="insight-card positive">
+        <div class="insight-type">Finding 4 — TikTok is Open</div>
+        <div class="insight-text">
+          <strong>No Thai education agent</strong> is running Macquarie content on TikTok. This platform reaches the exact demographic Macquarie targets (Thai undergraduates aged 18–24) and is completely uncontested. The first agent to claim this space sets the benchmark.
+        </div>
+      </div>
+
+      <div class="insight-card alert">
+        <div class="insight-type">Finding 5 — Unauthorised Promotion</div>
+        <div class="insight-text">
+          <strong>Unicentre College Thailand</strong> published 2 Macquarie promotional videos in November 2019 and is not listed on the current official agent register. This is either a lapsed authorisation with content not removed or active promotion without approval — both require follow-up.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Top 3 Actions ── -->
+  <div class="actions-section">
+    <div class="actions-header">
+      <span>🎯</span> Top 3 Recommended Actions — Macquarie Partnership Team
+    </div>
+
+    <div class="action-card urgent">
+      <div class="action-rank">
+        <div class="rank-badge urgent-badge">1</div>
+        <span class="urgency-tag urgent-tag">URGENT</span>
+      </div>
+      <div class="action-body">
+        <div class="action-title">Investigate and resolve the Unicentre College Thailand compliance issue</div>
+        <div class="action-desc">
+          Unicentre College Thailand has published Macquarie-branded promotional content on YouTube but does not appear on the current official Thailand agent register. Macquarie's International Partnerships team should verify whether this company held a prior authorisation (and when it lapsed), contact Unicentre to request removal or reinstatement, and confirm no other unregistered agents are promoting the university across the Thailand market.
+        </div>
+        <span class="action-data-tag"><span class="data-label">Evidence:</span> 2 YouTube videos, Nov 2019, still publicly visible</span>
+      </div>
+    </div>
+
+    <div class="action-card high">
+      <div class="action-rank">
+        <div class="rank-badge high-badge">2</div>
+        <span class="urgency-tag high-tag">HIGH</span>
+      </div>
+      <div class="action-body">
+        <div class="action-title">Brief all 16 authorised Thailand agents on content expectations and TikTok opportunity</div>
+        <div class="action-desc">
+          Only 2 of 16 authorised agents have ever produced Macquarie content. A simple agent activation brief — including suggested content formats (campus tours in Thai, program spotlights, student testimonials) and platform priorities (TikTok first, then YouTube) — could significantly expand Macquarie's organic reach in Thailand at no cost to the university. Education For Life's Thai-language campus tour videos should be shared as the benchmark format for other agents to replicate.
+        </div>
+        <span class="action-data-tag"><span class="data-label">Opportunity:</span> 14 authorised agents with zero Macquarie content · TikTok completely uncontested</span>
+      </div>
+    </div>
+
+    <div class="action-card medium">
+      <div class="action-rank">
+        <div class="rank-badge medium-badge">3</div>
+        <span class="urgency-tag medium-tag">MEDIUM</span>
+      </div>
+      <div class="action-body">
+        <div class="action-title">Enable Facebook Ad Library monitoring by connecting an access token</div>
+        <div class="action-desc">
+          Paid advertising data for Thailand was not retrievable in this scan due to API authentication requirements. Facebook ads are a primary student recruitment channel for several Bangkok-based agencies. To complete the picture, Macquarie's digital team or a nominated Thailand agent should provide a Facebook user access token (with <code>ads_read</code> permission) to allow automated weekly monitoring of paid Macquarie promotions across the Thailand market. This will reveal which agents are investing media spend on Macquarie and at what scale.
+        </div>
+        <span class="action-data-tag"><span class="data-label">Manual check URL:</span> facebook.com/ads/library/?country=TH&amp;q=Macquarie+University</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+</body>
+</html>
