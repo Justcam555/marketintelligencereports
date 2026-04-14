@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Profile — Market Intelligence Hub</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --ink: #0f0f0f;
+  --paper: #f7f4ee;
+  --cream: #ede9e0;
+  --rule: #d4cfc4;
+  --accent: #c8392b;
+  --accent2: #1a4a6b;
+  --gold: #b8963e;
+  --text-muted: #6b6560;
+  --green: #2a7a4b;
+  --orange: #d4700a;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+}
+
+/* Site nav */
+.site-nav-bar {
+  background: #0f0f0f;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 44px;
+  position: sticky; top: 0; z-index: 999;
+}
+.site-nav-home {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: #f7f4ee; text-decoration: none; font-weight: 500; white-space: nowrap;
+}
+.site-nav-home:hover { color: #b8963e; }
+.site-nav-links { display: flex; gap: 28px; }
+.site-nav-links a {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: #888; text-decoration: none; transition: color .15s; white-space: nowrap;
+}
+.site-nav-links a:hover { color: #f7f4ee; }
+.site-nav-links a.active { color: #b8963e; }
+@media (max-width: 640px) {
+  .site-nav-bar { padding: 0 16px; }
+  .site-nav-links { gap: 14px; }
+  .site-nav-links a { font-size: 9px; letter-spacing: 1px; }
+}
+
+/* Not found */
+#not-found {
+  display: none;
+  max-width: 600px;
+  margin: 80px auto;
+  text-align: center;
+  padding: 40px;
+}
+#not-found h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+#not-found p { color: var(--text-muted); }
+
+/* Profile */
+#profile { display: none; }
+
+.back-bar {
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 40px;
+  background: var(--cream);
+}
+.back-link {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.back-link:hover { color: var(--accent); }
+
+.hero {
+  border-bottom: 1px solid var(--rule);
+  padding: 48px 40px 40px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.hero-tag {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+
+.hero-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Score badge */
+.score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ink);
+  color: #f7f4ee;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 20px;
+}
+
+.score-badge .score-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.score-badge .score-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+}
+
+/* Score bar */
+.score-bar-wrap {
+  margin-top: 12px;
+  height: 4px;
+  background: var(--rule);
+  width: 100%;
+  max-width: 300px;
+}
+.score-bar-fill {
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.8s ease;
+}
+
+/* Main content */
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 700px) {
+  .content { grid-template-columns: 1fr; padding: 32px 20px; }
+  .back-bar { padding: 12px 20px; }
+  .hero { padding: 32px 20px 28px; }
+}
+
+/* Section heading */
+.section-head {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* Cards */
+.card {
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  padding: 24px;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.social-item:last-child { border-bottom: none; }
+
+.social-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.social-icon.web  { background: #e8f0fe; color: #1a4a6b; }
+.social-icon.fb   { background: #e8f0fe; color: #1877f2; }
+.social-icon.ig   { background: #fce4ec; color: #c2185b; }
+.social-icon.li   { background: #e3f2fd; color: #0a66c2; }
+.social-icon.maps { background: #e8f5e9; color: #2a7a4b; }
+.social-icon.na   { background: var(--rule); color: var(--text-muted); }
+
+.social-info { flex: 1; min-width: 0; }
+.social-name { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 3px; }
+.social-val  { font-size: 14px; font-weight: 500; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.social-val.na { color: var(--text-muted); font-style: italic; font-weight: 400; }
+
+.social-link {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent2);
+  text-decoration: none;
+  border: 1px solid var(--accent2);
+  padding: 4px 10px;
+  flex-shrink: 0;
+}
+.social-link:hover { background: var(--accent2); color: #fff; }
+
+/* Google rating */
+.stars {
+  color: var(--gold);
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.rating-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+.rating-reviews {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.rating-block {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 0;
+}
+
+/* University list */
+.uni-list {
+  list-style: none;
+  padding: 0;
+}
+.uni-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.uni-list li:last-child { border-bottom: none; }
+.uni-dot {
+  width: 6px; height: 6px;
+  background: var(--accent2);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Contact info */
+.contact-row {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+  display: flex;
+  gap: 12px;
+}
+.contact-row:last-child { border-bottom: none; }
+.contact-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  min-width: 60px;
+  padding-top: 2px;
+}
+.contact-val {
+  color: var(--ink);
+  word-break: break-all;
+}
+.contact-val a { color: var(--accent2); text-decoration: none; }
+.contact-val a:hover { text-decoration: underline; }
+
+/* span full width */
+.full-width { grid-column: 1 / -1; }
+</style>
+</head>
+<body>
+
+<div class="site-nav-bar">
+  <a class="site-nav-home" href="index.html">Market Intelligence Hub</a>
+  <nav class="site-nav-links">
+    <a href="index.html">Home</a>
+    <a href="agent-network.html" class="active">Agent Network</a>
+    <a href="MQ_mention.html">MQ Coverage</a>
+    <a href="one-education-report.html">Competitor Review</a>
+  </nav>
+</div>
+
+<div id="not-found">
+  <h2>Agent Not Found</h2>
+  <p>No profile data found for this agent ID.<br>Return to the <a href="agent-network.html" style="color:var(--accent2)">Agent Network</a>.</p>
+</div>
+
+<div id="profile">
+  <div class="back-bar">
+    <a class="back-link" href="agent-network.html">← Agent Network</a>
+  </div>
+
+  <div class="hero" style="border-bottom:3px double var(--ink);">
+    <div class="hero-tag" id="hero-tag">Education Agent</div>
+    <div class="hero-name" id="hero-name">Agent Name</div>
+    <div class="hero-meta">
+      <span>📍 <span id="hero-city">—</span></span>
+      <span>🌏 <span id="hero-country">—</span></span>
+      <span id="hero-email-wrap">✉ <span id="hero-email">—</span></span>
+      <span id="hero-phone-wrap">📞 <span id="hero-phone">—</span></span>
+    </div>
+    <div style="margin-top:20px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+      <div class="score-badge">
+        <div>
+          <div class="score-num" id="score-num">—</div>
+          <div class="score-label">Presence Score</div>
+        </div>
+        <div style="font-size:13px;color:#ccc;">/ 10</div>
+      </div>
+      <div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-fill" id="score-bar"></div>
+        </div>
+        <div style="font-size:10px;letter-spacing:1px;color:var(--text-muted);margin-top:4px;" id="score-desc"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Social Presence -->
+    <div>
+      <div class="section-head">Online Presence</div>
+      <div class="card">
+
+        <!-- Website -->
+        <div class="social-item">
+          <div class="social-icon web" id="web-icon">🌐</div>
+          <div class="social-info">
+            <div class="social-name">Website</div>
+            <div class="social-val" id="web-val">—</div>
+          </div>
+          <a class="social-link" id="web-link" href="#" target="_blank" rel="noopener" style="display:none">Visit</a>
+        </div>
+
+        <!-- Facebook -->
+        <div class="social-item">
+          <div class="social-icon fb">f</div>
+          <div class="social-info">
+            <div class="social-name">Facebook</div>
+            <div class="social-val" id="fb-val">—</div>
+          </div>
+          <a class="social-link" id="fb-link" href="#" target="_blank" rel="noopener" style="display:none">Visit</a>
+        </div>
+
+        <!-- Instagram -->
+        <div class="social-item">
+          <div class="social-icon ig">📷</div>
+          <div class="social-info">
+            <div class="social-name">Instagram</div>
+            <div class="social-val" id="ig-val">—</div>
+          </div>
+          <a class="social-link" id="ig-link" href="#" target="_blank" rel="noopener" style="display:none">Visit</a>
+        </div>
+
+        <!-- LinkedIn -->
+        <div class="social-item">
+          <div class="social-icon li">in</div>
+          <div class="social-info">
+            <div class="social-name">LinkedIn</div>
+            <div class="social-val" id="li-val">—</div>
+          </div>
+          <a class="social-link" id="li-link" href="#" target="_blank" rel="noopener" style="display:none">Visit</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Google Maps -->
+    <div>
+      <div class="section-head">Google Business</div>
+      <div class="card">
+        <div id="gmaps-found">
+          <div class="rating-block">
+            <div>
+              <div class="rating-num" id="rating-num">—</div>
+              <div class="stars" id="stars"></div>
+              <div class="rating-reviews" id="rating-reviews"></div>
+            </div>
+            <div style="flex:1;border-left:1px solid var(--rule);padding-left:20px;">
+              <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Listed on</div>
+              <div style="font-size:14px;font-weight:500;">Google Maps</div>
+              <div style="margin-top:12px;">
+                <a id="maps-link" href="#" target="_blank" rel="noopener" class="social-link">View on Maps</a>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:8px;">
+            <div id="rating-bar-wrap" style="height:6px;background:var(--rule);border-radius:3px;width:100%;">
+              <div id="rating-bar" style="height:100%;border-radius:3px;background:var(--gold);transition:width 0.8s ease;"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-top:4px;letter-spacing:1px;">
+              <span>0</span><span>5★</span>
+            </div>
+          </div>
+        </div>
+        <div id="gmaps-none" style="display:none;padding:20px 0;text-align:center;color:var(--text-muted);font-size:13px;font-style:italic;">
+          No Google Business listing found
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Details -->
+    <div>
+      <div class="section-head">Contact Details</div>
+      <div class="card" id="contact-card">
+      </div>
+    </div>
+
+    <!-- Universities -->
+    <div>
+      <div class="section-head">University Partners</div>
+      <div class="card">
+        <ul class="uni-list" id="uni-list"></ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const AGENTS = [{"id":8469,"name":"AAET-StudyCo","country":"Nepal","website_url":"https://studyco.com/all-offices/","website_active":1,"facebook_url":"https://www.facebook.com/StudyCo","instagram_handle":"studycoglobal","instagram_url":"https://www.instagram.com/studycoglobal","linkedin_url":"https://linkedin.com/company/studyco","google_rating":4.9,"google_reviews":440,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJK8AzlNsZ6zkRFzA5ImC7OoE","presence_score":9.0,"researched_at":"2026-04-14T14:50:07.315951","city":"Kathmandu","email":"nepal@studyco.com","phone":"+977 1 4104353","unis":["Curtin University"]},{"id":2531,"name":"Aus Studies Consultants Global","country":"Nepal","website_url":"https://ausstudies.com/","website_active":1,"facebook_url":"https://www.facebook.com/ausstudies","instagram_handle":"ausstudiesnepal","instagram_url":"https://www.instagram.com/ausstudiesnepal","linkedin_url":"https://www.linkedin.com/company/ausstudiesnepal","google_rating":4.9,"google_reviews":365,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJRwuF1sUZ6zkRBxXwvi580KY","presence_score":9.0,"researched_at":"2026-04-14T14:50:57.389005","city":"Lalitpur","email":"kabita@ausstudies.edu.np","phone":"+977 1 9841502946","unis":["University of Canberra"]},{"id":4416,"name":"Aussie Education Migration","country":"Nepal","website_url":"https://aussieeducation.com.au/","website_active":1,"facebook_url":"https://www.facebook.com/photo","instagram_handle":"aussieducation","instagram_url":"https://www.instagram.com/aussieducation","linkedin_url":"https://www.linkedin.com/company/aussieeducation","google_rating":5.0,"google_reviews":42,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJVVcsiCYZ6zkRaxNFSfUOixo","presence_score":9.0,"researched_at":"2026-04-14T14:51:00.259474","city":"Jamal","email":"nepal@aussieeducation.com.au","phone":"+977 9841915971","unis":["Charles Darwin University"]},{"id":7454,"name":"Global Consulting and Business Services","country":"Nepal","website_url":"https://globalconsult.com.au/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/globalconsultsydney","instagram_handle":"globalconsultsydney","instagram_url":"https://www.instagram.com/globalconsultsydney","linkedin_url":"https://www.linkedin.com/company/globalconsult2010","google_rating":5.0,"google_reviews":76,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJeeJaTJIZ6zkRl6XoqeyrhnU","presence_score":9.0,"researched_at":"2026-04-14T14:52:25.015827","city":"Kathmandu","email":"DEEPAK@GLOBALCONSULT.COM.AU","phone":"+977 61 541365","unis":["University of Tasmania"]},{"id":3658,"name":"Global Opportunities","country":"Nepal","website_url":"https://www.global-opportunities.net/contact/","website_active":1,"facebook_url":"https://www.facebook.com/GlobalOpportunitie","instagram_handle":"globalopportunitiesedu","instagram_url":"https://www.instagram.com/globalopportunitiesedu","linkedin_url":"https://www.linkedin.com/company/globalopportunities","google_rating":4.7,"google_reviews":53,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJKV7yGKgZ6zkR-0BY4WoGfvI","presence_score":9.0,"researched_at":"2026-04-14T14:52:31.028980","city":"Kathmandu","email":"sundar@global-opportunities.net","phone":"+977 1 4783990","unis":["Western Sydney University"]},{"id":13610,"name":"Global Select Education and Migration Services","country":"Nepal","website_url":"https://www.globalselect.com.au/contact-us","website_active":1,"facebook_url":"https://www.facebook.com/globalselectaustralia","instagram_handle":"globalselect_adelaide","instagram_url":"https://www.instagram.com/globalselect_adelaide","linkedin_url":"https://www.linkedin.com/company/global-dream-edu","google_rating":4.9,"google_reviews":67,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJM56efRwZ6zkRkePn7XzFQsY","presence_score":9.0,"researched_at":"2026-04-14T14:52:36.079146","city":"Kathmandu","email":"apply@globalselect.com.np","phone":"+977 15913133","unis":["Flinders University"]},{"id":12878,"name":"Global Select education and Migration Services","country":"Nepal","website_url":"https://www.globalselect.com.np/","website_active":1,"facebook_url":"https://www.facebook.com/Globalselectnepal","instagram_handle":"globalselectnepal","instagram_url":"https://www.instagram.com/globalselectnepal","linkedin_url":"https://www.linkedin.com/company/globalselectnepal","google_rating":4.9,"google_reviews":67,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJM56efRwZ6zkRkePn7XzFQsY","presence_score":9.0,"researched_at":"2026-04-14T14:52:39.328687","city":"Kathmandu","email":"apply@globalselect.com.np","phone":"+977 1 9802320377","unis":["Flinders University"]},{"id":1900,"name":"IDP Education","country":"Nepal","website_url":"https://www.idp.com/nepal/","website_active":1,"facebook_url":"https://www.facebook.com/IDPstudyabroad.nepal","instagram_handle":"idpnepal","instagram_url":"https://www.instagram.com/idpnepal","linkedin_url":"https://www.linkedin.com/company/idp-education-nepal","google_rating":4.8,"google_reviews":899,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJO8K1wmAZ6zkRPQHPMBTf_zs","presence_score":9.0,"researched_at":"2026-04-14T14:52:57.705143","city":"Kathmandu","email":"info.kathmandu@idp.com","phone":"+977 1 4217400","unis":["Macquarie University"]},{"id":8465,"name":"Idyllic Education Consultants (Kathmandu)","country":"Nepal","website_url":"https://idylliceducation.com/","website_active":1,"facebook_url":"https://www.facebook.com/idyllicec","instagram_handle":"idylliceducation","instagram_url":"https://www.instagram.com/idylliceducation","linkedin_url":"https://www.linkedin.com/company/idyllic-education-consultants","google_rating":5.0,"google_reviews":66,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJoSTVUfQZ6zkR5lmqiwP_mUI","presence_score":9.0,"researched_at":"2026-04-14T14:53:07.138877","city":"Kathmandu","email":"info@idyllicec.com","phone":"+977 1 5917177","unis":["Curtin University"]},{"id":4428,"name":"KBA Global Education & Migration - Nepal","country":"Nepal","website_url":"https://kbaglobal.com/","website_active":1,"facebook_url":"https://www.facebook.com/Kbaglobal","instagram_handle":"kbaglobalau","instagram_url":"https://www.instagram.com/kbaglobalau","linkedin_url":"https://www.linkedin.com/company/kba-global","google_rating":4.7,"google_reviews":86,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJM722bJYZ6zkRpf2k8kVgj5w","presence_score":9.0,"researched_at":"2026-04-14T14:53:10.139504","city":"Kathmandu","email":"prem.karki@kbaglobal.com","phone":"+977 1 4795576","unis":["Charles Darwin University"]},{"id":3656,"name":"Motif Education Abroad","country":"Nepal","website_url":"https://motif.com.np/","website_active":1,"facebook_url":"https://www.facebook.com/motifeducation","instagram_handle":"motifeducation","instagram_url":"https://www.instagram.com/motifeducation","linkedin_url":"https://www.linkedin.com/company/motifeducation","google_rating":4.7,"google_reviews":59,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJr2_7_pUZ6zkR9vK_a97iRAE","presence_score":9.0,"researched_at":"2026-04-14T14:53:49.578092","city":"Kathmandu","email":"umesh@motif.com.np","phone":"+977 1 4791816","unis":["Western Sydney University"]},{"id":3642,"name":"PAC Asia Services","country":"Nepal","website_url":"https://www.pacasia.org/","website_active":1,"facebook_url":"https://www.facebook.com/mapmystudy.global","instagram_handle":"mapmystudy","instagram_url":"https://www.instagram.com/mapmystudy","linkedin_url":"https://www.linkedin.com/company/mapmystudy","google_rating":4.9,"google_reviews":71,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJr9L99ccZ6zkRU7DyckvZ1tE","presence_score":9.0,"researched_at":"2026-04-14T14:55:02.170054","city":"Kathmandu","email":"nepal@pacasia.org","phone":"+977 1 9999335648","unis":["Western Sydney University"]},{"id":5751,"name":"Planet Education - Nepal","country":"Nepal","website_url":"https://www.planeteducation.info/contact","website_active":1,"facebook_url":"https://www.facebook.com/PLANETEDUCATIONINDIA","instagram_handle":"planeteducation","instagram_url":"https://www.instagram.com/planeteducation","linkedin_url":"https://www.linkedin.com/company/planet-education-india-","google_rating":4.6,"google_reviews":14,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ57cgQJkZ6zkRRLTHOc-aRls","presence_score":9.0,"researched_at":"2026-04-14T14:55:07.960931","city":"Kathmandu","email":"nepal@planeteducation.info","phone":"+977 9810235715","unis":["Murdoch University"]},{"id":2555,"name":"Professional Visa and Education Services","country":"Nepal","website_url":"https://www.provisa.com.au/contact-us","website_active":1,"facebook_url":"https://www.facebook.com/professionalvisa","instagram_handle":"professional_visa","instagram_url":"https://www.instagram.com/professional_visa","linkedin_url":"https://www.linkedin.com/company/professionalvisa","google_rating":4.2,"google_reviews":49,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ26RN7KgZ6zkR4Jzdereu1zc","presence_score":9.0,"researched_at":"2026-04-14T14:55:16.083894","city":"Kathmandu","email":"nishant@provisa.com.au","phone":"+977 1 4164004","unis":["University of Canberra"]},{"id":4485,"name":"Sig ( Storm International Group) - Nepal","country":"Nepal","website_url":"https://sigoverseas.com/contact-us","website_active":1,"facebook_url":"https://www.facebook.com/SIGoverseasindia","instagram_handle":"sig.studyabroad","instagram_url":"https://www.instagram.com/sig.studyabroad","linkedin_url":"https://www.linkedin.com/company/sig-study-abroad-india","google_rating":4.4,"google_reviews":43,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJP_aM0HoZ6zkRjVO-mKAOB1E","presence_score":9.0,"researched_at":"2026-04-14T14:55:35.804974","city":"Kathmandu","email":"Nepal.info@sigoverseas.com","phone":"+977 9851002947","unis":["Charles Darwin University"]},{"id":13614,"name":"StudyNet","country":"Nepal","website_url":"https://studynet.io/","website_active":1,"facebook_url":"https://www.facebook.com/StudyNet.au","instagram_handle":"studynetau","instagram_url":"https://www.instagram.com/studynetau","linkedin_url":"https://www.linkedin.com/company/studynet-pty-ltd","google_rating":4.3,"google_reviews":115,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJCZKcKagZ6zkRhPtZ2NH5MTQ","presence_score":9.0,"researched_at":"2026-04-14T14:55:48.441415","city":"Kathmandu","email":"nepal@studynet.com.au","phone":"+977 9851337774","unis":["Flinders University"]},{"id":1870,"name":"Unicampus Education Network","country":"Nepal","website_url":"https://myunicampus.com/contact","website_active":1,"facebook_url":"https://www.facebook.com/unicampusnepal","instagram_handle":"myunicampus","instagram_url":"https://www.instagram.com/myunicampus","linkedin_url":"https://www.linkedin.com/company/unicampus-global","google_rating":4.6,"google_reviews":59,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJp8DkDqgZ6zkRsd69F0eP928","presence_score":9.0,"researched_at":"2026-04-14T14:56:09.033148","city":"Kathmandu","email":"info@myunicampus.com","phone":"+977 1 45180190","unis":["Macquarie University"]},{"id":5764,"name":"VEVS - Value Education and Visa Services - Nepal","country":"Nepal","website_url":"https://www.vevsglobal.com/","website_active":1,"facebook_url":"https://www.facebook.com/vevsglobal","instagram_handle":"vevs_globalperth","instagram_url":"https://www.instagram.com/vevs_globalperth","linkedin_url":"https://www.linkedin.com/company/vevs-global","google_rating":5.0,"google_reviews":165,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJt9mIS5YZ6zkRB-h4sfhYttU","presence_score":9.0,"researched_at":"2026-04-14T14:56:16.240854","city":"Kathmandu","email":"karun@vevsglobal.com.au","phone":"+977 9851332025","unis":["Murdoch University"]},{"id":4431,"name":"4Nations International Education & Migration Services - Nepal","country":"Nepal","website_url":"https://4nations.com.au/","website_active":1,"facebook_url":"https://www.facebook.com/4nationsintl","instagram_handle":"4nationssydney","instagram_url":"https://www.instagram.com/4nationssydney","linkedin_url":"https://www.linkedin.com/company/17897766","google_rating":5.0,"google_reviews":3,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJsaotBwB17zkRPf3sXbdYkfM","presence_score":8.5,"researched_at":"2026-04-14T14:50:03.568934","city":"Dharan","email":"dharan@4nations.com.au","phone":"+977 25 532126","unis":["Charles Darwin University"]},{"id":10423,"name":"Bluesky Immigration and Students Consultancy Services","country":"Nepal","website_url":"https://blueskyconsultancy.com/branches/","website_active":1,"facebook_url":"https://www.facebook.com/blueskystudyinaustralia","instagram_handle":"bskyimmigration","instagram_url":"https://www.instagram.com/bskyimmigration","linkedin_url":"https://www.linkedin.com/company/blueskyimmigration","google_rating":5.0,"google_reviews":4,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJQcOvjvEZ6zkRKtqwyIFelKQ","presence_score":8.5,"researched_at":"2026-04-14T14:51:08.515292","city":"Kathmandu","email":"info@blueskyconsultancy.com","phone":"+977 9847341489","unis":["University of New England"]},{"id":6590,"name":"Education Tree Global","country":"Nepal","website_url":"https://educationtreeglobal.com/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/EducationTreeGlobal","instagram_handle":"educationtree.global","instagram_url":"https://www.instagram.com/educationtree.global","linkedin_url":"https://www.linkedin.com/company/education-tree-global","google_rating":5.0,"google_reviews":5,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJoRVVRiSB7DkRW20djHexxrM","presence_score":8.5,"researched_at":"2026-04-14T14:52:10.275779","city":"Hariyon","email":"harion@educationtreeglobal.com","phone":"+977 046590300","unis":["University of Southern Queensland / UniSQ"]},{"id":2573,"name":"Global Study Partners","country":"Nepal","website_url":"https://www.upgradgsp.com/","website_active":1,"facebook_url":"https://www.facebook.com/upGradGSP","instagram_handle":"upgradgsp","instagram_url":"https://www.instagram.com/upgradgsp","linkedin_url":"https://www.linkedin.com/company/upgradgsp","google_rating":4.6,"google_reviews":8,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJl0Cp2XQZ6zkRKzX7oMGkSQQ","presence_score":8.5,"researched_at":"2026-04-14T14:52:44.338147","city":"Kathmandu","email":"anil.shrestha@upgrad.com","phone":"+977 98 51095041","unis":["University of Canberra"]},{"id":1866,"name":"Landmark Education","country":"Nepal","website_url":"https://landmarkedu.com/contact","website_active":1,"facebook_url":"https://www.facebook.com/LandmarkEducation","instagram_handle":"landmark.education","instagram_url":"https://www.instagram.com/landmark.education","linkedin_url":"https://linkedin.com/company/landmarkeducation","google_rating":5.0,"google_reviews":2,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJC8nmVKF17zkRFlE1l7XBzY8","presence_score":8.5,"researched_at":"2026-04-14T14:53:23.358852","city":"Biratnagar","email":"buddha.lama@landmarkedu.com","phone":"+977 21 590828","unis":["Macquarie University"]},{"id":7433,"name":"Liu Cheng International Group","country":"Nepal","website_url":"https://www.lcig.io/404","website_active":1,"facebook_url":"https://www.facebook.com/LCIGroupWorldwide","instagram_handle":"lcigroupofficial","instagram_url":"https://www.instagram.com/lcigroupofficial","linkedin_url":"https://www.linkedin.com/company/lcig","google_rating":5.0,"google_reviews":5,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJKV7yGKgZ6zkRvBWNlqoVDww","presence_score":8.5,"researched_at":"2026-04-14T14:53:27.552410","city":"Kathmandu","email":"ruchi@lcig.io","phone":"+977 9851155233","unis":["University of Tasmania"]},{"id":11299,"name":"STUDENT WORLD PTY","country":"Nepal","website_url":"https://studentworld.com.au/","website_active":1,"facebook_url":"https://www.facebook.com/StudentWorldAustralia","instagram_handle":"studentworld","instagram_url":"https://www.instagram.com/studentworld","linkedin_url":"https://linkedin.com/company/student-world","google_rating":5.0,"google_reviews":4,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJeV4VmzMZ6zkRH-3vrOpzBPU","presence_score":8.5,"researched_at":"2026-04-14T14:55:29.963741","city":"Kathmandu","email":"kathmandu@studentworld.com.au","phone":"+977 9818433755","unis":["Torrens University Australia"]},{"id":3624,"name":"The Next Education Consultancy","country":"Nepal","website_url":"https://thenext.edu.np/#contact_us","website_active":1,"facebook_url":"https://www.facebook.com/thenextedu","instagram_handle":"thenextedu","instagram_url":"https://www.instagram.com/thenextedu","linkedin_url":"https://www.linkedin.com/company/thenextedu","google_rating":5.0,"google_reviews":2,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJXQAodAC75TkRLORyaAkvBBk","presence_score":8.5,"researched_at":"2026-04-14T14:55:59.285037","city":"Jhapa","email":"info@thenext.edu.np","phone":"+977 23 545537","unis":["Western Sydney University"]},{"id":11335,"name":"Bada Education Centre","country":"Nepal","website_url":"https://www.badaedu.com/","website_active":1,"facebook_url":"https://www.facebook.com/badaedu1999","instagram_handle":"bada_korean","instagram_url":"https://www.instagram.com/bada_korean","linkedin_url":null,"google_rating":4.2,"google_reviews":22,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJGwxR9zyuEmsRGLvBA-3xztM","presence_score":8.0,"researched_at":"2026-04-14T14:51:06.521326","city":"Putalisadak","email":"nepal@badaglobal.com","phone":"+977 1 4245899","unis":["Torrens University Australia"]},{"id":10451,"name":"BridgeBlue Nepal","country":"Nepal","website_url":"https://www.bridgeblueglobal.com/","website_active":1,"facebook_url":"https://www.facebook.com/AMSBBgroup","instagram_handle":"amsbridgeblue","instagram_url":"https://www.instagram.com/amsbridgeblue","linkedin_url":null,"google_rating":4.9,"google_reviews":18,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJWXj-kPEZ6zkRFX-O4Ui4iTw","presence_score":8.0,"researched_at":"2026-04-14T14:51:21.737609","city":"Kathmandu","email":"laxman@bridgeblueglobal.com","phone":"+977 9813856493","unis":["University of New England"]},{"id":3645,"name":"Education Planet","country":"Nepal","website_url":"https://www.eplanet.edu.np/","website_active":1,"facebook_url":"https://www.facebook.com/planet4edu","instagram_handle":"eplanetktm","instagram_url":"https://www.instagram.com/eplanetktm","linkedin_url":null,"google_rating":4.8,"google_reviews":271,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ5-msgAcZ6zkRZDySNq1aKRg","presence_score":8.0,"researched_at":"2026-04-14T14:52:07.854131","city":"Kathmandu","email":"info@eplanet.edu.np","phone":"+977 1 4239656","unis":["Western Sydney University"]},{"id":4415,"name":"Grace International","country":"Nepal","website_url":"https://graceintlgroup.com/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/graceintlgroup","instagram_handle":"graceintlgroup","instagram_url":"https://www.instagram.com/graceintlgroup","linkedin_url":null,"google_rating":4.9,"google_reviews":36,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJUWA10h275TkRqHXewrBhcGk","presence_score":8.0,"researched_at":"2026-04-14T14:52:53.596059","city":"Jhapa","email":"birtamode@grace.edu.np","phone":"+977 23 536117","unis":["Charles Darwin University"]},{"id":14322,"name":"KC Overseas Education","country":"Nepal","website_url":"https://www.studies-overseas.com/contact-us","website_active":1,"facebook_url":"https://www.facebook.com/kcoverseasindia","instagram_handle":"kcoverseasofficial","instagram_url":"https://www.instagram.com/kcoverseasofficial","linkedin_url":"https://www.linkedin.com/company/kcoverseasedu","google_rating":3.0,"google_reviews":2,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJiRDxr1IZ6zkR7cODWMObSt8","presence_score":8.0,"researched_at":"2026-04-14T14:53:13.538022","city":"Kathmandu","email":"aprasai@kcoverseas.com","phone":"+977 1 1131066","unis":["UNSW Sydney"]},{"id":16443,"name":"Leap Geebee Edtech","country":"Nepal","website_url":"https://www.geebeeworld.com/about-us?location=nepal-office-geebee-education-bhaktapur-nepal-44800","website_active":1,"facebook_url":"https://www.facebook.com/geebeeworld","instagram_handle":"geebee.world","instagram_url":"https://www.instagram.com/geebee.world","linkedin_url":null,"google_rating":4.9,"google_reviews":753,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJBVKu-ebJXzkRBouWbHhBtTw","presence_score":8.0,"researched_at":"2026-04-14T14:53:25.064858","city":"Kathmandu","email":"sushan.ghimire@geebeeworld.org","phone":"+977 985 1327300","unis":["University of Newcastle"]},{"id":7419,"name":"Mates Education","country":"Nepal","website_url":"https://matesedu.com/","website_active":1,"facebook_url":"https://www.facebook.com/matesedu","instagram_handle":"mates.education","instagram_url":"https://www.instagram.com/mates.education","linkedin_url":null,"google_rating":4.8,"google_reviews":43,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ86pXH6gZ6zkRDYY4F7GOJsI","presence_score":8.0,"researched_at":"2026-04-14T14:53:34.943646","city":"Kathmandu","email":"info@matesedu.com","phone":"+977 1 5333565","unis":["University of Tasmania"]},{"id":8471,"name":"Mentor institute (P.)","country":"Nepal","website_url":"https://mentornepal.edu.np/","website_active":1,"facebook_url":"https://www.facebook.com/MentorNepal","instagram_handle":"mentor.institute","instagram_url":"https://www.instagram.com/mentor.institute","linkedin_url":null,"google_rating":4.6,"google_reviews":134,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJfR3kFJYZ6zkRm8CszvhmkqY","presence_score":8.0,"researched_at":"2026-04-14T14:53:39.762609","city":"Kathmandu","email":"hemanta@mentornepal.edu.np","phone":"+977 1 4490063","unis":["Curtin University"]},{"id":8466,"name":"Nobel Education Foundation (P.)","country":"Nepal","website_url":"https://nobelef.com/","website_active":1,"facebook_url":"https://www.facebook.com/nobelef9","instagram_handle":"nobelef2012","instagram_url":"https://www.instagram.com/nobelef2012","linkedin_url":null,"google_rating":4.1,"google_reviews":25,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJuySxG6gZ6zkREhSE0YkGqho","presence_score":8.0,"researched_at":"2026-04-14T14:54:20.568315","city":"Kathmandu","email":"ratna@nobelef.com","phone":"+977 1 4410695","unis":["Curtin University"]},{"id":4490,"name":"October Education","country":"Nepal","website_url":"https://www.octoberedu.com/","website_active":1,"facebook_url":"https://www.facebook.com/octobereduconsultancy","instagram_handle":"octobereducation","instagram_url":"https://www.instagram.com/octobereducation","linkedin_url":null,"google_rating":4.8,"google_reviews":58,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJRzF8LA0Z6zkRJd9w0eMcsRQ","presence_score":8.0,"researched_at":"2026-04-14T14:54:54.083869","city":"Kathmandu","email":"naren@octoberedu.com","phone":"+977 14545456","unis":["Charles Darwin University"]},{"id":4402,"name":"Studylane International","country":"Nepal","website_url":"https://www.studylanenepal.com/contact","website_active":1,"facebook_url":"https://www.facebook.com/studylaneinternational","instagram_handle":"studylane_international","instagram_url":"https://www.instagram.com/studylane_international","linkedin_url":null,"google_rating":4.9,"google_reviews":421,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ5-QDaqgZ6zkRPAMFr9gR0bs","presence_score":8.0,"researched_at":"2026-04-14T14:55:53.180054","city":"Kathmandu","email":"binod@studylanenepal.com","phone":"+977 1 9851098569","unis":["Charles Darwin University"]},{"id":1876,"name":"AECC Global","country":"Nepal","website_url":"https://www.aeccglobal.com/np","website_active":1,"facebook_url":"https://www.facebook.com/AECCNepal","instagram_handle":null,"instagram_url":null,"linkedin_url":"https://www.linkedin.com/company/aecc-global-nepal","google_rating":4.7,"google_reviews":1129,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJqZObuQkZ6zkR8EVKnqeaWo0","presence_score":7.5,"researched_at":"2026-04-14T14:50:21.431203","city":"Kathmandu","email":"info.kathmandu@aeccglobal.com","phone":"+977 1 5970315","unis":["Macquarie University"]},{"id":23231,"name":"Agri Education Consultants","country":"Nepal","website_url":"https://www.agriedu.com.au/contact-us.php","website_active":1,"facebook_url":"https://www.facebook.com/agriedu.india","instagram_handle":"agri.education","instagram_url":"https://www.instagram.com/agri.education","linkedin_url":null,"google_rating":5.0,"google_reviews":2,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJocruKgAZ6zkRA_hzg49d80A","presence_score":7.5,"researched_at":"2026-04-14T14:50:41.363287","city":"Bharatpur","email":"nepal@agriedu.com.au","phone":"+977 9765205139","unis":["Adelaide University"]},{"id":13597,"name":"Connect Australian Education and Visa Services","country":"Nepal","website_url":"https://connectforstudy.com.au/contact","website_active":1,"facebook_url":"https://www.facebook.com/connectforstudy","instagram_handle":null,"instagram_url":null,"linkedin_url":"https://www.linkedin.com/company/connect-australian-education-and-visa-services","google_rating":5.0,"google_reviews":12,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJP4EDTC0Z6zkRmfs_y2QjtPo","presence_score":7.5,"researched_at":"2026-04-14T14:51:34.941435","city":"Kathmandu","email":"ktm@connectforstudy.com.au","phone":"+977 9801314378","unis":["Flinders University"]},{"id":11323,"name":"Education Connect","country":"Nepal","website_url":"https://educationconnect.com.au/contact/","website_active":1,"facebook_url":"https://www.facebook.com/educationconnect.dhaka","instagram_handle":null,"instagram_url":null,"linkedin_url":"https://www.linkedin.com/company/educationconnectglobal","google_rating":4.5,"google_reviews":13,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ00yxLTgZ6zkRw3iktfm5fYk","presence_score":7.5,"researched_at":"2026-04-14T14:52:01.259269","city":"Kathmandu","email":"nepal@educationconnect.com.au","phone":"+977 9705990012","unis":["Torrens University Australia"]},{"id":15676,"name":"Education Park","country":"Nepal","website_url":"https://www.educationpark.net/","website_active":1,"facebook_url":"https://facebook.com/educationparknepal","instagram_handle":null,"instagram_url":null,"linkedin_url":"https://www.linkedin.com/company/education-park","google_rating":4.6,"google_reviews":217,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJg-P4WFMY6zkR8yWV7wSkg1o","presence_score":7.5,"researched_at":"2026-04-14T14:52:04.406973","city":"Kathmandu","email":"braj@educationpark.net","phone":"+977 1 5360200","unis":["University of Wollongong"]},{"id":1867,"name":"Global Reach","country":"Nepal","website_url":"https://www.globalreach.in/","website_active":1,"facebook_url":"https://www.facebook.com/globalreachedu","instagram_handle":"globalreachedu","instagram_url":"https://www.instagram.com/globalreachedu","linkedin_url":null,"google_rating":5.0,"google_reviews":1,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJHx_a4Bq75TkRB1H-I6yufTs","presence_score":7.5,"researched_at":"2026-04-14T14:52:33.943093","city":"Birtamod","email":"birtamode@globalreachonline.com","phone":"+977 23 591351","unis":["Macquarie University"]},{"id":2519,"name":"KIEC Education","country":"Nepal","website_url":"https://kiec.edu.np/","website_active":1,"facebook_url":"https://www.facebook.com/kiec.officialpage","instagram_handle":"kiec.official","instagram_url":"https://www.instagram.com/kiec.official","linkedin_url":null,"google_rating":4.8,"google_reviews":4,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJSxAt3LC75TkRILZ_Lb2Vkps","presence_score":7.5,"researched_at":"2026-04-14T14:53:15.582592","city":"Birtamod","email":"Birtamode@Kiec.edu.np","phone":"+977 23 590455","unis":["University of Canberra"]},{"id":19523,"name":"Oxford Edu Study Consultancy","country":"Nepal","website_url":"http://oxfordedu.com.np/","website_active":1,"facebook_url":"https://www.facebook.com/profile.php","instagram_handle":"oxfordeduconsultancy","instagram_url":"https://www.instagram.com/oxfordeduconsultancy","linkedin_url":null,"google_rating":5.0,"google_reviews":3,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJV1VHJcwZ6zkRKZAFhX7ihdw","presence_score":7.5,"researched_at":"2026-04-14T14:54:56.746687","city":"Kathmandu","email":"info@oxfordedu.com.np","phone":"+977 1 446335","unis":["CQUniversity Australia"]},{"id":19491,"name":"Sydney Express Education Consultancy - Nepal","country":"Nepal","website_url":"https://www.sydneyxpress.com/","website_active":1,"facebook_url":"https://www.facebook.com/Sydney.Express","instagram_handle":"sydneyxpress","instagram_url":"http://instagram.com/sydneyxpress","linkedin_url":null,"google_rating":4.5,"google_reviews":2,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJWW0h8agZ6zkRHmpcHuRdwmA","presence_score":7.5,"researched_at":"2026-04-14T14:55:57.017130","city":"Kathmandu","email":"dipendra@sydneyxpress.com","phone":"+977 1 4233185","unis":["CQUniversity Australia"]},{"id":4511,"name":"IEAVS","country":"Nepal","website_url":"https://ieavs.com/","website_active":1,"facebook_url":"https://www.facebook.com/IEAVS-609891712380517","instagram_handle":"ieavs_nepal","instagram_url":"https://www.instagram.com/ieavs_nepal","linkedin_url":null,"google_rating":3.5,"google_reviews":4,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJR3Z-VKcZ6zkRi3mQfN9bGWA","presence_score":7.0,"researched_at":"2026-04-14T14:53:02.301220","city":"Kathmandu","email":"info@ieavs.com","phone":"+977 1 4481295","unis":["Charles Darwin University"]},{"id":4418,"name":"AE Global","country":"Nepal","website_url":"https://aenepal.net","website_active":1,"facebook_url":"https://www.facebook.com/aeglobalnepal","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":123,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJSxgQHKgZ6zkRd2j1p-2bguY","presence_score":6.5,"researched_at":"2026-04-14T14:50:17.865518","city":"Kathmandu","email":"samrat.shah@aeglobal.net","phone":"+977 1 4418782","unis":["Charles Darwin University"]},{"id":2559,"name":"Espire Education - Nepal","country":"Nepal","website_url":"https://www.espireeducation.com/espire-offices.php","website_active":1,"facebook_url":"https://www.facebook.com/espire.education","instagram_handle":"espireeducation","instagram_url":"https://www.instagram.com/espireeducation","linkedin_url":"https://www.linkedin.com/company/espire-education","google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":6.5,"researched_at":"2026-04-14T14:52:18.373721","city":"Bagbazar","email":"enquiry@espireeducation.com","phone":"+977 1 4242721","unis":["University of Canberra"]},{"id":2563,"name":"Globancy","country":"Nepal","website_url":"https://www.globancy.com/","website_active":1,"facebook_url":"https://www.facebook.com/GlobancyGlobal","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":66,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ7eIkrwKHljkRY4Et-kPkZTA","presence_score":6.5,"researched_at":"2026-04-14T14:52:46.671672","city":"Butwal","email":"banepa@globancy.com","phone":"+977 1 1660238","unis":["University of Canberra"]},{"id":19512,"name":"Golden Wattle Education Services","country":"Nepal","website_url":"http://goldenwattle.com.np/about-us/","website_active":1,"facebook_url":"https://www.facebook.com/Goldenwattlee","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":12,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJP03UgacZ6zkRld9I0CLIOHc","presence_score":6.5,"researched_at":"2026-04-14T14:52:48.777580","city":"Kathmandu","email":"info@goldenwattel.com.np","phone":"+977 1 4416779","unis":["CQUniversity Australia"]},{"id":19530,"name":"Himalayan World Wide Education Consultancy","country":"Nepal","website_url":"https://hwwec.com/","website_active":1,"facebook_url":"https://www.facebook.com/HWWEC.Official","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.7,"google_reviews":18,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJGUKVLJQZ6zkRwvqoayAGNCo","presence_score":6.5,"researched_at":"2026-04-14T14:52:55.577673","city":"Kathmandu","email":"himalayan.wwec@gmail.com","phone":"+977 1 4620876","unis":["CQUniversity Australia"]},{"id":1871,"name":"Professional Education Consultancy","country":"Nepal","website_url":"https://professional.edu.np/","website_active":1,"facebook_url":"https://www.facebook.com/pe.consultancy","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.6,"google_reviews":170,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ4ZsJ-b0Z6zkRuNe8JYr9cSk","presence_score":6.5,"researched_at":"2026-04-14T14:55:10.372993","city":"Kathmandu","email":"info@professional.edu.np","phone":"+977 1 4795339","unis":["Macquarie University"]},{"id":6580,"name":"Royal Educational Foundation","country":"Nepal","website_url":"https://www.royaleducation.edu.np/contact","website_active":1,"facebook_url":"https://www.facebook.com/royaleducation.edu.np","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.6,"google_reviews":12,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJRyvH_JUZ6zkRCNxvMTLXZ4w","presence_score":6.5,"researched_at":"2026-04-14T14:55:22.991633","city":"Kathmandu","email":"info@royaleducation.edu.np","phone":"+977 1 4794626","unis":["University of Southern Queensland / UniSQ"]},{"id":8458,"name":"The Professional Network (TPNL)","country":"Nepal","website_url":"https://tpnl.org/contacts","website_active":1,"facebook_url":"https://www.facebook.com/TPNL.Bangladesh","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.3,"google_reviews":67,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJG14CuQ3HVTcRTabPcGWUjy0","presence_score":6.5,"researched_at":"2026-04-14T14:56:01.796710","city":"Kathmandu","email":"nepal@tpnl.org","phone":"+977 14425256","unis":["Curtin University"]},{"id":19439,"name":"Dolphin Education Consultancy Center Pvt. Ltd. - Kathmandu","country":"Nepal","website_url":"https://www.dolphineducation.com.np/","website_active":1,"facebook_url":null,"instagram_handle":"dolphin_education_consultancy","instagram_url":"https://www.instagram.com/dolphin_education_consultancy","linkedin_url":null,"google_rating":4.7,"google_reviews":142,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJxUVA_agZ6zkRNF1TGS2OY1Y","presence_score":6.0,"researched_at":"2026-04-14T14:51:38.097716","city":"Kathmandu","email":"surendra@dolphineducation.com.np","phone":"+977 1 4254282","unis":["CQUniversity Australia"]},{"id":7447,"name":"North Easterns Educational Consultancy","country":"Nepal","website_url":"https://northeasternsedu.com/","website_active":1,"facebook_url":"https://www.facebook.com/NeasternsAnamnagar","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":2,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJtb1MBqQZ6zkRLbSHf0UdiUg","presence_score":6.0,"researched_at":"2026-04-14T14:54:25.227841","city":"Kathmandu","email":"neasterns@gmail.com","phone":"+977 1 4771376","unis":["University of Tasmania"]},{"id":7912,"name":"Dream Australia Education Kathmandu","country":"Nepal","website_url":"https://dreamauseducation.com/","website_active":1,"facebook_url":"https://www.facebook.com/profile.php","instagram_handle":"dreamausedu","instagram_url":"https://www.instagram.com/dreamausedu","linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":5.5,"researched_at":"2026-04-14T14:51:42.564698","city":"Kathmandu","email":"nepal@dreamauseducation.com","phone":"+977 984 1515733","unis":["Curtin University"]},{"id":19456,"name":"Empire International Education and Visa Service - Nepal","country":"Nepal","website_url":"https://empireint.com.au/","website_active":1,"facebook_url":"https://www.facebook.com/empireedubrisbane","instagram_handle":"empirebrisbane","instagram_url":"https://www.instagram.com/empirebrisbane","linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":5.5,"researched_at":"2026-04-14T14:52:14.149985","city":"Damak","email":"m.sydney@empireint.net","phone":"+977 23 530888","unis":["CQUniversity Australia"]},{"id":1894,"name":"Three Sixty Education Solutions","country":"Nepal","website_url":"https://360education.global/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/360education.global","instagram_handle":"360education.global","instagram_url":"https://www.instagram.com/360education.global","linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":5.5,"researched_at":"2026-04-14T14:56:04.708728","city":"Biratnagar","email":"Biratnagar@360education.global","phone":"+977 1 590283","unis":["Macquarie University"]},{"id":12557,"name":"iStudy Global","country":"Nepal","website_url":"https://www.istudyglobal.com.au/about-us/","website_active":1,"facebook_url":"https://www.facebook.com/istudyglobalconsultants","instagram_handle":"istudyglobal","instagram_url":"https://www.instagram.com/istudyglobal","linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":5.5,"researched_at":"2026-04-14T14:56:39.338864","city":"Narayangad","email":"applications@istudyglobal.com.au","phone":"+977 9745388587","unis":["Edith Cowan University"]},{"id":6592,"name":"ABC Global Education Consultancy Kathmandu","country":"Nepal","website_url":"https://abcglobalstudy.com.au/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":92,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJzUtp1owZ6zkRahfshlqFk00","presence_score":4.5,"researched_at":"2026-04-14T14:50:13.345752","city":"Kathmandu","email":"tapan@abcglobalstudy.com.au","phone":"+977 1 4791432","unis":["University of Southern Queensland / UniSQ"]},{"id":27793,"name":"CLUB STUDY Global","country":"Nepal","website_url":"https://www.clubstudyglobal.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":27,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ7XV4VpYZ6zkR3rnob-LKYhw","presence_score":4.5,"researched_at":"2026-04-14T14:51:32.774105","city":"Kathmandu","email":"info@clubstudyglobal.com","phone":"+977 9803253975","unis":["University of Melbourne"]},{"id":1842,"name":"Expert Group Holdings","country":"Nepal","website_url":"https://experteducation.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.5,"google_reviews":52,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJq7I6WPW65TkRNkrgHrExCjY","presence_score":4.5,"researched_at":"2026-04-14T14:52:20.355928","city":"Birtamod","email":"account@experteducation.com.au","phone":"+977 23536025","unis":["Macquarie University"]},{"id":2575,"name":"Genix Education and Migration Global","country":"Nepal","website_url":"https://www.genixeducation.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":94,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJKcCtP8EZ6zkRxe4dyHZCaDs","presence_score":4.5,"researched_at":"2026-04-14T14:52:22.414152","city":"Kathmandu","email":"info@genixedu.com","phone":"+977 9851008118","unis":["University of Canberra"]},{"id":4498,"name":"KTM Consulting","country":"Nepal","website_url":"https://www.ktmconsultingroup.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":179,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ1aK0_gcZ6zkRjKEJ__0TZVI","presence_score":4.5,"researched_at":"2026-04-14T14:53:18.933734","city":"Kathmandu","email":"bhume@ktmconsultingroup.com","phone":"+977 1 4429466","unis":["Charles Darwin University"]},{"id":2529,"name":"Kangaroo Education Foundation Education & Visa Services","country":"Nepal","website_url":"https://kangarooedu.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":224,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJR7lB3F-65TkRq92BKTPwLVI","presence_score":4.5,"researched_at":"2026-04-14T14:53:21.267278","city":"Birtamod","email":"nabin@kangarooedu.com","phone":"+977 23 532841","unis":["University of Canberra"]},{"id":5755,"name":"Lumos Global","country":"Nepal","website_url":"https://lumosglobal.com.au/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":152,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ0QI2-lHHVTcR2ak3FDSfrlM","presence_score":4.5,"researched_at":"2026-04-14T14:53:31.264368","city":"Kathmandu","email":"hasan@lumosglobal.com.au","phone":"+977 1 4446077","unis":["Murdoch University"]},{"id":2532,"name":"Right & Associates","country":"Nepal","website_url":"https://rassociates.edu.np/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.5,"google_reviews":90,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ9dRR8KgZ6zkRVKKm7_upoJA","presence_score":4.5,"researched_at":"2026-04-14T14:55:19.279982","city":"Kathmandu","email":"kathmandu@rassociates.com.au","phone":"+977 1 5333843","unis":["University of Canberra"]},{"id":3649,"name":"SIEC Education","country":"Nepal","website_url":"https://www.siecindia.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":23,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJFcxZ4Y0Z6zkRkADIQFnWnxw","presence_score":4.5,"researched_at":"2026-04-14T14:55:26.648460","city":"Kathmandu","email":"ktm@siecindia.com","phone":"+977 9745623510","unis":["Western Sydney University"]},{"id":2560,"name":"Success Education and Visa Service","country":"Nepal","website_url":"https://www.successedu.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":12,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJdwWqrb8Z6zkRjy8MVRMcSOo","presence_score":4.5,"researched_at":"2026-04-14T14:55:55.094211","city":"Kathmandu","email":"info@successedu.com.au","phone":"+977 98 51229344","unis":["University of Canberra"]},{"id":16444,"name":"Trans Globe Education","country":"Nepal","website_url":"https://www.transglobeedu.com/contactus","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":17,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJtYD6ZT0Z6zkRf1stfNC7yO8","presence_score":4.5,"researched_at":"2026-04-14T14:56:06.821684","city":"Kathmandu","email":"Infoktm@transglobe-edu.com","phone":"+977 9801859600","unis":["University of Newcastle"]},{"id":10447,"name":"Universal Thought Consult","country":"Nepal","website_url":"https://utc.com.np/contact-us/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":45,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJK1mFu78Z6zkR7bb1CVywxJc","presence_score":4.5,"researched_at":"2026-04-14T14:56:11.129582","city":"Kathmandu","email":"shiva@utcedu.com","phone":"+977 1 4168224","unis":["University of New England"]},{"id":11351,"name":"Venus International Consultancy","country":"Nepal","website_url":"https://www.vic.com.np/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":42,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJm2zsiqcZ6zkR3GMuMUaZ-kg","presence_score":4.5,"researched_at":"2026-04-14T14:56:24.243973","city":"Kathmandu","email":"bikram@vic.com.np","phone":"+977 1 4525568","unis":["Torrens University Australia"]},{"id":11342,"name":"York International Educational Consultancy","country":"Nepal","website_url":"https://www.yorknepal.com/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/yieceducation","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":4.0,"researched_at":"2026-04-14T14:56:36.294544","city":"Kathmandu","email":"mahendra@yorknepal.com","phone":"+977 1 4431207","unis":["Torrens University Australia"]},{"id":1905,"name":"iae GLOBAL","country":"Nepal","website_url":"https://www.iaeglobalnepal.net/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":7,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJj019ZKcZ6zkRjuR4d-rlGcw","presence_score":4.0,"researched_at":"2026-04-14T14:56:44.166651","city":"Kathmandu","email":"prashant@iaeglobalnepal.net","phone":"+977 1 4413994","unis":["Macquarie University"]},{"id":16460,"name":"OAA Study","country":"Nepal","website_url":"https://www.oaastudy.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":3.4,"google_reviews":5,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJv93AHCquEmsRWnQaD50MsbU","presence_score":3.5,"researched_at":"2026-04-14T14:54:29.944210","city":"Kathmandu","email":"matthias@oaastudy.com","phone":"+977 14580660","unis":["University of Newcastle"]},{"id":6638,"name":"Videsh International Consultants","country":"Nepal","website_url":"https://www.vicnepal.com.np/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":3.0,"google_reviews":6,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJS1ZbHqgZ6zkRAOgDPRznT1s","presence_score":3.5,"researched_at":"2026-04-14T14:56:26.958216","city":"Kathmandu","email":"admin@vicnepal.com.np","phone":"+977 1 4010654","unis":["University of Southern Queensland / UniSQ"]},{"id":3661,"name":"AIP Education P","country":"Nepal","website_url":"http://aipedu.com/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":305,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJf1ShOLIZ6zkRITixAL55M_s","presence_score":2.5,"researched_at":"2026-04-14T14:50:24.583622","city":"Kathmandu","email":"sujan@aipedu.com","phone":"+977 1 4793667","unis":["Western Sydney University"]},{"id":1854,"name":"Alfa Beta Institute Private","country":"Nepal","website_url":"https://www.alfabetaedu.com","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":14,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJOTvGMuK75TkRapnqRoRDjeQ","presence_score":2.5,"researched_at":"2026-04-14T14:50:43.862992","city":"Jhapa","email":"birtamode@alfabetaedu.com","phone":"+977 23 546408","unis":["Macquarie University"]},{"id":7413,"name":"BMW Educational Consultancy","country":"Nepal","website_url":"https://www.bmwconsultancy.com","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":104,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJSYbm-QcZ6zkRDNSyn5aj2jI","presence_score":2.5,"researched_at":"2026-04-14T14:51:03.383286","city":"Kathmandu","email":"info@bmw.edu.np","phone":"+977 1 4520178","unis":["University of Tasmania"]},{"id":11312,"name":"Boomerang International Educational Services - Nepal","country":"Nepal","website_url":"https://www.boomerangedu.com","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.7,"google_reviews":41,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ41Vy9gwZ6zkRlDFlCz7wwlA","presence_score":2.5,"researched_at":"2026-04-14T14:51:18.947421","city":"Kathmandu","email":"aashish@boomerangedu.com","phone":"+977 9801130487","unis":["Torrens University Australia"]},{"id":19497,"name":"Education Asia (P)","country":"Nepal","website_url":"https://www.educationasia.com/contact-us/Kathmandu%20Office","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":229,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ2belQqgZ6zkRrqdlp8VCnUE","presence_score":2.5,"researched_at":"2026-04-14T14:51:59.134287","city":"Kathmandu","email":"info@educationasia.com","phone":"+977 9801115600","unis":["CQUniversity Australia"]},{"id":8453,"name":"NEC","country":"Nepal","website_url":"https://www.nepalec.edu.np","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":733,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJneCDTwYZ6zkRz1bsOQWTT_4","presence_score":2.5,"researched_at":"2026-04-14T14:53:55.952084","city":"Kathmandu","email":"ananta@nepalec.edu.np","phone":"+977 1 5910770","unis":["Curtin University"]},{"id":3626,"name":"Nepcoms services","country":"Nepal","website_url":"https://nepcoms.com/contact-us/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":94,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJzX-jpAAZ6zkRSKwfXS6ZftA","presence_score":2.5,"researched_at":"2026-04-14T14:54:13.701626","city":"Kathmandu","email":"sobit@nepcoms.com","phone":"+977 1 5352054","unis":["Western Sydney University"]},{"id":19487,"name":"Nirvana Counselling Center","country":"Nepal","website_url":"https://www.nirvanacc.edu.np","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":83,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJZfMxj6kZ6zkRIfqvQQ8cDJg","presence_score":2.5,"researched_at":"2026-04-14T14:54:16.191914","city":"Kathmandu","email":"info@nirvanacc.edu.np","phone":"+977 1 5343865","unis":["CQUniversity Australia"]},{"id":2526,"name":"OLI AND ASSOCIATES","country":"Nepal","website_url":"https://www.oli.com.au/contact","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":110,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ-8i6g_i75TkR8Uoorbu22FQ","presence_score":2.5,"researched_at":"2026-04-14T14:54:34.360363","city":"Jhapa","email":"jhapa@oli.com.au","phone":"+977 23 532283","unis":["University of Canberra"]},{"id":4423,"name":"Oasis Education Group P","country":"Nepal","website_url":"https://www.oasiseducationgroup.com","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":18,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJTVA0WagZ6zkRgAwkFIDJUsQ","presence_score":2.5,"researched_at":"2026-04-14T14:54:37.290604","city":"Kathmandu","email":"sabina@oasiseducation.com.au","phone":"+977 1 5327968","unis":["Charles Darwin University"]},{"id":19480,"name":"Search Education Nepal","country":"Nepal","website_url":"https://www.searcheducation.com/nepal","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.7,"google_reviews":238,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ53XtrYwZ6zkRw-UlFo89S14","presence_score":2.5,"researched_at":"2026-04-14T14:55:33.517875","city":"Kathmandu","email":"sneupane@searchedu.global","phone":"+977 1 4544203","unis":["CQUniversity Australia"]},{"id":29554,"name":"Study International - Nepal","country":"Nepal","website_url":"http://www.studyinternational.net.au","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":27,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ7XV4VpYZ6zkR3rnob-LKYhw","presence_score":2.5,"researched_at":"2026-04-14T14:55:38.314359","city":"Kathmandu","email":"info@studyinternational.net.au","phone":"+977 1 4418736","unis":["Charles Sturt University"]},{"id":12583,"name":"Study Path Consultants Pty Ltd - Nepal","country":"Nepal","website_url":"http://www.studypath.com.au/contact/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.5,"google_reviews":22,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJpfP5xe8Z6zkRuPQzJjnnwoY","presence_score":2.5,"researched_at":"2026-04-14T14:55:40.308125","city":"Kathmandu","email":"shruti@studypath.com.au","phone":"+977 984 5541719","unis":["Edith Cowan University"]},{"id":4504,"name":"Study Square Nepal","country":"Nepal","website_url":"https://studysquare.com/contact-us","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":125,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ79LJpQ0Z6zkRnpD5y9xnUpY","presence_score":2.5,"researched_at":"2026-04-14T14:55:43.211610","city":"Kathmandu","email":"info.np@studysquare.com","phone":"+977 1 5970786","unis":["Charles Darwin University"]},{"id":2530,"name":"StudyIn","country":"Nepal","website_url":"https://www.gostudyin.com","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":214,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJf3p3dHoZ6zkRPpIJAvKlivQ","presence_score":2.5,"researched_at":"2026-04-14T14:55:46.319045","city":"Kathmandu","email":"kathmandu@gostudyin.com","phone":"+977 15903981","unis":["University of Canberra"]},{"id":29521,"name":"Visa Alliance","country":"Nepal","website_url":"https://www.visaalliance.com.au/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":54,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJcZzjjA4Z6zkR_3rKjJPd-a0","presence_score":2.5,"researched_at":"2026-04-14T14:56:30.272485","city":"Kathmandu","email":"sanir.maharjan@visaalliance.com","phone":"+977 1 4353988","unis":["Charles Sturt University"]},{"id":9525,"name":"Adventus Education","country":"Nepal","website_url":"https://info.adventus.io/contact","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":3.8,"google_reviews":38,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJGzBoI2BZ4joRbWnAnaT4K30","presence_score":2.0,"researched_at":"2026-04-14T14:50:38.022636","city":"Kathmandu","email":"gaganjotkaur@adventus.io","phone":"+977 9851074675","unis":["RMIT University"]},{"id":3657,"name":"Merit Education & Migration Services- Nepal","country":"Nepal","website_url":"https://www.meritservices.com.au/contact","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.3,"google_reviews":7,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ50vNo0kZ6zkR9iuQFl4bPQY","presence_score":2.0,"researched_at":"2026-04-14T14:53:47.872607","city":"Nayan Baneshwar","email":"info.nepal@meritservices.com.au","phone":"+977 1 4473657","unis":["Western Sydney University"]},{"id":10424,"name":"Nepalese Encounters","country":"Nepal","website_url":"https://www.nepaleseencounters.com","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":3.0,"google_reviews":13,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJHwHgFuKUlTkRbgfaMhU3Jnw","presence_score":2.0,"researched_at":"2026-04-14T14:54:11.101325","city":"Pokhara","email":"info@nepaleseencounters.com","phone":"+977 61 462715","unis":["University of New England"]},{"id":3632,"name":"VIEC","country":"Nepal","website_url":"https://www.vieceducation.com/kathmandu","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":3.4,"google_reviews":20,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJN6e5ZAYZ6zkR-xy2fWnIi40","presence_score":2.0,"researched_at":"2026-04-14T14:56:17.988687","city":"Kathmandu","email":"viec.nepal@vieceducation.com","phone":"+977 1 4529190","unis":["Western Sydney University"]},{"id":19488,"name":"VXL Migration & Education Consultants","country":"Nepal","website_url":"https://vxlmigration.com.au/contact-us/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":2,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ7Xi79H0Z6zkRi1A3c6taF-4","presence_score":2.0,"researched_at":"2026-04-14T14:56:20.575532","city":"Kathmandu","email":"info@vxl.com.np","phone":"+977 1 5348933","unis":["CQUniversity Australia"]},{"id":15634,"name":"Nepal International Educational Consultancy","country":"Nepal","website_url":null,"website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":2.8,"google_reviews":4,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJQcG7QEZ07zkRIMKwTySRJWY","presence_score":1.5,"researched_at":"2026-04-14T14:54:09.495271","city":"Biratnagar","email":"","phone":"+977 14 256600","unis":["University of Wollongong"]},{"id":2557,"name":"Yes Education Group - Kathmandu","country":"Nepal","website_url":"https://www.yesedugroup.com.au","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":3.8,"google_reviews":9,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJX1X23QcZ6zkRQ2pkANKAzU4","presence_score":1.5,"researched_at":"2026-04-14T14:56:33.681792","city":"Kathmandu","email":"npanthi@yeseducation.net","phone":"+977 9851079975","unis":["University of Canberra"]},{"id":10463,"name":"EHUB International","country":"Nepal","website_url":"https://ehubinternational.com/talk-to-us/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":0.0,"researched_at":"2026-04-14T14:51:50.209842","city":"Kathmandu","email":"merina@ehubinternational.com","phone":"+977 147 87319","unis":["University of New England"]},{"id":2533,"name":"Oceania Education Consultancy","country":"Nepal","website_url":"https://oevs.com.au/contacts/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":0.0,"researched_at":"2026-04-14T14:54:50.930593","city":"Jhapa","email":"wisdom@oevs.com.au","phone":"+977 23590778","unis":["University of Canberra"]},{"id":9619,"name":"Adventus Education","country":"Thailand","website_url":"https://adventus.io/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/adventus.io","instagram_handle":"adventus.io","instagram_url":"https://www.instagram.com/adventus.io","linkedin_url":"https://www.linkedin.com/company/adventusio","google_rating":5.0,"google_reviews":13,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJJbJ_Xcue4jARx9SWMp4o1sk","presence_score":9.0,"researched_at":"2026-04-14T14:44:02.379339","city":"Khlong Toei","email":"gaganjotkaur@adventus.io","phone":"","unis":["RMIT University"]},{"id":2672,"name":"Liu Cheng International Group","country":"Thailand","website_url":"https://www.lcig.io/404","website_active":1,"facebook_url":"https://www.facebook.com/LCIGroupWorldwide","instagram_handle":"lcigroupofficial","instagram_url":"https://www.instagram.com/lcigroupofficial","linkedin_url":"https://www.linkedin.com/company/lcig","google_rating":5.0,"google_reviews":134,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ44ZvLFef4jAR85FIERhTlIs","presence_score":9.0,"researched_at":"2026-04-14T14:44:51.645790","city":"Watthana","email":"support@lcig.io","phone":"+66 196036029","unis":["University of Canberra"]},{"id":2028,"name":"One Education Consulting","country":"Thailand","website_url":"https://one-educationgroup.com/contact-us/chidlom/","website_active":1,"facebook_url":"https://www.facebook.com/OneEducationGroup","instagram_handle":"oneeducationthailand","instagram_url":"https://www.instagram.com/oneeducationthailand","linkedin_url":"https://www.linkedin.com/company/one-education-study-abroad-simplified","google_rating":4.8,"google_reviews":72,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJC-wa7ESf4jARCdQnduJ6HqQ","presence_score":9.0,"researched_at":"2026-04-14T14:44:56.580433","city":"Pathum Wan","email":"usa@one-educationgroup.com","phone":"+66 2 6520718","unis":["Macquarie University"]},{"id":2040,"name":"SOL Edu","country":"Thailand","website_url":"https://www.soledu.net/","website_active":1,"facebook_url":"https://www.facebook.com/SOLEdu.Eng","instagram_handle":"soleduaustralia","instagram_url":"https://www.instagram.com/soleduaustralia","linkedin_url":"https://www.linkedin.com/company/18524387","google_rating":5.0,"google_reviews":12,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJl6n2y5Sf4jAR8eaJopmgZhc","presence_score":9.0,"researched_at":"2026-04-14T14:45:06.333238","city":"Bangkok","email":"info@soledu.net","phone":"+66 6 52718619","unis":["Macquarie University"]},{"id":12700,"name":"Adventus Education","country":"Thailand","website_url":"https://adventus.io/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/adventus.io","instagram_handle":"adventus.io","instagram_url":"https://www.instagram.com/adventus.io","linkedin_url":"https://www.linkedin.com/company/adventusio","google_rating":5.0,"google_reviews":13,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJJbJ_Xcue4jARx9SWMp4o1sk","presence_score":9.0,"researched_at":"2026-04-14T14:47:15.305620","city":"Khlong Toei","email":"gaganjotkaur@adventus.io","phone":"","unis":["Edith Cowan University"]},{"id":4572,"name":"Liu Cheng International Group","country":"Thailand","website_url":"https://www.lcig.io/404","website_active":1,"facebook_url":"https://www.facebook.com/LCIGroupWorldwide","instagram_handle":"lcigroupofficial","instagram_url":"https://www.instagram.com/lcigroupofficial","linkedin_url":"https://www.linkedin.com/company/lcig","google_rating":5.0,"google_reviews":134,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ44ZvLFef4jAR85FIERhTlIs","presence_score":9.0,"researched_at":"2026-04-14T14:47:39.629249","city":"Watthana","email":"support@lcig.io","phone":"+66 196036029","unis":["Charles Darwin University"]},{"id":5881,"name":"One Education Consulting","country":"Thailand","website_url":"https://one-educationgroup.com/contact-us/chidlom/","website_active":1,"facebook_url":"https://www.facebook.com/OneEducationGroup","instagram_handle":"oneeducationthailand","instagram_url":"https://www.instagram.com/oneeducationthailand","linkedin_url":"https://www.linkedin.com/company/one-education-study-abroad-simplified","google_rating":4.8,"google_reviews":72,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJC-wa7ESf4jARCdQnduJ6HqQ","presence_score":9.0,"researched_at":"2026-04-14T14:47:44.412763","city":"Pathum Wan","email":"usa@one-educationgroup.com","phone":"+66 2 6520718","unis":["Murdoch University"]},{"id":2667,"name":"SOL Edu","country":"Thailand","website_url":"https://www.soledu.net/","website_active":1,"facebook_url":"https://www.facebook.com/SOLEdu.Eng","instagram_handle":"soleduaustralia","instagram_url":"https://www.instagram.com/soleduaustralia","linkedin_url":"https://www.linkedin.com/company/18524387","google_rating":5.0,"google_reviews":12,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJl6n2y5Sf4jAR8eaJopmgZhc","presence_score":9.0,"researched_at":"2026-04-14T14:47:46.270638","city":"Bangkok","email":"info@soledu.net","phone":"+66 6 52718619","unis":["University of Canberra"]},{"id":22268,"name":"Chulalongkorn University (Faculty of Political Science)","country":"Thailand","website_url":"https://www.chula.ac.th/en/academic/faculty-of-political-science/","website_active":1,"facebook_url":"https://www.facebook.com/polscichulaofficial","instagram_handle":"Chulalongkorn.university","instagram_url":"https://www.instagram.com/Chulalongkorn.university","linkedin_url":null,"google_rating":4.5,"google_reviews":90,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJYWf8mOFhHTERMML6sKn4sFA","presence_score":8.0,"researched_at":"2026-04-14T14:44:16.151650","city":"Pathum Wan","email":"saraban_polsci@chula.ac.th","phone":"+66 2 2187250","unis":["University of Queensland"]},{"id":22270,"name":"Chulalongkorn University (Faculty of Psychology)","country":"Thailand","website_url":"https://www.chula.ac.th/","website_active":1,"facebook_url":"https://www.facebook.com/ChulalongkornUniversity","instagram_handle":"Chulalongkorn.university","instagram_url":"https://www.instagram.com/Chulalongkorn.university","linkedin_url":null,"google_rating":4.8,"google_reviews":33,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ8cuhPC2Z4jARo3mHO3HkhDQ","presence_score":8.0,"researched_at":"2026-04-14T14:44:17.751689","city":"Pathum Wan","email":"vkarin16@gmail.com","phone":"+66 2 2181189","unis":["University of Queensland"]},{"id":3716,"name":"Eduyoung.Com - Thailand","country":"Thailand","website_url":"https://www.eduyoungth.com/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/EduyoungThailand","instagram_handle":"eduyoungth","instagram_url":"https://www.instagram.com/eduyoungth","linkedin_url":null,"google_rating":5.0,"google_reviews":217,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJg4g72Yif4jARjvd23IOjlBc","presence_score":8.0,"researched_at":"2026-04-14T14:44:30.297535","city":"Huai Khwang","email":"nancha@eduyoung.com","phone":"+66 2 20260147","unis":["Western Sydney University"]},{"id":20366,"name":"Imagine Global Edu and Migration- iGEM (Bangkok)","country":"Thailand","website_url":"https://igemedu.com/","website_active":1,"facebook_url":"https://www.facebook.com/igemeduphilippines","instagram_handle":"igemedusocial","instagram_url":"https://www.instagram.com/igemedusocial","linkedin_url":null,"google_rating":5.0,"google_reviews":19,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJSVj7msWf4jARjuyAMENt8II","presence_score":8.0,"researched_at":"2026-04-14T14:44:49.037474","city":"Bangkok","email":"bkkmanager.igemedu@gmail.com","phone":"+66 99 9081898","unis":["Griffith University"]},{"id":19604,"name":"The Best Language and Education Centre Company","country":"Thailand","website_url":"https://thebest-edu.com/","website_active":1,"facebook_url":"https://www.facebook.com/TheBestEducationCentre","instagram_handle":"thebesteducation","instagram_url":"https://www.instagram.com/thebesteducation","linkedin_url":null,"google_rating":4.9,"google_reviews":37,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ-6TvzSuf4jAR1SQEUMLfBYE","presence_score":8.0,"researched_at":"2026-04-14T14:45:21.613134","city":"San Sai","email":"art.varintorn@the-best.edu.com","phone":"+66 53 354225","unis":["CQUniversity Australia"]},{"id":6767,"name":"Eduyoung.Com - Thailand","country":"Thailand","website_url":"https://www.eduyoungth.com/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/EduyoungThailand","instagram_handle":"eduyoungth","instagram_url":"https://www.instagram.com/eduyoungth","linkedin_url":null,"google_rating":5.0,"google_reviews":217,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJg4g72Yif4jARjvd23IOjlBc","presence_score":8.0,"researched_at":"2026-04-14T14:47:26.391660","city":"Huai Khwang","email":"nancha@eduyoung.com","phone":"+66 2 20260147","unis":["University of Southern Queensland / UniSQ"]},{"id":2646,"name":"IDP Education","country":"Thailand","website_url":"https://www.idp.com/thailand/education-counsellor-office-finder/","website_active":1,"facebook_url":"https://www.facebook.com/IDPEducationThailand","instagram_handle":"idp.thailand","instagram_url":"https://www.instagram.com/idp.thailand","linkedin_url":null,"google_rating":4.9,"google_reviews":349,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJgRKiYSyf4jARq9surePSyT8","presence_score":8.0,"researched_at":"2026-04-14T14:47:36.271215","city":"Bang Rak","email":"don.sanmanee@idp.com","phone":"+66 2 0554200","unis":["University of Canberra"]},{"id":15843,"name":"Apex Education Consultant","country":"Thailand","website_url":"https://apexeducate.com/","website_active":1,"facebook_url":"https://www.facebook.com/ApexEducationConsultant","instagram_handle":"apex_educate","instagram_url":"https://www.instagram.com/apex_educate","linkedin_url":null,"google_rating":4.8,"google_reviews":4,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ71Wumfye4jARokKojyHHeq0","presence_score":7.5,"researched_at":"2026-04-14T14:44:04.333092","city":"klongluang","email":"","phone":"+66 2 1159751","unis":["University of Wollongong"]},{"id":9618,"name":"Complete Education and Touring Australia Co","country":"Thailand","website_url":"https://www.ceta.co.th/contact/","website_active":1,"facebook_url":"https://www.facebook.com/cetaworldwideeducation","instagram_handle":"ceta_worldwide_education","instagram_url":"https://www.instagram.com/ceta_worldwide_education","linkedin_url":null,"google_rating":5.0,"google_reviews":1,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJEeMxPFOe4jARImVfw_jKJdA","presence_score":7.5,"researched_at":"2026-04-14T14:44:19.263439","city":"Bangkok","email":"study@ceta.co.th","phone":"+66 2 7125300","unis":["RMIT University"]},{"id":2016,"name":"EDNET CO","country":"Thailand","website_url":"https://www.ednet.co.th/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/EdNETCoLtd","instagram_handle":"ednetth","instagram_url":"https://www.instagram.com/ednetth","linkedin_url":null,"google_rating":5.0,"google_reviews":4,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJmRxE_1qc4jARYxeSt8__dkY","presence_score":7.5,"researched_at":"2026-04-14T14:44:24.759403","city":"Chatuchak","email":"info@ednet.co.th","phone":"+66 89 4490272","unis":["Macquarie University"]},{"id":2022,"name":"Education For Life","country":"Thailand","website_url":"https://www.eduforlife.net/","website_active":1,"facebook_url":"https://www.facebook.com/media","instagram_handle":"eduforlife.bkk","instagram_url":"https://www.instagram.com/eduforlife.bkk","linkedin_url":null,"google_rating":4.6,"google_reviews":9,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ2Tv1wudhHTERjRMXrlZWEI8","presence_score":7.5,"researched_at":"2026-04-14T14:44:28.580471","city":"Ratchathewi","email":"paiboon@eduforlife.net ","phone":"+66 2 1293527","unis":["Macquarie University"]},{"id":1994,"name":"Hands On Education","country":"Thailand","website_url":"https://www.hands-on.co.th/","website_active":1,"facebook_url":"https://www.facebook.com/HandsOnEdu","instagram_handle":"handsonedu","instagram_url":"https://www.instagram.com/handsonedu","linkedin_url":null,"google_rating":4.3,"google_reviews":6,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJSWcJpFWf4jARJdyzsbAKals","presence_score":7.5,"researched_at":"2026-04-14T14:44:37.763561","city":"Bangkok","email":"teeranuch@hands-on.co.th","phone":"+66 2 8216877","unis":["Macquarie University"]},{"id":1993,"name":"IDP Education","country":"Thailand","website_url":"https://www.idp.com/thailand/office/hat-yai/idp-hat-yai/th-1004/","website_active":1,"facebook_url":"https://www.facebook.com/IDPEducationThailand","instagram_handle":"idp.thailand","instagram_url":"https://www.instagram.com/idp.thailand","linkedin_url":null,"google_rating":5.0,"google_reviews":8,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJkfPUB04pTTARfaORNXrdK8c","presence_score":7.5,"researched_at":"2026-04-14T14:44:45.237453","city":"Hat Yai","email":"don.sanmanee@idp.com","phone":"+66 63 8786058","unis":["Macquarie University"]},{"id":1992,"name":"WIN Education","country":"Thailand","website_url":"https://win-ed.com/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/WINed.thailand","instagram_handle":"wined_th","instagram_url":"https://www.instagram.com/wined_th","linkedin_url":null,"google_rating":5.0,"google_reviews":5,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJe_AmN0af4jARDaaNJvA6-Us","presence_score":7.5,"researched_at":"2026-04-14T14:45:31.523558","city":"Ubon Ratchathani","email":"ask@win-ed.com","phone":"+66 2 6617496","unis":["Macquarie University"]},{"id":8543,"name":"EDNET CO","country":"Thailand","website_url":"https://www.ednet.co.th/contact-us/","website_active":1,"facebook_url":"https://www.facebook.com/EdNETCoLtd","instagram_handle":"ednetth","instagram_url":"https://www.instagram.com/ednetth","linkedin_url":null,"google_rating":5.0,"google_reviews":4,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJmRxE_1qc4jARYxeSt8__dkY","presence_score":7.5,"researched_at":"2026-04-14T14:47:21.636819","city":"Chatuchak","email":"info@ednet.co.th","phone":"+66 89 4490272","unis":["Curtin University"]},{"id":2660,"name":"Education For Life","country":"Thailand","website_url":"https://www.eduforlife.net/","website_active":1,"facebook_url":"https://www.facebook.com/media","instagram_handle":"eduforlife.bkk","instagram_url":"https://www.instagram.com/eduforlife.bkk","linkedin_url":null,"google_rating":4.6,"google_reviews":9,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ2Tv1wudhHTERjRMXrlZWEI8","presence_score":7.5,"researched_at":"2026-04-14T14:47:24.765978","city":"Ratchathewi","email":"paiboon@eduforlife.net ","phone":"+66 2 1293527","unis":["University of Canberra"]},{"id":5864,"name":"Hands On Education","country":"Thailand","website_url":"https://www.hands-on.co.th/","website_active":1,"facebook_url":"https://www.facebook.com/HandsOnEdu","instagram_handle":"handsonedu","instagram_url":"https://www.instagram.com/handsonedu","linkedin_url":null,"google_rating":4.3,"google_reviews":6,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJSWcJpFWf4jARJdyzsbAKals","presence_score":7.5,"researched_at":"2026-04-14T14:47:32.883925","city":"Bangkok","email":"teeranuch@hands-on.co.th","phone":"+66 2 8216877","unis":["Murdoch University"]},{"id":3698,"name":"WIN Education","country":"Thailand","website_url":"https://win-ed.com/","website_active":1,"facebook_url":"https://www.facebook.com/WINed.thailand","instagram_handle":"wined_th","instagram_url":"https://www.instagram.com/wined_th","linkedin_url":null,"google_rating":5.0,"google_reviews":5,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJe_AmN0af4jARDaaNJvA6-Us","presence_score":7.5,"researched_at":"2026-04-14T14:47:51.056154","city":"Bangkok","email":"bonian.c@westminster.co.th","phone":"+66 2 6617496","unis":["Western Sydney University"]},{"id":7511,"name":"Oec Global Education","country":"Thailand","website_url":"https://www.oecglobal.com/","website_active":1,"facebook_url":"https://www.facebook.com/oecbangkok","instagram_handle":"oecglobaleducation","instagram_url":"https://www.instagram.com/oecglobaleducation","linkedin_url":null,"google_rating":3.7,"google_reviews":3,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJJTurr4aZ4jARKMv3G30JvpM","presence_score":7.0,"researched_at":"2026-04-14T14:44:55.147972","city":"Bangkok","email":"paweena@oecglobal.com","phone":"+66 2 8819344","unis":["University of Tasmania"]},{"id":25263,"name":"Oec Global Education","country":"Thailand","website_url":"https://www.oecglobal.com/","website_active":1,"facebook_url":"https://www.facebook.com/oecbangkok","instagram_handle":"oecglobaleducation","instagram_url":"https://www.instagram.com/oecglobaleducation","linkedin_url":null,"google_rating":3.7,"google_reviews":3,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJJTurr4aZ4jARKMv3G30JvpM","presence_score":7.0,"researched_at":"2026-04-14T14:47:42.882129","city":"Bangkok","email":"paweena@oecglobal.com","phone":"+66 970707706","unis":["La Trobe University"]},{"id":2017,"name":"AECC Global","country":"Thailand","website_url":"https://www.aeccglobal.co.th/en/contact-us","website_active":1,"facebook_url":"https://www.facebook.com/AECCThailand","instagram_handle":"aecc_global_thailand","instagram_url":"https://www.instagram.com/aecc_global_thailand","linkedin_url":"https://www.linkedin.com/company/aecc-global-thailand","google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":6.5,"researched_at":"2026-04-14T14:43:51.262787","city":"Pathum Wan","email":"enquiry.th@aeccglobal.com","phone":"+66 82 9536151","unis":["Macquarie University"]},{"id":2036,"name":"Beyond Study Center Co","country":"Thailand","website_url":"https://www.beyondstudycenter.com/","website_active":1,"facebook_url":"https://www.facebook.com/BeyondStudyCenter","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":93,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJJSVA8-Se4jARw6fe_xm0soc","presence_score":6.5,"researched_at":"2026-04-14T14:44:11.285638","city":"Watthana","email":"info@beyondstudycenter.com","phone":"+66 2 0190884","unis":["Macquarie University"]},{"id":12696,"name":"Union Plus","country":"Thailand","website_url":"https://iamstudy.com/","website_active":1,"facebook_url":"https://www.facebook.com/Aussmart","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.4,"google_reviews":129,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJF_ozOICe4jARAjRvRatWw40","presence_score":6.5,"researched_at":"2026-04-14T14:45:25.320358","city":"Laksi","email":"ask@iamstudy.com","phone":"+66 89 2904144","unis":["Edith Cowan University"]},{"id":2658,"name":"AECC Global","country":"Thailand","website_url":"https://www.aeccglobal.co.th/en/contact-us","website_active":1,"facebook_url":"https://www.facebook.com/AECCThailand","instagram_handle":"aecc_global_thailand","instagram_url":"https://www.instagram.com/aecc_global_thailand","linkedin_url":"https://www.linkedin.com/company/aecc-global-thailand","google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":6.5,"researched_at":"2026-04-14T14:47:05.941672","city":"Pathum Wan","email":"enquiry.th@aeccglobal.com","phone":"+66 82 9536151","unis":["University of Canberra"]},{"id":4570,"name":"Beyond Study Center Co","country":"Thailand","website_url":"https://www.beyondstudycenter.com/","website_active":1,"facebook_url":"https://www.facebook.com/BeyondStudyCenter","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":93,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJJSVA8-Se4jARw6fe_xm0soc","presence_score":6.5,"researched_at":"2026-04-14T14:47:20.144758","city":"Watthana","email":"info@beyondstudycenter.com","phone":"+66 2 0190884","unis":["Charles Darwin University"]},{"id":2662,"name":"Expert Education - EEVS Thailand","country":"Thailand","website_url":"https://experteducation.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":105,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJWUzLZiuf4jAR3OVKA3m4Osk","presence_score":4.5,"researched_at":"2026-04-14T14:44:32.889930","city":"Bangkok","email":"ruttiya.d@experteducation.com.au","phone":"+66 84 1132303","unis":["University of Canberra"]},{"id":6765,"name":"Expert Education - EEVS Thailand","country":"Thailand","website_url":"https://experteducation.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":105,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJWUzLZiuf4jAR3OVKA3m4Osk","presence_score":4.5,"researched_at":"2026-04-14T14:47:28.799419","city":"Bangkok","email":"ruttiya.d@experteducation.com.au","phone":"+66 84 1132303","unis":["University of Southern Queensland / UniSQ"]},{"id":2669,"name":"Asiania International Consulting","country":"Thailand","website_url":"http://www.studyaus.co/","website_active":1,"facebook_url":"https://www.facebook.com/pg","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":4.0,"researched_at":"2026-04-14T14:44:06.469481","city":"Bangkok","email":"apiradee@asiania.co.th","phone":"+66 20172901","unis":["University of Canberra"]},{"id":2029,"name":"Start Education Centre","country":"Thailand","website_url":"https://startedc.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":1,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJb_fo6Xef4jARUF9zaIw0sgE","presence_score":4.0,"researched_at":"2026-04-14T14:45:11.607160","city":"Pathum Wan","email":"info@startedc.com","phone":"+66 95 7476006","unis":["Macquarie University"]},{"id":5875,"name":"Thai Links Consultants / Merit Innovation Service","country":"Thailand","website_url":"https://www.thailinks.net/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":4,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJd0RyH9Ce4jARiUWrEQ8Q2HU","presence_score":4.0,"researched_at":"2026-04-14T14:45:18.516999","city":"Bangkok","email":"TLC@thailinks.net","phone":"+66 2 7375986","unis":["Murdoch University"]},{"id":20361,"name":"ANZ Education Centre Co","country":"Thailand","website_url":"https://www.anzcentre.net/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":1,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJBZ944oBr2TARgBl5zOclKFc","presence_score":4.0,"researched_at":"2026-04-14T14:47:10.451698","city":"Lampang","email":"Info@anzeducationcentre.com","phone":"+66 819527610","unis":["Griffith University"]},{"id":5886,"name":"Asiania International Consulting","country":"Thailand","website_url":"http://www.studyaus.co/","website_active":1,"facebook_url":"https://www.facebook.com/pg","instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":4.0,"researched_at":"2026-04-14T14:47:17.028997","city":"Bangkok","email":"apiradee@asiania.co.th","phone":"+66 20172901","unis":["Murdoch University"]},{"id":6759,"name":"AMET Education","country":"Thailand","website_url":null,"website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":699,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJvaGdHPmf4jAR1fCrV4gfrOw","presence_score":2.5,"researched_at":"2026-04-14T14:43:55.603123","city":"Silom","email":"Bangkok@amet.com.au","phone":"","unis":["University of Southern Queensland / UniSQ"]},{"id":6760,"name":"Career Education Consultancy Australia - Thailand","country":"Thailand","website_url":"https://www.ceca.com.au","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.5,"google_reviews":341,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJtRYLC2SvEmsR9GS2bR7T334","presence_score":2.5,"researched_at":"2026-04-14T14:44:13.203914","city":"Pathum Wan","email":"thailand@ceca.com.au","phone":"+66 2 6979039","unis":["University of Southern Queensland / UniSQ"]},{"id":1995,"name":"StudyIn","country":"Thailand","website_url":"https://www.gostudyin.com","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":93,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJJSVA8-Se4jARw6fe_xm0soc","presence_score":2.5,"researched_at":"2026-04-14T14:45:16.852680","city":"Bangkok","email":"bangkok@gostudyin.com","phone":"+66 2 2606033","unis":["Macquarie University"]},{"id":2026,"name":"Yes Education Group(Bangkok)","country":"Thailand","website_url":"https://yesedugroup.com.au/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.5,"google_reviews":11,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJSyozPGJiHTERniO25vflou4","presence_score":2.5,"researched_at":"2026-04-14T14:45:35.684565","city":"Bang Rak","email":"pafan@yesedugroup.com.au","phone":"+66 81 0046499","unis":["Macquarie University"]},{"id":2647,"name":"StudyIn","country":"Thailand","website_url":"https://www.gostudyin.com","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.9,"google_reviews":93,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJJSVA8-Se4jARw6fe_xm0soc","presence_score":2.5,"researched_at":"2026-04-14T14:47:49.428307","city":"Bangkok","email":"bangkok@gostudyin.com","phone":"+66 2 2606033","unis":["University of Canberra"]},{"id":12690,"name":"Yes Education Group(Bangkok)","country":"Thailand","website_url":"https://yesedugroup.com.au/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.5,"google_reviews":11,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJSyozPGJiHTERniO25vflou4","presence_score":2.5,"researched_at":"2026-04-14T14:47:58.290058","city":"Bang Rak","email":"pafan@yesedugroup.com.au","phone":"+66 81 0046499","unis":["Edith Cowan University"]},{"id":25275,"name":"ABAC Study Abroad - Bangsaothong","country":"Thailand","website_url":"https://www.abacstudyabroad.com:443/login_up.php","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":2.0,"researched_at":"2026-04-14T14:43:48.774332","city":"Chatuchak","email":"info@abacstudyabroad.com","phone":"+66 2 5133499","unis":["La Trobe University"]},{"id":2037,"name":"AVSS","country":"Thailand","website_url":"https://www.theavss.net/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":2.0,"researched_at":"2026-04-14T14:43:59.367960","city":"Watthana","email":"pattra@theavss.net","phone":"+66 868807276","unis":["Macquarie University"]},{"id":19619,"name":"At Education","country":"Thailand","website_url":"https://www.ateducation.co.th","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":1,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJuU8VsaOf4jARqnLBlzZ3Xu8","presence_score":2.0,"researched_at":"2026-04-14T14:44:08.138295","city":"Pathum Wan","email":"gus@ateducation.co.th","phone":"+66 853497637","unis":["CQUniversity Australia"]},{"id":8561,"name":"AusConnect EduCoach - Thailand","country":"Thailand","website_url":"http://www.sayexchange.com.au/th/contact-us/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.8,"google_reviews":4,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ71Wumfye4jARokKojyHHeq0","presence_score":2.0,"researched_at":"2026-04-14T14:44:09.593901","city":"Khan Na Yao","email":"thitima@sayexchange.com.au","phone":"+66 642247998","unis":["Curtin University"]},{"id":19632,"name":"EDEN STUDENT SERVICE","country":"Thailand","website_url":"https://eden-studentservice.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":2.0,"researched_at":"2026-04-14T14:44:21.470827","city":"Udon Thani","email":"udonthani@eden-studentservice.com","phone":"+66 94 2905165","unis":["CQUniversity Australia"]},{"id":2047,"name":"IBN EDUCATION(THAILAND)COMPANY","country":"Thailand","website_url":null,"website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.6,"google_reviews":9,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ2Tv1wudhHTERjRMXrlZWEI8","presence_score":2.0,"researched_at":"2026-04-14T14:44:43.886002","city":"Khlong Toei","email":"","phone":"+66 2 2521600","unis":["Macquarie University"]},{"id":25282,"name":"Professional Intereducation","country":"Thailand","website_url":"https://prointered.com/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":2.0,"researched_at":"2026-04-14T14:44:59.917130","city":"Bangkok","email":"noppawan@prointered.com","phone":"+66 2 3984078","unis":["La Trobe University"]},{"id":9613,"name":"RMIT English Worldwide","country":"Thailand","website_url":"https://rmitenglish.ac.th/contactus.asp","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":4.0,"google_reviews":1,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ73mEaM2e4jAR_r7-_LiTW0I","presence_score":2.0,"researched_at":"2026-04-14T14:45:04.294534","city":"Chatuchak","email":"rmitbkk@itecgroup.org","phone":"+66 2 9303570","unis":["RMIT University"]},{"id":2032,"name":"Stellar Education","country":"Thailand","website_url":"https://www.stellaraustralia.com/branchs/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":5,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ29rXST872jAR3RYK5du4ot8","presence_score":2.0,"researched_at":"2026-04-14T14:45:14.617915","city":"Mueang Chiang Mai","email":"ammie.th@stellaraustralia.com","phone":"+66 2 1074359","unis":["Macquarie University"]},{"id":7531,"name":"Uniadvice Co","country":"Thailand","website_url":"http://uniadvice.co.th/index.php?page=contact","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":2.0,"researched_at":"2026-04-14T14:45:23.520643","city":"Khan Na Yao","email":"sarinya@uniadvice.co.th","phone":"+66 92 9653659","unis":["University of Tasmania"]},{"id":2042,"name":"iae GLOBAL","country":"Thailand","website_url":"https://www.iaeglobal.in.th/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":2.0,"researched_at":"2026-04-14T14:45:37.529863","city":"Watthana","email":"chayinthorn@iaeglobal.in.th","phone":"+66 2 20166589","unis":["Macquarie University"]},{"id":2665,"name":"AVSS","country":"Thailand","website_url":"https://www.theavss.net/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":2.0,"researched_at":"2026-04-14T14:47:13.470045","city":"Watthana","email":"pattra@theavss.net","phone":"+66 868807276","unis":["University of Canberra"]},{"id":24376,"name":"At Education","country":"Thailand","website_url":"https://www.ateducation.co.th","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":1,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJuU8VsaOf4jARqnLBlzZ3Xu8","presence_score":2.0,"researched_at":"2026-04-14T14:47:18.473576","city":"Pathum Wan","email":"gus@ateducation.co.th","phone":"+66 853497637","unis":["Deakin University"]},{"id":2663,"name":"Stellar Education","country":"Thailand","website_url":"https://www.stellaraustralia.com/branchs/","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":5.0,"google_reviews":5,"google_maps_url":"https://www.google.com/maps/place/?q=place_id:ChIJ29rXST872jAR3RYK5du4ot8","presence_score":2.0,"researched_at":"2026-04-14T14:47:47.872272","city":"Mueang Chiang Mai","email":"ammie.th@stellaraustralia.com","phone":"+66 2 1074359","unis":["University of Canberra"]},{"id":2668,"name":"iae GLOBAL","country":"Thailand","website_url":"https://www.iaeglobal.in.th/","website_active":1,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":2.0,"researched_at":"2026-04-14T14:47:59.922287","city":"Watthana","email":"chayinthorn@iaeglobal.in.th","phone":"+66 2 20166589","unis":["University of Canberra"]},{"id":19615,"name":"ANZ Education Centre Co","country":"Thailand","website_url":null,"website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":0.0,"researched_at":"2026-04-14T14:43:57.260270","city":"Bangkok","email":"bkk@anzeducationcentre.com","phone":"+66 81 9527610","unis":["CQUniversity Australia"]},{"id":26159,"name":"Further Education","country":"Thailand","website_url":"https://www.furthereducation.co.th","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":0.0,"researched_at":"2026-04-14T14:44:35.800539","city":"Bang Bon","email":"louise@furthereducation.co.th","phone":"+66 62 5659145","unis":["Monash University"]},{"id":8528,"name":"Phuket international Art Exchange Center Co","country":"Thailand","website_url":null,"website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":0.0,"researched_at":"2026-04-14T14:44:58.591241","city":"Mueang Phuket","email":"leeyuzhong@hotmail.com","phone":"","unis":["Curtin University"]},{"id":28583,"name":"Further Education","country":"Thailand","website_url":"https://www.furthereducation.co.th","website_active":0,"facebook_url":null,"instagram_handle":null,"instagram_url":null,"linkedin_url":null,"google_rating":null,"google_reviews":null,"google_maps_url":null,"presence_score":0.0,"researched_at":"2026-04-14T14:47:31.405585","city":"Bang Bon","email":"louise@furthereducation.co.th","phone":"+66 62 5659145","unis":["Victoria University"]}];
+
+// Build lookup by id
+const byId = {};
+AGENTS.forEach(a => { byId[a.id] = a; });
+
+function getParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+function starsHTML(rating) {
+  const full = Math.floor(rating);
+  const half = (rating - full) >= 0.5;
+  let s = '';
+  for (let i = 0; i < full; i++) s += '★';
+  if (half) s += '½';
+  return s;
+}
+
+function scoreDesc(score) {
+  if (score >= 8) return 'Strong online presence';
+  if (score >= 6) return 'Good online presence';
+  if (score >= 4) return 'Moderate online presence';
+  if (score >= 2) return 'Limited online presence';
+  return 'Minimal online presence';
+}
+
+function extractHandle(url, platform) {
+  if (!url) return null;
+  try {
+    const u = new URL(url.startsWith('http') ? url : 'https://' + url);
+    const parts = u.pathname.split('/').filter(Boolean);
+    if (platform === 'facebook' || platform === 'instagram' || platform === 'linkedin') {
+      return parts.slice(-1)[0] || parts[0] || url;
+    }
+  } catch(e) {}
+  return url;
+}
+
+function truncate(s, n) {
+  if (!s) return s;
+  return s.length > n ? s.slice(0, n) + '…' : s;
+}
+
+function renderProfile(agent) {
+  document.title = agent.name + ' — Market Intelligence Hub';
+
+  document.getElementById('hero-tag').textContent = agent.country + ' · Education Agent';
+  document.getElementById('hero-name').textContent = agent.name;
+  document.getElementById('hero-city').textContent = agent.city || '—';
+  document.getElementById('hero-country').textContent = agent.country;
+
+  if (agent.email) {
+    document.getElementById('hero-email').innerHTML = '<a href="mailto:' + agent.email + '" style="color:var(--accent2)">' + agent.email + '</a>';
+  } else {
+    document.getElementById('hero-email-wrap').style.display = 'none';
+  }
+  if (agent.phone) {
+    document.getElementById('hero-phone').textContent = agent.phone;
+  } else {
+    document.getElementById('hero-phone-wrap').style.display = 'none';
+  }
+
+  // Score
+  const score = agent.presence_score || 0;
+  document.getElementById('score-num').textContent = score.toFixed(1);
+  document.getElementById('score-bar').style.width = (score / 10 * 100) + '%';
+  document.getElementById('score-desc').textContent = scoreDesc(score);
+
+  // Website
+  const webIcon = document.getElementById('web-icon');
+  const webVal = document.getElementById('web-val');
+  const webLink = document.getElementById('web-link');
+  if (agent.website_url) {
+    if (agent.website_active) {
+      webIcon.className = 'social-icon web';
+      webVal.textContent = truncate(agent.website_url.replace(/^https?:\/\//, ''), 45);
+      webLink.href = agent.website_url;
+      webLink.style.display = '';
+    } else {
+      webIcon.className = 'social-icon na';
+      webVal.className = 'social-val na';
+      webVal.textContent = 'Inactive';
+    }
+  } else {
+    webIcon.className = 'social-icon na';
+    webVal.className = 'social-val na';
+    webVal.textContent = 'No website';
+  }
+
+  // Facebook
+  const fbVal = document.getElementById('fb-val');
+  const fbLink = document.getElementById('fb-link');
+  if (agent.facebook_url) {
+    const handle = extractHandle(agent.facebook_url, 'facebook');
+    fbVal.textContent = handle || agent.facebook_url;
+    fbLink.href = agent.facebook_url.startsWith('http') ? agent.facebook_url : 'https://' + agent.facebook_url;
+    fbLink.style.display = '';
+  } else {
+    fbVal.className = 'social-val na';
+    fbVal.textContent = 'Not found';
+  }
+
+  // Instagram
+  const igVal = document.getElementById('ig-val');
+  const igLink = document.getElementById('ig-link');
+  if (agent.instagram_handle) {
+    igVal.textContent = '@' + agent.instagram_handle;
+    igLink.href = agent.instagram_url || ('https://instagram.com/' + agent.instagram_handle);
+    igLink.style.display = '';
+  } else {
+    igVal.className = 'social-val na';
+    igVal.textContent = 'Not found';
+  }
+
+  // LinkedIn
+  const liVal = document.getElementById('li-val');
+  const liLink = document.getElementById('li-link');
+  if (agent.linkedin_url) {
+    const handle = extractHandle(agent.linkedin_url, 'linkedin');
+    liVal.textContent = handle || agent.linkedin_url;
+    liLink.href = agent.linkedin_url.startsWith('http') ? agent.linkedin_url : 'https://' + agent.linkedin_url;
+    liLink.style.display = '';
+  } else {
+    liVal.className = 'social-val na';
+    liVal.textContent = 'Not found';
+  }
+
+  // Google Maps
+  if (agent.google_rating) {
+    document.getElementById('gmaps-none').style.display = 'none';
+    document.getElementById('rating-num').textContent = agent.google_rating.toFixed(1) + '★';
+    document.getElementById('stars').innerHTML = starsHTML(agent.google_rating);
+    document.getElementById('rating-reviews').textContent = (agent.google_reviews || 0) + ' reviews';
+    document.getElementById('rating-bar').style.width = (agent.google_rating / 5 * 100) + '%';
+    if (agent.google_maps_url) {
+      document.getElementById('maps-link').href = agent.google_maps_url;
+    } else {
+      document.getElementById('maps-link').style.display = 'none';
+    }
+  } else {
+    document.getElementById('gmaps-found').style.display = 'none';
+    document.getElementById('gmaps-none').style.display = '';
+  }
+
+  // Contact details
+  const contactCard = document.getElementById('contact-card');
+  const contacts = [
+    { label: 'City', val: agent.city },
+    { label: 'Country', val: agent.country },
+    { label: 'Email', val: agent.email, link: agent.email ? 'mailto:' + agent.email : null },
+    { label: 'Phone', val: agent.phone },
+    { label: 'Website', val: agent.website_url, link: agent.website_active ? agent.website_url : null },
+  ];
+  contactCard.innerHTML = contacts.map(c => {
+    if (!c.val) return '';
+    const display = c.link
+      ? '<a href="' + c.link + '" style="color:var(--accent2);text-decoration:none" target="_blank">' + truncate(c.val, 50) + '</a>'
+      : truncate(c.val, 50);
+    return '<div class="contact-row"><div class="contact-label">' + c.label + '</div><div class="contact-val">' + display + '</div></div>';
+  }).join('');
+
+  // Universities
+  const uniList = document.getElementById('uni-list');
+  if (agent.unis && agent.unis.length) {
+    uniList.innerHTML = agent.unis.map(u =>
+      '<li><span class="uni-dot"></span>' + u + '</li>'
+    ).join('');
+  } else {
+    uniList.innerHTML = '<li style="color:var(--text-muted);font-style:italic">No university data</li>';
+  }
+}
+
+// Init
+const id = parseInt(getParam('id'));
+if (!id || !byId[id]) {
+  document.getElementById('not-found').style.display = 'block';
+} else {
+  document.getElementById('profile').style.display = 'block';
+  renderProfile(byId[id]);
+}
+</script>
+</body>
+</html>
