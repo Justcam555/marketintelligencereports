@@ -595,8 +595,45 @@
     .market-card.behind ul li::before { content: "✗"; position: absolute; left: 0; color: #e94560; font-weight: 700; }
 
   </style>
+
+<style>
+.site-nav-bar {
+  background: #0f0f0f;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 44px;
+  position: sticky; top: 0; z-index: 999;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+}
+.site-nav-home {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: #f7f4ee; text-decoration: none; font-weight: 500; white-space: nowrap;
+}
+.site-nav-home:hover { color: #b8963e; }
+.site-nav-links { display: flex; gap: 28px; }
+.site-nav-links a {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: #888; text-decoration: none; transition: color .15s;
+  white-space: nowrap;
+}
+.site-nav-links a:hover { color: #f7f4ee; }
+.site-nav-links a.active { color: #b8963e; }
+@media (max-width: 640px) {
+  .site-nav-bar { padding: 0 16px; }
+  .site-nav-links { gap: 14px; }
+  .site-nav-links a { font-size: 9px; letter-spacing: 1px; }
+}
+</style>
 </head>
 <body>
+<div class="site-nav-bar">
+  <a class="site-nav-home" href="index.html">Market Intelligence Hub</a>
+  <nav class="site-nav-links">
+    <a href="index.html">Home</a>
+    <a href="agent-network.html">Agent Network</a>
+    <a href="MQ_mention.html">MQ Coverage</a>
+    <a href="one-education-report.html" class="active">Competitor Review</a>
+  </nav>
+</div>
 
 <!-- Cover -->
 <div class="cover">

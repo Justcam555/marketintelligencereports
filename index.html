@@ -309,9 +309,47 @@ footer {
   .about-strip { grid-template-columns: 1fr; }
   nav { gap: 16px; flex-wrap: wrap; }
 }
+
+<style>
+.site-nav-bar {
+  background: #0f0f0f;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 44px;
+  position: sticky; top: 0; z-index: 999;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+}
+.site-nav-home {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: #f7f4ee; text-decoration: none; font-weight: 500; white-space: nowrap;
+}
+.site-nav-home:hover { color: #b8963e; }
+.site-nav-links { display: flex; gap: 28px; }
+.site-nav-links a {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: #888; text-decoration: none; transition: color .15s;
+  white-space: nowrap;
+}
+.site-nav-links a:hover { color: #f7f4ee; }
+.site-nav-links a.active { color: #b8963e; }
+@media (max-width: 640px) {
+  .site-nav-bar { padding: 0 16px; }
+  .site-nav-links { gap: 14px; }
+  .site-nav-links a { font-size: 9px; letter-spacing: 1px; }
+}
+</style>
 </style>
 </head>
 <body>
+
+<div class="site-nav-bar">
+  <a class="site-nav-home" href="index.html">Market Intelligence Hub</a>
+  <nav class="site-nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="agent-network.html">Agent Network</a>
+    <a href="MQ_mention.html">MQ Coverage</a>
+    <a href="one-education-report.html">Competitor Review</a>
+  </nav>
+</div>
 
 <header>
   <div class="masthead">
@@ -321,13 +359,11 @@ footer {
   </div>
   <hr class="rule-double">
   <nav>
-    <span>Weekly Reports</span>
+    <a href="agent-network.html" style="color:inherit;text-decoration:none;letter-spacing:2px">Agent Network</a>
     <span>·</span>
-    <span>Competitor Analysis</span>
+    <a href="MQ_mention.html" style="color:inherit;text-decoration:none;letter-spacing:2px">MQ Coverage</a>
     <span>·</span>
-    <span>Automated Insights</span>
-    <span>·</span>
-    <span>Thailand Markets</span>
+    <a href="one-education-report.html" style="color:inherit;text-decoration:none;letter-spacing:2px">Competitor Review</a>
   </nav>
 </header>
 
@@ -366,11 +402,27 @@ footer {
       <div class="card-arrow">→</div>
     </a>
 
+
+    <!-- Report 3: Agent Network -->
+    <a class="report-card" href="agent-network.html">
+      <div class="card-number">03</div>
+      <div class="card-tag">Agent Intelligence · Live Database</div>
+      <div class="card-title">Australian University Agent Network</div>
+      <div class="card-desc">Interactive intelligence across 11,494 authorised education agents, 30 Australian universities, and 78 markets. Coverage matrix, directory, and global power broker rankings.</div>
+      <div class="card-meta">
+        <span class="meta-dot"></span>
+        <span>78 Markets</span>
+        <span>·</span>
+        <span>11,494 Agents</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
   </div>
 
   <div class="about-strip">
     <div class="about-item">
-      <div class="about-num">2</div>
+      <div class="about-num">3</div>
       <div class="about-label">Active Reports</div>
     </div>
     <div class="about-item">
