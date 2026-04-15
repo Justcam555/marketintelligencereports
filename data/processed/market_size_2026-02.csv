@@ -1,0 +1,617 @@
+country,financial_year,type,grants,yoy_pct
+Argentina,2022-23,offshore,1460,
+Argentina,2022-23,onshore,904,
+Argentina,2023-24,offshore,748,-48.8
+Argentina,2023-24,onshore,709,
+Argentina,2024-25,offshore,448,-40.1
+Argentina,2024-25,onshore,1421,
+Argentina,2025-26 YTD (to Feb 2026),offshore_ytd,254,
+Argentina,2025-26 YTD (to Feb 2026),onshore_ytd,539,
+Azerbaijan,2022-23,offshore,37,
+Azerbaijan,2022-23,onshore,10,
+Azerbaijan,2023-24,offshore,12,-67.6
+Azerbaijan,2023-24,onshore,10,
+Azerbaijan,2024-25,offshore,13,8.3
+Azerbaijan,2024-25,onshore,8,
+Azerbaijan,2025-26 YTD (to Feb 2026),offshore_ytd,18,
+Azerbaijan,2025-26 YTD (to Feb 2026),onshore_ytd,1,
+Bahrain,2022-23,offshore,11,
+Bahrain,2022-23,onshore,9,
+Bahrain,2023-24,offshore,6,-45.5
+Bahrain,2023-24,onshore,6,
+Bahrain,2024-25,offshore,2,-66.7
+Bahrain,2024-25,onshore,5,
+Bahrain,2025-26 YTD (to Feb 2026),offshore_ytd,1,
+Bahrain,2025-26 YTD (to Feb 2026),onshore_ytd,,
+Bangladesh,2022-23,offshore,5123,
+Bangladesh,2022-23,onshore,2233,
+Bangladesh,2023-24,offshore,7401,44.5
+Bangladesh,2023-24,onshore,873,
+Bangladesh,2024-25,offshore,9712,31.2
+Bangladesh,2024-25,onshore,1358,
+Bangladesh,2025-26 YTD (to Feb 2026),offshore_ytd,7367,
+Bangladesh,2025-26 YTD (to Feb 2026),onshore_ytd,1861,
+Bhutan,2022-23,offshore,7124,
+Bhutan,2022-23,onshore,1063,
+Bhutan,2023-24,offshore,3889,-45.4
+Bhutan,2023-24,onshore,804,
+Bhutan,2024-25,offshore,1715,-55.9
+Bhutan,2024-25,onshore,1250,
+Bhutan,2025-26 YTD (to Feb 2026),offshore_ytd,1561,
+Bhutan,2025-26 YTD (to Feb 2026),onshore_ytd,1915,
+Bolivia,2022-23,offshore,78,
+Bolivia,2022-23,onshore,36,
+Bolivia,2023-24,offshore,55,-29.5
+Bolivia,2023-24,onshore,23,
+Bolivia,2024-25,offshore,23,-58.2
+Bolivia,2024-25,onshore,39,
+Bolivia,2025-26 YTD (to Feb 2026),offshore_ytd,13,
+Bolivia,2025-26 YTD (to Feb 2026),onshore_ytd,17,
+Brazil,2022-23,offshore,11916,
+Brazil,2022-23,onshore,8224,
+Brazil,2023-24,offshore,7185,-39.7
+Brazil,2023-24,onshore,3647,
+Brazil,2024-25,offshore,4185,-41.8
+Brazil,2024-25,onshore,7605,
+Brazil,2025-26 YTD (to Feb 2026),offshore_ytd,2310,
+Brazil,2025-26 YTD (to Feb 2026),onshore_ytd,3296,
+Brunei,2022-23,offshore,101,
+Brunei,2022-23,onshore,54,
+Brunei,2023-24,offshore,89,-11.9
+Brunei,2023-24,onshore,26,
+Brunei,2024-25,offshore,93,4.5
+Brunei,2024-25,onshore,22,
+Brunei,2025-26 YTD (to Feb 2026),offshore_ytd,90,
+Brunei,2025-26 YTD (to Feb 2026),onshore_ytd,12,
+Cambodia,2022-23,offshore,1170,
+Cambodia,2022-23,onshore,627,
+Cambodia,2023-24,offshore,1307,11.7
+Cambodia,2023-24,onshore,484,
+Cambodia,2024-25,offshore,1229,-6.0
+Cambodia,2024-25,onshore,483,
+Cambodia,2025-26 YTD (to Feb 2026),offshore_ytd,1147,
+Cambodia,2025-26 YTD (to Feb 2026),onshore_ytd,339,
+Canada,2022-23,offshore,1659,
+Canada,2022-23,onshore,389,
+Canada,2023-24,offshore,1621,-2.3
+Canada,2023-24,onshore,288,
+Canada,2024-25,offshore,1540,-5.0
+Canada,2024-25,onshore,306,
+Canada,2025-26 YTD (to Feb 2026),offshore_ytd,1335,
+Canada,2025-26 YTD (to Feb 2026),onshore_ytd,190,
+Chile,2022-23,offshore,3429,
+Chile,2022-23,onshore,1152,
+Chile,2023-24,offshore,1901,-44.6
+Chile,2023-24,onshore,1074,
+Chile,2024-25,offshore,998,-47.5
+Chile,2024-25,onshore,2079,
+Chile,2025-26 YTD (to Feb 2026),offshore_ytd,611,
+Chile,2025-26 YTD (to Feb 2026),onshore_ytd,791,
+China,2022-23,offshore,66206,
+China,2022-23,onshore,29483,
+China,2023-24,offshore,68742,3.8
+China,2023-24,onshore,20170,
+China,2024-25,offshore,66037,-3.9
+China,2024-25,onshore,20123,
+China,2025-26 YTD (to Feb 2026),offshore_ytd,36644,
+China,2025-26 YTD (to Feb 2026),onshore_ytd,12091,
+Colombia,2022-23,offshore,24629,
+Colombia,2022-23,onshore,7885,
+Colombia,2023-24,offshore,7814,-68.3
+Colombia,2023-24,onshore,6210,
+Colombia,2024-25,offshore,1498,-80.8
+Colombia,2024-25,onshore,10633,
+Colombia,2025-26 YTD (to Feb 2026),offshore_ytd,929,
+Colombia,2025-26 YTD (to Feb 2026),onshore_ytd,2102,
+Denmark,2022-23,offshore,763,
+Denmark,2022-23,onshore,37,
+Denmark,2023-24,offshore,736,-3.5
+Denmark,2023-24,onshore,21,
+Denmark,2024-25,offshore,625,-15.1
+Denmark,2024-25,onshore,26,
+Denmark,2025-26 YTD (to Feb 2026),offshore_ytd,229,
+Denmark,2025-26 YTD (to Feb 2026),onshore_ytd,9,
+Ecuador,2022-23,offshore,1464,
+Ecuador,2022-23,onshore,204,
+Ecuador,2023-24,offshore,1469,0.3
+Ecuador,2023-24,onshore,482,
+Ecuador,2024-25,offshore,522,-64.5
+Ecuador,2024-25,onshore,978,
+Ecuador,2025-26 YTD (to Feb 2026),offshore_ytd,341,
+Ecuador,2025-26 YTD (to Feb 2026),onshore_ytd,307,
+Egypt,2022-23,offshore,324,
+Egypt,2022-23,onshore,103,
+Egypt,2023-24,offshore,119,-63.3
+Egypt,2023-24,onshore,49,
+Egypt,2024-25,offshore,111,-6.7
+Egypt,2024-25,onshore,60,
+Egypt,2025-26 YTD (to Feb 2026),offshore_ytd,131,
+Egypt,2025-26 YTD (to Feb 2026),onshore_ytd,54,
+Ethiopia,2022-23,offshore,151,
+Ethiopia,2022-23,onshore,34,
+Ethiopia,2023-24,offshore,118,-21.9
+Ethiopia,2023-24,onshore,23,
+Ethiopia,2024-25,offshore,130,10.2
+Ethiopia,2024-25,onshore,27,
+Ethiopia,2025-26 YTD (to Feb 2026),offshore_ytd,83,
+Ethiopia,2025-26 YTD (to Feb 2026),onshore_ytd,25,
+Fiji,2022-23,offshore,2546,
+Fiji,2022-23,onshore,874,
+Fiji,2023-24,offshore,1710,-32.8
+Fiji,2023-24,onshore,425,
+Fiji,2024-25,offshore,610,-64.3
+Fiji,2024-25,onshore,530,
+Fiji,2025-26 YTD (to Feb 2026),offshore_ytd,343,
+Fiji,2025-26 YTD (to Feb 2026),onshore_ytd,393,
+Finland,2022-23,offshore,143,
+Finland,2022-23,onshore,30,
+Finland,2023-24,offshore,126,-11.9
+Finland,2023-24,onshore,30,
+Finland,2024-25,offshore,105,-16.7
+Finland,2024-25,onshore,36,
+Finland,2025-26 YTD (to Feb 2026),offshore_ytd,87,
+Finland,2025-26 YTD (to Feb 2026),onshore_ytd,18,
+France,2022-23,offshore,1814,
+France,2022-23,onshore,591,
+France,2023-24,offshore,1778,-2.0
+France,2023-24,onshore,482,
+France,2024-25,offshore,1770,-0.4
+France,2024-25,onshore,754,
+France,2025-26 YTD (to Feb 2026),offshore_ytd,902,
+France,2025-26 YTD (to Feb 2026),onshore_ytd,427,
+Germany,2022-23,offshore,2826,
+Germany,2022-23,onshore,475,
+Germany,2023-24,offshore,2746,-2.8
+Germany,2023-24,onshore,344,
+Germany,2024-25,offshore,2715,-1.1
+Germany,2024-25,onshore,491,
+Germany,2025-26 YTD (to Feb 2026),offshore_ytd,1586,
+Germany,2025-26 YTD (to Feb 2026),onshore_ytd,242,
+Ghana,2022-23,offshore,164,
+Ghana,2022-23,onshore,106,
+Ghana,2023-24,offshore,129,-21.3
+Ghana,2023-24,onshore,52,
+Ghana,2024-25,offshore,99,-23.3
+Ghana,2024-25,onshore,56,
+Ghana,2025-26 YTD (to Feb 2026),offshore_ytd,83,
+Ghana,2025-26 YTD (to Feb 2026),onshore_ytd,60,
+Hong Kong,2022-23,offshore,3703,
+Hong Kong,2022-23,onshore,1900,
+Hong Kong,2023-24,offshore,2684,-27.5
+Hong Kong,2023-24,onshore,891,
+Hong Kong,2024-25,offshore,2743,2.2
+Hong Kong,2024-25,onshore,591,
+Hong Kong,2025-26 YTD (to Feb 2026),offshore_ytd,2097,
+Hong Kong,2025-26 YTD (to Feb 2026),onshore_ytd,298,
+India,2022-23,offshore,50641,
+India,2022-23,onshore,35203,
+India,2023-24,offshore,32539,-35.7
+India,2023-24,onshore,11216,
+India,2024-25,offshore,30871,-5.1
+India,2024-25,onshore,10829,
+India,2025-26 YTD (to Feb 2026),offshore_ytd,17779,
+India,2025-26 YTD (to Feb 2026),onshore_ytd,8670,
+Indonesia,2022-23,offshore,7265,
+Indonesia,2022-23,onshore,5550,
+Indonesia,2023-24,offshore,6359,-12.5
+Indonesia,2023-24,onshore,2471,
+Indonesia,2024-25,offshore,6711,5.5
+Indonesia,2024-25,onshore,2781,
+Indonesia,2025-26 YTD (to Feb 2026),offshore_ytd,4254,
+Indonesia,2025-26 YTD (to Feb 2026),onshore_ytd,2145,
+Iran,2022-23,offshore,1148,
+Iran,2022-23,onshore,352,
+Iran,2023-24,offshore,1057,-7.9
+Iran,2023-24,onshore,231,
+Iran,2024-25,offshore,800,-24.3
+Iran,2024-25,onshore,293,
+Iran,2025-26 YTD (to Feb 2026),offshore_ytd,533,
+Iran,2025-26 YTD (to Feb 2026),onshore_ytd,268,
+Italy,2022-23,offshore,1561,
+Italy,2022-23,onshore,865,
+Italy,2023-24,offshore,1185,-24.1
+Italy,2023-24,onshore,594,
+Italy,2024-25,offshore,1181,-0.3
+Italy,2024-25,onshore,1227,
+Italy,2025-26 YTD (to Feb 2026),offshore_ytd,639,
+Italy,2025-26 YTD (to Feb 2026),onshore_ytd,630,
+Japan,2022-23,offshore,6363,
+Japan,2022-23,onshore,1521,
+Japan,2023-24,offshore,5956,-6.4
+Japan,2023-24,onshore,1324,
+Japan,2024-25,offshore,4892,-17.9
+Japan,2024-25,onshore,1919,
+Japan,2025-26 YTD (to Feb 2026),offshore_ytd,2760,
+Japan,2025-26 YTD (to Feb 2026),onshore_ytd,923,
+Jordan,2022-23,offshore,149,
+Jordan,2022-23,onshore,107,
+Jordan,2023-24,offshore,94,-36.9
+Jordan,2023-24,onshore,64,
+Jordan,2024-25,offshore,116,23.4
+Jordan,2024-25,onshore,75,
+Jordan,2025-26 YTD (to Feb 2026),offshore_ytd,76,
+Jordan,2025-26 YTD (to Feb 2026),onshore_ytd,45,
+Kazakhstan,2022-23,offshore,68,
+Kazakhstan,2022-23,onshore,37,
+Kazakhstan,2023-24,offshore,78,14.7
+Kazakhstan,2023-24,onshore,29,
+Kazakhstan,2024-25,offshore,67,-14.1
+Kazakhstan,2024-25,onshore,26,
+Kazakhstan,2025-26 YTD (to Feb 2026),offshore_ytd,49,
+Kazakhstan,2025-26 YTD (to Feb 2026),onshore_ytd,7,
+Kenya,2022-23,offshore,3902,
+Kenya,2022-23,onshore,978,
+Kenya,2023-24,offshore,3379,-13.4
+Kenya,2023-24,onshore,875,
+Kenya,2024-25,offshore,1102,-67.4
+Kenya,2024-25,onshore,790,
+Kenya,2025-26 YTD (to Feb 2026),offshore_ytd,1872,
+Kenya,2025-26 YTD (to Feb 2026),onshore_ytd,1268,
+Kuwait,2022-23,offshore,142,
+Kuwait,2022-23,onshore,32,
+Kuwait,2023-24,offshore,214,50.7
+Kuwait,2023-24,onshore,31,
+Kuwait,2024-25,offshore,240,12.1
+Kuwait,2024-25,onshore,27,
+Kuwait,2025-26 YTD (to Feb 2026),offshore_ytd,237,
+Kuwait,2025-26 YTD (to Feb 2026),onshore_ytd,29,
+Laos,2022-23,offshore,509,
+Laos,2022-23,onshore,219,
+Laos,2023-24,offshore,423,-16.9
+Laos,2023-24,onshore,140,
+Laos,2024-25,offshore,311,-26.5
+Laos,2024-25,onshore,145,
+Laos,2025-26 YTD (to Feb 2026),offshore_ytd,158,
+Laos,2025-26 YTD (to Feb 2026),onshore_ytd,111,
+Lebanon,2022-23,offshore,179,
+Lebanon,2022-23,onshore,156,
+Lebanon,2023-24,offshore,99,-44.7
+Lebanon,2023-24,onshore,59,
+Lebanon,2024-25,offshore,59,-40.4
+Lebanon,2024-25,onshore,44,
+Lebanon,2025-26 YTD (to Feb 2026),offshore_ytd,43,
+Lebanon,2025-26 YTD (to Feb 2026),onshore_ytd,18,
+Macau,2022-23,offshore,130,
+Macau,2022-23,onshore,65,
+Macau,2023-24,offshore,167,28.5
+Macau,2023-24,onshore,41,
+Macau,2024-25,offshore,150,-10.2
+Macau,2024-25,onshore,27,
+Macau,2025-26 YTD (to Feb 2026),offshore_ytd,121,
+Macau,2025-26 YTD (to Feb 2026),onshore_ytd,8,
+Malawi,2022-23,offshore,28,
+Malawi,2022-23,onshore,21,
+Malawi,2023-24,offshore,22,-21.4
+Malawi,2023-24,onshore,6,
+Malawi,2024-25,offshore,16,-27.3
+Malawi,2024-25,onshore,12,
+Malawi,2025-26 YTD (to Feb 2026),offshore_ytd,13,
+Malawi,2025-26 YTD (to Feb 2026),onshore_ytd,10,
+Malaysia,2022-23,offshore,4859,
+Malaysia,2022-23,onshore,4496,
+Malaysia,2023-24,offshore,3918,-19.4
+Malaysia,2023-24,onshore,1670,
+Malaysia,2024-25,offshore,3561,-9.1
+Malaysia,2024-25,onshore,1717,
+Malaysia,2025-26 YTD (to Feb 2026),offshore_ytd,2584,
+Malaysia,2025-26 YTD (to Feb 2026),onshore_ytd,983,
+Maldives,2022-23,offshore,75,
+Maldives,2022-23,onshore,42,
+Maldives,2023-24,offshore,89,18.7
+Maldives,2023-24,onshore,20,
+Maldives,2024-25,offshore,114,28.1
+Maldives,2024-25,onshore,16,
+Maldives,2025-26 YTD (to Feb 2026),offshore_ytd,129,
+Maldives,2025-26 YTD (to Feb 2026),onshore_ytd,14,
+Mauritius,2022-23,offshore,516,
+Mauritius,2022-23,onshore,403,
+Mauritius,2023-24,offshore,504,-2.3
+Mauritius,2023-24,onshore,210,
+Mauritius,2024-25,offshore,382,-24.2
+Mauritius,2024-25,onshore,258,
+Mauritius,2025-26 YTD (to Feb 2026),offshore_ytd,238,
+Mauritius,2025-26 YTD (to Feb 2026),onshore_ytd,131,
+Mexico,2022-23,offshore,2072,
+Mexico,2022-23,onshore,447,
+Mexico,2023-24,offshore,1928,-6.9
+Mexico,2023-24,onshore,481,
+Mexico,2024-25,offshore,1687,-12.5
+Mexico,2024-25,onshore,947,
+Mexico,2025-26 YTD (to Feb 2026),offshore_ytd,1273,
+Mexico,2025-26 YTD (to Feb 2026),onshore_ytd,402,
+Mongolia,2022-23,offshore,1851,
+Mongolia,2022-23,onshore,1888,
+Mongolia,2023-24,offshore,1137,-38.6
+Mongolia,2023-24,onshore,1546,
+Mongolia,2024-25,offshore,469,-58.8
+Mongolia,2024-25,onshore,919,
+Mongolia,2025-26 YTD (to Feb 2026),offshore_ytd,329,
+Mongolia,2025-26 YTD (to Feb 2026),onshore_ytd,649,
+Morocco,2022-23,offshore,29,
+Morocco,2022-23,onshore,15,
+Morocco,2023-24,offshore,35,20.7
+Morocco,2023-24,onshore,16,
+Morocco,2024-25,offshore,45,28.6
+Morocco,2024-25,onshore,12,
+Morocco,2025-26 YTD (to Feb 2026),offshore_ytd,17,
+Morocco,2025-26 YTD (to Feb 2026),onshore_ytd,3,
+Myanmar,2022-23,offshore,521,
+Myanmar,2022-23,onshore,475,
+Myanmar,2023-24,offshore,250,-52.0
+Myanmar,2023-24,onshore,201,
+Myanmar,2024-25,offshore,106,-57.6
+Myanmar,2024-25,onshore,153,
+Myanmar,2025-26 YTD (to Feb 2026),offshore_ytd,32,
+Myanmar,2025-26 YTD (to Feb 2026),onshore_ytd,68,
+Nepal,2022-23,offshore,17880,
+Nepal,2022-23,onshore,14878,
+Nepal,2023-24,offshore,8400,-53.0
+Nepal,2023-24,onshore,6356,
+Nepal,2024-25,offshore,11785,40.3
+Nepal,2024-25,onshore,12639,
+Nepal,2025-26 YTD (to Feb 2026),offshore_ytd,9192,
+Nepal,2025-26 YTD (to Feb 2026),onshore_ytd,8843,
+Netherlands,2022-23,offshore,631,
+Netherlands,2022-23,onshore,102,
+Netherlands,2023-24,offshore,537,-14.9
+Netherlands,2023-24,onshore,83,
+Netherlands,2024-25,offshore,484,-9.9
+Netherlands,2024-25,onshore,117,
+Netherlands,2025-26 YTD (to Feb 2026),offshore_ytd,190,
+Netherlands,2025-26 YTD (to Feb 2026),onshore_ytd,44,
+New Zealand,2022-23,offshore,,
+New Zealand,2022-23,onshore,,
+New Zealand,2023-24,offshore,2,
+New Zealand,2023-24,onshore,,
+New Zealand,2024-25,offshore,3,50.0
+New Zealand,2024-25,onshore,,
+New Zealand,2025-26 YTD (to Feb 2026),offshore_ytd,2,
+New Zealand,2025-26 YTD (to Feb 2026),onshore_ytd,,
+Nigeria,2022-23,offshore,1173,
+Nigeria,2022-23,onshore,651,
+Nigeria,2023-24,offshore,513,-56.3
+Nigeria,2023-24,onshore,384,
+Nigeria,2024-25,offshore,184,-64.1
+Nigeria,2024-25,onshore,468,
+Nigeria,2025-26 YTD (to Feb 2026),offshore_ytd,318,
+Nigeria,2025-26 YTD (to Feb 2026),onshore_ytd,424,
+North Macedonia,2022-23,offshore,46,
+North Macedonia,2022-23,onshore,88,
+North Macedonia,2023-24,offshore,30,-34.8
+North Macedonia,2023-24,onshore,28,
+North Macedonia,2024-25,offshore,20,-33.3
+North Macedonia,2024-25,onshore,29,
+North Macedonia,2025-26 YTD (to Feb 2026),offshore_ytd,14,
+North Macedonia,2025-26 YTD (to Feb 2026),onshore_ytd,20,
+Norway,2022-23,offshore,1755,
+Norway,2022-23,onshore,110,
+Norway,2023-24,offshore,1705,-2.8
+Norway,2023-24,onshore,72,
+Norway,2024-25,offshore,1400,-17.9
+Norway,2024-25,onshore,84,
+Norway,2025-26 YTD (to Feb 2026),offshore_ytd,679,
+Norway,2025-26 YTD (to Feb 2026),onshore_ytd,34,
+Oman,2022-23,offshore,43,
+Oman,2022-23,onshore,76,
+Oman,2023-24,offshore,88,104.7
+Oman,2023-24,onshore,24,
+Oman,2024-25,offshore,73,-17.0
+Oman,2024-25,onshore,24,
+Oman,2025-26 YTD (to Feb 2026),offshore_ytd,108,
+Oman,2025-26 YTD (to Feb 2026),onshore_ytd,8,
+Pakistan,2022-23,offshore,11664,
+Pakistan,2022-23,onshore,5194,
+Pakistan,2023-24,offshore,4392,-62.3
+Pakistan,2023-24,onshore,1926,
+Pakistan,2024-25,offshore,1599,-63.6
+Pakistan,2024-25,onshore,1929,
+Pakistan,2025-26 YTD (to Feb 2026),offshore_ytd,1331,
+Pakistan,2025-26 YTD (to Feb 2026),onshore_ytd,2603,
+Peru,2022-23,offshore,1333,
+Peru,2022-23,onshore,499,
+Peru,2023-24,offshore,675,-49.4
+Peru,2023-24,onshore,501,
+Peru,2024-25,offshore,324,-52.0
+Peru,2024-25,onshore,792,
+Peru,2025-26 YTD (to Feb 2026),offshore_ytd,173,
+Peru,2025-26 YTD (to Feb 2026),onshore_ytd,276,
+Philippines,2022-23,offshore,16624,
+Philippines,2022-23,onshore,6795,
+Philippines,2023-24,offshore,7385,-55.6
+Philippines,2023-24,onshore,3758,
+Philippines,2024-25,offshore,4656,-37.0
+Philippines,2024-25,onshore,3388,
+Philippines,2025-26 YTD (to Feb 2026),offshore_ytd,2338,
+Philippines,2025-26 YTD (to Feb 2026),onshore_ytd,2877,
+Poland,2022-23,offshore,200,
+Poland,2022-23,onshore,171,
+Poland,2023-24,offshore,159,-20.5
+Poland,2023-24,onshore,85,
+Poland,2024-25,offshore,185,16.4
+Poland,2024-25,onshore,132,
+Poland,2025-26 YTD (to Feb 2026),offshore_ytd,106,
+Poland,2025-26 YTD (to Feb 2026),onshore_ytd,45,
+Qatar,2022-23,offshore,7,
+Qatar,2022-23,onshore,4,
+Qatar,2023-24,offshore,2,-71.4
+Qatar,2023-24,onshore,3,
+Qatar,2024-25,offshore,7,250.0
+Qatar,2024-25,onshore,1,
+Qatar,2025-26 YTD (to Feb 2026),offshore_ytd,4,
+Qatar,2025-26 YTD (to Feb 2026),onshore_ytd,,
+Russia,2022-23,offshore,334,
+Russia,2022-23,onshore,316,
+Russia,2023-24,offshore,286,-14.4
+Russia,2023-24,onshore,159,
+Russia,2024-25,offshore,186,-35.0
+Russia,2024-25,onshore,158,
+Russia,2025-26 YTD (to Feb 2026),offshore_ytd,145,
+Russia,2025-26 YTD (to Feb 2026),onshore_ytd,85,
+Rwanda,2022-23,offshore,16,
+Rwanda,2022-23,onshore,11,
+Rwanda,2023-24,offshore,18,12.5
+Rwanda,2023-24,onshore,2,
+Rwanda,2024-25,offshore,18,0.0
+Rwanda,2024-25,onshore,3,
+Rwanda,2025-26 YTD (to Feb 2026),offshore_ytd,16,
+Rwanda,2025-26 YTD (to Feb 2026),onshore_ytd,4,
+Saudi Arabia,2022-23,offshore,995,
+Saudi Arabia,2022-23,onshore,992,
+Saudi Arabia,2023-24,offshore,1280,28.6
+Saudi Arabia,2023-24,onshore,621,
+Saudi Arabia,2024-25,offshore,1150,-10.2
+Saudi Arabia,2024-25,onshore,681,
+Saudi Arabia,2025-26 YTD (to Feb 2026),offshore_ytd,976,
+Saudi Arabia,2025-26 YTD (to Feb 2026),onshore_ytd,459,
+Singapore,2022-23,offshore,2558,
+Singapore,2022-23,onshore,1009,
+Singapore,2023-24,offshore,2427,-5.1
+Singapore,2023-24,onshore,595,
+Singapore,2024-25,offshore,2210,-8.9
+Singapore,2024-25,onshore,562,
+Singapore,2025-26 YTD (to Feb 2026),offshore_ytd,1610,
+Singapore,2025-26 YTD (to Feb 2026),onshore_ytd,350,
+Slovakia,2022-23,offshore,150,
+Slovakia,2022-23,onshore,57,
+Slovakia,2023-24,offshore,76,-49.3
+Slovakia,2023-24,onshore,31,
+Slovakia,2024-25,offshore,55,-27.6
+Slovakia,2024-25,onshore,50,
+Slovakia,2025-26 YTD (to Feb 2026),offshore_ytd,55,
+Slovakia,2025-26 YTD (to Feb 2026),onshore_ytd,14,
+South Africa,2022-23,offshore,373,
+South Africa,2022-23,onshore,242,
+South Africa,2023-24,offshore,228,-38.9
+South Africa,2023-24,onshore,136,
+South Africa,2024-25,offshore,232,1.8
+South Africa,2024-25,onshore,166,
+South Africa,2025-26 YTD (to Feb 2026),offshore_ytd,158,
+South Africa,2025-26 YTD (to Feb 2026),onshore_ytd,109,
+South Korea,2022-23,offshore,2722,
+South Korea,2022-23,onshore,4391,
+South Korea,2023-24,offshore,2649,-2.7
+South Korea,2023-24,onshore,2190,
+South Korea,2024-25,offshore,3233,22.0
+South Korea,2024-25,onshore,2657,
+South Korea,2025-26 YTD (to Feb 2026),offshore_ytd,2640,
+South Korea,2025-26 YTD (to Feb 2026),onshore_ytd,1584,
+Spain,2022-23,offshore,3407,
+Spain,2022-23,onshore,557,
+Spain,2023-24,offshore,2726,-20.0
+Spain,2023-24,onshore,445,
+Spain,2024-25,offshore,2202,-19.2
+Spain,2024-25,onshore,883,
+Spain,2025-26 YTD (to Feb 2026),offshore_ytd,1256,
+Spain,2025-26 YTD (to Feb 2026),onshore_ytd,456,
+Sri Lanka,2022-23,offshore,6573,
+Sri Lanka,2022-23,onshore,3703,
+Sri Lanka,2023-24,offshore,5731,-12.8
+Sri Lanka,2023-24,onshore,1523,
+Sri Lanka,2024-25,offshore,5832,1.8
+Sri Lanka,2024-25,onshore,2027,
+Sri Lanka,2025-26 YTD (to Feb 2026),offshore_ytd,2477,
+Sri Lanka,2025-26 YTD (to Feb 2026),onshore_ytd,1748,
+Sweden,2022-23,offshore,645,
+Sweden,2022-23,onshore,111,
+Sweden,2023-24,offshore,569,-11.8
+Sweden,2023-24,onshore,88,
+Sweden,2024-25,offshore,552,-3.0
+Sweden,2024-25,onshore,90,
+Sweden,2025-26 YTD (to Feb 2026),offshore_ytd,238,
+Sweden,2025-26 YTD (to Feb 2026),onshore_ytd,58,
+Taiwan,2022-23,offshore,1967,
+Taiwan,2022-23,onshore,3197,
+Taiwan,2023-24,offshore,2030,3.2
+Taiwan,2023-24,onshore,1679,
+Taiwan,2024-25,offshore,2274,12.0
+Taiwan,2024-25,onshore,1878,
+Taiwan,2025-26 YTD (to Feb 2026),offshore_ytd,1716,
+Taiwan,2025-26 YTD (to Feb 2026),onshore_ytd,1165,
+Tanzania,2022-23,offshore,43,
+Tanzania,2022-23,onshore,27,
+Tanzania,2023-24,offshore,27,-37.2
+Tanzania,2023-24,onshore,9,
+Tanzania,2024-25,offshore,30,11.1
+Tanzania,2024-25,onshore,21,
+Tanzania,2025-26 YTD (to Feb 2026),offshore_ytd,23,
+Tanzania,2025-26 YTD (to Feb 2026),onshore_ytd,8,
+Thailand,2022-23,offshore,11225,
+Thailand,2022-23,onshore,8867,
+Thailand,2023-24,offshore,2832,-74.8
+Thailand,2023-24,onshore,4459,
+Thailand,2024-25,offshore,1932,-31.8
+Thailand,2024-25,onshore,3256,
+Thailand,2025-26 YTD (to Feb 2026),offshore_ytd,994,
+Thailand,2025-26 YTD (to Feb 2026),onshore_ytd,1575,
+Turkey,2022-23,offshore,2613,
+Turkey,2022-23,onshore,1173,
+Turkey,2023-24,offshore,1894,-27.5
+Turkey,2023-24,onshore,1220,
+Turkey,2024-25,offshore,982,-48.2
+Turkey,2024-25,onshore,1185,
+Turkey,2025-26 YTD (to Feb 2026),offshore_ytd,709,
+Turkey,2025-26 YTD (to Feb 2026),onshore_ytd,493,
+Uganda,2022-23,offshore,129,
+Uganda,2022-23,onshore,38,
+Uganda,2023-24,offshore,100,-22.5
+Uganda,2023-24,onshore,33,
+Uganda,2024-25,offshore,84,-16.0
+Uganda,2024-25,onshore,29,
+Uganda,2025-26 YTD (to Feb 2026),offshore_ytd,97,
+Uganda,2025-26 YTD (to Feb 2026),onshore_ytd,24,
+United Arab Emirates,2022-23,offshore,89,
+United Arab Emirates,2022-23,onshore,21,
+United Arab Emirates,2023-24,offshore,251,182.0
+United Arab Emirates,2023-24,onshore,31,
+United Arab Emirates,2024-25,offshore,420,67.3
+United Arab Emirates,2024-25,onshore,37,
+United Arab Emirates,2025-26 YTD (to Feb 2026),offshore_ytd,387,
+United Arab Emirates,2025-26 YTD (to Feb 2026),onshore_ytd,68,
+United Kingdom,2022-23,offshore,1687,
+United Kingdom,2022-23,onshore,996,
+United Kingdom,2023-24,offshore,1581,-6.3
+United Kingdom,2023-24,onshore,678,
+United Kingdom,2024-25,offshore,1563,-1.1
+United Kingdom,2024-25,onshore,751,
+United Kingdom,2025-26 YTD (to Feb 2026),offshore_ytd,612,
+United Kingdom,2025-26 YTD (to Feb 2026),onshore_ytd,498,
+United States,2022-23,offshore,4195,
+United States,2022-23,onshore,691,
+United States,2023-24,offshore,4720,12.5
+United States,2023-24,onshore,481,
+United States,2024-25,offshore,5353,13.4
+United States,2024-25,onshore,488,
+United States,2025-26 YTD (to Feb 2026),offshore_ytd,3783,
+United States,2025-26 YTD (to Feb 2026),onshore_ytd,297,
+Uzbekistan,2022-23,offshore,69,
+Uzbekistan,2022-23,onshore,38,
+Uzbekistan,2023-24,offshore,108,56.5
+Uzbekistan,2023-24,onshore,23,
+Uzbekistan,2024-25,offshore,174,61.1
+Uzbekistan,2024-25,onshore,30,
+Uzbekistan,2025-26 YTD (to Feb 2026),offshore_ytd,193,
+Uzbekistan,2025-26 YTD (to Feb 2026),onshore_ytd,19,
+Vietnam,2022-23,offshore,10350,
+Vietnam,2022-23,onshore,7136,
+Vietnam,2023-24,offshore,10015,-3.2
+Vietnam,2023-24,onshore,4497,
+Vietnam,2024-25,offshore,6993,-30.2
+Vietnam,2024-25,onshore,4600,
+Vietnam,2025-26 YTD (to Feb 2026),offshore_ytd,3496,
+Vietnam,2025-26 YTD (to Feb 2026),onshore_ytd,3104,
+Zambia,2022-23,offshore,48,
+Zambia,2022-23,onshore,73,
+Zambia,2023-24,offshore,40,-16.7
+Zambia,2023-24,onshore,32,
+Zambia,2024-25,offshore,34,-15.0
+Zambia,2024-25,onshore,37,
+Zambia,2025-26 YTD (to Feb 2026),offshore_ytd,31,
+Zambia,2025-26 YTD (to Feb 2026),onshore_ytd,26,
+Zimbabwe,2022-23,offshore,535,
+Zimbabwe,2022-23,onshore,305,
+Zimbabwe,2023-24,offshore,440,-17.8
+Zimbabwe,2023-24,onshore,147,
+Zimbabwe,2024-25,offshore,318,-27.7
+Zimbabwe,2024-25,onshore,194,
+Zimbabwe,2025-26 YTD (to Feb 2026),offshore_ytd,274,
+Zimbabwe,2025-26 YTD (to Feb 2026),onshore_ytd,202,

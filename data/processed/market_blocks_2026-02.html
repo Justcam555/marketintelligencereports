@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Intelligence Blocks — 2026-02</title>
+<style>
+body { background: #060b14; padding: 48px 24px; }
+h1 { color: #9ca3af; font-family: sans-serif; font-size: 14px;
+     letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+h2 { color: #374151; font-family: sans-serif; font-size: 12px; margin-bottom: 32px; }
+
+.market-block {
+    background: #111827;
+    border: 1px solid #1f2d45;
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin: 24px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #d1d5db;
+    max-width: 720px;
+}
+.market-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #1f2d45;
+}
+.market-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #4b5563;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+.market-country {
+    font-size: 22px;
+    font-weight: 700;
+    color: #f9fafb;
+}
+.market-meta {
+    font-size: 12px;
+    color: #6b7280;
+    text-align: right;
+    line-height: 1.6;
+}
+.as-of { color: #4b5563; }
+
+/* Tab bar */
+.tab-bar {
+    display: flex;
+    gap: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #1f2d45;
+}
+.tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #6b7280;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px 9px;
+    margin-bottom: -1px;
+    font-family: inherit;
+    letter-spacing: 0.2px;
+    transition: color 0.12s, border-color 0.12s;
+}
+.tab:hover { color: #9ca3af; }
+.tab.active {
+    color: #60a5fa;
+    border-bottom-color: #60a5fa;
+}
+
+/* Headline */
+.headline-strip {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    background: #0f1a2e;
+    border-radius: 10px;
+    border-left: 3px solid #e63946;
+}
+.headline-num {
+    font-size: 36px;
+    font-weight: 800;
+    color: #f9fafb;
+    font-variant-numeric: tabular-nums;
+}
+.headline-desc {
+    font-size: 14px;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Trend table */
+.trend-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+.trend-table th {
+    text-align: right;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 600;
+    border-bottom: 1px solid #1f2d45;
+}
+.trend-table th:first-child { text-align: left; }
+.trend-table td {
+    padding: 8px 10px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    border-bottom: 1px solid #0d1520;
+}
+.row-label { text-align: left !important; color: #d1d5db; }
+.row-label.muted { color: #6b7280; font-size: 13px; }
+.row-offshore td { color: #f9fafb; font-weight: 600; }
+.row-yoy td { vertical-align: middle; }
+.row-onshore td { color: #9ca3af; }
+.row-pct td { color: #9ca3af; vertical-align: middle; }
+.nil { color: #374151; }
+
+/* Badges */
+.badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+.badge-up   { background: #052e16; color: #4ade80; }
+.badge-down { background: #2d0a0a; color: #f87171; }
+.badge-flat { background: #1c1407; color: #fbbf24; }
+
+/* % offshore bar */
+.pct-val { font-size: 12px; color: #9ca3af; margin-right: 6px; }
+.pct-bar-wrap {
+    display: inline-block;
+    width: 50px;
+    height: 5px;
+    background: #1f2937;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+.pct-bar {
+    display: block;
+    height: 5px;
+    background: #0f3460;
+    border-radius: 3px;
+}
+
+/* Section head */
+.section-head {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #4b5563;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+/* Level chart */
+.level-chart { margin-bottom: 24px; }
+.level-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 7px;
+    font-size: 13px;
+}
+.level-label { width: 175px; color: #9ca3af; flex-shrink: 0; }
+.level-bar-wrap {
+    flex: 1;
+    height: 8px;
+    background: #1f2937;
+    border-radius: 3px;
+}
+.level-bar {
+    height: 8px;
+    background: linear-gradient(90deg, #0f3460, #1a6cc4);
+    border-radius: 3px;
+}
+.level-val { width: 60px; text-align: right; color: #d1d5db; font-variant-numeric: tabular-nums; }
+
+/* YTD */
+.ytd-strip {
+    background: #0a0f1a;
+    border: 1px dashed #1f2d45;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+.ytd-label { font-weight: 600; color: #9ca3af; }
+.ytd-vals { color: #d1d5db; font-variant-numeric: tabular-nums; }
+.ytd-note { color: #4b5563; font-style: italic; font-size: 12px; margin-left: auto; }
+
+/* Footer */
+.market-footer {
+    padding-top: 16px;
+    border-top: 1px solid #1f2d45;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.aei-link {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: #60a5fa;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+.aei-link:hover { color: #93c5fd; }
+.aei-source { font-size: 12px; font-weight: 400; color: #4b5563; }
+.attribution { font-size: 11px; color: #374151; }
+.attribution a { color: #374151; }
+.attribution a:hover { color: #6b7280; }
+
+/* Resources tab */
+.resources-pane { padding-top: 4px; }
+.res-group { margin-bottom: 24px; }
+.res-group-head {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #4b5563;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #1f2d45;
+}
+.res-link {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 3px;
+    border: 1px solid transparent;
+    transition: background 0.12s, border-color 0.12s;
+}
+.res-link:hover {
+    background: #0f1a2e;
+    border-color: #1f2d45;
+}
+.res-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #d1d5db;
+    margin-bottom: 2px;
+}
+.res-source {
+    font-size: 11px;
+    color: #6b7280;
+    margin-bottom: 2px;
+}
+.res-url {
+    font-size: 11px;
+    color: #374151;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+}
+.res-note {
+    font-size: 11px;
+    color: #4b5563;
+    font-style: italic;
+    margin-top: 4px;
+}
+.res-attribution {
+    font-size: 11px;
+    color: #374151;
+    border-top: 1px solid #1f2d45;
+    padding-top: 14px;
+    margin-top: 4px;
+    line-height: 1.7;
+}
+.res-unavailable {
+    color: #4b5563;
+    font-size: 13px;
+    font-style: italic;
+    padding: 20px 0;
+}
+
+</style>
+</head>
+<body>
+<h1>Market Intelligence — Visa Grants</h1>
+<h2>Data to February 2026 &nbsp;|&nbsp; Source: Australian Dept of Home Affairs</h2>
+
+    <div class="market-block" id="market-thailand">
+
+        <div class="market-header">
+            <div>
+                <div class="market-label">MARKET SIZE</div>
+                <div class="market-country">Thailand</div>
+            </div>
+            <div class="market-meta">Student visas granted&nbsp;&nbsp;|&nbsp;&nbsp;FY (Jul–Jun)<br>
+                <span class="as-of">Data to February 2026</span>
+            </div>
+        </div>
+
+        <div class="tab-bar">
+            <button class="tab active" onclick="switchTab(this,'tab-mkt-thailand')">Market Size</button>
+            <button class="tab" onclick="switchTab(this,'tab-res-thailand')">Resources</button>
+        </div>
+
+        <div id="tab-mkt-thailand" class="tab-pane">
+            
+        <!-- Headline -->
+        <div class="headline-strip">
+            <div class="headline-num">1,932</div>
+            <div class="headline-desc">
+                offshore grants &nbsp;2024-25
+                <span class="badge badge-down">↓ -31.8%</span>
+            </div>
+        </div>
+
+        <!-- Trend table -->
+        <table class="trend-table">
+            <thead>
+                <tr><th></th><th>2022-23</th><th>2023-24</th><th>2024-25</th></tr>
+            </thead>
+            <tbody>
+                <tr class="row-offshore">
+                    <td class="row-label">Offshore grants</td>
+                    <td>11,225</td><td>2,832</td><td>1,932</td>
+                </tr>
+                <tr class="row-yoy">
+                    <td class="row-label muted">YoY</td>
+                    <td></td><td><span class="badge badge-down">↓ -74.8%</span></td><td><span class="badge badge-down">↓ -31.8%</span></td>
+                </tr>
+                <tr class="row-onshore">
+                    <td class="row-label muted">Onshore grants</td>
+                    <td>8,867</td><td>4,459</td><td>3,256</td>
+                </tr>
+                <tr class="row-pct">
+                    <td class="row-label muted">% Offshore</td>
+                    <td><span class="pct-val">55.9%</span><span class="pct-bar-wrap"><span class="pct-bar" style="width:55.9%"></span></span></td><td><span class="pct-val">38.8%</span><span class="pct-bar-wrap"><span class="pct-bar" style="width:38.8%"></span></span></td><td><span class="pct-val">37.2%</span><span class="pct-bar-wrap"><span class="pct-bar" style="width:37.2%"></span></span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- By level -->
+        <div class="section-head">BY LEVEL — Offshore 2024-25</div>
+        <div class="level-chart">
+            
+            <div class="level-row">
+                <div class="level-label">Higher Education</div>
+                <div class="level-bar-wrap">
+                    <div class="level-bar" style="width:100%"></div>
+                </div>
+                <div class="level-val">802</div>
+            </div>
+            <div class="level-row">
+                <div class="level-label">ELICOS</div>
+                <div class="level-bar-wrap">
+                    <div class="level-bar" style="width:97%"></div>
+                </div>
+                <div class="level-val">777</div>
+            </div>
+            <div class="level-row">
+                <div class="level-label">Foreign Affairs / Defence</div>
+                <div class="level-bar-wrap">
+                    <div class="level-bar" style="width:15%"></div>
+                </div>
+                <div class="level-val">121</div>
+            </div>
+            <div class="level-row">
+                <div class="level-label">VET</div>
+                <div class="level-bar-wrap">
+                    <div class="level-bar" style="width:11%"></div>
+                </div>
+                <div class="level-val">92</div>
+            </div>
+            <div class="level-row">
+                <div class="level-label">Schools</div>
+                <div class="level-bar-wrap">
+                    <div class="level-bar" style="width:6%"></div>
+                </div>
+                <div class="level-val">52</div>
+            </div>
+            <div class="level-row">
+                <div class="level-label">Non-Award</div>
+                <div class="level-bar-wrap">
+                    <div class="level-bar" style="width:6%"></div>
+                </div>
+                <div class="level-val">50</div>
+            </div>
+            <div class="level-row">
+                <div class="level-label">Postgraduate Research</div>
+                <div class="level-bar-wrap">
+                    <div class="level-bar" style="width:5%"></div>
+                </div>
+                <div class="level-val">38</div>
+            </div>
+        </div>
+
+        <!-- YTD -->
+        <div class="ytd-strip">
+            <span class="ytd-label">2025-26 YTD (to Feb 2026)</span>
+            <span class="ytd-vals">Offshore: 994&nbsp;&nbsp;|&nbsp;&nbsp;Onshore: 1,575</span>
+            <span class="ytd-note">Partial year — not used for trend</span>
+        </div>
+
+        <!-- Footer -->
+        <div class="market-footer">
+            <a class="aei-link" href="https://app.powerbi.com/view?r=eyJrIjoiNTY0NWI1ODctODA2Mi00M2VmLThkZWEtZTJlZDc4OTAzMzBiIiwidCI6ImRkMGNmZDE1LTQ1NTgtNGIxMi04YmFkLWVhMjY5ODRmYzQxNyJ9" target="_blank" rel="noopener">
+                Explore commencements by sector →
+                <span class="aei-source">Australian Dept of Education — Interactive Report</span>
+            </a>
+            <div class="attribution">
+                Visa data: <a href="https://data.gov.au/data/dataset/student-visas" target="_blank">Australian Department of Home Affairs</a>
+                &nbsp;|&nbsp;
+                <a href="https://www.education.gov.au/international-education-data-and-research" target="_blank">
+                    Australian Department of Education
+                </a>
+            </div>
+        </div>
+        </div>
+
+        <div id="tab-res-thailand" class="tab-pane" style="display:none">
+            <div class="resources-pane"><div class="res-group"><div class="res-group-head">AUSTRALIAN STUDENT DATA</div><a class="res-link" href="https://data.gov.au/data/dataset/student-visas" target="_blank" rel="noopener"><div class="res-title">Student visa grants (offshore / onshore)</div><div class="res-source">Australian Department of Home Affairs</div><div class="res-url">data.gov.au/data/dataset/student-visas</div></a><a class="res-link" href="https://app.powerbi.com/view?r=eyJrIjoiNTY0NWI1ODctODA2Mi00M2VmLThkZWEtZTJlZDc4OTAzMzBiIiwidCI6ImRkMGNmZDE1LTQ1NTgtNGIxMi04YmFkLWVhMjY5ODRmYzQxNyJ9" target="_blank" rel="noopener"><div class="res-title">Commencements &amp; enrolments by sector — Interactive Report</div><div class="res-source">Australian Department of Education</div><div class="res-url">app.powerbi.com/view?r=eyJrIjoiNTY0NWI1ODctODA2Mi00M2VmLThkZWEtZTJlZDc4OTAzMzBiIiwidCI6ImRkMGNmZDE1LTQ1NTgtNGIxMi04YmFkLWVhMjY5ODRmYzQxNyJ9</div></a></div><div class="res-group"><div class="res-group-head">DIGITAL &amp; SOCIAL MEDIA</div><a class="res-link" href="https://datareportal.com/reports/digital-2026-thailand" target="_blank" rel="noopener"><div class="res-title">Digital 2026: Thailand — internet, social media &amp; platform usage</div><div class="res-source">DataReportal / We Are Social / Meltwater</div><div class="res-url">datareportal.com/reports/digital-2026-thailand</div></a></div><div class="res-group"><div class="res-group-head">ECONOMY &amp; DEMOGRAPHICS</div><a class="res-link" href="https://data.worldbank.org/country/TH" target="_blank" rel="noopener"><div class="res-title">Economy &amp; population data</div><div class="res-source">World Bank</div><div class="res-url">data.worldbank.org/country/TH</div></a><a class="res-link" href="https://www.cia.gov/the-world-factbook/countries/thailand/" target="_blank" rel="noopener"><div class="res-title">Country profile — demographics, education system, economy</div><div class="res-source">CIA World Factbook</div><div class="res-url">www.cia.gov/the-world-factbook/countries/thailand/</div></a></div><div class="res-group"><div class="res-group-head">STUDENT MOBILITY</div><a class="res-link" href="https://uis.unesco.org/en/topic/international-student-mobility" target="_blank" rel="noopener"><div class="res-title">Outbound &amp; inbound international student mobility</div><div class="res-source">UNESCO Institute for Statistics</div><div class="res-url">uis.unesco.org/en/topic/international-student-mobility</div></a><a class="res-link" href="https://www.whed.net/home.php" target="_blank" rel="noopener"><div class="res-title">Accredited universities in Thailand</div><div class="res-source">WHED — World Higher Education Database (IAU)</div><div class="res-url">www.whed.net/home.php</div><div class="res-note">The standard reference used by Australian universities to verify overseas qualifications.</div></a></div><div class="res-attribution">Data sourced from Australian Department of Home Affairs, Australian Department of Education, DataReportal, World Bank, CIA World Factbook, UNESCO UIS, and IAU WHED. All links direct to primary sources.</div></div>
+        </div>
+
+    </div>
+<script>
+function switchTab(btn, tabId) {
+    var block = btn.closest('.market-block');
+    block.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    block.querySelectorAll('.tab-pane').forEach(function(p) { p.style.display = 'none'; });
+    btn.classList.add('active');
+    document.getElementById(tabId).style.display = '';
+}
+</script>
+</body>
+</html>
