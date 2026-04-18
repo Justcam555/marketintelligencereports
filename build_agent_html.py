@@ -122,6 +122,75 @@ def load_data(conn: sqlite3.Connection):
     return uni_names, clean
 
 
+def build_social_data(conn: sqlite3.Connection) -> dict:
+    """
+    SOCIAL_DATA = {country: {canonical_name: {presence_score, tiktok, facebook, instagram, youtube, google}}}
+    Deduplicates by canonical_name per country — keeps row with highest presence_score.
+    """
+    rows = conn.execute("""
+        SELECT country, canonical_name, presence_score,
+               tiktok_followers, tiktok_total_views, tiktok_last_post, tiktok_engagement_rate,
+               facebook_url, facebook_followers,
+               instagram_handle, instagram_followers, ig_last_post,
+               yt_subscribers, yt_total_views, yt_video_count,
+               google_rating, google_reviews
+        FROM agent_social
+        WHERE canonical_name IS NOT NULL AND TRIM(canonical_name) != ''
+        ORDER BY presence_score DESC
+    """).fetchall()
+
+    seen = {}   # (country, canonical_name) → best row
+    for row in rows:
+        country, name = row[0], row[1]
+        if not country or not name:
+            continue
+        country = normalise_country(country)
+        key = (country, name)
+        if key not in seen:
+            seen[key] = row
+
+    social: dict = {}
+    for (country, name), row in seen.items():
+        (_, _, score,
+         tt_fol, tt_views, tt_last, tt_eng,
+         fb_url, fb_fol,
+         ig_handle, ig_fol, ig_last,
+         yt_subs, yt_views, yt_vids,
+         g_rating, g_reviews) = row
+
+        if country not in social:
+            social[country] = {}
+        social[country][name] = {
+            "presence_score": score,
+            "tiktok": {
+                "followers":        tt_fol,
+                "total_views":      tt_views,
+                "last_post":        tt_last,
+                "engagement_rate":  tt_eng,
+            },
+            "facebook": {
+                "url":       fb_url,
+                "followers": fb_fol,
+            },
+            "instagram": {
+                "handle":    ig_handle,
+                "followers": ig_fol,
+                "last_post": ig_last,
+            },
+            "youtube": {
+                "subscribers": yt_subs,
+                "total_views": yt_views,
+                "videos":      yt_vids,
+            },
+            "google": {
+                "rating":  g_rating,
+                "reviews": g_reviews,
+            },
+        }
+
+    return social
+
+
 def build_all_data(rows, uni_names):
     """
     ALL_DATA = {
@@ -331,8 +400,12 @@ def main():
     conn = sqlite3.connect(DB_PATH)
     print("Loading agent data from DB …")
     uni_names, rows = load_data(conn)
+    print("Building SOCIAL_DATA …")
+    social_data = build_social_data(conn)
     conn.close()
     print(f"  {len(rows):,} cleaned agent rows across {len(uni_names)} universities")
+    total_social = sum(len(v) for v in social_data.values())
+    print(f"  {total_social} agents with social data across {len(social_data)} countries")
 
     print("Building ALL_DATA …")
     all_data = build_all_data(rows, uni_names)
@@ -398,9 +471,10 @@ def main():
     # ── Update market-intelligence-report.html ────────────────────────────────
     print(f"\nReading {REPORT_HTML.name} …")
     rhtml = REPORT_HTML.read_text()
-    print("Replacing ALL_DATA and UNI_LOGOS in market-intelligence-report …")
-    rhtml = replace_js_const(rhtml, "ALL_DATA", json.dumps(all_data, ensure_ascii=False, separators=(',', ':')))
-    rhtml = replace_js_const(rhtml, "UNI_LOGOS", json.dumps(uni_logos, ensure_ascii=False, separators=(',', ':')))
+    print("Replacing ALL_DATA, SOCIAL_DATA and UNI_LOGOS in market-intelligence-report …")
+    rhtml = replace_js_const(rhtml, "ALL_DATA",    json.dumps(all_data,    ensure_ascii=False, separators=(',', ':')))
+    rhtml = replace_js_const(rhtml, "SOCIAL_DATA", json.dumps(social_data, ensure_ascii=False, separators=(',', ':')))
+    rhtml = replace_js_const(rhtml, "UNI_LOGOS",   json.dumps(uni_logos,   ensure_ascii=False, separators=(',', ':')))
     REPORT_HTML.write_text(rhtml)
     print(f"  ✅ {REPORT_HTML.name} written ({len(rhtml):,} bytes)")
 
