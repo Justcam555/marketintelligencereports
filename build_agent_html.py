@@ -25,6 +25,17 @@ DB_PATH      = Path.home() / "Desktop" / "Agent Scraper" / "data" / "agents.db"
 REPO_DIR     = Path(__file__).parent
 NETWORK_HTML = REPO_DIR / "agent-network.html"
 INDEX_HTML   = REPO_DIR / "index.html"
+LOGO_DIR     = REPO_DIR / "Uni logos"
+
+# Manual overrides where slug can't be cleanly derived from the DB name
+UNI_SLUG_OVERRIDES = {
+    "CQUniversity Australia":                    "cquniversity",
+    "UNSW Sydney":                               "unsw-sydney",
+    "University of Southern Queensland / UniSQ": "university-of-southern-queensland",
+    "University of the Sunshine Coast / UniSC":  "university-of-the-sunshine-coast",
+    "University of Notre Dame Australia":         "university-of-notre-dame-australia",
+    "Batchelor Institute of Indigenous Tertiary Education": None,  # no logo
+}
 
 # Universities excluded from all counts (bad data / not real agents)
 EXCLUDE_COMPANIES = {"Email:", "Phone:", "Address:"}
@@ -274,6 +285,42 @@ def update_index_html(path: Path, total_agents: int, total_markets: int, total_u
     print(f"  index.html updated: {total_agents:,} agents · {total_markets} markets · {total_unis} unis")
 
 
+def uni_name_to_slug(name: str) -> str:
+    """Derive logo filename slug from a university DB name."""
+    if name in UNI_SLUG_OVERRIDES:
+        return UNI_SLUG_OVERRIDES[name]
+    s = name.lower()
+    s = re.sub(r'\s*/.*$', '', s)          # drop "/ UniSQ" suffixes
+    s = re.sub(r'[^a-z0-9\s-]', '', s)    # strip punctuation
+    s = re.sub(r'\s+', '-', s.strip())     # spaces → hyphens
+    return s
+
+
+def build_uni_logos(uni_names: dict) -> dict:
+    """
+    Return {uni_name: relative_logo_path} for all universities.
+    Value is None when no logo file is available.
+    Paths are relative to agent-network.html (i.e. "Uni logos/slug.svg").
+    """
+    logos = {}
+    for uni_name in uni_names.values():
+        if not uni_name:
+            continue
+        slug = uni_name_to_slug(uni_name)
+        if not slug:
+            logos[uni_name] = None
+            continue
+        found = None
+        for ext in (".svg", ".png"):
+            candidate = LOGO_DIR / f"{slug}{ext}"
+            if candidate.exists():
+                # URL-encode the space in "Uni logos"
+                found = f"Uni%20logos/{slug}{ext}"
+                break
+        logos[uni_name] = found
+    return logos
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
@@ -315,9 +362,16 @@ def main():
             print(f"  {a['name']:50s}  {a['uni_count']} unis · {a['country_count']} countries")
         return
 
+    # ── Build UNI_LOGOS mapping ───────────────────────────────────────────────
+    uni_logos = build_uni_logos(uni_names)
+    print(f"  {sum(1 for v in uni_logos.values() if v)} of {len(uni_logos)} universities have logos")
+
     # ── Update agent-network.html ─────────────────────────────────────────────
     print(f"\nReading {NETWORK_HTML.name} …")
     html = NETWORK_HTML.read_text()
+
+    print("Replacing UNI_LOGOS …")
+    html = replace_js_const(html, "UNI_LOGOS", json.dumps(uni_logos, ensure_ascii=False, separators=(',', ':')))
 
     print("Replacing GLOBAL_AGENTS …")
     html = replace_js_const(html, "GLOBAL_AGENTS", json.dumps(global_agents, ensure_ascii=False, separators=(',', ':')))
