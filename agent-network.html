@@ -197,6 +197,11 @@ table.dir-table td.td-web a:hover { text-decoration: underline; }
 .unis-expand { display: none; margin-top: .3rem; }
 .unis-expand.open { display: flex; flex-wrap: wrap; gap: .25rem; }
 .uni-chip { background: var(--light); color: var(--primary); font-size: .65rem; padding: 2px 6px; border-radius: 8px; border: 1px solid var(--border); white-space: nowrap; }
+#panel-directory .unis-expand.open { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: .4rem; }
+#panel-directory .dir-logo-cell { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 6px 4px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 6px; min-height: 64px; }
+#panel-directory .dir-logo-cell img { max-width: 56px; max-height: 40px; object-fit: contain; }
+#panel-directory .dir-logo-cell .dir-logo-name { font-size: .6rem; color: #64748B; text-align: center; line-height: 1.2; }
+#panel-directory .dir-logo-abbr { font-size: .65rem; font-weight: 700; color: #475569; background: #E2E8F0; border-radius: 4px; padding: 4px 6px; text-align: center; }
 
 /* Tooltip */
 #tooltip { position: fixed; background: rgba(0,0,30,.85); color: #fff; padding: .4rem .8rem; border-radius: 6px; font-size: .76rem; pointer-events: none; display: none; z-index: 9999; max-width: 260px; line-height: 1.5; }
@@ -772,7 +777,12 @@ function renderDirRows() {
     const webLink = webUrl
       ? `<a href="${webUrl}" target="_blank" title="${webUrl}">🔗 ${new URL(webUrl.startsWith("http")?webUrl:"https://"+webUrl).hostname.replace("www.","")}</a>`
       : `<span style="color:#CBD5E1">—</span>`;
-    const uniChips = a.unis.map(u => `<span class="uni-chip">${shortUni(u)}</span>`).join("");
+    const uniChips = a.unis.map(u => {
+      const logo = UNI_LOGOS[u]
+        ? `<img src="${UNI_LOGOS[u]}" alt="${u}" loading="lazy"><span class="dir-logo-name">${shortUni(u)}</span>`
+        : `<span class="dir-logo-abbr" title="${u}">${uniAbbr(u)}</span><span class="dir-logo-name">${shortUni(u)}</span>`;
+      return `<div class="dir-logo-cell" title="${u}">${logo}</div>`;
+    }).join("");
     const parentCell = (a.parent && a.parent !== a.name) ? a.parent : `<span style="color:#CBD5E1">—</span>`;
     const profileId = (SOCIAL_INDEX[a.name] && SOCIAL_INDEX[a.name][currentCountry]) || null;
     const profileLink = profileId
