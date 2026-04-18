@@ -122,8 +122,8 @@ table.matrix th.uni-head { height: 130px; white-space: nowrap; background: trans
 table.matrix th.uni-head > div { transform: rotate(-45deg); transform-origin: left bottom; width: 28px; margin-left: 14px; margin-bottom: 4px; }
 table.matrix th.uni-head > div > span { display: inline-block; background: var(--primary); color: #fff; font-weight: 600; font-size: .72rem; padding: 3px 8px; border-radius: 4px 4px 0 0; white-space: nowrap; max-width: 160px; overflow: hidden; text-overflow: ellipsis; }
 table.matrix th.uni-head:hover > div > span { background: #1a5276; }
-.uni-head-logo { display:block; width:22px; height:22px; object-fit:contain; margin:0 auto 3px; border-radius:3px; }
-.uni-tag-logo  { height:13px; width:13px; object-fit:contain; vertical-align:middle; margin-right:3px; border-radius:2px; }
+.uni-head-logo { display:block; width:22px; height:22px; object-fit:contain; margin:4px auto 0; border-radius:3px; }
+.uni-head-logo-gap { display:block; height:26px; }
 table.matrix td.agent-name { padding: .35rem .7rem; font-size: .78rem; font-weight: 500; white-space: nowrap; max-width: 200px; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid #E8EDF2; cursor: default; position: sticky; left: 0; background: #fff; z-index: 1; }
 table.matrix td.agent-name.one-ed { background: #FFF5F5; color: var(--one-ed); font-weight: 700; border-left: 3px solid var(--one-ed); }
 .uni-count-badge { display: inline-block; background: var(--accent); color: #fff; border-radius: 10px; padding: 1px 6px; font-size: .62rem; font-weight: 700; margin-left: .4rem; vertical-align: middle; }
@@ -155,8 +155,10 @@ table.matrix td.cell:hover { transform: scale(1.4); z-index: 10; border-color: v
 .agent-card.one-ed .card-name { color: var(--one-ed); }
 .card-meta { font-size: .72rem; color: #64748B; margin-top: .15rem; }
 .uni-count-big { font-size: 1.4rem; font-weight: 700; color: var(--accent); white-space: nowrap; }
-.uni-tags { display: flex; flex-wrap: wrap; gap: .28rem; margin-top: .5rem; }
-.uni-tag { background: var(--light); color: var(--primary); font-size: .63rem; padding: 2px 7px; border-radius: 10px; border: 1px solid var(--border); }
+.logo-wall { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-top: .55rem; }
+.logo-wall-cell { display: flex; align-items: center; justify-content: center; height: 36px; }
+.logo-wall-cell img { max-width: 36px; max-height: 36px; object-fit: contain; border-radius: 3px; }
+.logo-wall-abbr { font-size: .52rem; font-weight: 700; color: #64748B; background: #F1F5F9; border: 1px solid #E2E8F0; border-radius: 4px; padding: 2px 4px; text-align: center; line-height: 1.4; width: 36px; overflow: hidden; }
 .contact-row { display: flex; gap: .7rem; margin-top: .6rem; font-size: .7rem; color: #64748B; flex-wrap: wrap; }
 .contact-row a { color: #2563EB; text-decoration: none; }
 .contact-row a:hover { text-decoration: underline; }
@@ -509,6 +511,32 @@ function shortUni(u) {
           .trim();
 }
 
+
+const UNI_ABBR = {
+  "Adelaide University":"AdelU","Australian Catholic University":"ACU",
+  "Australian National University":"ANU","Australian University of Theology":"AUTh",
+  "Avondale University":"Avon","Batchelor Institute of Indigenous Tertiary Education":"Batch",
+  "Bond University":"Bond","CQUniversity Australia":"CQU",
+  "Charles Darwin University":"CDU","Charles Sturt University":"CSU",
+  "Curtin University":"Curtin","Deakin University":"Deakin",
+  "Edith Cowan University":"ECU","Federation University Australia":"FedUni",
+  "Flinders University":"Flind","Griffith University":"Griff",
+  "James Cook University":"JCU","La Trobe University":"LaTrobe",
+  "Macquarie University":"MQ","Monash University":"Monash",
+  "Murdoch University":"Murdoch","Queensland University of Technology":"QUT",
+  "RMIT University":"RMIT","Southern Cross University":"SCU",
+  "Swinburne University of Technology":"Swin","Torrens University Australia":"Torrens",
+  "UNSW Sydney":"UNSW","University of Canberra":"UC",
+  "University of Divinity":"UDiv","University of Melbourne":"UMelb",
+  "University of New England":"UNE","University of Newcastle":"UoN",
+  "University of Notre Dame Australia":"UNDA","University of Queensland":"UQ",
+  "University of Southern Queensland / UniSQ":"UniSQ","University of Sydney":"USyd",
+  "University of Tasmania":"UTAS","University of Technology Sydney":"UTS",
+  "University of Western Australia":"UWA","University of Wollongong":"UoW",
+  "University of the Sunshine Coast / UniSC":"USC","Victoria University":"VU",
+  "Western Sydney University":"WSU",
+};
+function uniAbbr(u) { return UNI_ABBR[u] || u.replace(/[^A-Z]/g,"").substring(0,4) || u.substring(0,4); }
 // ── Matrix ────────────────────────────────────────────────────────────────────
 let matrixSortAsc = false;
 let currentGroupedAgents = [];
@@ -551,8 +579,8 @@ function renderGroupedMatrix(unis) {
   let html = `<table class="matrix"><thead><tr><th class="corner"></th>`;
   unis.forEach((u,i) => {
     const cnt = currentGroupedAgents.filter(a => a.unis.includes(u)).length;
-    const uLogo = UNI_LOGOS[u] ? `<img class="uni-head-logo" src="${UNI_LOGOS[u]}" alt="" loading="lazy">` : `<span style="display:block;height:22px;margin-bottom:3px"></span>`;
-    html += `<th class="uni-head" title="${u} (${cnt} groups)" onclick="sortMatrix(${i})">${uLogo}<div><span>${shortUni(u)}</span></div></th>`;
+    const uLogo = UNI_LOGOS[u] ? `<img class="uni-head-logo" src="${UNI_LOGOS[u]}" alt="" loading="lazy">` : `<span class="uni-head-logo-gap"></span>`;
+    html += `<th class="uni-head" title="${u} (${cnt} groups)" onclick="sortMatrix(${i})"><div><span>${shortUni(u)}</span></div>${uLogo}</th>`;
   });
   html += `</tr></thead><tbody>`;
   currentGroupedAgents.forEach(agent => {
@@ -637,7 +665,12 @@ function buildCards() {
     const webUrl = a.website ? (a.website.startsWith("http") ? a.website : "https://"+a.website) : "";
     const webLink = webUrl ? `<a href="${webUrl}" target="_blank">🔗 Website</a>` : "";
     const parentLine = (a.parent && a.parent !== a.name) ? `<div class="card-meta">🏢 ${a.parent}</div>` : "";
-    const tags = a.unis.map(u => { const lg = UNI_LOGOS[u] ? `<img class="uni-tag-logo" src="${UNI_LOGOS[u]}" alt="" loading="lazy">` : ""; return `<span class="uni-tag">${lg}${shortUni(u)}</span>`; }).join("");
+    const tags = a.unis.map(u => {
+      const logo = UNI_LOGOS[u]
+        ? `<img src="${UNI_LOGOS[u]}" alt="${u}" title="${u}" loading="lazy">`
+        : `<span class="logo-wall-abbr" title="${u}">${uniAbbr(u)}</span>`;
+      return `<div class="logo-wall-cell">${logo}</div>`;
+    }).join("");
     html += `<div class="agent-card">
       <div class="card-header">
         <div>
@@ -647,7 +680,7 @@ function buildCards() {
         </div>
         <div class="uni-count-big">${a.unis.length}</div>
       </div>
-      <div class="uni-tags">${tags}</div>
+      <div class="logo-wall">${tags}</div>
       <div class="contact-row">${emailLink}${webLink}</div>
     </div>`;
   });
