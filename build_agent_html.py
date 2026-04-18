@@ -23,9 +23,10 @@ from pathlib import Path
 
 DB_PATH      = Path.home() / "Desktop" / "Agent Scraper" / "data" / "agents.db"
 REPO_DIR     = Path(__file__).parent
-NETWORK_HTML = REPO_DIR / "agent-network.html"
-INDEX_HTML   = REPO_DIR / "index.html"
-LOGO_DIR     = REPO_DIR / "Uni logos"
+NETWORK_HTML  = REPO_DIR / "agent-network.html"
+PROFILE_HTML  = REPO_DIR / "agent-profile.html"
+INDEX_HTML    = REPO_DIR / "index.html"
+LOGO_DIR      = REPO_DIR / "Uni logos"
 
 # Manual overrides where slug can't be cleanly derived from the DB name
 UNI_SLUG_OVERRIDES = {
@@ -384,6 +385,14 @@ def main():
 
     NETWORK_HTML.write_text(html)
     print(f"  ✅ {NETWORK_HTML.name} written ({len(html):,} bytes)")
+
+    # ── Update agent-profile.html ─────────────────────────────────────────────
+    print(f"\nReading {PROFILE_HTML.name} …")
+    phtml = PROFILE_HTML.read_text()
+    print("Replacing UNI_LOGOS in agent-profile …")
+    phtml = replace_js_const(phtml, "UNI_LOGOS", json.dumps(uni_logos, ensure_ascii=False, separators=(',', ':')))
+    PROFILE_HTML.write_text(phtml)
+    print(f"  ✅ {PROFILE_HTML.name} written ({len(phtml):,} bytes)")
 
     # ── Update index.html ─────────────────────────────────────────────────────
     print(f"\nUpdating {INDEX_HTML.name} …")
