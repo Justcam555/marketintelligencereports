@@ -213,7 +213,7 @@ function renderProfile(a) {
     { cls:"youtube",   icon:"📺", lbl:"YT Top Video",  val:fmt(a.yt_top_video_views), sub: a.yt_channel_name || null },
     { cls:"maps",      icon:"⭐", lbl:"Google Rating",  val: a.google_rating ? a.google_rating.toFixed(1)+"★" : null, sub: a.google_reviews ? a.google_reviews+" reviews" : null },
     { cls:"linkedin",  icon:"💼", lbl:"LI Followers",  val:fmt(a.linkedin_followers), sub: a.li_employee_count ? a.li_employee_count+" employees" : null },
-    { cls:"neutral",   icon:"💚", lbl:"LINE Friends",  val:fmt(a.line_oa_friends), sub: a.line_oa_handle || null },
+    ...(a.line_oa_handle ? [{ cls:"neutral", icon:"💚", lbl:"LINE Friends", val:fmt(a.line_oa_friends), sub: a.line_oa_handle }] : []),
   ];
 
   const kpiHtml = kpis.map(k => {
@@ -385,27 +385,29 @@ function renderProfile(a) {
     </div>`;
   }
 
-  // ── LINE OA section ──
+  // ── LINE OA section — show always for Thailand, only if handle exists elsewhere ──
+  const isThailand = a.country === "Thailand";
   let lineHtml = "";
   if (a.line_oa_handle) {
     const lineMeta = [
-      a.line_oa_friends != null ? `<div class="meta-chip"><span class="icon">👥</span><span class="val">${fmt(a.line_oa_friends) || "N/A"}</span><span class="lbl">friends</span></div>` : "",
-      a.line_oa_verified ? `<div class="meta-chip"><span class="icon">✅</span><span class="val">${esc(a.line_oa_verified)}</span><span class="lbl">badge</span></div>` : "",
+      a.line_oa_friends != null ? `<div class="meta-chip"><span class="icon">👥</span><span class="val">${fmt(a.line_oa_friends)}</span><span class="lbl">friends</span></div>` : "",
+      a.line_oa_verified ? `<div class="meta-chip"><span class="icon">✅</span><span class="val" style="text-transform:capitalize">${esc(a.line_oa_verified)}</span><span class="lbl">badge</span></div>` : "",
     ].filter(Boolean).join("");
     lineHtml = `<div class="section">
       <div class="section-header">
         <div class="icon" style="background:#e6f9ed">💚</div>
         <h3>LINE Official Account</h3>
-        <a href="https://page.line.me/${a.line_oa_handle}" target="_blank" rel="noopener" class="ext-link" style="margin-left:auto">${esc(a.line_oa_handle)} ↗</a>
+        <a href="https://page.line.me/${a.line_oa_handle}" target="_blank" rel="noopener" class="ext-link" style="margin-left:auto">page.line.me/${esc(a.line_oa_handle)} ↗</a>
       </div>
       <div class="meta-row">${lineMeta || '<p style="color:#888;font-size:13px">LINE OA found — friend count unavailable.</p>'}</div>
     </div>`;
-  } else {
+  } else if (isThailand) {
     lineHtml = `<div class="section">
       <div class="section-header"><div class="icon" style="background:#e6f9ed">💚</div><h3>LINE Official Account</h3><span class="badge na" style="margin-left:auto">Not found</span></div>
-      <div class="coming-soon"><div class="icon">💚</div><h4>No LINE OA Found</h4><p>No LINE Official Account was identified on this agent's website.</p></div>
+      <div class="coming-soon"><div class="icon">💚</div><h4>No LINE OA Found</h4><p>LINE Official Account is the primary messaging channel in Thailand. No account was identified on this agent's website.</p></div>
     </div>`;
   }
+  // For non-Thailand agents with no handle: lineHtml stays "" (section hidden)
 
   // ── Facebook (coming soon) ──
   const fbHtml = `<div class="section">
@@ -427,7 +429,7 @@ function renderProfile(a) {
     { lbl:"Facebook",  pts: a.facebook_url ? 1.5 : 0, max:1.5, col:"#1877f2" },
     { lbl:"LinkedIn",  pts: a.linkedin_url ? (((a.linkedin_followers||0) >= 500) ? 1.0 : 0.5) : 0, max:1.0, col:"#0a66c2" },
     { lbl:"YouTube",   pts: a.yt_channel_name ? 0.5 : 0, max:0.5, col:"#FF0000" },
-    { lbl:"LINE OA",   pts: a.line_oa_handle ? (((a.line_oa_friends||0) >= 10000) ? 1.5 : ((a.line_oa_friends||0) >= 1000) ? 1.0 : 0.5) : 0, max:1.5, col:"#06C755" },
+    ...(isThailand || a.line_oa_handle ? [{ lbl:"LINE OA", pts: a.line_oa_handle ? (((a.line_oa_friends||0) >= 10000) ? 1.5 : ((a.line_oa_friends||0) >= 1000) ? 1.0 : 0.5) : 0, max:1.5, col:"#06C755" }] : []),
   ];
   const scoreBreakdownHtml = scoreItems.map(s => {
     const pct = s.max > 0 ? Math.round(s.pts / s.max * 100) : 0;
