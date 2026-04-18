@@ -270,7 +270,7 @@ footer { text-align: center; padding: 1rem; color: #94A3B8; font-size: .75rem; b
     <div class="kpi-card"><div class="val" id="kpiAgents">—</div><div class="lbl">Agents</div></div>
     <div class="kpi-card"><div class="val" id="kpiUnis">—</div><div class="lbl">Universities</div></div>
     <div class="kpi-card"><div class="val" id="kpiLinks">—</div><div class="lbl">Authorisations</div></div>
-    <div class="kpi-card"><div class="val" id="kpiOneEd">—</div><div class="lbl">One Ed Universities</div></div>
+    <div class="kpi-card"><div class="val" id="kpiVisaGrants">—</div><div class="lbl">VISA GRANTS 2024-25</div><div id="kpiVisaOffshore" style="font-size:.72rem;color:#64748B;margin-top:.15rem"></div></div>
     <div class="kpi-card"><div class="val" id="kpiTop">—</div><div class="lbl">Top Agent</div></div>
   </div>
 
@@ -457,7 +457,17 @@ function selectCountry(name) {
   document.getElementById("kpiAgents").textContent = currentAgents.length;
   document.getElementById("kpiUnis").textContent   = currentUnis.length;
   document.getElementById("kpiLinks").textContent  = d.total_links;
-  document.getElementById("kpiOneEd").textContent  = oneEdAgent ? oneEdAgent.unis.length : "—";
+  const mktData = MARKET_DATA[currentCountry];
+  const mktYrs  = mktData && mktData.complete_years ? mktData.complete_years : [];
+  const mktLatestYr = mktYrs[mktYrs.length - 1];
+  const mktOffshore = mktLatestYr && mktData.offshore && mktData.offshore[mktLatestYr]
+                      ? mktData.offshore[mktLatestYr].grants : null;
+  const mktOnshore  = mktLatestYr && mktData.onshore  && mktData.onshore[mktLatestYr]
+                      ? mktData.onshore[mktLatestYr].grants  : null;
+  const mktTotal = (mktOffshore != null && mktOnshore != null) ? mktOffshore + mktOnshore
+                 : (mktOffshore != null) ? mktOffshore : null;
+  document.getElementById("kpiVisaGrants").textContent  = mktTotal != null ? mktTotal.toLocaleString() : "—";
+  document.getElementById("kpiVisaOffshore").textContent = mktOffshore != null ? "↗ " + mktOffshore.toLocaleString() + " offshore" : "";
   document.getElementById("kpiTop").textContent    = currentAgents[0] ? currentAgents[0].unis.length : "—";
 
   buildSidebar(document.getElementById("countrySearch").value);
