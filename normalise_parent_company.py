@@ -82,6 +82,15 @@ RULES = [
     # LCI Group / Liu Cheng International
     (r'Liu Cheng International',                    "LCI Group"),
     (r'\bLCI Group\b',                              "LCI Group"),
+
+    # WIN Education — branches stored as "WIN Education - [location]"
+    (r'^WIN Education',                             "WIN Education"),
+
+    # Adventus Education — "Adventus Education Pte Ltd" and bare name
+    (r'Adventus Education',                         "Adventus Education"),
+
+    # Chulalongkorn University — both faculties (Political Science / Psychology)
+    (r'Chulalongkorn University',                   "Chulalongkorn University"),
 ]
 
 # Compile all patterns once
