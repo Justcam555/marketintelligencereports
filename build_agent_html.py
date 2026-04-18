@@ -25,6 +25,7 @@ DB_PATH      = Path.home() / "Desktop" / "Agent Scraper" / "data" / "agents.db"
 REPO_DIR     = Path(__file__).parent
 NETWORK_HTML  = REPO_DIR / "agent-network.html"
 PROFILE_HTML  = REPO_DIR / "agent-profile.html"
+REPORT_HTML   = REPO_DIR / "market-intelligence-report.html"
 INDEX_HTML    = REPO_DIR / "index.html"
 LOGO_DIR      = REPO_DIR / "Uni logos"
 
@@ -393,6 +394,15 @@ def main():
     phtml = replace_js_const(phtml, "UNI_LOGOS", json.dumps(uni_logos, ensure_ascii=False, separators=(',', ':')))
     PROFILE_HTML.write_text(phtml)
     print(f"  ✅ {PROFILE_HTML.name} written ({len(phtml):,} bytes)")
+
+    # ── Update market-intelligence-report.html ────────────────────────────────
+    print(f"\nReading {REPORT_HTML.name} …")
+    rhtml = REPORT_HTML.read_text()
+    print("Replacing ALL_DATA and UNI_LOGOS in market-intelligence-report …")
+    rhtml = replace_js_const(rhtml, "ALL_DATA", json.dumps(all_data, ensure_ascii=False, separators=(',', ':')))
+    rhtml = replace_js_const(rhtml, "UNI_LOGOS", json.dumps(uni_logos, ensure_ascii=False, separators=(',', ':')))
+    REPORT_HTML.write_text(rhtml)
+    print(f"  ✅ {REPORT_HTML.name} written ({len(rhtml):,} bytes)")
 
     # ── Update index.html ─────────────────────────────────────────────────────
     print(f"\nUpdating {INDEX_HTML.name} …")
