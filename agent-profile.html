@@ -109,7 +109,7 @@ tr:hover td{background:#fafbfd}
 .coming-soon p{font-size:13px;color:#888}
 
 /* ── Uni list ── */
-.uni-logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:4px 0}
+.uni-logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;padding:4px 0}
 .uni-logo-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:12px 8px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;min-height:80px;transition:border-color .15s}
 .uni-logo-tile:hover{border-color:#94A3B8;background:#F1F5F9}
 .uni-logo-tile img{max-width:72px;max-height:48px;object-fit:contain}
@@ -457,24 +457,22 @@ function renderProfile(a) {
       <!-- KPI Strip -->
       <div class="stat-grid">${kpiHtml}</div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:36px">
-        <!-- Score breakdown -->
-        <div>
-          <div class="section-header" style="margin-bottom:14px">
-            <div class="icon" style="background:#f4f5f7">📊</div>
-            <h3>Presence Breakdown</h3>
-          </div>
-          <div class="score-breakdown">${scoreBreakdownHtml}</div>
+      <!-- Presence Breakdown (full width) -->
+      <div style="margin-bottom:28px">
+        <div class="section-header" style="margin-bottom:14px">
+          <div class="icon" style="background:#f4f5f7">📊</div>
+          <h3>Presence Breakdown</h3>
         </div>
-        <!-- University partners -->
-        <div>
-          <div class="section-header" style="margin-bottom:14px">
-            <div class="icon" style="background:#f4f5f7">🎓</div>
-            <h3>University Partners</h3>
-          </div>
-          <div class="data-card" style="margin-bottom:0">
-            <div class="uni-logo-grid">${uniListHtml}</div>
-          </div>
+        <div class="score-breakdown">${scoreBreakdownHtml}</div>
+      </div>
+      <!-- University Partners (full width) -->
+      <div style="margin-bottom:36px">
+        <div class="section-header" style="margin-bottom:14px">
+          <div class="icon" style="background:#f4f5f7">🎓</div>
+          <h3>University Partners</h3>
+        </div>
+        <div class="data-card" style="margin-bottom:0">
+          <div class="uni-logo-grid">${uniListHtml}</div>
         </div>
       </div>
 
