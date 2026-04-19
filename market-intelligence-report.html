@@ -437,6 +437,153 @@ function renderCoverage(country, uni) {
   document.getElementById('coverageSection').style.display = 'block';
 }
 
+function buildCoverageHtml(country, uni) {
+  const countryData = ALL_DATA[country] || {};
+  const allAgents   = countryData.agents || [];
+  const uniAgents   = allAgents.filter(a => a.unis && a.unis.includes(uni));
+  const countrySocial = SOCIAL_DATA[country] || {};
+  const isThailand  = country === 'Thailand';
+  const total = allAgents.length;
+  const uniN  = uniAgents.length;
+  const otherN = total - uniN;
+  const pct = total > 0 ? uniN / total : 0;
+
+  // ── Donut SVG ─────────────────────────────────────────────────────────────
+  const cx = 55, cy = 55, r = 38, stroke = 14;
+  const circ = 2 * Math.PI * r;
+  const dash1 = (circ * pct).toFixed(1);
+  const dash2 = (circ * (1 - pct)).toFixed(1);
+  const donutSvg = `<svg viewBox="0 0 110 110" width="110" height="110">
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#E2E8F0" stroke-width="${stroke}"/>
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#3B82F6" stroke-width="${stroke}"
+      stroke-dasharray="${dash1} ${dash2}" stroke-linecap="butt"
+      transform="rotate(-90 ${cx} ${cy})"/>
+    <text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="middle"
+      font-size="18" font-weight="700" fill="#1E293B">${Math.round(pct*100)}%</text>
+    <text x="${cx}" y="${cy+16}" text-anchor="middle" font-size="9" fill="#64748B">of market</text>
+  </svg>`;
+  const donutLegend = `
+    <div class="legend-item"><div class="legend-dot" style="background:#3B82F6"></div><span><strong>${uniN}</strong> ${uni.split(' ')[0]} agents</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#E2E8F0"></div><span><strong>${otherN}</strong> other agents</span></div>
+    <div class="legend-item" style="margin-top:4px;color:#64748B"><span><strong>${total}</strong> total in ${country}</span></div>`;
+
+  // ── Active channels ───────────────────────────────────────────────────────
+  const activeChannels = CHANNELS.filter(ch => {
+    if (ch.key === 'line') return isThailand || uniAgents.some(a => (countrySocial[a.name]||{}).line?.friends);
+    return true;
+  }).map(ch => {
+    const vals = allAgents
+      .map(a => { const s = countrySocial[a.name]; return s && s[ch.key] ? s[ch.key][ch.field] : null; })
+      .filter(v => v != null && v > 0).sort((a, b) => a - b);
+    const n = vals.length;
+    ch.low  = n >= 3 ? vals[Math.floor(n / 3)]     : null;
+    ch.high = n >= 3 ? vals[Math.floor(n * 2 / 3)] : null;
+    ch.uniHas = uniAgents.filter(a => { const s = countrySocial[a.name]; return s && s[ch.key] && s[ch.key][ch.field] != null; }).length;
+    return ch;
+  });
+
+  // ── Summary lines ─────────────────────────────────────────────────────────
+  const summaryLines = activeChannels.map(ch => {
+    const pctHas = uniN > 0 ? Math.round(ch.uniHas / uniN * 100) : 0;
+    const bar = pctHas >= 67 ? '🟢' : pctHas >= 34 ? '🟡' : '🔴';
+    return `${bar} <strong>${ch.label}</strong>: ${ch.uniHas}/${uniN} agents (${pctHas}%)`;
+  }).join('<br>');
+
+  // ── Traffic light matrix ──────────────────────────────────────────────────
+  function tlClass(val, ch) {
+    if (val == null || val === 0) return 'tl-na';
+    if (ch.low == null) return 'tl-yellow';
+    if (val >= ch.high) return 'tl-green';
+    if (val >= ch.low)  return 'tl-yellow';
+    return 'tl-red';
+  }
+  const headerCells = ['<th>Agent</th>', ...activeChannels.map(ch =>
+    `<th><span class="ch-icon">${ch.icon}</span> ${ch.label}</th>`)].join('');
+  const rows = uniAgents.map(a => {
+    const s = countrySocial[a.name] || {};
+    const cells = activeChannels.map(ch => {
+      const raw = s[ch.key] ? s[ch.key][ch.field] : null;
+      const cls  = tlClass(raw, ch);
+      const disp = raw != null && raw > 0 ? ch.fmt(raw) : '—';
+      return `<td><span class="tl-cell ${cls}">${disp}</span></td>`;
+    });
+    const shortName = a.name.length > 28 ? a.name.slice(0, 27) + '…' : a.name;
+    return `<tr><td title="${a.name}">${shortName}</td>${cells.join('')}</tr>`;
+  }).join('');
+
+  return `
+<div class="cov-section-inline">
+  <h2>Agent Coverage</h2>
+  <div class="cov-grid">
+    <div class="cov-card">
+      <h3>Market Share</h3>
+      <div class="donut-wrap">${donutSvg}<div class="donut-legend">${donutLegend}</div></div>
+    </div>
+    <div class="cov-card">
+      <h3>Channel Coverage Summary</h3>
+      <div class="channel-summary">${summaryLines}</div>
+    </div>
+  </div>
+  <div class="cov-card" style="margin-top:12px">
+    <h3>Agent Channel Matrix</h3>
+    <div class="tl-table-wrap"><table class="tl-table"><thead><tr>${headerCells}</tr></thead><tbody>${rows}</tbody></table></div>
+  </div>
+</div>`;
+}
+
+function buildReportHeader(country, uni, agents, countrySocial) {
+  const logo = (typeof UNI_LOGOS !== 'undefined' && UNI_LOGOS[uni])
+    ? `<img src="${UNI_LOGOS[uni]}" alt="${uni} logo" class="report-header-logo">`
+    : `<div class="report-header-logo-placeholder">${uni.charAt(0)}</div>`;
+
+  // Reach stats
+  const withSocial = agents.filter(a => {
+    const s = countrySocial[a.name] || {};
+    return s.facebook_likes || s.instagram_followers || s.tiktok_followers || s.youtube_subscribers || s.google_rating;
+  }).length;
+
+  const totalFollowers = agents.reduce((sum, a) => {
+    const s = countrySocial[a.name] || {};
+    return sum + (s.facebook_likes||0) + (s.instagram_followers||0) + (s.tiktok_followers||0) + (s.youtube_subscribers||0);
+  }, 0);
+
+  const scores = agents.map(a => {
+    const s = countrySocial[a.name] || {};
+    let sc = 0, mx = 0;
+    if (s.facebook_likes)        { sc += Math.min(s.facebook_likes / 10000, 1) * 25; mx += 25; }
+    if (s.instagram_followers)   { sc += Math.min(s.instagram_followers / 5000, 1) * 25; mx += 25; }
+    if (s.tiktok_followers)      { sc += Math.min(s.tiktok_followers / 5000, 1) * 25; mx += 25; }
+    if (s.youtube_subscribers)   { sc += Math.min(s.youtube_subscribers / 2000, 1) * 25; mx += 25; }
+    return mx > 0 ? Math.round((sc / mx) * 100) : 0;
+  });
+  const avgScore = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : 0;
+
+  const fmtNum = n => n >= 1000000 ? (n/1000000).toFixed(1)+'M' : n >= 1000 ? (n/1000).toFixed(1)+'K' : String(n);
+
+  return `
+<div class="report-header">
+  <div class="report-header-inner">
+    <div class="report-header-brand">
+      ${logo}
+      <div class="report-header-titles">
+        <div class="report-header-uni">${uni}</div>
+        <div class="report-header-sub">Agent Network Intelligence Report</div>
+      </div>
+    </div>
+    <div class="report-header-meta">
+      <span class="report-country-badge"><i class="fa-solid fa-location-dot"></i> ${country}</span>
+      <button class="btn-print" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i> Save as PDF</button>
+    </div>
+  </div>
+  <div class="reach-stats">
+    <div class="reach-stat"><span class="reach-val">${agents.length}</span><span class="reach-lbl">Agents in ${country}</span></div>
+    <div class="reach-stat"><span class="reach-val">${withSocial}</span><span class="reach-lbl">Active social presence</span></div>
+    <div class="reach-stat"><span class="reach-val">${fmtNum(totalFollowers)}</span><span class="reach-lbl">Combined online reach</span></div>
+    <div class="reach-stat"><span class="reach-val">${avgScore}%</span><span class="reach-lbl">Avg presence score</span></div>
+  </div>
+</div>`;
+}
+
 async function generate() {
   const apiKey = document.getElementById("apiKey").value.trim();
   const country = document.getElementById("countrySelect").value;
