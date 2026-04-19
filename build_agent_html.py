@@ -88,6 +88,30 @@ def normalise_country(raw: str) -> str:
     return s
 
 
+_BKK_DISTRICTS = {
+    "pathum wan","watthana","bang rak","ratchathewi","khlong toei",
+    "chatuchak","huai khwang","silom","khan na yao","bang bon",
+    "laksi","pathumwan","din daeng","bang phlat","lat phrao",
+    "sathon","phra nakhon","pom prap sattru phai","samphanthawong",
+    "bang sue","phaya thai","dusit","thawi watthana","taling chan",
+    "bang khae","nong khaem","rat burana","thon buri","khlong san",
+    "bangkok noi","bangkok yai","phra khanong","min buri","lat krabang",
+    "bang na","bueng kum","saphan sung","wang thonglang","klong luang","klongluang",
+}
+
+def normalise_city(raw: str) -> str:
+    """Collapse Bangkok districts to Bangkok, strip Mueang prefix."""
+    c = (raw or "").strip()
+    c = c.split("(")[0].strip()
+    if c.lower().startswith("mueang "):
+        c = c[7:].strip()
+    if c.lower() in _BKK_DISTRICTS:
+        c = "Bangkok"
+    if c.lower() in ("thailand", ""):
+        return ""
+    return c
+
+
 def load_data(conn: sqlite3.Connection):
     """
     Returns:
@@ -133,7 +157,8 @@ def build_social_data(conn: sqlite3.Connection) -> dict:
                facebook_url, facebook_followers,
                instagram_handle, instagram_followers, ig_last_post,
                yt_subscribers, yt_total_views, yt_video_count,
-               google_rating, google_reviews
+               google_rating, google_reviews,
+               line_oa_handle, line_oa_friends, line_oa_verified
         FROM agent_social
         WHERE canonical_name IS NOT NULL AND TRIM(canonical_name) != ''
         ORDER BY presence_score DESC
@@ -156,7 +181,8 @@ def build_social_data(conn: sqlite3.Connection) -> dict:
          fb_url, fb_fol,
          ig_handle, ig_fol, ig_last,
          yt_subs, yt_views, yt_vids,
-         g_rating, g_reviews) = row
+         g_rating, g_reviews,
+         line_handle, line_friends, line_verified) = row
 
         if country not in social:
             social[country] = {}
@@ -185,6 +211,11 @@ def build_social_data(conn: sqlite3.Connection) -> dict:
             "google": {
                 "rating":  g_rating,
                 "reviews": g_reviews,
+            },
+            "line": {
+                "handle":   line_handle,
+                "friends":  line_friends,
+                "verified": line_verified,
             },
         }
 
@@ -217,7 +248,7 @@ def build_all_data(rows, uni_names):
         # Keep best available contact
         existing = agent_info.get(key, {})
         agent_info[key] = {
-            "city":    existing.get("city") or (city or "").strip() or "",
+            "city":    existing.get("city") or normalise_city(city or "") or "",
             "email":   existing.get("email") or (email or "").strip() or "",
             "website": existing.get("website") or (website or "").strip() or "",
         }
