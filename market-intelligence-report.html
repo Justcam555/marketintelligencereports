@@ -515,30 +515,6 @@ function buildReportHeader(country, uni, agents, countrySocial) {
     ? `<img src="${UNI_LOGOS[uni]}" alt="${uni} logo" class="report-header-logo">`
     : `<div class="report-header-logo-placeholder">${uni.charAt(0)}</div>`;
 
-  // Reach stats
-  const withSocial = agents.filter(a => {
-    const s = countrySocial[a.name] || {};
-    return s.facebook_likes || s.instagram_followers || s.tiktok_followers || s.youtube_subscribers || s.google_rating;
-  }).length;
-
-  const totalFollowers = agents.reduce((sum, a) => {
-    const s = countrySocial[a.name] || {};
-    return sum + (s.facebook_likes||0) + (s.instagram_followers||0) + (s.tiktok_followers||0) + (s.youtube_subscribers||0);
-  }, 0);
-
-  const scores = agents.map(a => {
-    const s = countrySocial[a.name] || {};
-    let sc = 0, mx = 0;
-    if (s.facebook_likes)        { sc += Math.min(s.facebook_likes / 10000, 1) * 25; mx += 25; }
-    if (s.instagram_followers)   { sc += Math.min(s.instagram_followers / 5000, 1) * 25; mx += 25; }
-    if (s.tiktok_followers)      { sc += Math.min(s.tiktok_followers / 5000, 1) * 25; mx += 25; }
-    if (s.youtube_subscribers)   { sc += Math.min(s.youtube_subscribers / 2000, 1) * 25; mx += 25; }
-    return mx > 0 ? Math.round((sc / mx) * 100) : 0;
-  });
-  const avgScore = scores.length ? Math.round(scores.reduce((a,b)=>a+b,0)/scores.length) : 0;
-
-  const fmtNum = n => n >= 1000000 ? (n/1000000).toFixed(1)+'M' : n >= 1000 ? (n/1000).toFixed(1)+'K' : String(n);
-
   return `
 <div class="report-header">
   <div class="report-header-inner">
@@ -553,12 +529,6 @@ function buildReportHeader(country, uni, agents, countrySocial) {
       <span class="report-country-badge"><i class="fa-solid fa-location-dot"></i> ${country}</span>
       <button class="btn-print" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i> Save as PDF</button>
     </div>
-  </div>
-  <div class="reach-stats">
-    <div class="reach-stat"><span class="reach-val">${agents.length}</span><span class="reach-lbl">Agents in ${country}</span></div>
-    <div class="reach-stat"><span class="reach-val">${withSocial}</span><span class="reach-lbl">Active social presence</span></div>
-    <div class="reach-stat"><span class="reach-val">${fmtNum(totalFollowers)}</span><span class="reach-lbl">Combined online reach</span></div>
-    <div class="reach-stat"><span class="reach-val">${avgScore}%</span><span class="reach-lbl">Avg presence score</span></div>
   </div>
 </div>`;
 }
