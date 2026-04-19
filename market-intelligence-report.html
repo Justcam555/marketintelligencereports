@@ -560,10 +560,10 @@ Exactly 3 numbered recommendations — specific to this university and market, r
     let reportHtml;
     if (splitIdx > 0) {
       reportHtml = renderMarkdown(text.slice(0, splitIdx))
-                 + buildCoverageHtml(country, uni)
+                 + renderCoverage(country, uni)
                  + renderMarkdown(text.slice(splitIdx));
     } else {
-      reportHtml = renderMarkdown(text) + buildCoverageHtml(country, uni);
+      reportHtml = renderMarkdown(text) + renderCoverage(country, uni);
     }
     const reportHeader = buildReportHeader(country, uni, agents, countrySocial);
     content.innerHTML = `<div class="report">${reportHeader}${reportHtml}</div>
