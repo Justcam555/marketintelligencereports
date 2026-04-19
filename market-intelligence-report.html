@@ -217,27 +217,6 @@
   </div>
 
 
-  <!-- Agent Coverage Section -->
-  <div id="coverageSection">
-    <div class="cov-grid">
-      <div class="cov-card">
-        <h3>Agent Coverage</h3>
-        <div class="donut-wrap">
-          <svg id="donutSvg" width="110" height="110" viewBox="0 0 110 110"></svg>
-          <div class="donut-legend" id="donutLegend"></div>
-        </div>
-      </div>
-      <div class="cov-card">
-        <h3>Channel Coverage Summary</h3>
-        <div id="channelSummary" style="font-size:.82rem;color:#475569;line-height:1.8"></div>
-      </div>
-    </div>
-    <div class="cov-card" style="margin-bottom:24px;overflow-x:auto">
-      <h3>Agent Digital Presence — Traffic Light Matrix</h3>
-      <table class="tl-table" id="tlTable"></table>
-    </div>
-  </div>
-
   <!-- Output -->
   <div class="output-card" id="outputCard">
     <div class="spinner-wrap" id="spinnerWrap">
@@ -596,10 +575,6 @@ async function generate() {
   // Save key to localStorage
   localStorage.setItem("anthropic_api_key", apiKey);
 
-  // Render instant coverage section (no API needed)
-  renderCoverage(country, uni);
-
-
   // Get agents for this country × university
   const countryData = ALL_DATA[country];
   if (!countryData) { showError(`No data available for ${country}.`); return; }
@@ -707,10 +682,10 @@ Exactly 3 numbered recommendations — specific to this university and market, r
     let reportHtml;
     if (splitIdx > 0) {
       reportHtml = renderMarkdown(text.slice(0, splitIdx))
-                 + renderCoverage(country, uni)
+                 + buildCoverageHtml(country, uni)
                  + renderMarkdown(text.slice(splitIdx));
     } else {
-      reportHtml = renderMarkdown(text) + renderCoverage(country, uni);
+      reportHtml = renderMarkdown(text) + buildCoverageHtml(country, uni);
     }
     const reportHeader = buildReportHeader(country, uni, agents, countrySocial);
     content.innerHTML = `<div class="report">${reportHeader}${reportHtml}</div>
