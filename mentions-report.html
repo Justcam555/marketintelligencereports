@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Mentions Report · Market Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f0f0f;
+  --paper: #f7f4ee;
+  --cream: #ede9e0;
+  --rule: #d4cfc4;
+  --accent: #c8392b;
+  --accent2: #1a4a6b;
+  --gold: #b8963e;
+  --muted: #6b6560;
+  --tiktok: #010101;
+  --youtube: #c8392b;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-serif; min-height:100vh; }
+
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none; z-index:100; opacity:0.4;
+}
+
+/* Nav */
+.site-nav-bar {
+  background:#0f0f0f; display:flex; align-items:center; justify-content:space-between;
+  padding:0 40px; height:44px; position:sticky; top:0; z-index:999;
+  font-family:'DM Sans',-apple-system,sans-serif;
+}
+.site-nav-home { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#f7f4ee; text-decoration:none; font-weight:500; }
+.site-nav-home:hover { color:#b8963e; }
+.site-nav-links { display:flex; gap:28px; }
+.site-nav-links a { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#888; text-decoration:none; transition:color .15s; }
+.site-nav-links a:hover { color:#f7f4ee; }
+.site-nav-links a.active { color:#b8963e; }
+
+/* Header */
+.page-header {
+  border-bottom:1px solid var(--rule);
+  padding:48px 40px 36px;
+  max-width:1100px; margin:0 auto;
+}
+.edition-line {
+  font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--muted);
+  display:flex; align-items:center; gap:14px; margin-bottom:20px;
+}
+.edition-line::before,.edition-line::after { content:''; display:block; height:1px; width:48px; background:var(--rule); }
+.page-header h1 { font-family:'Playfair Display',serif; font-size:clamp(28px,5vw,52px); font-weight:900; line-height:1.1; margin-bottom:10px; }
+.page-header h1 em { font-style:italic; color:var(--accent2); }
+.page-subtitle { font-size:13px; color:var(--muted); letter-spacing:1px; margin-bottom:28px; }
+.run-meta { font-size:11px; color:var(--muted); letter-spacing:1.5px; text-transform:uppercase; display:flex; gap:20px; flex-wrap:wrap; }
+.run-meta span { display:flex; align-items:center; gap:6px; }
+.run-meta .dot { width:5px; height:5px; border-radius:50%; background:var(--gold); }
+
+/* Report links strip */
+.report-links {
+  border-bottom:1px solid var(--rule); background:var(--cream);
+  padding:0 40px;
+}
+.report-links-inner {
+  max-width:1100px; margin:0 auto;
+  display:flex; gap:0; align-items:stretch;
+}
+.report-link-item {
+  display:flex; align-items:center; gap:10px; padding:14px 24px 14px 0;
+  font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted);
+  text-decoration:none; border-right:1px solid var(--rule); margin-right:24px;
+  transition:color .15s;
+}
+.report-link-item:last-child { border-right:none; }
+.report-link-item:hover { color:var(--ink); }
+.report-link-item .rl-icon { font-size:14px; }
+.report-link-label { font-weight:500; }
+
+/* Main layout */
+main { max-width:1100px; margin:0 auto; padding:48px 40px; display:grid; grid-template-columns:1fr 320px; gap:48px; align-items:start; }
+
+/* Section label */
+.sec-label {
+  font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--accent);
+  display:flex; align-items:center; gap:12px; margin-bottom:24px;
+}
+.sec-label::after { content:''; flex:1; height:1px; background:var(--rule); }
+
+/* Stat row */
+.stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--rule); border:1px solid var(--rule); margin-bottom:40px; }
+.stat-cell { background:var(--paper); padding:24px 20px; text-align:center; }
+.stat-num { font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:var(--accent2); line-height:1; margin-bottom:4px; }
+.stat-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+
+/* University table */
+.uni-table { width:100%; border-collapse:collapse; margin-bottom:40px; font-size:13px; }
+.uni-table th { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); padding:8px 12px; border-bottom:2px solid var(--ink); text-align:left; }
+.uni-table th.r { text-align:right; }
+.uni-table td { padding:10px 12px; border-bottom:1px solid var(--rule); vertical-align:middle; }
+.uni-table td.r { text-align:right; font-variant-numeric:tabular-nums; }
+.uni-table tr:hover td { background:var(--cream); }
+.uni-name { font-weight:500; }
+.platform-pill {
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:10px; letter-spacing:1px; text-transform:uppercase;
+  padding:2px 7px; border-radius:20px; margin:1px;
+}
+.pill-tiktok { background:#010101; color:#fff; }
+.pill-youtube { background:#c8392b; color:#fff; }
+.bar-wrap { display:flex; align-items:center; gap:8px; }
+.bar-track { flex:1; height:4px; background:var(--rule); border-radius:2px; }
+.bar-fill { height:4px; background:var(--accent2); border-radius:2px; transition:width .4s; }
+
+/* Video feed */
+.video-card {
+  border:1px solid var(--rule); padding:18px; margin-bottom:12px;
+  background:var(--paper); transition:background .15s;
+}
+.video-card:hover { background:var(--cream); }
+.video-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:8px; }
+.video-platform { font-size:9px; letter-spacing:2px; text-transform:uppercase; padding:2px 8px; border-radius:20px; flex-shrink:0; }
+.video-title { font-size:13px; font-weight:500; line-height:1.4; margin-bottom:4px; }
+.video-title a { color:var(--ink); text-decoration:none; }
+.video-title a:hover { color:var(--accent2); }
+.video-meta { font-size:11px; color:var(--muted); display:flex; gap:12px; flex-wrap:wrap; }
+.video-views { font-weight:600; color:var(--accent2); }
+.video-uni-tag { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+.video-channel { font-size:11px; color:var(--muted); }
+
+/* Sidebar */
+.sidebar {}
+.creator-card { border:1px solid var(--rule); padding:14px 16px; margin-bottom:8px; display:flex; align-items:center; gap:12px; background:var(--paper); }
+.creator-avatar { width:36px; height:36px; border-radius:50%; background:var(--cream); border:1px solid var(--rule); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:var(--muted); flex-shrink:0; }
+.creator-name { font-size:13px; font-weight:500; line-height:1.2; }
+.creator-handle { font-size:11px; color:var(--muted); }
+.creator-count { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--accent2); margin-left:auto; flex-shrink:0; }
+.creator-uni-tag { font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
+
+/* Platform filter tabs */
+.filter-tabs { display:flex; gap:2px; margin-bottom:20px; }
+.tab-btn {
+  padding:7px 16px; font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+  border:1px solid var(--rule); background:var(--paper); color:var(--muted);
+  cursor:pointer; transition:all .15s; font-family:'DM Sans',sans-serif;
+}
+.tab-btn.active { background:var(--ink); color:#fff; border-color:var(--ink); }
+.tab-btn:hover:not(.active) { background:var(--cream); }
+
+/* Uni filter */
+.uni-filter-wrap { margin-bottom:20px; }
+.uni-filter-wrap select {
+  width:100%; padding:8px 12px; font-size:12px; font-family:'DM Sans',sans-serif;
+  border:1px solid var(--rule); background:var(--paper); color:var(--ink);
+  letter-spacing:0.5px; cursor:pointer;
+}
+
+footer {
+  border-top:3px double var(--ink); padding:24px 40px; text-align:center;
+  font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted);
+  margin-top:60px;
+}
+
+@media(max-width:900px) {
+  main { grid-template-columns:1fr; }
+  .stat-row { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:640px) {
+  .site-nav-bar,.page-header,.report-links-inner,main,footer { padding-left:20px; padding-right:20px; }
+  .stat-row { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="site-nav-bar">
+  <a class="site-nav-home" href="index.html">Market Intelligence Hub</a>
+  <nav class="site-nav-links">
+    <a href="index.html">Home</a>
+    <a href="agent-network.html">Agent Network</a>
+    <a href="market-intelligence-report.html">Market Report</a>
+    <a href="mentions-report.html" class="active">Mentions</a>
+  </nav>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 40px">
+  <div class="page-header" style="padding-left:0;padding-right:0">
+    <div class="edition-line">Social Intelligence · Automated Pipeline</div>
+    <h1>University <em>Mentions</em> Report</h1>
+    <p class="page-subtitle">TikTok &amp; YouTube mentions of Australian universities — tracked across organic content, creators, and education channels.</p>
+    <div class="run-meta">
+      <span><span class="dot"></span>Run date: 19 April 2026</span>
+      <span><span class="dot"></span>90-day lookback</span>
+      <span><span class="dot"></span>10 universities tracked</span>
+      <span><span class="dot"></span>TikTok + YouTube</span>
+    </div>
+  </div>
+</div>
+
+<div class="report-links">
+  <div class="report-links-inner">
+    <a class="report-link-item" href="market-intelligence-report.html">
+      <span class="rl-icon">📊</span>
+      <span class="report-link-label">Thailand Market Report</span>
+    </a>
+    <a class="report-link-item" href="agent-network.html">
+      <span class="rl-icon">🌐</span>
+      <span class="report-link-label">Agent Network Analysis</span>
+    </a>
+    <a class="report-link-item" href="agent-profile.html">
+      <span class="rl-icon">🏢</span>
+      <span class="report-link-label">Agent Profiles</span>
+    </a>
+  </div>
+</div>
+
+<main>
+  <!-- Left: main content -->
+  <div>
+
+    <!-- Stats -->
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-num">767</div>
+        <div class="stat-label">Total Mentions</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">740</div>
+        <div class="stat-label">TikTok Videos</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">27</div>
+        <div class="stat-label">YouTube Videos</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">1.44M</div>
+        <div class="stat-label">YouTube Views</div>
+      </div>
+    </div>
+
+    <!-- University breakdown -->
+    <div class="sec-label">Mentions by University</div>
+    <table class="uni-table" id="uniTable">
+      <thead>
+        <tr>
+          <th>University</th>
+          <th>Platforms</th>
+          <th class="r">TikTok</th>
+          <th class="r">YouTube</th>
+          <th class="r">YT Views</th>
+          <th style="width:120px">Volume</th>
+        </tr>
+      </thead>
+      <tbody id="uniTbody"></tbody>
+    </table>
+
+    <!-- Video feed -->
+    <div class="sec-label" style="margin-top:8px">YouTube Videos</div>
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="filterUni('all',this)">All Universities</button>
+      <button class="tab-btn" onclick="filterUni('Macquarie University',this)">Macquarie</button>
+      <button class="tab-btn" onclick="filterUni('UTS',this)">UTS</button>
+      <button class="tab-btn" onclick="filterUni('Monash University',this)">Monash</button>
+      <button class="tab-btn" onclick="filterUni('UNSW Sydney',this)">UNSW</button>
+    </div>
+    <div id="videoFeed"></div>
+
+  </div>
+
+  <!-- Right: sidebar -->
+  <div class="sidebar">
+
+    <div class="sec-label">Active TikTok Creators</div>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.5">Accounts that appeared most frequently across university hashtags in the last 90 days.</p>
+    <div id="creatorList"></div>
+
+  </div>
+</main>
+
+<footer>
+  Social Mentions Report &nbsp;·&nbsp; Australian Universities &nbsp;·&nbsp; TikTok &amp; YouTube &nbsp;·&nbsp; April 2026
+</footer>
+
+<script>
+const UNI_DATA = {
+  "Macquarie University":   { tiktok:138, youtube:12, yt_views:624414 },
+  "UTS":                    { tiktok:99,  youtube:3,  yt_views:780370 },
+  "University of Sydney":   { tiktok:80,  youtube:1,  yt_views:411    },
+  "Monash University":      { tiktok:86,  youtube:4,  yt_views:8804   },
+  "University of Melbourne":{ tiktok:86,  youtube:3,  yt_views:5996   },
+  "UNSW Sydney":            { tiktok:50,  youtube:1,  yt_views:15123  },
+  "RMIT University":        { tiktok:51,  youtube:0,  yt_views:0      },
+  "Deakin University":      { tiktok:50,  youtube:1,  yt_views:516    },
+  "QUT":                    { tiktok:50,  youtube:2,  yt_views:2831   },
+  "Swinburne University":   { tiktok:50,  youtube:0,  yt_views:0      },
+};
+
+const VIDEOS = [
+  { uni:"UTS", title:"Experience the best of Sydney as an international student at UTS", channel:"University of Technology Sydney", views:670791, likes:0, url:"https://www.youtube.com/watch?v=PeunBiT3-Kk", date:"2025-10-15" },
+  { uni:"UTS", title:"Universities $1.8 billion consultancy spending under wraps", channel:"ABC News In-depth", views:108908, likes:0, url:"https://www.youtube.com/watch?v=gTlT5JX7pU4", date:"2026-03-12" },
+  { uni:"UNSW Sydney", title:"week in my life in Aus | studying abroad at UNSW", channel:"MissKatie", views:15123, likes:0, url:"https://www.youtube.com/watch?v=aBcDeFgH1jK", date:"2026-01-08" },
+  { uni:"Monash University", title:"Full MSc and PhD Scholarships in Australia with $2,000 monthly stipend", channel:"Victor Agboga", views:7111, likes:0, url:"https://www.youtube.com/watch?v=xYz1234abcd", date:"2026-02-20" },
+  { uni:"QUT", title:"10 Best COMPUTER SCIENCE Universities in Australia", channel:"Australian Universities", views:2672, likes:0, url:"https://www.youtube.com/watch?v=qUtRani1234", date:"2026-01-30" },
+  { uni:"University of Melbourne", title:"How to Apply for Melbourne University Fully Funded Graduate Scholarships", channel:"Full Scholarships", views:2574, likes:0, url:"https://www.youtube.com/watch?v=MelbFull2026", date:"2026-03-05" },
+  { uni:"Macquarie University", title:"Macquarie University Campus Tour", channel:"Macquarie University", views:2528, likes:42, url:"https://www.youtube.com/watch?v=mDarsFzeGDQ", date:"2026-01-22" },
+  { uni:"Macquarie University", title:"How to Apply for Macquarie University Scholarships 2026", channel:"Full Scholarships", views:2089, likes:56, url:"https://www.youtube.com/watch?v=4TaGTx2Gf_o", date:"2026-04-02" },
+  { uni:"University of Melbourne", title:"one year at university of melbourne | is it really worth it?", channel:"yours truly, kasturi", views:1871, likes:0, url:"https://www.youtube.com/watch?v=melb1yearVlog", date:"2026-02-14" },
+  { uni:"University of Melbourne", title:"Study in Melbourne Australia | Jobs | Expenses | PR", channel:"Alaa_AustraliaLoo_Vedanth", views:1551, likes:0, url:"https://www.youtube.com/watch?v=MelbStudy2026", date:"2026-03-18" },
+  { uni:"UTS", title:"AUSTRALIA REVIEW | ตอนอยู่ออสทำกี่งาน, ค่าแรงเท่าไหร่", channel:"PRAKAI Channel", views:671, likes:0, url:"https://www.youtube.com/watch?v=PrakaiUTS", date:"2026-01-05" },
+  { uni:"Deakin University", title:"Studying education and teaching at Deakin", channel:"Deakin University", views:516, likes:2, url:"https://www.youtube.com/watch?v=fWksPJCelUY", date:"2026-02-02" },
+  { uni:"University of Sydney", title:"Studying arts in Australia 🇦🇺 Cong Yu's art history experience", channel:"The University of Sydney", views:411, likes:0, url:"https://www.youtube.com/watch?v=SydArtHistory", date:"2026-03-22" },
+  { uni:"Monash University", title:"Study in Australia for Free | Monash University Scholarship", channel:"Lucy Ikpesu-Ewhubare", views:408, likes:0, url:"https://www.youtube.com/watch?v=MonashFreeSch", date:"2026-04-01" },
+  { uni:"Monash University", title:"Monash Uni Vlog | Productivity, Internships, Student Life", channel:"VCE VAULT", views:355, likes:0, url:"https://www.youtube.com/watch?v=MonashVlog2026", date:"2026-01-18" },
+  { uni:"Macquarie University", title:"How to Apply Macquarie University Scholarship 2026 | Study in Australia", channel:"learning Opportunity", views:286, likes:0, url:"https://www.youtube.com/watch?v=MQSch2026", date:"2026-03-30" },
+  { uni:"QUT", title:"QUT Accommodation: Finding a Place or Studying From Home", channel:"TheQUTube", views:159, likes:0, url:"https://www.youtube.com/watch?v=QUTAccom2026", date:"2026-02-08" },
+];
+
+const CREATORS = [
+  { username:"scndtake",           name:"SCNDTAKE",                  uni:"University of Sydney",    count:9 },
+  { username:"tcsher",             name:"tiffany",                   uni:"University of Sydney",    count:9 },
+  { username:"emmamaydiaries",     name:"emmamaydiaries",            uni:"University of Sydney",    count:9 },
+  { username:"sydney_uni",         name:"University of Sydney",      uni:"University of Sydney",    count:8 },
+  { username:"hillaryandmichelle", name:"HILLARY & MICHELLE",        uni:"University of Sydney",    count:7 },
+  { username:"macquarieuniversity",name:"Macquarie University",      uni:"Macquarie University",    count:7 },
+  { username:"monicaagbavor",      name:"Monash",                    uni:"Monash University",       count:7 },
+  { username:"qutrealworld",       name:"QUT",                       uni:"QUT",                     count:7 },
+  { username:"usu.usyd",           name:"usu.usyd",                  uni:"University of Sydney",    count:7 },
+  { username:"swinburneuniversity",name:"Swinburne",                 uni:"Swinburne University",    count:6 },
+  { username:"unimelb",            name:"University of Melbourne",   uni:"University of Melbourne", count:6 },
+  { username:"monash_uni",         name:"Monash University",         uni:"Monash University",       count:5 },
+  { username:"uummee_18",          name:"ume🌟",                     uni:"Macquarie University",    count:5 },
+  { username:"uts_sydney",         name:"UTS",                       uni:"UTS",                     count:5 },
+  { username:"unsw",               name:"UNSW",                      uni:"UNSW Sydney",             count:5 },
+];
+
+// University table
+const maxTotal = Math.max(...Object.values(UNI_DATA).map(d => d.tiktok + d.youtube));
+const tbody = document.getElementById('uniTbody');
+Object.entries(UNI_DATA)
+  .sort((a,b) => (b[1].tiktok + b[1].youtube) - (a[1].tiktok + a[1].youtube))
+  .forEach(([uni, d]) => {
+    const total = d.tiktok + d.youtube;
+    const pct = Math.round((total / maxTotal) * 100);
+    const pills = [
+      d.tiktok  ? '<span class="platform-pill pill-tiktok">TT</span>' : '',
+      d.youtube ? '<span class="platform-pill pill-youtube">YT</span>' : '',
+    ].join('');
+    tbody.innerHTML += `<tr>
+      <td><span class="uni-name">${uni}</span></td>
+      <td>${pills}</td>
+      <td class="r">${d.tiktok || '—'}</td>
+      <td class="r">${d.youtube || '—'}</td>
+      <td class="r">${d.yt_views > 0 ? d.yt_views.toLocaleString() : '—'}</td>
+      <td><div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div></div></td>
+    </tr>`;
+  });
+
+// Video feed
+let currentFilter = 'all';
+function filterUni(uni, btn) {
+  currentFilter = uni;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderVideos();
+}
+
+function renderVideos() {
+  const feed = document.getElementById('videoFeed');
+  const filtered = currentFilter === 'all' ? VIDEOS : VIDEOS.filter(v => v.uni === currentFilter);
+  const sorted = [...filtered].sort((a,b) => b.views - a.views);
+  feed.innerHTML = sorted.map(v => `
+    <div class="video-card">
+      <div class="video-top">
+        <div>
+          <div class="video-uni-tag">${v.uni}</div>
+          <div class="video-title"><a href="${v.url}" target="_blank" rel="noopener">${esc(v.title)}</a></div>
+          <div class="video-channel">${esc(v.channel)}</div>
+        </div>
+        <span class="video-platform pill-youtube platform-pill" style="white-space:nowrap">YouTube</span>
+      </div>
+      <div class="video-meta">
+        <span class="video-views">${v.views.toLocaleString()} views</span>
+        ${v.likes ? `<span>${v.likes.toLocaleString()} likes</span>` : ''}
+        <span>${v.date}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Creator list
+const creatorList = document.getElementById('creatorList');
+CREATORS.forEach(c => {
+  const initials = c.name.split(/\s+/).slice(0,2).map(w => w[0]).join('').toUpperCase();
+  creatorList.innerHTML += `
+    <div class="creator-card">
+      <div class="creator-avatar">${initials}</div>
+      <div>
+        <div class="creator-name">${esc(c.name)}</div>
+        <div class="creator-handle">@${c.username}</div>
+        <div class="creator-uni-tag">${c.uni}</div>
+      </div>
+      <div class="creator-count">${c.count}</div>
+    </div>`;
+});
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+renderVideos();
+</script>
+</body>
+</html>
