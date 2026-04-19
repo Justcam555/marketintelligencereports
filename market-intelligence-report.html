@@ -117,6 +117,33 @@
 
     /* Agent count badge */
     .agent-badge { display: inline-block; background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; border-radius: 20px; padding: 2px 10px; font-size: .72rem; font-weight: 700; margin-left: 8px; vertical-align: middle; }
+
+    /* ── Coverage section ── */
+    #coverageSection { display:none; margin-top: 24px; }
+    .cov-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+    @media(max-width:640px) { .cov-grid { grid-template-columns: 1fr; } }
+    .cov-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:24px; }
+    .cov-card h3 { font-size:.8rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#64748B; margin-bottom:16px; }
+
+    /* Donut chart */
+    .donut-wrap { display:flex; align-items:center; gap:24px; }
+    .donut-legend { display:flex; flex-direction:column; gap:10px; }
+    .legend-item { display:flex; align-items:center; gap:8px; font-size:.82rem; }
+    .legend-dot { width:12px; height:12px; border-radius:50%; flex-shrink:0; }
+
+    /* Traffic light grid */
+    .tl-table { width:100%; border-collapse:collapse; font-size:.78rem; }
+    .tl-table th { padding:7px 10px; text-align:center; font-size:.7rem; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:#64748B; border-bottom:2px solid #E2E8F0; white-space:nowrap; }
+    .tl-table th:first-child { text-align:left; }
+    .tl-table td { padding:6px 8px; text-align:center; border-bottom:1px solid #F1F5F9; }
+    .tl-table td:first-child { text-align:left; font-weight:600; color:#1E293B; max-width:160px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .tl-table tr:last-child td { border-bottom:none; }
+    .tl-cell { display:inline-flex; align-items:center; justify-content:center; gap:4px; padding:3px 8px; border-radius:20px; font-size:.72rem; font-weight:700; white-space:nowrap; }
+    .tl-green  { background:#D1FAE5; color:#065F46; }
+    .tl-yellow { background:#FEF3C7; color:#92400E; }
+    .tl-red    { background:#FEE2E2; color:#991B1B; }
+    .tl-na     { background:#F1F5F9; color:#94A3B8; font-weight:400; font-style:italic; }
+    .tl-table .ch-icon { font-size:.8em; opacity:.8; }
   </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
 </head>
@@ -167,6 +194,28 @@
     </div>
 
     <button class="btn-generate" id="generateBtn" onclick="generate()">Generate Report</button>
+  </div>
+
+
+  <!-- Agent Coverage Section -->
+  <div id="coverageSection">
+    <div class="cov-grid">
+      <div class="cov-card">
+        <h3>Agent Coverage</h3>
+        <div class="donut-wrap">
+          <svg id="donutSvg" width="110" height="110" viewBox="0 0 110 110"></svg>
+          <div class="donut-legend" id="donutLegend"></div>
+        </div>
+      </div>
+      <div class="cov-card">
+        <h3>Channel Coverage Summary</h3>
+        <div id="channelSummary" style="font-size:.82rem;color:#475569;line-height:1.8"></div>
+      </div>
+    </div>
+    <div class="cov-card" style="margin-bottom:24px;overflow-x:auto">
+      <h3>Agent Digital Presence — Traffic Light Matrix</h3>
+      <table class="tl-table" id="tlTable"></table>
+    </div>
   </div>
 
   <!-- Output -->
@@ -258,6 +307,116 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // ── Generate ─────────────────────────────────────────────────────────────────
+
+const CHANNELS = [
+  { key:'tiktok',    field:'followers',   label:'TikTok',   icon:'<i class="fa-brands fa-tiktok" style="color:#69C9D0"></i>',    fmt: v => v >= 1000 ? (v/1000).toFixed(1)+'K' : String(v) },
+  { key:'instagram', field:'followers',   label:'IG',       icon:'<i class="fa-brands fa-instagram" style="color:#E1306C"></i>', fmt: v => v >= 1000 ? (v/1000).toFixed(1)+'K' : String(v) },
+  { key:'facebook',  field:'followers',   label:'Facebook', icon:'<i class="fa-brands fa-facebook" style="color:#1877F2"></i>',  fmt: v => v >= 1000 ? (v/1000).toFixed(1)+'K' : String(v) },
+  { key:'youtube',   field:'subscribers', label:'YouTube',  icon:'<i class="fa-brands fa-youtube" style="color:#FF0000"></i>',   fmt: v => v >= 1000 ? (v/1000).toFixed(1)+'K' : String(v) },
+  { key:'google',    field:'rating',      label:'Google',   icon:'<i class="fa-brands fa-google" style="color:#4285F4"></i>',    fmt: v => v.toFixed(1)+'★' },
+  { key:'line',      field:'friends',     label:'LINE',     icon:'<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>',                                                fmt: v => v >= 1000 ? (v/1000).toFixed(1)+'K' : String(v) },
+];
+
+function renderCoverage(country, uni) {
+  const countryData = ALL_DATA[country] || {};
+  const allAgents   = countryData.agents || [];
+  const uniAgents   = allAgents.filter(a => a.unis && a.unis.includes(uni));
+  const countrySocial = SOCIAL_DATA[country] || {};
+  const isThailand  = country === 'Thailand';
+
+  // Filter channels — hide LINE for non-Thailand unless any agent has it
+  const activeChannels = CHANNELS.filter(ch => {
+    if (ch.key === 'line') {
+      return isThailand || uniAgents.some(a => (countrySocial[a.name]||{}).line?.friends);
+    }
+    return true;
+  });
+
+  // ── Donut chart ──────────────────────────────────────────────────────────
+  const total = allAgents.length;
+  const uniN  = uniAgents.length;
+  const otherN = total - uniN;
+  const pct = total > 0 ? uniN / total : 0;
+
+  const cx = 55, cy = 55, r = 38, stroke = 14;
+  const circ = 2 * Math.PI * r;
+  const dash1 = circ * pct;
+  const dash2 = circ * (1 - pct);
+  // Rotate so uni segment starts at top
+  const rotate = -90;
+
+  document.getElementById('donutSvg').innerHTML = `
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#E2E8F0" stroke-width="${stroke}"/>
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#3B82F6" stroke-width="${stroke}"
+      stroke-dasharray="${dash1.toFixed(1)} ${dash2.toFixed(1)}"
+      stroke-linecap="butt"
+      transform="rotate(${rotate} ${cx} ${cy})"/>
+    <text x="${cx}" y="${cy}" text-anchor="middle" dominant-baseline="middle"
+      font-size="18" font-weight="700" fill="#1E293B">${Math.round(pct*100)}%</text>
+    <text x="${cx}" y="${cy+16}" text-anchor="middle" font-size="9" fill="#64748B">of market</text>
+  `;
+  document.getElementById('donutLegend').innerHTML = `
+    <div class="legend-item"><div class="legend-dot" style="background:#3B82F6"></div><span><strong>${uniN}</strong> ${uni.split(' ')[0]} agents</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#E2E8F0"></div><span><strong>${otherN}</strong> other agents</span></div>
+    <div class="legend-item" style="margin-top:4px;color:#64748B"><span><strong>${total}</strong> total in ${country}</span></div>
+  `;
+
+  // ── Traffic light thresholds (using all country agents) ──────────────────
+  for (const ch of activeChannels) {
+    const vals = allAgents
+      .map(a => { const s = countrySocial[a.name]; return s && s[ch.key] ? s[ch.key][ch.field] : null; })
+      .filter(v => v != null && v > 0)
+      .sort((a, b) => a - b);
+    const n = vals.length;
+    ch.low  = n >= 3 ? vals[Math.floor(n / 3)]     : null;
+    ch.high = n >= 3 ? vals[Math.floor(n * 2 / 3)] : null;
+    ch.allVals = vals;
+    // Count how many uni agents have this channel
+    ch.uniHas = uniAgents.filter(a => {
+      const s = countrySocial[a.name];
+      return s && s[ch.key] && s[ch.key][ch.field] != null;
+    }).length;
+  }
+
+  // ── Channel summary ───────────────────────────────────────────────────────
+  const summaryLines = activeChannels.map(ch => {
+    const hasCount = ch.uniHas;
+    const pctHas   = uniN > 0 ? Math.round(hasCount / uniN * 100) : 0;
+    const bar = pctHas >= 67 ? '🟢' : pctHas >= 34 ? '🟡' : '🔴';
+    return `${bar} <strong>${ch.label}</strong>: ${hasCount}/${uniN} agents (${pctHas}%)`;
+  });
+  document.getElementById('channelSummary').innerHTML = summaryLines.join('<br>');
+
+  // ── Traffic light matrix ──────────────────────────────────────────────────
+  function tlClass(val, ch) {
+    if (val == null || val === 0) return 'tl-na';
+    if (ch.low == null) return 'tl-yellow';
+    if (val >= ch.high) return 'tl-green';
+    if (val >= ch.low)  return 'tl-yellow';
+    return 'tl-red';
+  }
+
+  const headerCells = ['<th>Agent</th>', ...activeChannels.map(ch =>
+    `<th><span class="ch-icon">${ch.icon}</span> ${ch.label}</th>`)].join('');
+
+  const rows = uniAgents.map(a => {
+    const s = countrySocial[a.name] || {};
+    const cells = activeChannels.map(ch => {
+      const raw = s[ch.key] ? s[ch.key][ch.field] : null;
+      const cls  = tlClass(raw, ch);
+      const disp = raw != null && raw > 0 ? ch.fmt(raw) : '—';
+      return `<td><span class="tl-cell ${cls}">${disp}</span></td>`;
+    });
+    const shortName = a.name.length > 28 ? a.name.slice(0, 27) + '…' : a.name;
+    return `<tr><td title="${a.name}">${shortName}</td>${cells.join('')}</tr>`;
+  }).join('');
+
+  document.getElementById('tlTable').innerHTML =
+    `<thead><tr>${headerCells}</tr></thead><tbody>${rows}</tbody>`;
+
+  document.getElementById('coverageSection').style.display = 'block';
+}
+
 async function generate() {
   const apiKey = document.getElementById("apiKey").value.trim();
   const country = document.getElementById("countrySelect").value;
@@ -269,6 +428,10 @@ async function generate() {
 
   // Save key to localStorage
   localStorage.setItem("anthropic_api_key", apiKey);
+
+  // Render instant coverage section (no API needed)
+  renderCoverage(country, uni);
+
 
   // Get agents for this country × university
   const countryData = ALL_DATA[country];
@@ -371,7 +534,18 @@ Exactly 3 numbered recommendations — specific to this university and market, r
     const text = data.content?.[0]?.text || "";
 
     spinner.style.display = "none";
-    content.innerHTML = `<div class="report">${renderMarkdown(text)}</div>
+    // Split AI output at "Top Agents by Channel" and inject coverage between sections
+    const splitMarker = "## Top Agents by Channel";
+    const splitIdx = text.indexOf(splitMarker);
+    let reportHtml;
+    if (splitIdx > 0) {
+      reportHtml = renderMarkdown(text.slice(0, splitIdx))
+                 + buildCoverageHtml(country, uni)
+                 + renderMarkdown(text.slice(splitIdx));
+    } else {
+      reportHtml = renderMarkdown(text) + buildCoverageHtml(country, uni);
+    }
+    content.innerHTML = `<div class="report">${reportHtml}</div>
       <div class="powered-by">Powered by <a href="https://claude.ai" target="_blank">Claude</a> (Anthropic) · ${agents.length} agents analysed · ${uni} × ${country}</div>`;
 
   } catch (err) {
