@@ -176,40 +176,103 @@ def build_attention_table(rows: list[dict]) -> list:
     return out
 
 
-# ── table 4: paid ads summary (placeholder) ──────────────────────────────────
+# ── table 4: Meta Ads university summary ─────────────────────────────────────
 
-PAID_ADS_FIELDS = [
-    "platform", "canonical_university", "agent_name", "agent_country",
-    "video_id", "url", "title", "view_count", "paid_signal", "notes",
+META_ADS_UNI_FIELDS = [
+    "canonical_university", "total_ads", "unique_advertisers",
+    "top_advertiser", "top_advertiser_ads",
+    "est_total_reach_min", "est_total_reach_max",
+    "agents_with_ads", "as_of_date",
 ]
 
-PAID_SIGNALS = {
-    # YouTube: unusually high views vs likes ratio can indicate boosted
-    "youtube": lambda r: _int(r.get("view_count", 0)) > 100_000 and _int(r.get("like_count", 0)) == 0,
-    # TikTok: no strong signal without API access to ad labels — flag high view count outliers
-    "tiktok":  lambda r: _int(r.get("view_count", 0)) > 500_000,
-}
+META_ADS_AGENT_FIELDS = [
+    "agent_name", "facebook_url", "canonical_university", "alias_matched",
+    "total_ads", "active_ads", "est_reach_min", "est_reach_max",
+    "ad_library_url", "as_of_date",
+]
 
 
-def build_paid_ads_summary(rows: list[dict]) -> list:
+def _load_meta_ads_raw(date_filter: str) -> list:
+    """Load meta_ads_*.csv files from raw dir."""
+    rows = []
+    for f in sorted(RAW_DIR.glob("meta_ads_*.csv")):
+        if date_filter and date_filter not in f.name:
+            continue
+        rows.extend(_load_csv(f))
+    return rows
+
+
+def build_meta_ads_university_summary(meta_rows: list) -> list:
+    """university | total_ads | unique_advertisers | top_advertiser | est_total_reach"""
+    if not meta_rows:
+        return []
+
+    from collections import defaultdict, Counter
+
+    by_uni: dict = defaultdict(list)
+    for r in meta_rows:
+        uni = r.get("canonical_university", "")
+        if uni:
+            by_uni[uni].append(r)
+
+    def _ri(v):
+        try: return int(str(v).replace(",", "")) if v else 0
+        except: return 0
+
     out = []
-    for r in rows:
-        platform = r.get("platform", "")
-        signal_fn = PAID_SIGNALS.get(platform)
-        if signal_fn and signal_fn(r):
-            out.append({
-                "platform":             platform,
-                "canonical_university": r.get("canonical_university", ""),
-                "agent_name":           r.get("agent_name", ""),
-                "agent_country":        r.get("agent_country", ""),
-                "video_id":             r.get("video_id", ""),
-                "url":                  r.get("url", ""),
-                "title":                r.get("title", "")[:200],
-                "view_count":           r.get("view_count", ""),
-                "paid_signal":          "possible_boosted",
-                "notes":                "High views / low engagement ratio" if platform == "youtube"
-                                        else "View count exceeds organic threshold",
-            })
+    as_of = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    for uni, ads in sorted(by_uni.items()):
+        advertiser_counts = Counter(r.get("agent_name", "") for r in ads)
+        top_adv, top_count = advertiser_counts.most_common(1)[0] if advertiser_counts else ("", 0)
+        out.append({
+            "canonical_university":  uni,
+            "total_ads":             len(ads),
+            "unique_advertisers":    len(advertiser_counts),
+            "top_advertiser":        top_adv,
+            "top_advertiser_ads":    top_count,
+            "est_total_reach_min":   sum(_ri(r.get("est_reach_min")) for r in ads),
+            "est_total_reach_max":   sum(_ri(r.get("est_reach_max")) for r in ads),
+            "agents_with_ads":       len({r.get("agent_name") for r in ads if r.get("agent_name")}),
+            "as_of_date":            as_of,
+        })
+    out.sort(key=lambda r: r["total_ads"], reverse=True)
+    return out
+
+
+def build_meta_ads_agent_summary(meta_rows: list) -> list:
+    """Per-agent ad summary with university breakdown."""
+    if not meta_rows:
+        return []
+
+    from collections import defaultdict
+
+    by_agent: dict = defaultdict(list)
+    for r in meta_rows:
+        key = (r.get("agent_name", ""), r.get("canonical_university", ""))
+        by_agent[key].append(r)
+
+    def _ri(v):
+        try: return int(str(v).replace(",", "")) if v else 0
+        except: return 0
+
+    out = []
+    as_of = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    for (agent, uni), ads in sorted(by_agent.items()):
+        active = sum(1 for r in ads if str(r.get("ad_status", "")).lower() in
+                     ("active", "with_end_date", ""))
+        out.append({
+            "agent_name":           agent,
+            "facebook_url":         ads[0].get("facebook_url", ""),
+            "canonical_university": uni,
+            "alias_matched":        ads[0].get("alias_matched", ""),
+            "total_ads":            len(ads),
+            "active_ads":           active,
+            "est_reach_min":        sum(_ri(r.get("est_reach_min")) for r in ads),
+            "est_reach_max":        sum(_ri(r.get("est_reach_max")) for r in ads),
+            "ad_library_url":       ads[0].get("ad_library_url", ""),
+            "as_of_date":           as_of,
+        })
+    out.sort(key=lambda r: r["total_ads"], reverse=True)
     return out
 
 
@@ -248,8 +311,18 @@ def run(date_filter: str):
     attention = build_attention_table(enriched)
     _write_csv(PROCESSED_DIR / "attention_table.csv", attention, ATTENTION_FIELDS)
 
-    paid_ads = build_paid_ads_summary(enriched)
-    _write_csv(PROCESSED_DIR / "paid_ads_summary.csv", paid_ads, PAID_ADS_FIELDS)
+    # Meta Ads tables (from separate meta_ads_*.csv raw files)
+    meta_rows = _load_meta_ads_raw(date_filter)
+    if meta_rows:
+        print(f"\n  Loaded {len(meta_rows)} Meta Ads rows")
+        meta_uni = build_meta_ads_university_summary(meta_rows)
+        _write_csv(PROCESSED_DIR / "meta_ads_university_summary.csv",
+                   meta_uni, META_ADS_UNI_FIELDS)
+        meta_agent = build_meta_ads_agent_summary(meta_rows)
+        _write_csv(PROCESSED_DIR / "meta_ads_agent_summary.csv",
+                   meta_agent, META_ADS_AGENT_FIELDS)
+    else:
+        print("\n  No Meta Ads raw files found — skipping paid ads tables")
 
     print(f"\n✓ Done — outputs in {PROCESSED_DIR}")
 

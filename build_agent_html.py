@@ -496,6 +496,19 @@ def main():
     phtml = PROFILE_HTML.read_text()
     print("Replacing UNI_LOGOS in agent-profile …")
     phtml = replace_js_const(phtml, "UNI_LOGOS", json.dumps(uni_logos, ensure_ascii=False, separators=(',', ':')))
+
+    # Inject META_ADS_DATA — merge all country JSON files in mentions/data/processed/
+    meta_ads_combined: dict = {}
+    mentions_processed = REPO_DIR / "mentions" / "data" / "processed"
+    for jf in sorted(mentions_processed.glob("meta_ads_*.json")):
+        try:
+            meta_ads_combined.update(json.load(open(jf, encoding="utf-8")))
+            print(f"  Loaded Meta Ads: {jf.name}")
+        except Exception as e:
+            print(f"  Warning: could not load {jf.name}: {e}")
+    phtml = replace_js_const(phtml, "META_ADS_DATA",
+                             json.dumps(meta_ads_combined, ensure_ascii=False, separators=(',', ':')))
+
     PROFILE_HTML.write_text(phtml)
     print(f"  ✅ {PROFILE_HTML.name} written ({len(phtml):,} bytes)")
 
