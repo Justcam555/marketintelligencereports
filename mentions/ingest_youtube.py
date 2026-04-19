@@ -29,7 +29,7 @@ from alias_matcher import AliasMatcher
 RAW_DIR = Path(__file__).parent / "data" / "raw"
 RAW_DIR.mkdir(parents=True, exist_ok=True)
 
-ACTOR_ID = "apify/youtube-scraper"
+ACTOR_ID = "streamers/youtube-scraper"
 
 CSV_FIELDS = [
     "ingested_at", "platform", "query_alias", "canonical_university",
@@ -44,28 +44,26 @@ def _parse_item(item: dict) -> dict:
     video_id = item.get("id") or item.get("videoId") or ""
     url = item.get("url") or (f"https://www.youtube.com/watch?v={video_id}" if video_id else "")
 
-    # Published date — actor returns ISO string or epoch ms
-    pub_raw = item.get("date") or item.get("publishedAt") or item.get("publishDate") or ""
+    # Published date — actor returns ISO string
+    pub_raw = item.get("date") or item.get("publishedAt") or ""
     if isinstance(pub_raw, (int, float)):
         pub_raw = datetime.fromtimestamp(pub_raw / 1000, tz=timezone.utc).isoformat()
 
-    # Subscriber count may come as "1.2M" string or integer
-    subs_raw = item.get("channelSubscriberCount") or item.get("numberOfSubscribers") or ""
-    subs = _parse_abbrev(subs_raw)
+    subs = _parse_abbrev(item.get("numberOfSubscribers") or item.get("channelSubscriberCount") or "")
 
     return {
-        "video_id":           video_id,
-        "title":              (item.get("title") or "")[:300],
-        "description":        (item.get("description") or item.get("text") or "")[:500],
-        "channel_id":         item.get("channelId") or item.get("channelUrl") or "",
-        "channel_title":      item.get("channelName") or item.get("channel") or "",
+        "video_id":            video_id,
+        "title":               (item.get("title") or "")[:300],
+        "description":         (item.get("text") or item.get("description") or "")[:500],
+        "channel_id":          item.get("channelId") or "",
+        "channel_title":       item.get("channelName") or item.get("channelUsername") or "",
         "channel_subscribers": subs,
-        "published_at":       str(pub_raw),
-        "view_count":         item.get("viewCount") or item.get("views") or "",
-        "like_count":         item.get("likes") or item.get("likeCount") or "",
-        "comment_count":      item.get("commentsCount") or item.get("commentCount") or "",
-        "duration":           item.get("duration") or "",
-        "url":                url,
+        "published_at":        str(pub_raw),
+        "view_count":          item.get("viewCount") or "",
+        "like_count":          item.get("likes") or "",
+        "comment_count":       item.get("commentsCount") or "",
+        "duration":            item.get("duration") or "",
+        "url":                 url,
     }
 
 
@@ -91,11 +89,8 @@ def search_youtube_apify(client: ApifyClient, query: str, max_results: int) -> l
     print(f"  Apify run: '{query}' (max {max_results})")
     run = client.actor(ACTOR_ID).call(
         run_input={
-            "searchKeywords":   query,
-            "maxResults":       max_results,
-            "maxResultsShorts": 0,
-            "downloadSubtitles": False,
-            "saveVtt":          False,
+            "searchKeywords": query,
+            "maxResults":     max_results,
         },
         timeout_secs=300,
     )
