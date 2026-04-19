@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Strategy Decoder</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --black: #0a0a0a;
+  --white: #f5f0e8;
+  --accent: #ff2d55;
+  --accent2: #00f5d4;
+  --muted: #2a2a2a;
+  --border: #333;
+  --text-dim: #888;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Syne', sans-serif;
+  min-height: 100vh;
+  padding: 24px 16px 60px;
+}
+
+/* ── Site nav (matches hub) ── */
+.site-nav-bar {
+  background: #0f0f0f;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 44px;
+  position: sticky; top: 0; z-index: 999;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  margin: -24px -16px 24px;
+}
+.site-nav-home {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: #f7f4ee; text-decoration: none; font-weight: 500; white-space: nowrap;
+}
+.site-nav-home:hover { color: #b8963e; }
+.site-nav-links { display: flex; gap: 28px; }
+.site-nav-links a {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: #888; text-decoration: none; transition: color .15s; white-space: nowrap;
+}
+.site-nav-links a:hover { color: #f7f4ee; }
+.site-nav-links a.active { color: #b8963e; }
+@media (max-width: 640px) {
+  .site-nav-bar { padding: 0 16px; }
+  .site-nav-links { gap: 14px; }
+  .site-nav-links a { font-size: 9px; }
+}
+
+header {
+  text-align: center;
+  padding: 32px 0 40px;
+}
+
+.logo-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  background: rgba(255,45,85,0.1);
+  border: 1px solid rgba(255,45,85,0.3);
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: clamp(28px, 7vw, 52px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+
+h1 span { color: var(--accent); }
+
+.subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 3px;
+  color: var(--accent2);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-title::before {
+  content: '';
+  display: block;
+  width: 6px; height: 6px;
+  background: var(--accent2);
+  border-radius: 50%;
+}
+
+/* ── API key strip ── */
+.api-strip {
+  background: rgba(0,245,212,0.04);
+  border: 1px solid rgba(0,245,212,0.15);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.api-strip label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--accent2);
+  white-space: nowrap;
+  margin: 0;
+}
+.api-strip input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  padding: 4px 0;
+  color: var(--white);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  outline: none;
+}
+.api-strip input:focus { border-bottom-color: var(--accent2); }
+.api-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+  letter-spacing: .5px;
+}
+
+.mode-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  background: var(--muted);
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.tab.active {
+  background: var(--accent);
+  color: white;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+textarea, input[type="text"] {
+  width: 100%;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px;
+  color: var(--white);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  resize: vertical;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+textarea { min-height: 120px; }
+
+textarea:focus, input[type="text"]:focus {
+  border-color: var(--accent2);
+}
+
+.field-group { margin-bottom: 16px; }
+
+.format-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: border-color 0.2s;
+  user-select: none;
+}
+
+.check-item:has(input:checked) {
+  border-color: var(--accent2);
+  background: rgba(0,245,212,0.05);
+}
+
+.check-item input { accent-color: var(--accent2); }
+
+.analyze-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.analyze-btn:hover:not(:disabled) { opacity: 0.9; }
+.analyze-btn:active:not(:disabled) { transform: scale(0.99); }
+.analyze-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+#output-section { display: none; }
+
+.output-card {
+  background: #0d1117;
+  border: 1px solid var(--accent2);
+  border-radius: 8px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.output-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+.output-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--accent2);
+  margin-bottom: 16px;
+}
+
+#output-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--white);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.dot {
+  width: 8px; height: 8px;
+  background: var(--accent2);
+  border-radius: 50%;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50%       { opacity: 1;   transform: scale(1); }
+}
+
+.copy-btn {
+  margin-top: 16px;
+  padding: 8px 20px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-dim);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+
+.tip-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.tip {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-dim);
+  background: var(--muted);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tip:hover { color: var(--white); border-color: #555; }
+
+.section-panel { display: none; }
+.section-panel.active { display: block; }
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+</style>
+</head>
+<body>
+
+<div class="site-nav-bar">
+  <a class="site-nav-home" href="index.html">Market Intelligence Hub</a>
+  <nav class="site-nav-links">
+    <a href="index.html">Home</a>
+    <a href="agent-network.html">Agent Network</a>
+    <a href="competitive-landscape.html">Competitive Landscape</a>
+    <a href="mentions-report.html">Mentions</a>
+    <a href="tiktok-analyzer.html" class="active">TikTok Analyzer</a>
+  </nav>
+</div>
+
+<div class="container">
+  <header>
+    <div class="logo-badge">// TIKTOK INTEL</div>
+    <h1>Decode Any<br><span>TikTok Strategy</span></h1>
+    <p class="subtitle">// PASTE · ANALYZE · OUTPERFORM</p>
+  </header>
+
+  <div class="api-strip">
+    <label>API KEY</label>
+    <input type="password" id="api-key" placeholder="sk-ant-api03-…" autocomplete="off">
+  </div>
+  <p class="api-note">// Key is used only in your browser and never sent anywhere except Anthropic's API.</p>
+
+  <div class="card">
+    <div class="mode-tabs">
+      <button class="tab active" onclick="switchTab('analyze', this)">Analyze a Post</button>
+      <button class="tab" onclick="switchTab('reverse', this)">Reverse Engineer</button>
+      <button class="tab" onclick="switchTab('create', this)">Create Strategy</button>
+    </div>
+
+    <!-- TAB: Analyze a Post -->
+    <div id="tab-analyze" class="section-panel active">
+      <div class="card-title">PASTE POST DETAILS</div>
+      <div class="field-group">
+        <label>VIDEO DESCRIPTION / CAPTION</label>
+        <textarea id="a-caption" placeholder="Paste the TikTok caption, hashtags, and any text overlays here..."></textarea>
+      </div>
+      <div class="field-group">
+        <label>WHAT TO ANALYZE</label>
+        <div class="format-grid">
+          <label class="check-item"><input type="checkbox" checked value="hook"> Hook formula</label>
+          <label class="check-item"><input type="checkbox" checked value="cta"> CTA technique</label>
+          <label class="check-item"><input type="checkbox" checked value="hashtags"> Hashtag strategy</label>
+          <label class="check-item"><input type="checkbox" checked value="structure"> Content structure</label>
+          <label class="check-item"><input type="checkbox" value="tone"> Tone &amp; personality</label>
+          <label class="check-item"><input type="checkbox" value="trend"> Trend usage</label>
+        </div>
+      </div>
+      <div class="field-group">
+        <label>YOUR NICHE / INDUSTRY (optional)</label>
+        <input type="text" id="a-niche" placeholder="e.g. study abroad Thailand, education consulting...">
+      </div>
+      <div class="tip-row">
+        <span class="tip" onclick="fillExample('analyze')">→ load example</span>
+      </div>
+    </div>
+
+    <!-- TAB: Reverse Engineer -->
+    <div id="tab-reverse" class="section-panel">
+      <div class="card-title">COMPETITOR INTEL</div>
+      <div class="field-group">
+        <label>COMPETITOR'S ACCOUNT OR POSTS (describe what you see)</label>
+        <textarea id="r-posts" placeholder="Describe multiple posts or paste several captions separated by ---&#10;&#10;e.g.&#10;Post 1: 'เรียนต่อออสเตรเลีย ทำยังไง? #studyabroad'&#10;---&#10;Post 2: 'POV: got your Australian student visa...'"></textarea>
+      </div>
+      <div class="field-group">
+        <label>YOUR NICHE</label>
+        <input type="text" id="r-niche" placeholder="e.g. study abroad Thailand, Australian universities...">
+      </div>
+      <div class="field-group">
+        <label>WHAT'S WORKING FOR THEM? (optional)</label>
+        <input type="text" id="r-what" placeholder="e.g. getting 500k views, high saves on visa content...">
+      </div>
+      <div class="tip-row">
+        <span class="tip" onclick="fillExample('reverse')">→ load example</span>
+      </div>
+    </div>
+
+    <!-- TAB: Create Strategy -->
+    <div id="tab-create" class="section-panel">
+      <div class="card-title">BUILD YOUR PLAYBOOK</div>
+      <div class="field-group">
+        <label>YOUR BRAND / PRODUCT</label>
+        <textarea id="c-brand" placeholder="What do you sell or do? Who's your audience?" style="min-height:80px"></textarea>
+      </div>
+      <div class="field-group">
+        <label>YOUR GOAL</label>
+        <div class="format-grid">
+          <label class="check-item"><input type="radio" name="goal" value="brand awareness" checked> Brand awareness</label>
+          <label class="check-item"><input type="radio" name="goal" value="sales/conversions"> Sales / conversions</label>
+          <label class="check-item"><input type="radio" name="goal" value="followers/community"> Grow followers</label>
+          <label class="check-item"><input type="radio" name="goal" value="viral reach"> Go viral</label>
+        </div>
+      </div>
+      <div class="field-group">
+        <label>COMPETITORS KILLING IT (optional)</label>
+        <input type="text" id="c-comp" placeholder="e.g. @mangolearningexpress, @gouni.official — what they're doing">
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <button class="analyze-btn" id="analyze-btn" onclick="runAnalysis()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      Decode Strategy
+    </button>
+  </div>
+
+  <div id="output-section">
+    <div class="output-card">
+      <div class="output-label">// ANALYSIS OUTPUT</div>
+      <div id="output-text"></div>
+      <button class="copy-btn" onclick="copyOutput()">[ COPY OUTPUT ]</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentTab = 'analyze';
+
+function switchTab(tab, el) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+function fillExample(tab) {
+  if (tab === 'analyze') {
+    document.getElementById('a-caption').value = `เรียนต่อออสเตรเลียต้องทำยังไง? 🇦🇺 #เรียนต่อออสเตรเลีย #studyabroad #oneeducation\n\nText overlay: "3 ขั้นตอนที่คนไม่รู้"\nHook: "ถ้าอยากเรียนต่อออสเตรเลียแต่ไม่รู้จะเริ่มยังไง ดูคลิปนี้เลย..."`;
+    document.getElementById('a-niche').value = 'study abroad Thailand / Australian universities';
+  } else if (tab === 'reverse') {
+    document.getElementById('r-posts').value = `Post 1: "เรียนต่ออังกฤษ ราคาเท่าไหร่? 🇬🇧 #เรียนต่ออังกฤษ #studyabroad"\n---\nPost 2: "POV: คุณได้วีซ่านักเรียนออสเตรเลียแล้ว 🥹 #australia #visa"\n---\nPost 3: "Top 5 มหาวิทยาลัยออสเตรเลีย ที่คนไทยนิยม"`;
+    document.getElementById('r-niche').value = 'study abroad Thailand';
+    document.getElementById('r-what').value = 'Getting 200k–1.5M views, high saves on visa and cost content';
+  }
+}
+
+function buildPrompt() {
+  if (currentTab === 'analyze') {
+    const caption = document.getElementById('a-caption').value;
+    const niche   = document.getElementById('a-niche').value;
+    const checks  = [...document.querySelectorAll('#tab-analyze input[type=checkbox]:checked')].map(c => c.value);
+    return `You are an expert TikTok content strategist. Analyze the following TikTok post and break down its strategy.
+
+POST CONTENT:
+${caption}
+
+${niche ? `NICHE: ${niche}` : ''}
+
+ANALYZE THESE ELEMENTS: ${checks.join(', ')}
+
+For each element, provide:
+1. What technique is being used
+2. WHY it works psychologically or algorithmically
+3. A template or formula the creator can steal and adapt
+
+End with a "Steal This" section: give 3 ready-to-use variations of this post style.
+
+Be direct, tactical, and specific. No fluff.`;
+
+  } else if (currentTab === 'reverse') {
+    const posts = document.getElementById('r-posts').value;
+    const niche  = document.getElementById('r-niche').value;
+    const what   = document.getElementById('r-what').value;
+    return `You are a TikTok competitive intelligence analyst. Reverse-engineer the following competitor content to extract their winning strategy.
+
+COMPETITOR POSTS:
+${posts}
+
+NICHE: ${niche}
+${what ? `WHAT'S WORKING: ${what}` : ''}
+
+Provide a complete breakdown:
+
+1. CONTENT PATTERNS: What formats, structures, and hooks repeat across posts?
+2. PSYCHOLOGICAL TRIGGERS: What emotions or desires are they activating?
+3. ALGORITHM SIGNALS: What elements are optimized for the FYP?
+4. THEIR CONTENT PILLARS: What 3-5 themes drive their content?
+5. THEIR UNFAIR ADVANTAGE: What one thing are they doing better than everyone else?
+6. STEAL & IMPROVE: Give 5 specific post ideas you can use in this niche that take their approach but go further.
+
+Be brutally tactical. This is competitive research.`;
+
+  } else {
+    const brand = document.getElementById('c-brand').value;
+    const goal  = document.querySelector('input[name="goal"]:checked')?.value;
+    const comp  = document.getElementById('c-comp').value;
+    return `You are a TikTok growth strategist. Build a complete content playbook for this brand.
+
+BRAND/PRODUCT: ${brand}
+GOAL: ${goal}
+${comp ? `COMPETITORS TO LEARN FROM: ${comp}` : ''}
+
+Deliver:
+
+1. CONTENT PILLARS (4-5): The core themes that will anchor the account
+2. HOOK FORMULAS (5): Proven openers customized for this brand
+3. FORMAT MIX: Recommended split between content types (POV, tutorial, storytelling, etc.)
+4. POSTING CADENCE: Frequency and timing recommendations
+5. HASHTAG STRATEGY: Categories to target and how to mix them
+6. FIRST 10 POSTS: Specific post ideas ready to film
+7. GROWTH HACK: One counter-intuitive tactic most brands miss
+
+Be specific to this brand. No generic advice.`;
+  }
+}
+
+async function runAnalysis() {
+  const apiKey = document.getElementById('api-key').value.trim();
+  if (!apiKey) {
+    alert('Please enter your Anthropic API key above.');
+    document.getElementById('api-key').focus();
+    return;
+  }
+
+  const btn           = document.getElementById('analyze-btn');
+  const outputSection = document.getElementById('output-section');
+  const outputText    = document.getElementById('output-text');
+  const prompt        = buildPrompt();
+
+  if (prompt.length < 50) {
+    alert('Please fill in the details above first.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = '<span>Analyzing…</span>';
+  outputSection.style.display = 'block';
+  outputText.innerHTML = '<div class="loading-dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+  outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type':         'application/json',
+        'x-api-key':            apiKey,
+        'anthropic-version':    '2023-06-01',
+        'anthropic-dangerous-client-side-usage': 'true',
+      },
+      body: JSON.stringify({
+        model:      'claude-sonnet-4-6',
+        max_tokens: 1500,
+        messages:   [{ role: 'user', content: prompt }],
+      }),
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error?.message || `API error ${response.status}`);
+    }
+    const text = data.content?.map(b => b.text || '').join('') || 'No response received.';
+    outputText.textContent = text;
+
+  } catch (err) {
+    outputText.textContent = '✗ Error: ' + err.message;
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Decode Strategy`;
+}
+
+function copyOutput() {
+  const text = document.getElementById('output-text').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '[ COPIED! ]';
+    setTimeout(() => btn.textContent = '[ COPY OUTPUT ]', 2000);
+  });
+}
+</script>
+</body>
+</html>
