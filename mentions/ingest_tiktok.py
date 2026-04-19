@@ -50,9 +50,21 @@ def _parse_item(item: dict, hashtag: str, canonical: str, ingested_at: str) -> d
         published_at = str(created_raw or "")
 
     video_id = str(item.get("id") or "")
-    url = item.get("webVideoUrl") or (
-        f"https://www.tiktok.com/@{author.get('uniqueId','')}/video/{video_id}" if video_id else ""
+    raw_username = (
+        author.get("uniqueId") or
+        author.get("username") or
+        author.get("handle") or
+        item.get("authorHandle") or
+        ""
     )
+    url = item.get("webVideoUrl") or (
+        f"https://www.tiktok.com/@{raw_username}/video/{video_id}" if video_id else ""
+    )
+    # Fall back to extracting from URL if still empty
+    if not raw_username and url:
+        m = re.search(r"tiktok\.com/@([^/]+)/", url)
+        if m:
+            raw_username = m.group(1)
 
     return {
         "ingested_at":          ingested_at,
@@ -61,7 +73,7 @@ def _parse_item(item: dict, hashtag: str, canonical: str, ingested_at: str) -> d
         "canonical_university": canonical,
         "video_id":             video_id,
         "title":                (item.get("text") or "")[:300],
-        "author_username":      author.get("uniqueId", ""),
+        "author_username":      raw_username,
         "author_name":          author.get("nickName", ""),
         "published_at":         published_at,
         "view_count":           stats.get("playCount", ""),
