@@ -144,6 +144,26 @@
     .tl-red    { background:#FEE2E2; color:#991B1B; }
     .tl-na     { background:#F1F5F9; color:#94A3B8; font-weight:400; font-style:italic; }
     .tl-table .ch-icon { font-size:.8em; opacity:.8; }
+
+    /* Report header */
+    .report-header{display:flex;align-items:flex-start;gap:20px;padding:28px 32px 22px;background:linear-gradient(135deg,#1E293B 0%,#0F172A 100%);border-radius:12px 12px 0 0;margin:-32px -32px 0;color:#fff}
+    .report-header-logo{width:56px;height:56px;object-fit:contain;background:#fff;border-radius:8px;padding:6px;flex-shrink:0}
+    .report-header-logo-ph{width:56px;height:56px;background:rgba(255,255,255,.12);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+    .report-header-body{flex:1;min-width:0}
+    .report-header-label{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:#94A3B8;margin-bottom:5px}
+    .report-header-uni{font-size:1.3rem;font-weight:800;letter-spacing:-.3px;line-height:1.2;margin-bottom:5px}
+    .report-header-sub{font-size:.78rem;color:#CBD5E1}
+    .report-header-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
+    .report-header-country{font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:4px 14px;color:#E2E8F0}
+    .report-header-date{font-size:.65rem;color:#64748B}
+    .btn-print{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;padding:7px 14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;cursor:pointer;transition:background .15s;font-family:inherit}
+    .btn-print:hover{background:rgba(255,255,255,.22)}
+    .reach-stats{display:flex;gap:0;border:1px solid #E2E8F0;border-top:none;margin:0 -32px 28px;background:#fff}
+    .reach-stat{flex:1;padding:14px 20px;border-right:1px solid #E2E8F0}
+    .reach-stat:last-child{border-right:none}
+    .reach-stat .rs-val{font-size:1.15rem;font-weight:800;color:#1E293B;letter-spacing:-.5px;display:block}
+    .reach-stat .rs-lbl{font-size:.62rem;letter-spacing:1px;text-transform:uppercase;color:#64748B;display:block;margin-top:1px}
+    @media print{body{background:#fff !important}.site-nav-bar,.form-card,.btn-print,.powered-by{display:none !important}.output-card{display:block !important;border:none !important;padding:0 !important;box-shadow:none !important}.report-header{-webkit-print-color-adjust:exact;print-color-adjust:exact}.tl-cell{-webkit-print-color-adjust:exact;print-color-adjust:exact}.cov-card,.cov-grid{break-inside:avoid}h2{break-after:avoid}}
   </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
 </head>
@@ -545,7 +565,8 @@ Exactly 3 numbered recommendations — specific to this university and market, r
     } else {
       reportHtml = renderMarkdown(text) + buildCoverageHtml(country, uni);
     }
-    content.innerHTML = `<div class="report">${reportHtml}</div>
+    const reportHeader = buildReportHeader(country, uni, agents, countrySocial);
+    content.innerHTML = `<div class="report">${reportHeader}${reportHtml}</div>
       <div class="powered-by">Powered by <a href="https://claude.ai" target="_blank">Claude</a> (Anthropic) · ${agents.length} agents analysed · ${uni} × ${country}</div>`;
 
   } catch (err) {
