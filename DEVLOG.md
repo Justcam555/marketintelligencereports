@@ -190,10 +190,19 @@
 - Aura API `descriptor` field is empty in responses (only in requests) — must match by URL query param
 - Session cookies expire in ~30 minutes — API replay must happen immediately after Playwright session
 
+#### Agent Profile ID Mismatch Fix
+- **Root cause**: `enrich_agents.py` deduplication added in previous session was breaking profile links
+- Background: each agent in `agent_social` sometimes has two rows (original enrichment + re-enrichment), with different `agent_id` values pointing to different rows in the `agents` table
+- `SOCIAL_INDEX` in `agent-network.html` was hardcoded with the HIGHER `agent_id` (the later duplicate row)
+- The deduplication kept the FIRST row encountered when scores were equal → picked LOWER `agent_id` → `byId[id]` lookup in agent-profile.html returned undefined → 404-style "not found"
+- **Fix**: deduplication now uses `agent_id` as a tiebreaker when `presence_score` is equal — prefers the HIGHER `agent_id` to match what `SOCIAL_INDEX` expects
+- Verified: all 145 `SOCIAL_INDEX` entries now resolve to a valid agent profile (0 broken links)
+
 ### What's Working
 - `python3 scrape_monash.py --country Thailand` — reliable when Chrome passes Cloudflare
 - WIN Education now shows Monash + 11 other universities in Thailand agent network
 - City shows "Multiple" correctly for multi-branch agents
+- All 145 agent profile links working correctly
 
 ### Next Session Priorities
 1. Run events scraper for Nepal (`--country Nepal`)
