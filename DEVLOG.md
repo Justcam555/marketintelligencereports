@@ -155,6 +155,55 @@
 
 ---
 
+## Session: April 25, 2026 (continued)
+
+### What Was Built
+
+#### Monash Agent Database Scraper (`scrape_monash.py`)
+- New script: `/Desktop/Agent Scraper/scrape_monash.py`
+- Monash uses a Salesforce Lightning / Aura app embedded as an iframe on their agent-database page
+- Approach: system Chrome + `playwright-stealth` v2 (Stealth().apply_stealth_sync) bypasses Cloudflare Turnstile
+- `requestfinished` event (not `response`) used to read response bodies — avoids Playwright timing issues
+- Aura responses have empty `descriptor` fields — matched by URL query param instead
+- Response structure: `{"actions": [{"returnValue": {"agencies": [...], "page": 1, "pageSize": 20, "total": 26}}]}`
+- Country filter via `[aria-haspopup='listbox']` combobox → triggers `searchAgenciesByCountryWithPagination` action
+- Pagination via `button:text-is('>')` (the Monash SF app uses ">" not "Next")
+- fwuid extracted from `lightning.force.com/auraFW/javascript/{fwuid}/` URL pattern
+- API replay mode (`--replay`) for remaining pages using saved cookies — cookies expire ~30 mins so replay is integrated into Playwright session automatically
+- Scraped 26 Thailand agents including all 11 WIN Education branches
+
+#### WIN Education Brand Rule Added
+- `normalise_agents.py`: added rule `(r"\bWIN\s+EDUCATION\b|\bWIN\s+Education\b", "WIN Education", "WIN Education")`
+- All Monash WIN Education branches now canonicalise to "WIN Education"
+
+#### WIN Education — Monash Contract Fixed
+- WIN Education Thailand now shows Monash University as a contract
+- Previously missing because: AscentOne database had "WIN EDUCATION SERVICE CO. LTD." which wasn't being matched
+- Now scraped directly from Monash's native Salesforce-hosted agent database
+- All 11 WIN Education branches (Asoke HQ, Bang Kapi, Chula Samyan, Khon Kaen, Lardprao, Nonthaburi, Pinklao, Siam, Silom, Sukhumvit Emsphere, Ubon) in DB under Monash (university_id=29)
+
+### Issues Encountered
+- Cloudflare Turnstile blocks headless Playwright consistently; non-headless with stealth is intermittent
+- Solution: system Chrome (`/Applications/Google Chrome.app`) + `playwright-stealth` v2 — reliable ~80% of attempts
+- `playwright_stealth` v2 API changed: `Stealth().apply_stealth_sync(page)` (not `stealth_sync(page)`)
+- `/AgentDB/s/` URL returns 404 — the app is only accessible as an iframe embed on monash.edu
+- Aura API `descriptor` field is empty in responses (only in requests) — must match by URL query param
+- Session cookies expire in ~30 minutes — API replay must happen immediately after Playwright session
+
+### What's Working
+- `python3 scrape_monash.py --country Thailand` — reliable when Chrome passes Cloudflare
+- WIN Education now shows Monash + 11 other universities in Thailand agent network
+- City shows "Multiple" correctly for multi-branch agents
+
+### Next Session Priorities
+1. Run events scraper for Nepal (`--country Nepal`)
+2. Get FB Marketing API token at work and run Meta Ad Library ingestion
+3. Fix YouTube subscriber and Instagram follower null values
+4. Download remaining 14 university logos manually
+5. Consider running Monash scraper for all countries (61 pages × 20 records ≈ 1,213 global agents)
+
+---
+
 ## Template for Future Sessions
 
 ### Session: [Date]
