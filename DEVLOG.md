@@ -213,6 +213,40 @@
 
 ---
 
+## Session: April 25, 2026 (continued — profile link fix)
+
+### What Was Built
+
+#### Directory Profile Link Fix (`build_agent_html.py`, `agent-network.html`)
+- **Root cause**: `a.name` in ALL_DATA was sourced from `COALESCE(parent_company, company_name)` (e.g. "IDP Education Ltd"), but SOCIAL_INDEX keys use `canonical_name` (e.g. "IDP Education") — lookup always returned null, so no Profile buttons appeared in the directory
+- **Fix**: Added `canonical_name` to the SQL query in `load_data()` — fetched as a 7th field alongside existing 6
+- `build_all_data()` now stores `canonical_name` as `"canonical"` on each agent dict in ALL_DATA
+- `renderDirRows()` in `agent-network.html` updated: `const lookupKey = a.canonical || a.name;` — falls back to `a.name` if canonical absent
+- All agents where parent_company ≠ canonical_name (IDP, AECC, WIN Education, etc.) now resolve correctly to Profile links
+
+### What's Working
+- Profile buttons now appear in directory for all 145 agents with social data
+- IDP Education Ltd → canonical "IDP Education" → SOCIAL_INDEX match ✓
+- WIN Education → canonical "WIN Education" → SOCIAL_INDEX match ✓
+
+### Known Issues (Carryover)
+- Meta Ad Library: needs proper FB Marketing API token
+- YouTube/Instagram null subscriber/follower counts — field mapping issue
+- 14 university logos still missing
+- Agent deduplication incomplete
+- Report generator needs login system before sharing externally
+- Thai text truncation in events scraper (`scrape_events.py`)
+
+### Next Session Priorities
+1. Fix Thai text truncation in `scrape_events.py` — slice at character boundary or bump limit
+2. Run events scraper for Nepal (`--country Nepal`)
+3. Get FB Marketing API token at work and run Meta Ad Library ingestion
+4. Fix YouTube subscriber and Instagram follower null values
+5. Download remaining 14 university logos manually
+6. Consider running Monash scraper for all countries (61 pages × 20 records ≈ 1,213 global agents)
+
+---
+
 ## Template for Future Sessions
 
 ### Session: [Date]
