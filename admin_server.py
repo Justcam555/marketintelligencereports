@@ -12,6 +12,7 @@ competitive-landscape.html on every save.
 
 import json
 import re
+import sqlite3
 import sys
 from pathlib import Path
 
@@ -23,9 +24,93 @@ except ImportError:
 BASE    = Path(__file__).parent
 DATA    = BASE / "data" / "agents_data.json"
 CL_HTML = BASE / "competitive-landscape.html"
+DB_PATH = Path.home() / "Desktop" / "Agent Scraper" / "data" / "agents.db"
 PORT    = 8765
 
 app = Flask(__name__)
+
+# ── DB helpers ────────────────────────────────────────────────────────────────
+
+HANDLE_FIELDS = [
+    ("facebook_url",      "Facebook URL",      "url",  "https://facebook.com/PageName"),
+    ("tiktok_handle",     "TikTok Handle",     "text", "@handle without @"),
+    ("tiktok_url",        "TikTok URL",        "url",  "https://tiktok.com/@handle"),
+    ("instagram_handle",  "Instagram Handle",  "text", "@handle without @"),
+    ("instagram_url",     "Instagram URL",     "url",  "https://instagram.com/handle"),
+    ("yt_channel_name",   "YouTube Channel Name","text","Channel display name"),
+    ("yt_channel_url",    "YouTube Channel URL","url",  "https://youtube.com/@channel"),
+    ("linkedin_url",      "LinkedIn URL",      "url",  "https://linkedin.com/company/name"),
+    ("line_oa_handle",    "LINE OA Handle",    "text", "@lineid"),
+]
+
+HANDLE_FIELD_NAMES = [f[0] for f in HANDLE_FIELDS]
+
+
+def db_conn():
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+
+def db_countries():
+    with db_conn() as conn:
+        rows = conn.execute(
+            "SELECT DISTINCT country FROM agent_social ORDER BY country"
+        ).fetchall()
+    return [r["country"] for r in rows if r["country"]]
+
+
+def db_agents(country):
+    fields = ", ".join(["id", "canonical_name", "country"] + HANDLE_FIELD_NAMES)
+    with db_conn() as conn:
+        rows = conn.execute(
+            f"SELECT {fields} FROM agent_social WHERE LOWER(country)=LOWER(?) ORDER BY canonical_name",
+            (country,)
+        ).fetchall()
+    return [dict(r) for r in rows]
+
+
+def db_update_agent(agent_id, payload):
+    allowed = {k: v for k, v in payload.items() if k in HANDLE_FIELD_NAMES}
+    if not allowed:
+        return False
+    set_clause = ", ".join(f"{k}=?" for k in allowed)
+    values     = list(allowed.values()) + [agent_id]
+    with db_conn() as conn:
+        conn.execute(
+            f"UPDATE agent_social SET {set_clause} WHERE id=?", values
+        )
+        conn.commit()
+    return True
+
+
+# ── DB API routes ─────────────────────────────────────────────────────────────
+
+@app.route("/api/db/countries")
+def api_db_countries():
+    return jsonify(db_countries())
+
+
+@app.route("/api/db/agents")
+def api_db_agents():
+    country = request.args.get("country", "Thailand")
+    return jsonify(db_agents(country))
+
+
+@app.route("/api/db/agents/<int:agent_id>", methods=["PUT"])
+def api_db_update(agent_id):
+    payload = request.get_json(force=True)
+    ok = db_update_agent(agent_id, payload)
+    if not ok:
+        abort(400, "No valid fields in payload")
+    return jsonify({"ok": True})
+
+
+# ── Handles admin UI ──────────────────────────────────────────────────────────
+
+@app.route("/handles")
+def handles_ui():
+    return HANDLES_HTML
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -596,10 +681,256 @@ loadAgents();
 """
 
 
+HANDLES_HTML = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Handle Editor — Market Intelligence Hub</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap');
+:root {
+  --ink:#0f0f0f; --paper:#f7f4ee; --cream:#ede9e0; --rule:#d4cfc4;
+  --accent:#c8392b; --accent2:#1a4a6b; --muted:#6b6560; --green:#2e7d32;
+  --missing:#fff3cd; --missing-border:#ffc107;
+  --sidebar:300px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);display:flex;height:100vh;overflow:hidden;}
+
+#sidebar{width:var(--sidebar);min-width:var(--sidebar);border-right:1px solid var(--rule);display:flex;flex-direction:column;background:#fff;}
+#sidebar-header{padding:20px 20px 14px;border-bottom:1px solid var(--rule);}
+#sidebar-header h1{font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;}
+#sidebar-header p{font-size:11px;color:var(--muted);margin-top:3px;}
+#controls{padding:12px 14px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:8px;}
+#country-select,#search{width:100%;padding:7px 10px;border:1px solid var(--rule);border-radius:4px;font-size:13px;font-family:inherit;background:var(--paper);}
+#country-select:focus,#search:focus{outline:none;border-color:var(--accent2);}
+#agent-list{overflow-y:auto;flex:1;}
+.agent-item{padding:10px 16px;cursor:pointer;border-bottom:1px solid var(--cream);font-size:13px;display:flex;align-items:center;justify-content:space-between;transition:background .1s;}
+.agent-item:hover{background:var(--cream);}
+.agent-item.active{background:var(--accent2);color:#fff;}
+.missing-count{font-size:10px;font-weight:600;padding:2px 6px;border-radius:10px;background:#fdecea;color:var(--accent);}
+.agent-item.active .missing-count{background:rgba(255,255,255,.2);color:#fff;}
+.missing-count.ok{background:#e8f5e9;color:var(--green);}
+
+#main{flex:1;overflow-y:auto;padding:36px 44px;}
+#main h2{font-size:20px;font-weight:500;margin-bottom:4px;}
+.subhead{font-size:12px;color:var(--muted);margin-bottom:28px;}
+
+.section{margin-bottom:28px;}
+.section-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;padding-bottom:7px;border-bottom:1px solid var(--rule);}
+.field{display:flex;flex-direction:column;gap:4px;margin-bottom:14px;}
+.field label{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:500;}
+.field input{padding:9px 12px;border:1px solid var(--rule);border-radius:4px;font-size:13px;font-family:inherit;background:var(--paper);transition:border-color .15s;}
+.field input:focus{outline:none;border-color:var(--accent2);}
+.field input.has-value{border-color:#a5d6a7;background:#f1f8e9;}
+.field input.missing{border-color:var(--missing-border);background:var(--missing);}
+.field .hint{font-size:11px;color:var(--muted);}
+
+.actions{display:flex;gap:12px;align-items:center;margin-top:4px;}
+#save-btn{padding:10px 24px;background:var(--accent2);color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;}
+#save-btn:hover{background:#15395a;}
+#save-btn:disabled{opacity:.5;cursor:default;}
+#status{font-size:12px;color:var(--green);font-weight:500;}
+#status.error{color:var(--accent);}
+
+#empty{text-align:center;padding:80px 40px;color:var(--muted);}
+#empty h3{font-size:18px;font-weight:400;margin-bottom:8px;}
+
+.legend{display:flex;gap:16px;font-size:11px;color:var(--muted);margin-bottom:20px;}
+.legend span{display:flex;align-items:center;gap:5px;}
+.dot{width:10px;height:10px;border-radius:2px;display:inline-block;}
+.dot-ok{background:#a5d6a7;}
+.dot-missing{background:var(--missing-border);}
+.dot-empty{background:var(--rule);}
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <div id="sidebar-header">
+    <h1>Handle Editor</h1>
+    <p id="agent-count">Loading…</p>
+  </div>
+  <div id="controls">
+    <select id="country-select" onchange="loadAgents()"><option>Loading…</option></select>
+    <input id="search" type="text" placeholder="Search agents…" oninput="filterList()">
+  </div>
+  <div id="agent-list"></div>
+</div>
+
+<div id="main">
+  <div id="empty">
+    <h3>Select an agent</h3>
+    <p>Yellow fields = missing handle. Green = already have data.</p>
+  </div>
+  <div id="form-wrap" style="display:none">
+    <h2 id="form-title"></h2>
+    <div class="subhead" id="form-subhead"></div>
+    <div class="legend">
+      <span><span class="dot dot-ok"></span> Has data</span>
+      <span><span class="dot dot-missing"></span> Missing</span>
+      <span><span class="dot dot-empty"></span> Not applicable / blank</span>
+    </div>
+    <div id="fields-container"></div>
+    <div class="actions">
+      <button id="save-btn" onclick="save()">Save to Database</button>
+      <span id="status"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+const FIELDS = [
+  {key:'facebook_url',      label:'Facebook URL',         type:'url',  hint:'Full page URL e.g. https://facebook.com/PageName'},
+  {key:'tiktok_handle',     label:'TikTok Handle',        type:'text', hint:'Without @ e.g. oneeducationthailand'},
+  {key:'tiktok_url',        label:'TikTok URL',           type:'url',  hint:'https://tiktok.com/@handle'},
+  {key:'instagram_handle',  label:'Instagram Handle',     type:'text', hint:'Without @ e.g. agentname_th'},
+  {key:'instagram_url',     label:'Instagram URL',        type:'url',  hint:'https://instagram.com/handle'},
+  {key:'yt_channel_name',   label:'YouTube Channel Name', type:'text', hint:'Display name of the channel'},
+  {key:'yt_channel_url',    label:'YouTube Channel URL',  type:'url',  hint:'https://youtube.com/@channel or /channel/ID'},
+  {key:'linkedin_url',      label:'LinkedIn URL',         type:'url',  hint:'https://linkedin.com/company/name'},
+  {key:'line_oa_handle',    label:'LINE OA Handle',       type:'text', hint:'e.g. @lineid'},
+];
+
+// Group into sections
+const SECTIONS = [
+  {title:'Facebook',  keys:['facebook_url']},
+  {title:'TikTok',    keys:['tiktok_handle','tiktok_url']},
+  {title:'Instagram', keys:['instagram_handle','instagram_url']},
+  {title:'YouTube',   keys:['yt_channel_name','yt_channel_url']},
+  {title:'LinkedIn',  keys:['linkedin_url']},
+  {title:'LINE OA',   keys:['line_oa_handle']},
+];
+
+let agents = [];
+let currentAgent = null;
+
+async function loadCountries() {
+  const res = await fetch('/api/db/countries');
+  const countries = await res.json();
+  const sel = document.getElementById('country-select');
+  sel.innerHTML = countries.map(c => `<option>${c}</option>`).join('');
+  loadAgents();
+}
+
+async function loadAgents() {
+  const country = document.getElementById('country-select').value;
+  const res = await fetch('/api/db/agents?country=' + encodeURIComponent(country));
+  agents = await res.json();
+  const missing = agents.filter(a => missingCount(a) > 0).length;
+  document.getElementById('agent-count').textContent =
+    agents.length + ' agents · ' + missing + ' with gaps';
+  filterList();
+}
+
+function missingCount(a) {
+  return FIELDS.filter(f => !a[f.key]).length;
+}
+
+function filterList() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const filtered = agents.filter(a => a.canonical_name.toLowerCase().includes(q));
+  const el = document.getElementById('agent-list');
+  el.innerHTML = filtered.map(a => {
+    const mc = missingCount(a);
+    const active = currentAgent && a.id === currentAgent.id ? ' active' : '';
+    const mcCls  = mc === 0 ? ' ok' : '';
+    return `<div class="agent-item${active}" onclick="selectAgent(${a.id})">
+      <span>${a.canonical_name}</span>
+      <span class="missing-count${mcCls}">${mc === 0 ? '✓' : mc + ' missing'}</span>
+    </div>`;
+  }).join('');
+}
+
+function selectAgent(id) {
+  currentAgent = agents.find(a => a.id === id);
+  if (!currentAgent) return;
+
+  document.getElementById('empty').style.display = 'none';
+  document.getElementById('form-wrap').style.display = 'block';
+  document.getElementById('form-title').textContent = currentAgent.canonical_name;
+  document.getElementById('form-subhead').textContent =
+    currentAgent.country + ' · ' + missingCount(currentAgent) + ' fields missing';
+  document.getElementById('status').textContent = '';
+
+  const container = document.getElementById('fields-container');
+  container.innerHTML = SECTIONS.map(sec => {
+    const fieldsHtml = sec.keys.map(key => {
+      const f = FIELDS.find(x => x.key === key);
+      const val = currentAgent[key] || '';
+      const cls = val ? 'has-value' : 'missing';
+      return `<div class="field">
+        <label>${f.label}</label>
+        <input type="${f.type}" id="f-${f.key}" value="${escHtml(val)}"
+               class="${cls}" oninput="onInput(this)">
+        <span class="hint">${f.hint}</span>
+      </div>`;
+    }).join('');
+    return `<div class="section">
+      <div class="section-title">${sec.title}</div>
+      ${fieldsHtml}
+    </div>`;
+  }).join('');
+
+  filterList();
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+}
+
+function onInput(input) {
+  input.className = input.value.trim() ? 'has-value' : 'missing';
+}
+
+async function save() {
+  if (!currentAgent) return;
+  const btn    = document.getElementById('save-btn');
+  const status = document.getElementById('status');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+  status.className = '';
+  status.textContent = '';
+
+  const payload = {};
+  FIELDS.forEach(f => {
+    const el = document.getElementById('f-' + f.key);
+    if (el) payload[f.key] = el.value.trim();
+  });
+
+  try {
+    const res = await fetch('/api/db/agents/' + currentAgent.id, {
+      method:'PUT', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error(await res.text());
+    status.textContent = '✓ Saved to database';
+    // Update local copy
+    Object.assign(currentAgent, payload);
+    await loadAgents();
+    selectAgent(currentAgent.id);
+  } catch(e) {
+    status.className = 'error';
+    status.textContent = '✗ ' + e.message;
+  }
+  btn.disabled = false;
+  btn.textContent = 'Save to Database';
+}
+
+loadCountries();
+</script>
+</body>
+</html>"""
+
+
 if __name__ == "__main__":
     if not DATA.exists():
         sys.exit(f"Data file not found: {DATA}")
     if not CL_HTML.exists():
         sys.exit(f"competitive-landscape.html not found: {CL_HTML}")
-    print(f"\n  Agent Admin running at: http://localhost:{PORT}/admin\n")
+    if not DB_PATH.exists():
+        print(f"Warning: agents.db not found at {DB_PATH}")
+    print(f"\n  Agent Admin:   http://localhost:{PORT}/admin")
+    print(f"  Handle Editor: http://localhost:{PORT}/handles\n")
     app.run(host="127.0.0.1", port=PORT, debug=False)

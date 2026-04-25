@@ -25,8 +25,9 @@ DB_PATH      = Path.home() / "Desktop" / "Agent Scraper" / "data" / "agents.db"
 REPO_DIR     = Path(__file__).parent
 NETWORK_HTML  = REPO_DIR / "agent-network.html"
 PROFILE_HTML  = REPO_DIR / "agent-profile.html"
-REPORT_HTML   = REPO_DIR / "market-intelligence-report.html"
-INDEX_HTML    = REPO_DIR / "index.html"
+REPORT_HTML    = REPO_DIR / "market-intelligence-report.html"
+MENTIONS_HTML  = REPO_DIR / "mentions-report.html"
+INDEX_HTML     = REPO_DIR / "index.html"
 LOGO_DIR      = REPO_DIR / "Uni logos"
 
 # Manual overrides where slug can't be cleanly derived from the DB name
@@ -234,8 +235,9 @@ def build_all_data(rows, uni_names):
     For each (country, company_name) combo, pick best available contact info.
     """
     # Group by (country, company_name) → set of uni_names, best contact info
-    agent_unis = defaultdict(set)      # (country, company) → {uni_name}
-    agent_info = {}                    # (country, company) → {city, email, website}
+    agent_unis  = defaultdict(set)   # (country, company) → {uni_name}
+    agent_cities = defaultdict(set)  # (country, company) → {city}
+    agent_info  = {}                 # (country, company) → {email, website}
 
     for company, country, city, email, website, uni_id in rows:
         country = (country or "").strip()
@@ -245,10 +247,12 @@ def build_all_data(rows, uni_names):
         uni_name = uni_names.get(uni_id, "")
         if uni_name:
             agent_unis[key].add(uni_name)
+        norm_city = normalise_city(city or "")
+        if norm_city:
+            agent_cities[key].add(norm_city)
         # Keep best available contact
         existing = agent_info.get(key, {})
         agent_info[key] = {
-            "city":    existing.get("city") or normalise_city(city or "") or "",
             "email":   existing.get("email") or (email or "").strip() or "",
             "website": existing.get("website") or (website or "").strip() or "",
         }
@@ -259,9 +263,11 @@ def build_all_data(rows, uni_names):
         if len(unis) == 0:
             continue
         info = agent_info.get((country, company), {})
+        cities = agent_cities.get((country, company), set())
+        city_display = "Multiple" if len(cities) > 1 else (next(iter(cities)) if cities else "")
         country_agents[country].append({
             "name":    company,
-            "city":    info.get("city", ""),
+            "city":    city_display,
             "email":   info.get("email", ""),
             "website": info.get("website", ""),
             "parent":  company,   # no reliable parent data; use name as-is
@@ -509,16 +515,43 @@ def main():
     phtml = replace_js_const(phtml, "META_ADS_DATA",
                              json.dumps(meta_ads_combined, ensure_ascii=False, separators=(',', ':')))
 
+    # Inject AGENT_EVENTS — merge all agent_events_*.json files keyed by agent name
+    agent_events_by_name: dict = {}
+    events_processed = REPO_DIR / "data" / "processed"
+    for jf in sorted(events_processed.glob("agent_events_*.json")):
+        try:
+            for record in json.load(open(jf, encoding="utf-8")):
+                name = record.get("agent_name", "")
+                if name and record.get("events"):
+                    agent_events_by_name[name] = {
+                        "events": record["events"],
+                        "events_page_url": record.get("events_page_url", ""),
+                    }
+            print(f"  Loaded Agent Events: {jf.name}")
+        except Exception as e:
+            print(f"  Warning: could not load {jf.name}: {e}")
+    phtml = replace_js_const(phtml, "AGENT_EVENTS",
+                             json.dumps(agent_events_by_name, ensure_ascii=False, separators=(',', ':')))
+
     PROFILE_HTML.write_text(phtml)
     print(f"  ✅ {PROFILE_HTML.name} written ({len(phtml):,} bytes)")
+
+    # ── Update mentions-report.html ───────────────────────────────────────────
+    print(f"\nReading {MENTIONS_HTML.name} …")
+    mhtml = MENTIONS_HTML.read_text()
+    mhtml = replace_js_const(mhtml, "AGENT_EVENTS",
+                             json.dumps(agent_events_by_name, ensure_ascii=False, separators=(',', ':')))
+    MENTIONS_HTML.write_text(mhtml)
+    print(f"  ✅ {MENTIONS_HTML.name} written ({len(mhtml):,} bytes)")
 
     # ── Update market-intelligence-report.html ────────────────────────────────
     print(f"\nReading {REPORT_HTML.name} …")
     rhtml = REPORT_HTML.read_text()
     print("Replacing ALL_DATA, SOCIAL_DATA and UNI_LOGOS in market-intelligence-report …")
-    rhtml = replace_js_const(rhtml, "ALL_DATA",    json.dumps(all_data,    ensure_ascii=False, separators=(',', ':')))
-    rhtml = replace_js_const(rhtml, "SOCIAL_DATA", json.dumps(social_data, ensure_ascii=False, separators=(',', ':')))
-    rhtml = replace_js_const(rhtml, "UNI_LOGOS",   json.dumps(uni_logos,   ensure_ascii=False, separators=(',', ':')))
+    rhtml = replace_js_const(rhtml, "ALL_DATA",      json.dumps(all_data,             ensure_ascii=False, separators=(',', ':')))
+    rhtml = replace_js_const(rhtml, "SOCIAL_DATA",   json.dumps(social_data,          ensure_ascii=False, separators=(',', ':')))
+    rhtml = replace_js_const(rhtml, "UNI_LOGOS",     json.dumps(uni_logos,            ensure_ascii=False, separators=(',', ':')))
+    rhtml = replace_js_const(rhtml, "AGENT_EVENTS",  json.dumps(agent_events_by_name, ensure_ascii=False, separators=(',', ':')))
     REPORT_HTML.write_text(rhtml)
     print(f"  ✅ {REPORT_HTML.name} written ({len(rhtml):,} bytes)")
 

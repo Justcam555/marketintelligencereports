@@ -1,0 +1,690 @@
+[
+  {
+    "agent_name": "ABAC Study Abroad - Bangsaothong",
+    "website": "https://www.abacstudyabroad.com:443",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "AECC Global",
+    "website": "https://www.aeccglobal.co.th",
+    "events_page_url": "https://www.aeccglobal.co.th/events",
+    "events": [],
+    "page_summary": "The AECC Global Thailand events page lists upcoming events but contains no specific event details, dates, or titles in the extracted content.",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "ANZ Education Centre Co",
+    "website": "https://www.anzcentre.net",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "AVSS",
+    "website": "https://www.theavss.net",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Adventus Education",
+    "website": "https://adventus.io",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Apex Education Consultant",
+    "website": "https://apexeducate.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Asiania International Consulting",
+    "website": "http://www.studyaus.co",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "At Education",
+    "website": "https://www.ateducation.co.th",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "AusConnect EduCoach - Thailand",
+    "website": "http://www.sayexchange.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Beyond Study Center Co",
+    "website": "https://www.beyondstudycenter.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Career Education Consultancy Australia - Thailand",
+    "website": "https://www.ceca.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Chulalongkorn University (Faculty of Political Science)",
+    "website": "https://www.chula.ac.th",
+    "events_page_url": "https://www.chula.ac.th/news-and-knowledge/news-updates/event-calendar/",
+    "events": [
+      {
+        "name": "Chulalongkorn University Labor Day Health Check and Free Services at Siam Square",
+        "date": "1 May 2026",
+        "date_iso": "2026-05-01",
+        "time": "",
+        "location": "Siam Square Walking Street, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "Chulalongkorn University is organizing a Labor Day event to improve workers' quality of life by offering free health check-ups and various services at Siam Square Walking Street.",
+        "registration_url": ""
+      },
+      {
+        "name": "Loose Parts Play – Free Play Development Activity for Children Ages 3-7 (Summer Break)",
+        "date": "April – May 2026",
+        "date_iso": "2026-04-01",
+        "time": "",
+        "location": "Faculty of Education, Chulalongkorn University",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "The Faculty of Education at Chulalongkorn University invites participation in 'Loose Parts Play' activities designed to enhance development through free play for children aged 3-7 during the summer holiday period.",
+        "registration_url": ""
+      },
+      {
+        "name": "Online Seminar: Positive Parenting – Skills for Managing Early Childhood Behavior",
+        "date": "10 May 2026",
+        "date_iso": "2026-05-10",
+        "time": "09:00 - 11:30",
+        "location": "Online (Zoom)",
+        "format": "online",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "An online seminar on positive parenting techniques to help parents and caregivers manage early childhood behavior more effectively. Hosted by Chulalongkorn University via Zoom.",
+        "registration_url": ""
+      },
+      {
+        "name": "Academic Seminar: 'Achieving Success through Innovation' by the Faculty Senate of Chulalongkorn University",
+        "date": "8 May 2026",
+        "date_iso": "2026-05-08",
+        "time": "08:30 - 11:30",
+        "location": "Online (Zoom)",
+        "format": "online",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "The Faculty Senate of Chulalongkorn University invites participation in an academic seminar titled 'Achieving Success through Innovation', exploring perspectives from concept to social impact, held online via Zoom.",
+        "registration_url": ""
+      },
+      {
+        "name": "Online Training: Wound Care and Scar Prevention",
+        "date": "29 May 2026",
+        "date_iso": "2026-05-29",
+        "time": "13:00 - 15:45",
+        "location": "Online",
+        "format": "online",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "The Faculty of Pharmaceutical Sciences at Chulalongkorn University organizes an online training session on proper wound care techniques and how to prevent scarring.",
+        "registration_url": ""
+      },
+      {
+        "name": "International Conference: 'Thailand and Central Asia' – Building New Cooperation in Eurasia",
+        "date": "29–30 April 2026",
+        "date_iso": "2026-04-29",
+        "time": "",
+        "location": "Social Innovation Hub, Wisit Prachuabmoh Building, Chulalongkorn University, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "The Institute of Asian Studies at Chulalongkorn University hosts an international conference on Thailand and Central Asia relations, aiming to foster new partnerships and dialogue within the Eurasian region.",
+        "registration_url": ""
+      },
+      {
+        "name": "Admissions Open: Master's and Doctoral Programs – Department of Educational Technology and Communications, First Semester 2026",
+        "date": "Now – 26 April 2026",
+        "date_iso": "2026-04-26",
+        "time": "",
+        "location": "Faculty of Education, Chulalongkorn University",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "The Faculty of Education at Chulalongkorn University is accepting applications for Master's and Doctoral degree programs in the Department of Educational Technology and Communications for the first semester of academic year 2026.",
+        "registration_url": ""
+      },
+      {
+        "name": "Cultural Event: 'Under the Royal Patronage – 244 Years of Rattanakosin' with CU Band Performance",
+        "date": "22–26 April 2026",
+        "date_iso": "2026-04-22",
+        "time": "",
+        "location": "Chulalongkorn University Centenary Park, National Museum, Wat Prayurawongsawat, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "A cultural event celebrating 244 years of the Rattanakosin era, featuring a performance by the CU Band, held across Chulalongkorn University's Centenary Park, the National Museum, and Wat Prayurawongsawat.",
+        "registration_url": ""
+      },
+      {
+        "name": "Seminar: 'Thai Universities and Adaptation in the Age of Artificial Intelligence'",
+        "date": "24 April 2026",
+        "date_iso": "2026-04-24",
+        "time": "13:30 - 16:30",
+        "location": "Faculty of Education, Chulalongkorn University",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "The Faculty of Education at Chulalongkorn University invites participation in a seminar exploring how Thai universities should adapt and respond in the age of artificial intelligence.",
+        "registration_url": ""
+      },
+      {
+        "name": "Online Seminar: Using AI to Drive English Skills to CEFR Standards",
+        "date": "27 April 2026",
+        "date_iso": "2026-04-27",
+        "time": "09:30 - 11:30",
+        "location": "Online (Zoom)",
+        "format": "online",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "Chulalongkorn University Book Center organizes an online seminar on leveraging AI tools to enhance English language skills toward CEFR international standards, conducted via Zoom.",
+        "registration_url": "โปรแกรม Zoom"
+      },
+      {
+        "name": "Dent Chula x Straumann Implant Day – Dental Implant Discount Coupons and Special Activities",
+        "date": "23 April 2026",
+        "date_iso": "2026-04-23",
+        "time": "09:00 - 16:00",
+        "location": "CUSDC Special Clinic, Faculty of Dentistry, Chulalongkorn University, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "The Faculty of Dentistry at Chulalongkorn University offers dental implant discount coupons and hosts special activities in collaboration with Straumann on Implant Day at the CUSDC Special Clinic.",
+        "registration_url": ""
+      },
+      {
+        "name": "International Conference: AIWEST-DR 2026 – Sustainable Post-Disaster Recovery",
+        "date": "22–24 July 2026",
+        "date_iso": "2026-07-22",
+        "time": "",
+        "location": "Mandarin Hotel, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "The Faculty of Engineering at Chulalongkorn University organizes the AIWEST-DR 2026 international academic conference focused on sustainable post-disaster recovery and reconstruction strategies.",
+        "registration_url": ""
+      },
+      {
+        "name": "Songkran Siam 2026 – WATERLAND: White Songkran Water Park at Siam Square",
+        "date": "12–15 April 2026",
+        "date_iso": "2026-04-12",
+        "time": "11:00 - 22:00",
+        "location": "Siam Square, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "Chulalongkorn University transforms Siam Square into a WATERLAND outdoor water park for the Songkran festival, featuring a white Songkran theme and a variety of highlight activities from April 12–15.",
+        "registration_url": ""
+      },
+      {
+        "name": "Public Lecture: 'From Speciecide to Ocean Justice: Reframing Marine Governance and Responsibility'",
+        "date": "28 April 2026",
+        "date_iso": "2026-04-28",
+        "time": "13:00 - 15:00",
+        "location": "Chumpot-Phanthumthip Meeting Room, Prajadhipok-Ramphaipanni Building, Chulalongkorn University, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "A public lecture exploring marine governance and accountability, reframing the concept from speciecide to ocean justice, held at Chulalongkorn University's Prajadhipok-Ramphaipanni Building.",
+        "registration_url": ""
+      },
+      {
+        "name": "ICA Regional Hub Thailand 2026 – Inequality and Voices from Thailand and the Mekong Region",
+        "date": "6–7 June 2026",
+        "date_iso": "2026-06-06",
+        "time": "",
+        "location": "Faculty of Communication Arts, Chulalongkorn University, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "The Faculty of Communication Arts at Chulalongkorn University hosts the ICA Regional Hub Thailand 2026 conference, focusing on inequality and amplifying voices from Thailand and the Mekong region on the global stage.",
+        "registration_url": ""
+      },
+      {
+        "name": "Open Data Governance – ITA Assessment Reform Workshops",
+        "date": "7, 8, 22, 28 May 2026",
+        "date_iso": "2026-05-07",
+        "time": "10:00 - 12:00",
+        "location": "Chulalongkorn University",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "Chulalongkorn University launches its Open Data Governance strategy for fiscal year 2026 through a series of workshops aimed at transforming the ITA evaluation process toward sustainable integrity and transparent behavior.",
+        "registration_url": ""
+      },
+      {
+        "name": "Special Lecture: 'Translational AI' – New Perspectives on AI and Healthcare",
+        "date": "5 May 2026",
+        "date_iso": "2026-05-05",
+        "time": "13:00 - 15:00",
+        "location": "Theater Room, 1st Floor, Faculty of Medicine Library, Chulalongkorn University, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "Chulalongkorn University hosts a special lecture on Translational AI, offering new perspectives on the application of artificial intelligence in healthcare and medical research.",
+        "registration_url": ""
+      },
+      {
+        "name": "PharmCU Drug Journey – Career Exploration in Pharmacy for High School Students",
+        "date": "20 June 2026",
+        "date_iso": "2026-06-20",
+        "time": "",
+        "location": "Faculty of Pharmaceutical Sciences, Chulalongkorn University, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "Chulalongkorn University's Faculty of Pharmaceutical Sciences organizes the 'PharmCU Drug Journey' event, opening doors for upper secondary school students to explore career opportunities as pharmacists.",
+        "registration_url": ""
+      },
+      {
+        "name": "Charity Film Screening: 'Go Hang – Heart Go Home' – Fundraiser for Homeless Animals",
+        "date": "20 April 2026",
+        "date_iso": "2026-04-20",
+        "time": "18:15",
+        "location": "Paragon Cineplex, 5th Floor, Siam Paragon, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "The Faculty of Veterinary Science at Chulalongkorn University invites the public to a charity film screening of 'Go Hang – Heart Go Home' to raise funds supporting homeless animals.",
+        "registration_url": ""
+      },
+      {
+        "name": "Theater Performance: 'White Snake' by the Faculty of Arts, Chulalongkorn University",
+        "date": "25–26 April 2026",
+        "date_iso": "2026-04-25",
+        "time": "",
+        "location": "Sodsai Pantoomkomol Centre for Dramatic Arts, 6th Floor, Mahachakri Sirindhorn Building, Chulalongkorn University, Bangkok",
+        "format": "in-person",
+        "universities": [
+          "Chulalongkorn University"
+        ],
+        "details": "The Faculty of Arts at Chulalongkorn University presents a theatrical performance of 'White Snake' at the Sodsai Pantoomkomol Centre for Dramatic Arts on April 25–26, 2026.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page covers the Chulalongkorn University event calendar listing upcoming academic conferences, public lectures, open days, seminars, cultural events, and short training courses scheduled between April and July 2026.",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Complete Education and Touring Australia Co",
+    "website": "https://www.ceta.co.th",
+    "events_page_url": "https://www.ceta.co.th/events/",
+    "events": [],
+    "page_summary": "No upcoming or recent events found on this CETA (Complete Education and Touring Australia Co) events page; the page shows 0 events found with only a past event reference from March 26, 2025.",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "EDEN STUDENT SERVICE",
+    "website": "https://eden-studentservice.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "EDNET CO",
+    "website": "https://www.ednet.co.th",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Education For Life",
+    "website": "https://www.eduforlife.net",
+    "events_page_url": "https://www.eduforlife.net/activities/",
+    "events": [],
+    "page_summary": "This page covers past/archived recruitment and study abroad events organized by Education For Life (EFL), a Thai education agency, ranging from 2011 to approximately 2022, with no upcoming or recent events within the last 6 months listed.",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Eduyoung.Com - Thailand",
+    "website": "https://www.eduyoungth.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Expert Education - EEVS Thailand",
+    "website": "https://experteducation.com",
+    "events_page_url": "https://experteducation.com/education-fair/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Further Education",
+    "website": "https://www.furthereducation.co.th",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Hands On Education",
+    "website": "https://www.hands-on.co.th",
+    "events_page_url": "https://www.hands-on.co.th/events/",
+    "events": [
+      {
+        "name": "Study in the UK Fair",
+        "date": "9 May 2026",
+        "date_iso": "2026-05-09",
+        "time": "14:00 - 18:00",
+        "location": "Novotel Bangkok on Siam Square",
+        "format": "in-person",
+        "universities": [],
+        "details": "A UK study fair event where prospective students can apply, gather information, and meet university representatives to prepare for studying in the United Kingdom.",
+        "registration_url": ""
+      },
+      {
+        "name": "SoP Clinic by Hands On",
+        "date": "8 April 2026 - 29 April 2026",
+        "date_iso": "2026-04-08",
+        "time": "17:00 - 19:00",
+        "location": "Hands On Silom",
+        "format": "in-person",
+        "universities": [],
+        "details": "A Statement of Purpose (SoP) writing clinic suitable for students at any stage of their SoP writing process. Attendees can receive consultation on SoP writing and general study abroad application advice.",
+        "registration_url": ""
+      },
+      {
+        "name": "Pre-departure Briefings – Orientation before studying in Australia",
+        "date": "28 January 2026 - 24 December 2026",
+        "date_iso": "2026-01-28",
+        "time": "16:00 - 17:00",
+        "location": "Hands On Silom",
+        "format": "in-person",
+        "universities": [],
+        "details": "Hands On organizes pre-departure orientation sessions for students preparing to travel and study in Australia, providing essential information before departure.",
+        "registration_url": ""
+      },
+      {
+        "name": "US & Canada Study Day",
+        "date": "25 April 2026",
+        "date_iso": "2026-04-25",
+        "time": "13:00 - 15:00",
+        "location": "Hands On Silom",
+        "format": "in-person",
+        "universities": [],
+        "details": "An event for students interested in studying in the USA or Canada. Attendees can set their study plan, gather information, consult with Hands On expert staff, and meet university representatives one-on-one.",
+        "registration_url": ""
+      },
+      {
+        "name": "Hands On Study Abroad Roadshow in Chiang Mai 2026",
+        "date": "16 May 2026",
+        "date_iso": "2026-05-16",
+        "time": "12:30 - 16:00",
+        "location": "Centara Riverside Hotel Chiang Mai",
+        "format": "in-person",
+        "universities": [],
+        "details": "A study abroad guidance event held in Chiang Mai for students interested in studying overseas. Hands On staff will provide international education counseling and information at the venue.",
+        "registration_url": ""
+      },
+      {
+        "name": "Macquarie University Scholarship Interview Day",
+        "date": "27 May 2026",
+        "date_iso": "2026-05-27",
+        "time": "17:00 - 19:00",
+        "location": "Hands On Silom",
+        "format": "in-person",
+        "universities": [
+          "Macquarie University"
+        ],
+        "details": "A special event for students interested in undergraduate or postgraduate study at Macquarie University in Sydney. Students can apply on the spot for the Vice-Chancellor's International Scholarship worth up to A$10,000 in tuition fee discounts.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming study abroad events hosted by Hands On Education Consultants in Bangkok and Chiang Mai, including UK and Australia fairs, SoP writing clinics, US & Canada study days, pre-departure briefings, and a Macquarie University scholarship interview day.",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "IDP Education",
+    "website": "https://www.idp.com",
+    "events_page_url": "https://www.idp.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Imagine Global Edu and Migration- iGEM (Bangkok)",
+    "website": "https://igemedu.com",
+    "events_page_url": "https://igemedu.com/events/",
+    "events": [
+      {
+        "name": "iGEM April 2026 Events Calendar",
+        "date": "25 April 2026",
+        "date_iso": "2026-04-25",
+        "time": "",
+        "location": "",
+        "format": "online",
+        "universities": [],
+        "details": "A collection of free webinars and events hosted by iGEM in April 2026, offering expert advice on studying abroad, migration, and PR pathways.",
+        "registration_url": ""
+      },
+      {
+        "name": "Dek-D Study Abroad Fair – iGEM Booth S7–S8",
+        "date": "25–26 April 2026",
+        "date_iso": "2026-04-25",
+        "time": "",
+        "location": "Dek-D Study Abroad Fair, Bangkok (Booth S7–S8)",
+        "format": "in-person",
+        "universities": [],
+        "details": "iGEM representatives will be available at Booth S7–S8 at the Dek-D Study Abroad Fair for free one-on-one consultations about studying abroad in multiple countries worldwide, including Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "Free Migration Seminar – iGEM Thailand x VisaLink",
+        "date": "29 April 2026",
+        "date_iso": "2026-04-29",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "A free migration seminar co-hosted by iGEM Thailand and VisaLink, covering opportunities to migrate to Australia and New Zealand. Features VisaLink Migration team member Grace Zhang and other migration experts.",
+        "registration_url": ""
+      },
+      {
+        "name": "iGEM Study Abroad and Migration Expo in Laos",
+        "date": "5 May 2026",
+        "date_iso": "2026-05-05",
+        "time": "",
+        "location": "Laos",
+        "format": "in-person",
+        "universities": [],
+        "details": "iGEM hosts a Study Abroad and Migration Expo in Laos for those interested in studying abroad or migrating to Australia or New Zealand. Described as a must-attend event for prospective international students and migrants.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming free events and webinars hosted by iGEM (Imagine Global Edu and Migration) in Bangkok and Laos during April–May 2026, covering study abroad and migration to Australia and New Zealand.",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Oec Global Education",
+    "website": "https://www.oecglobal.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "One Education Consulting",
+    "website": "https://one-educationgroup.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Professional Intereducation",
+    "website": "https://prointered.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "RMIT English Worldwide",
+    "website": "https://rmitenglish.ac.th",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "SOL Edu",
+    "website": "https://www.soledu.net",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Start Education Centre",
+    "website": "https://startedc.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Stellar Education",
+    "website": "https://www.stellaraustralia.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "StudyIn",
+    "website": "https://www.gostudyin.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Thai Links Consultants / Merit Innovation Service",
+    "website": "https://www.thailinks.net",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "The Best Language and Education Centre Company",
+    "website": "https://thebest-edu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Uniadvice Co",
+    "website": "http://uniadvice.co.th",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Union Plus",
+    "website": "https://iamstudy.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "WIN Education",
+    "website": "https://win-ed.com",
+    "events_page_url": "https://win-ed.com/workshop_readyto_study_topu_aus/",
+    "events": [
+      {
+        "name": "Online Workshop: Strategies to Get into Top Universities in Australia",
+        "date": "29 April 2026",
+        "date_iso": "2026-04-29",
+        "time": "19:00 - 20:00",
+        "location": "Online via Zoom",
+        "format": "online",
+        "universities": [
+          "UNSW Sydney",
+          "Monash University",
+          "Deakin University",
+          "Macquarie University"
+        ],
+        "details": "A free online workshop for students aiming to get into top Australian universities. Covers application strategies, timelines, steps to increase chances of receiving an offer, and tips for study planning. Information is sourced directly from the universities. Register early to secure a spot before seats fill up.",
+        "registration_url": "https://win-ed.com/workshop_readyto_study_topu_aus/"
+      }
+    ],
+    "page_summary": "This page covers a free online Zoom workshop by WIN Education on April 29, 2026, focused on strategies for Thai students to gain admission to top Australian universities.",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "Yes Education Group(Bangkok)",
+    "website": "https://yesedugroup.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  },
+  {
+    "agent_name": "iae GLOBAL",
+    "website": "https://www.iaeglobal.in.th",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-25"
+  }
+]
