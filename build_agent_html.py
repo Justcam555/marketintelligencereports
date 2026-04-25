@@ -117,7 +117,7 @@ def load_data(conn: sqlite3.Connection):
     """
     Returns:
         uni_names   : {uni_id: name}
-        agents_rows : list of (company_name, country, city, email, website, uni_id)
+        agents_rows : list of (company_name, country, city, email, website, uni_id, canonical_name)
     """
     uni_names = {
         row[0]: row[1]
@@ -126,7 +126,8 @@ def load_data(conn: sqlite3.Connection):
 
     rows = conn.execute("""
         SELECT COALESCE(parent_company, company_name) AS company_name,
-               country, city, email, website, university_id
+               country, city, email, website, university_id,
+               COALESCE(canonical_name, company_name) AS canonical_name
         FROM   agents
         WHERE  company_name IS NOT NULL
           AND  TRIM(company_name) != ''
@@ -135,7 +136,7 @@ def load_data(conn: sqlite3.Connection):
 
     # Filter noise; normalise country codes
     clean = []
-    for company, country, city, email, website, uni_id in rows:
+    for company, country, city, email, website, uni_id, canonical in rows:
         company = (company or "").strip()
         if company in EXCLUDE_COMPANIES:
             continue
@@ -143,7 +144,7 @@ def load_data(conn: sqlite3.Connection):
             continue
         if len(company) <= 2:
             continue
-        clean.append((company, normalise_country(country), city, email, website, uni_id))
+        clean.append((company, normalise_country(country), city, email, website, uni_id, (canonical or company).strip()))
     return uni_names, clean
 
 
@@ -238,8 +239,11 @@ def build_all_data(rows, uni_names):
     agent_unis  = defaultdict(set)   # (country, company) → {uni_name}
     agent_cities = defaultdict(set)  # (country, company) → {city}
     agent_info  = {}                 # (country, company) → {email, website}
+    agent_canonical = {}             # (country, company) → canonical_name
 
-    for company, country, city, email, website, uni_id in rows:
+    for row in rows:
+        company, country, city, email, website, uni_id = row[0], row[1], row[2], row[3], row[4], row[5]
+        canonical = row[6] if len(row) > 6 else company
         country = (country or "").strip()
         if not country:
             continue
@@ -256,6 +260,8 @@ def build_all_data(rows, uni_names):
             "email":   existing.get("email") or (email or "").strip() or "",
             "website": existing.get("website") or (website or "").strip() or "",
         }
+        if key not in agent_canonical:
+            agent_canonical[key] = (canonical or company).strip()
 
     # Build per-country structure
     country_agents = defaultdict(list)
@@ -266,12 +272,13 @@ def build_all_data(rows, uni_names):
         cities = agent_cities.get((country, company), set())
         city_display = "Multiple" if len(cities) > 1 else (next(iter(cities)) if cities else "")
         country_agents[country].append({
-            "name":    company,
-            "city":    city_display,
-            "email":   info.get("email", ""),
-            "website": info.get("website", ""),
-            "parent":  company,   # no reliable parent data; use name as-is
-            "unis":    sorted(unis),
+            "name":      company,
+            "canonical": agent_canonical.get((country, company), company),
+            "city":      city_display,
+            "email":     info.get("email", ""),
+            "website":   info.get("website", ""),
+            "parent":    company,   # no reliable parent data; use name as-is
+            "unis":      sorted(unis),
         })
 
     all_data = {}
@@ -299,7 +306,8 @@ def build_global_agents(rows, uni_names):
     agent_countries = defaultdict(set)    # company → {country}
     agent_info      = {}                  # company → {email, website}
 
-    for company, country, city, email, website, uni_id in rows:
+    for row in rows:
+        company, country, city, email, website, uni_id = row[0], row[1], row[2], row[3], row[4], row[5]
         country  = (country or "").strip()
         uni_name = uni_names.get(uni_id, "")
         if uni_name:
