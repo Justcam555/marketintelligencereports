@@ -213,37 +213,120 @@
 
 ---
 
-## Session: April 25, 2026 (continued — profile link fix)
+## Session: April 25, 2026 (continued — profile link fixes)
 
 ### What Was Built
 
-#### Directory Profile Link Fix (`build_agent_html.py`, `agent-network.html`)
-- **Root cause**: `a.name` in ALL_DATA was sourced from `COALESCE(parent_company, company_name)` (e.g. "IDP Education Ltd"), but SOCIAL_INDEX keys use `canonical_name` (e.g. "IDP Education") — lookup always returned null, so no Profile buttons appeared in the directory
-- **Fix**: Added `canonical_name` to the SQL query in `load_data()` — fetched as a 7th field alongside existing 6
-- `build_all_data()` now stores `canonical_name` as `"canonical"` on each agent dict in ALL_DATA
-- `renderDirRows()` in `agent-network.html` updated: `const lookupKey = a.canonical || a.name;` — falls back to `a.name` if canonical absent
-- All agents where parent_company ≠ canonical_name (IDP, AECC, WIN Education, etc.) now resolve correctly to Profile links
+#### Directory Profile Link Fix — Phase 1: canonical_name in ALL_DATA (`build_agent_html.py`, `agent-network.html`)
+- **Root cause**: `a.name` in ALL_DATA used `COALESCE(parent_company, company_name)` (e.g. "IDP Education Ltd") but SOCIAL_INDEX keys use `canonical_name` (e.g. "IDP Education") — lookup always returned null
+- `load_data()` updated: added `canonical_name` as 7th field in SQL query
+- `build_all_data()` stores it as `"canonical"` on each agent dict
+- `renderDirRows()` in `agent-network.html` now uses: `const lookupKey = a.canonical || a.name;`
+- Fixed agents: IDP Education, One Education, AVSS, WIN Education, AECC, Hands On Education, and others where parent_company ≠ canonical_name
 
-### What's Working
-- Profile buttons now appear in directory for all 145 agents with social data
-- IDP Education Ltd → canonical "IDP Education" → SOCIAL_INDEX match ✓
-- WIN Education → canonical "WIN Education" → SOCIAL_INDEX match ✓
+#### Directory Profile Link Fix — Phase 2: brand rules for remaining mismatches (`normalise_agents.py`)
+- After Phase 1, 17 Thailand agents still missing — `agents.canonical_name` didn't match `agent_social.canonical_name`
+- Added 11 new brand rules to `normalise_agents.py`:
+  - AVSS branches (uppercase with "&") → "AVSS"
+  - Yes Education Group variants → "Yes Education Group(Bangkok)"
+  - Expert Education & Visa Services / Expert Group Holdings → "Expert Education - EEVS Thailand"
+  - Eduyoung.com / Edu Young.Com → "Eduyoung.Com - Thailand"
+  - Beyond Study Center → "Beyond Study Center Co"
+  - EDNET CO.,LTD branches → "EDNET CO"
+  - FURTHER EDUCATION COMPANY → "Further Education"
+  - Imagine Global Edu and Migration (Thailand) → "Imagine Global Edu and Migration- iGEM (Bangkok)"
+  - LCI Group → "Liu Cheng International Group"
+  - Asiania International Consulting (with trading-as suffix) → "Asiania International Consulting"
+  - OEC Global Education (city variants) → "Oec Global Education"
+- Re-ran `python3 normalise_agents.py` then `python3 build_agent_html.py`
+- Thailand result: **42/44 agents now have Profile links** (2 remaining — Nurture Higher Education Group, i-San International Ed — have no social data in agent_social, so no profile link is correct behaviour)
+
+### Status at End of Session
+- All changes pushed to GitHub at commit `8a24dd6`
+- GitHub Pages was still deploying when session ended — **verify profile links work tomorrow; try hard refresh (Cmd+Shift+R) if they seem broken**
+- If links still missing after GH Pages deploys, check that `a.canonical` field is present in ALL_DATA in the live page source
 
 ### Known Issues (Carryover)
 - Meta Ad Library: needs proper FB Marketing API token
 - YouTube/Instagram null subscriber/follower counts — field mapping issue
 - 14 university logos still missing
-- Agent deduplication incomplete
+- Agent deduplication still incomplete globally
 - Report generator needs login system before sharing externally
 - Thai text truncation in events scraper (`scrape_events.py`)
 
 ### Next Session Priorities
-1. Fix Thai text truncation in `scrape_events.py` — slice at character boundary or bump limit
-2. Run events scraper for Nepal (`--country Nepal`)
-3. Get FB Marketing API token at work and run Meta Ad Library ingestion
-4. Fix YouTube subscriber and Instagram follower null values
-5. Download remaining 14 university logos manually
-6. Consider running Monash scraper for all countries (61 pages × 20 records ≈ 1,213 global agents)
+1. Verify directory profile links are working on live site (may just need hard refresh)
+2. Fix Thai text truncation in `scrape_events.py` — slice at character boundary or bump limit
+3. Run events scraper for Nepal (`--country Nepal`)
+4. Get FB Marketing API token at work and run Meta Ad Library ingestion
+5. Fix YouTube subscriber and Instagram follower null values
+6. Download remaining 14 university logos manually
+
+---
+
+## Session: April 27, 2026
+
+### What Was Built
+
+#### Bug fixes — unblocking 5 new priority markets
+
+**Unicode truncation fix (`scrape_events.py`)**
+- `fetch_page()` now decodes response bytes as UTF-8 (`r.content.decode("utf-8", errors="replace")`) instead of relying on `r.text`, which defaults to latin-1 when the Content-Type header omits charset
+- latin-1 decoding turns each UTF-8 byte into a separate character, so a 3-byte Thai/Vietnamese character became 3 garbage characters — slicing at 12,000 chars then cut mid-sequence and caused Claude JSON parse errors
+- Fix applies to all non-ASCII markets: Vietnam, Cambodia, Sri Lanka, Nepal, Indonesia
+
+**YouTube subscriber null fix (`enrich_agents.py` `parse_youtube`)**
+- `best_subs` initialised to `None` instead of `0` so we distinguish "no channel identified" (None) from "channel found but Apify didn't return subscriber count" (0)
+- `best_subs or None` anti-pattern removed — `yt_subscribers` now stores `best_subs` directly
+- Added `subscribers` as an additional fallback field name in the subs extraction chain
+
+**Instagram follower field mapping fix (`enrich_agents.py` `parse_instagram`)**
+- Added fallback for actor versions that nest profile data under `profile` or `data` keys
+- Added `edge_followed_by.count` fallback (raw Instagram Graph API field name, returned by some Apify actor versions)
+- Added `edge_owner_to_timeline_media.count` fallback for post count
+
+### Strategic Focus Update
+- Project is now focused on 6 priority markets: Thailand, Vietnam, Nepal, Indonesia, Sri Lanka, Cambodia
+- PROJECT.md updated to reflect this
+
+#### Agent Deduplication — 14 new brand rules for 5 new markets (`normalise_agents.py`)
+
+New rules added and applied to all 15,735 agent records:
+
+| Brand | Markets | Raw variants → Canonical |
+|-------|---------|--------------------------|
+| BridgeBlue | VN, ID, KH, NP, LK | AMS BridgeBlue Cambodia/Indonesia/Vietnam, BridgeBlue Nepal/Sri Lanka → "BridgeBlue" |
+| AUG | VN, ID | AusEd-UniEd International Pty Ltd Trading as AUG, AUG (AusEd UniEd Group) – city, AUG - AUSED-UNIED branches → "AUG" |
+| SUN Education Group | ID | SUN Education Group (Bali/Bandung/etc.), Sun Education Group Pte Ltd → "SUN Education Group" |
+| ICAN Education | ID | ICAN EDUCATION PTE. LTD., ICAN Education Consultant (city branches), PT Info Cemerlang... → "ICAN Education" |
+| JACK Study Abroad | VN, ID | JACK StudyAbroad (Indonesia) + JACK Study Abroad (Vietnam) → "JACK Study Abroad" |
+| Yes Education (broadened) | KH | Now also catches "Yes Education Cambodia" (previously missed by `^Yes Education Group` rule) |
+| Expert Education (broadened) | NP, VN, LK | Now also catches "Expert Group Holdings Pty Ltd" standalone entries |
+| PFEC Global | LK | PFEC Global- Sri Lanka, PFEC Global (Colombo) → "PFEC Global" |
+| Planet Education | NP, LK | Planet Education - Nepal, Planet Education LLP → "Planet Education" |
+| Jeewa Education | LK | Jeewa Education + JEEWA Australian Education Centre branches → "Jeewa Education" |
+| PAC Asia | NP, LK | PAC Asia Services, PAC Asia Study abroad, PAC Asia Eduserve LLP → "PAC Asia" |
+| Bada Global | VN, ID, NP | Bada Global Pty Ltd - Ho Chi Minh, Bada Global Pty Ltd - Solo... → "Bada Global" |
+| Fortrust Education | ID | PT. Indogro Putra Sejahtera (Fortrust...) + Fortrust International Pte Ltd → "Fortrust Education" |
+| StudyLink | VN | StudyLink Company Limited + Studylink → "StudyLink" |
+
+Consolidation results per market:
+- Nepal: 205 → 148 canonical (28% reduction)
+- Indonesia: 167 → 101 canonical (40% reduction)
+- Vietnam: 164 → 131 canonical (20% reduction)
+- Sri Lanka: 154 → 126 canonical (18% reduction)
+- Thailand: 109 → 44 canonical (unchanged — already done)
+- Cambodia: 30 → 19 canonical (unchanged — already done)
+
+`build_agent_html.py` run after — all three HTML reports updated.
+
+### Next Session Priorities
+1. Run events scraper for Nepal (`--country Nepal`)
+2. Run events scraper for Vietnam, Indonesia, Sri Lanka, Cambodia
+3. Extend alias table for university mentions to cover all 6 markets
+4. Run Apify social enrichment for Vietnam, Nepal, Indonesia, Sri Lanka, Cambodia
+5. Get FB Marketing API token and run Meta Ad Library ingestion
+6. Download 14 missing university logos manually
 
 ---
 

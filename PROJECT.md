@@ -104,6 +104,23 @@ marketintelligencereports/
 
 ---
 
+## Priority Markets (Active Focus)
+
+The project is now focused on 6 priority markets:
+
+| Market | Notes |
+|--------|-------|
+| Thailand | Most developed — events scraper, digital context in report generator |
+| Vietnam | In scope |
+| Nepal | Events scraper next; digital context to add to report generator |
+| Indonesia | In scope |
+| Sri Lanka | In scope |
+| Cambodia | In scope |
+
+All other markets remain in the database but new feature development, scraping runs, and intelligence report work is concentrated on these six.
+
+---
+
 ## Current Status (April 2026)
 
 ### Working
@@ -125,9 +142,9 @@ marketintelligencereports/
 
 ### Planned
 - University login system (hardcoded credentials for demo)
-- Nepal digital landscape context for report generator
+- Digital landscape context for Vietnam, Indonesia, Sri Lanka, Cambodia in report generator
 - Monthly data refresh automation
-- Expand mentions tracking to Nepal
+- Expand mentions tracking to all 6 priority markets
 
 ---
 

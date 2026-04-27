@@ -107,7 +107,11 @@ def fetch_page(url: str) -> tuple:
         r = requests.get(url, headers=HEADERS, timeout=REQUEST_TIMEOUT,
                          allow_redirects=True)
         if r.status_code == 200 and "text/html" in r.headers.get("content-type", ""):
-            return r.text, r.url
+            # Always decode as UTF-8 — requests defaults to latin-1 when
+            # the Content-Type header omits charset, which corrupts multibyte
+            # characters (Thai, Vietnamese, Khmer, etc.)
+            html = r.content.decode("utf-8", errors="replace")
+            return html, r.url
         return None, None
     except Exception:
         return None, None
