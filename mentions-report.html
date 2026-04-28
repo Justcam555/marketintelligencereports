@@ -257,6 +257,21 @@ footer {
       <tbody id="uniTbody"></tbody>
     </table>
 
+    <!-- Agent Events Activity -->
+    <div class="sec-label" style="margin-top:32px">Agent Events Activity</div>
+    <div class="stat-row" id="eventsStats" style="margin-bottom:24px"></div>
+    <table class="uni-table" style="margin-bottom:40px">
+      <thead>
+        <tr>
+          <th>Agent</th>
+          <th class="r">Events</th>
+          <th>Format</th>
+          <th>Universities Featured</th>
+        </tr>
+      </thead>
+      <tbody id="eventsTbody"></tbody>
+    </table>
+
     <!-- Video feed -->
     <div class="sec-label" style="margin-top:8px">YouTube Videos</div>
     <div class="filter-tabs">
@@ -452,6 +467,64 @@ function esc(s) {
       <div style="font-size:10px;color:var(--muted)">${esc(agents)}</div>
     </div>`;
   }).join('');
+})();
+
+// ── Events Activity section ──
+(function renderEventsActivity() {
+  let totalAgents = 0, totalEvents = 0;
+  const uniCounts = {};
+  const agentRows = [];
+
+  Object.entries(AGENT_EVENTS).forEach(([agentName, data]) => {
+    const events = data.events || [];
+    if (!events.length) return;
+    totalAgents++;
+    totalEvents += events.length;
+    const formats = new Set();
+    const unis = new Set();
+    events.forEach(e => {
+      if (e.format) formats.add(e.format);
+      (e.universities || []).forEach(u => {
+        unis.add(u);
+        uniCounts[u] = (uniCounts[u] || 0) + 1;
+      });
+    });
+    agentRows.push({ name: agentName, count: events.length, formats: [...formats], unis: [...unis] });
+  });
+
+  const totalUniMentions = Object.values(uniCounts).reduce((a, b) => a + b, 0);
+
+  // Stats strip
+  const statsEl = document.getElementById('eventsStats');
+  if (statsEl) {
+    statsEl.innerHTML = `
+      <div class="stat-cell"><div class="stat-num">${totalAgents}</div><div class="stat-label">Agents with Events</div></div>
+      <div class="stat-cell"><div class="stat-num">${totalEvents}</div><div class="stat-label">Total Events</div></div>
+      <div class="stat-cell"><div class="stat-num">${Object.keys(uniCounts).length}</div><div class="stat-label">Unis Mentioned</div></div>
+      <div class="stat-cell"><div class="stat-num">${totalUniMentions}</div><div class="stat-label">Uni Mention Count</div></div>
+    `;
+  }
+
+  // Agent table sorted by event count desc
+  agentRows.sort((a, b) => b.count - a.count);
+  const tbody = document.getElementById('eventsTbody');
+  if (tbody) {
+    tbody.innerHTML = agentRows.map(r => {
+      const badges = r.formats.map(f => {
+        const bg = f === 'in-person' ? '#1a4a6b' : f === 'online' ? '#c8392b' : '#6b6560';
+        return `<span style="font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:2px 6px;border-radius:10px;background:${bg};color:#fff;white-space:nowrap">${esc(f)}</span>`;
+      }).join(' ');
+      const uniList = r.unis.length
+        ? esc(r.unis.slice(0, 3).join(', ')) + (r.unis.length > 3 ? ` <span style="color:var(--muted)">+${r.unis.length - 3}</span>` : '')
+        : `<span style="color:var(--muted);font-style:italic">none tagged</span>`;
+      return `<tr>
+        <td class="uni-name">${esc(r.name)}</td>
+        <td class="r" style="font-weight:700;color:var(--accent2)">${r.count}</td>
+        <td style="white-space:nowrap">${badges || '<span style="color:var(--muted)">—</span>'}</td>
+        <td style="font-size:11px;color:var(--muted)">${uniList}</td>
+      </tr>`;
+    }).join('');
+  }
 })();
 
 renderVideos();
