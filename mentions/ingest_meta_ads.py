@@ -44,8 +44,8 @@ PAGE_IDS_CACHE = Path(__file__).parent / "data" / "page_ids.json"
 RAW_DIR.mkdir(parents=True, exist_ok=True)
 PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 
-AD_LIBRARY_ACTOR  = "XtaWFhbtfxyzqrFmd"   # Facebook Ad Library Scraper
-PAGES_ACTOR       = "4Hv5RhChiaDk6iwad"   # Facebook Pages Scraper
+AD_LIBRARY_ACTOR  = "XtaWFhbtfxyzqrFmd"   # facebook-ads-library-scraper (keyword search, reliable)
+PAGES_ACTOR       = "4Hv5RhChiaDk6iwad"   # Facebook Pages Scraper (page ID resolution)
 PAGES_BATCH_SIZE  = 20                     # page IDs to resolve per Apify run
 
 COUNTRY_CODES = {
@@ -220,19 +220,23 @@ def resolve_page_ids(client: ApifyClient, agents: list, force: bool = False) -> 
 def scrape_ads(client: ApifyClient, agents: list, page_id_map: dict,
                country_code: str, max_per_page: int) -> tuple:
     """
-    Scrape Ad Library using keyword search URLs (actor only supports q= format).
-    Results are filtered by page_id so only our agents' ads are kept.
-    max_per_page is kept low to avoid timeout and excessive cost.
+    Scrape Ad Library using keyword search by agent canonical name.
+    Filter results by page_profile_uri slug (reliable) rather than page_id
+    (the Pages Scraper returns IDs in a different format than the Ad Library uses).
     Returns (raw_items, page_id_to_agent, slug_to_agent).
     """
-    page_id_to_agent = {pid: a for a, pid in [(a, page_id_map.get(a["facebook_url"])) for a in agents] if pid}
+    page_id_to_agent = {}  # populated after run from matched results
     slug_to_agent    = {a["page_slug"].lower(): a for a in agents}
     known_page_ids   = set(page_id_map.values())
 
-    urls = [{"url": _ad_library_url(a["page_slug"], country_code)} for a in agents]
+    # Search by canonical agent name — more likely to match page name than the slug
+    def _name_search_url(name, country_code):
+        import urllib.parse
+        q = urllib.parse.quote_plus(name)
+        return f"https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country={country_code}&q={q}"
 
-    print(f"  Apify run: {len(urls)} keyword search URLs (max {max_per_page} each)")
-    print(f"  Filtering to {len(known_page_ids)} known page IDs")
+    urls = [{"url": _name_search_url(a["canonical_name"], country_code)} for a in agents]
+    print(f"  Apify run: {len(urls)} keyword-by-name URLs (max {max_per_page} each)")
 
     run = client.actor(AD_LIBRARY_ACTOR).call(
         run_input={"urls": urls, "maxResults": max_per_page},
@@ -242,17 +246,27 @@ def scrape_ads(client: ApifyClient, agents: list, page_id_map: dict,
     if not dataset_id:
         return [], page_id_to_agent, slug_to_agent
 
-    all_items  = list(client.dataset(dataset_id).iterate_items())
-    # Keep only ads whose page_id matches one of our known agents
-    real_items = [
-        i for i in all_items
-        if (i.get("ad_archive_id") or i.get("snapshot"))
-        and (not known_page_ids or str(i.get("page_id") or
-             (i.get("snapshot") or {}).get("page_id") or "") in known_page_ids)
-    ]
-    total  = sum(1 for i in all_items if i.get("ad_archive_id") or i.get("snapshot"))
-    errors = len(all_items) - total
-    print(f"    → {total} ads fetched, {len(real_items)} matched our agents ({errors} pages with no ads)")
+    all_items = list(client.dataset(dataset_id).iterate_items())
+    total     = sum(1 for i in all_items if i.get("ad_archive_id") or i.get("snapshot"))
+
+    # Filter by page_profile_uri slug — more reliable than page_id (Pages Scraper
+    # returns different ID format than what the Ad Library uses internally)
+    real_items = []
+    for i in all_items:
+        if not (i.get("ad_archive_id") or i.get("snapshot")):
+            continue
+        snap = i.get("snapshot") or {}
+        uri_slug = _page_slug_from_url(snap.get("page_profile_uri") or "").lower()
+        if uri_slug and uri_slug in slug_to_agent:
+            agent = slug_to_agent[uri_slug]
+            # Collect the real Ad Library page_id for future use
+            real_pid = str(i.get("page_id") or snap.get("page_id") or "")
+            if real_pid:
+                page_id_to_agent[real_pid] = agent
+            real_items.append(i)
+
+    print(f"    → {total} ads fetched, {len(real_items)} matched our agents "
+          f"({len(set(page_id_to_agent.values()))} distinct agent pages)")
     return real_items, page_id_to_agent, slug_to_agent
 
 
