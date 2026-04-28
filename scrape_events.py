@@ -155,6 +155,8 @@ def looks_like_events_page(html: str, url: str) -> bool:
 
 def load_agents(country: str) -> list:
     conn = sqlite3.connect(DB_PATH)
+
+    # Prefer agent_social (enriched data); fall back to agents table for unenriched markets
     rows = conn.execute("""
         SELECT DISTINCT canonical_name, website_url
         FROM agent_social
@@ -163,6 +165,17 @@ def load_agents(country: str) -> list:
           AND website_url NOT LIKE '%404%'
         ORDER BY canonical_name
     """, (country,)).fetchall()
+
+    if not rows:
+        rows = conn.execute("""
+            SELECT DISTINCT COALESCE(canonical_name, company_name), website
+            FROM agents
+            WHERE LOWER(country) = LOWER(?)
+              AND website IS NOT NULL AND website != ''
+              AND website NOT LIKE '%404%'
+            ORDER BY COALESCE(canonical_name, company_name)
+        """, (country,)).fetchall()
+
     conn.close()
 
     agents, seen = [], set()

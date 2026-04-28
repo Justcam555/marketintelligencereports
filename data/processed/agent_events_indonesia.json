@@ -1,0 +1,1024 @@
+[
+  {
+    "agent_name": "AAET-StudyCo",
+    "website": "https://studyco.com",
+    "events_page_url": "https://studyco.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AECC Global",
+    "website": "https://www.aeccglobal.co.id",
+    "events_page_url": "https://www.aeccglobal.co.id/events/",
+    "events": [
+      {
+        "name": "On the spot offer with Robert Gordon University, UK GREAT Scholarships",
+        "date": "04 May 2026",
+        "date_iso": "2026-05-04",
+        "time": "6:00 PM - 8:00 PM",
+        "location": "Jakarta",
+        "format": "in-person",
+        "universities": [
+          "Robert Gordon University"
+        ],
+        "details": "Meet representatives from Robert Gordon University (RGU) in Jakarta for on-the-spot admission offers and explore UK GREAT Scholarships worth up to IDR 200 million for prospective students wishing to study in the UK.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study in the UK and Europe - Surabaya",
+        "date": "09 May 2026",
+        "date_iso": "2026-05-09",
+        "time": "10:00 AM - 1:00 PM",
+        "location": "Surabaya",
+        "format": "in-person",
+        "universities": [],
+        "details": "A multi-university fair in Surabaya for students interested in studying in the UK or Europe. Attendees can meet representatives from multiple universities and find the right program to suit their academic and career goals.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming recruitment and education events hosted by AECC Global Indonesia, featuring university meet-and-greet sessions and education fairs focused on UK and European study destinations.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AECC Global",
+    "website": "https://www.aeccglobal.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AS Student Service",
+    "website": "https://www.asstudent.co.id",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AS Student Services",
+    "website": "http://www.asstudent.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AUG",
+    "website": "https://augstudy.com",
+    "events_page_url": "https://augstudy.com/events/",
+    "events": [
+      {
+        "name": "[AUG Sydney] Assistance Desk Consultation",
+        "date": "17 Oct",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Sydney Office - Level 1/603 George St",
+        "format": "in-person",
+        "universities": [],
+        "details": "A consultation assistance desk session hosted at the AUG Sydney office for students seeking guidance on study, applications, or related services.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Australia] Study in New Zealand Webinar",
+        "date": "29 Apr",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [],
+        "details": "An online webinar for students interested in studying in New Zealand, hosted by AUG Australia via Zoom.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Melbourne] The University of Melbourne – Information and Application Day",
+        "date": "30 Apr",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Melbourne Office",
+        "format": "in-person",
+        "universities": [
+          "The University of Melbourne"
+        ],
+        "details": "An information and application day for prospective students interested in studying at the University of Melbourne, held at the AUG Melbourne office.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Brisbane] Macquarie University Application Day",
+        "date": "30 Apr",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [
+          "Macquarie University"
+        ],
+        "details": "An online application day via Zoom for students interested in applying to Macquarie University, hosted by AUG Brisbane.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Perth] Canva Workshop",
+        "date": "8 May",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Perth Office",
+        "format": "in-person",
+        "universities": [],
+        "details": "A Canva workshop hosted at the AUG Perth office, likely aimed at helping students develop design or digital skills.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Brisbane] Application Guide: Postgraduate Psychology Courses' Seminar",
+        "date": "14 May",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Brisbane Office",
+        "format": "in-person",
+        "universities": [],
+        "details": "A seminar held at the AUG Brisbane office providing guidance on how to apply for postgraduate psychology courses in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Australia] Group of Eight (Go8) Universities Application Day",
+        "date": "21 May",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [
+          "Group of Eight (Go8) Universities"
+        ],
+        "details": "An online application day via Zoom for students interested in applying to any of the prestigious Group of Eight (Go8) universities in Australia, hosted by AUG Australia.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming AUG recruitment and information events across Australia, including consultations, webinars, application days, and seminars for students interested in studying at Australian and New Zealand universities.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AUG",
+    "website": "https://www.augstudy.com",
+    "events_page_url": "https://augstudy.com/events/",
+    "events": [
+      {
+        "name": "[AUG Sydney] Assistance Desk Consultation",
+        "date": "17 Oct",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Sydney Office - Level 1/603 George St",
+        "format": "in-person",
+        "universities": [],
+        "details": "A consultation assistance desk session held at the AUG Sydney office for students seeking guidance on study options, applications, or related inquiries.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Australia] Study in New Zealand Webinar",
+        "date": "29 Apr",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [],
+        "details": "An online webinar for students interested in studying in New Zealand, covering study options, universities, and application processes.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Melbourne] The University of Melbourne – Information and Application Day",
+        "date": "30 Apr",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Melbourne Office",
+        "format": "in-person",
+        "universities": [
+          "The University of Melbourne"
+        ],
+        "details": "An information and application day at AUG Melbourne Office focused on The University of Melbourne, where students can meet representatives, get application assistance, and learn about scholarships.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Brisbane] Macquarie University Application Day",
+        "date": "30 Apr",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [
+          "Macquarie University"
+        ],
+        "details": "An online application day for Macquarie University, hosted by AUG Brisbane via Zoom, helping students with the application process and providing information about the university.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Perth] Canva Workshop",
+        "date": "8 May",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Perth Office",
+        "format": "in-person",
+        "universities": [],
+        "details": "A hands-on Canva design workshop held at the AUG Perth Office, aimed at students looking to develop digital design skills using the Canva platform.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Brisbane] Application Guide: Postgraduate Psychology Courses' Seminar",
+        "date": "14 May",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Brisbane Office",
+        "format": "in-person",
+        "universities": [],
+        "details": "A seminar at AUG Brisbane Office guiding students through the application process for postgraduate psychology courses in Australia, covering entry requirements and program options.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Australia] Group of Eight (Go8) Universities Application Day",
+        "date": "21 May",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [
+          "Group of Eight (Go8) Universities"
+        ],
+        "details": "An online application day via Zoom featuring Australia's Group of Eight (Go8) universities, where students can get application assistance, learn about programs, scholarships, and speak with university representatives.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming AUG Australia recruitment and information events including university application days, webinars, workshops, and seminars held across Sydney, Melbourne, Brisbane, Perth, and online via Zoom.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Anton Gautama T/As ALFALINK",
+    "website": "https://www.alfalink.net",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Anz education center Co Ltd-Jakarta",
+    "website": "http://www.anzeducationcentre.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Aspectama International Student Advisor",
+    "website": "https://www.aspectama.co.id",
+    "events_page_url": "https://aspectama.co.id/events",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Australia Centre Medan",
+    "website": "http://www.acmedan.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Australia Centre Medan",
+    "website": "https://www.acmedan.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Bada Global",
+    "website": "https://www.badaglobal.com",
+    "events_page_url": "https://www.badaglobal.com/event",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Basya Pty Ltd _T/A RACC Education and Migration Services",
+    "website": "https://www.racc.net.au",
+    "events_page_url": "https://www.racc.net.au/events",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "BridgeBlue",
+    "website": "https://amsbridgeblue.com",
+    "events_page_url": "https://amsbridgeblue.com/events/",
+    "events": [],
+    "page_summary": "The page advertises AMSBB Group Events 2018, a series of boutique study abroad recruitment events organized by AMS BridgeBlue for education providers, but no specific upcoming or recent event details are listed.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "CV Loekito Education Group",
+    "website": "https://www.loekito.id",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Central Student",
+    "website": "http://cie.co",
+    "events_page_url": "https://cie.co/events",
+    "events": [
+      {
+        "name": "SIM Scholarship Open Day",
+        "date": "24 Feb 2026",
+        "date_iso": "2026-02-24",
+        "time": "17:00 - 19:00",
+        "location": "Online",
+        "format": "online",
+        "universities": [
+          "SIM"
+        ],
+        "details": "An online info session about SIM scholarship opportunities, running from 5:00 PM to 7:00 PM. Attendees can learn about scholarship programs and eligibility requirements.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study In Switzerland X B.H.M.S",
+        "date": "9 Feb 2026",
+        "date_iso": "2026-02-09",
+        "time": "15:30 - 17:00",
+        "location": "Lampung, CIE Lampung",
+        "format": "in-person",
+        "universities": [
+          "B.H.M.S"
+        ],
+        "details": "An info session in Lampung focused on studying in Switzerland, featuring B.H.M.S (Business and Hotel Management School). Prospective students can learn about programs and admission requirements.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study in UK X Oxford International",
+        "date": "6 Feb 2026",
+        "date_iso": "2026-02-06",
+        "time": "15:00 - 16:00",
+        "location": "Yogyakarta, CIE Yogyakarta",
+        "format": "in-person",
+        "universities": [
+          "Oxford International"
+        ],
+        "details": "An info session in Yogyakarta about studying in the UK, in partnership with Oxford International. Students can learn about UK study options, programs, and the application process.",
+        "registration_url": ""
+      },
+      {
+        "name": "Application Day with Deakin University",
+        "date": "6 Feb 2026",
+        "date_iso": "2026-02-06",
+        "time": "15:00 - 17:00",
+        "location": "Medan, CIE Medan",
+        "format": "in-person",
+        "universities": [
+          "Deakin University"
+        ],
+        "details": "An application day event in Medan with Deakin University representatives, helping prospective students with the application process and providing information about available programs.",
+        "registration_url": ""
+      },
+      {
+        "name": "Affordable Culinary Program in Sydney X King's Culinary School",
+        "date": "2 Feb 2026",
+        "date_iso": "2026-02-02",
+        "time": "16:00 - 18:00",
+        "location": "Medan, CIE Medan",
+        "format": "in-person",
+        "universities": [
+          "King's Culinary School"
+        ],
+        "details": "A free info session in Medan about affordable culinary programs in Sydney offered by King's Culinary School. Attendees can learn about program costs, curriculum, and admission requirements.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists education and study abroad events hosted by CIE (Central International Education), including info sessions, expos, webinars, and pre-departure workshops featuring partner universities from various countries.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Central Student Services (CSS)",
+    "website": "https://www.cie.co",
+    "events_page_url": "https://www.cie.co/events",
+    "events": [
+      {
+        "name": "SIM Scholarship Open Day",
+        "date": "24 Feb 2026",
+        "date_iso": "2026-02-24",
+        "time": "17:00 - 19:00",
+        "location": "Online",
+        "format": "online",
+        "universities": [
+          "SIM"
+        ],
+        "details": "An online info session focused on scholarship opportunities at SIM. Participants can learn about available scholarships, eligibility requirements, and the application process.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study In Switzerland X B.H.M.S",
+        "date": "9 Feb 2026",
+        "date_iso": "2026-02-09",
+        "time": "15:30 - 17:00",
+        "location": "Lampung, CIE Lampung",
+        "format": "in-person",
+        "universities": [
+          "B.H.M.S"
+        ],
+        "details": "An info session about studying in Switzerland in partnership with B.H.M.S, covering program options, admissions requirements, and student life in Switzerland.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study in UK X Oxford International",
+        "date": "6 Feb 2026",
+        "date_iso": "2026-02-06",
+        "time": "15:00 - 16:00",
+        "location": "Yogyakarta, CIE Yogyakarta",
+        "format": "in-person",
+        "universities": [
+          "Oxford International"
+        ],
+        "details": "An info session about studying in the UK in partnership with Oxford International, providing details on programs, entry requirements, and life as a student in the UK.",
+        "registration_url": ""
+      },
+      {
+        "name": "Application Day with Deakin University",
+        "date": "6 Feb 2026",
+        "date_iso": "2026-02-06",
+        "time": "15:00 - 17:00",
+        "location": "Medan, CIE Medan",
+        "format": "in-person",
+        "universities": [
+          "Deakin University"
+        ],
+        "details": "A hands-on application day session with Deakin University representatives, helping prospective students complete and submit their university applications on the spot.",
+        "registration_url": ""
+      },
+      {
+        "name": "Affordable Culinary Program in Sydney X King's Culinary School",
+        "date": "2 Feb 2026",
+        "date_iso": "2026-02-02",
+        "time": "16:00 - 18:00",
+        "location": "Medan, CIE Medan",
+        "format": "in-person",
+        "universities": [
+          "King's Culinary School"
+        ],
+        "details": "A free info session with King's Culinary School about affordable culinary programs available in Sydney, covering program details, costs, and admission requirements.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists recent and upcoming education events hosted by CIE (Central International Education) in Indonesia, including info sessions, scholarship open days, and application days with various international universities.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "DK Science & Learning",
+    "website": "https://www.dksydney.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Edlink + Connex",
+    "website": "https://edlinkconnex.com",
+    "events_page_url": "https://edlinkconnex.com/seminars",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Edlink Connex",
+    "website": "http://www.edlinkeducation.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Education Republic",
+    "website": "https://www.myeducationrepublic.com",
+    "events_page_url": "https://www.myeducationrepublic.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Expert Education - EEVS Thailand",
+    "website": "https://experteducation.com",
+    "events_page_url": "https://experteducation.com/education-fair/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Expert Education - EEVS Thailand",
+    "website": "https://www.experteducation.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Fortrust Education",
+    "website": "https://fortrust.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Study Partners",
+    "website": "https://upgradgsp.com",
+    "events_page_url": "https://upgradgsp.com/events/",
+    "events": [
+      {
+        "name": "UQ Partner High Tea & Training | Pune",
+        "date": "April 29 2026",
+        "date_iso": "2026-04-29",
+        "time": "",
+        "location": "Pune",
+        "format": "in-person",
+        "universities": [
+          "University of Queensland"
+        ],
+        "details": "A partner high tea and training event hosted by UQ (University of Queensland) in Pune, designed for recruitment partners to receive training and network.",
+        "registration_url": ""
+      },
+      {
+        "name": "upGrad GSP weekly webinar in collaboration with University of Tasmania – ECA (Melbourne & Sydney campus)",
+        "date": "April 30 2026",
+        "date_iso": "2026-04-30",
+        "time": "",
+        "location": "Online",
+        "format": "online",
+        "universities": [
+          "University of Tasmania",
+          "ECA College"
+        ],
+        "details": "A weekly webinar hosted by upGrad GSP in collaboration with the University of Tasmania and ECA College, covering Melbourne and Sydney campuses, aimed at recruitment partners.",
+        "registration_url": ""
+      },
+      {
+        "name": "From Enquiry to Enrolment: Recruiting with CDU | Partner Training",
+        "date": "May 4 2026",
+        "date_iso": "2026-05-04",
+        "time": "",
+        "location": "",
+        "format": "online",
+        "universities": [
+          "Charles Darwin University"
+        ],
+        "details": "A partner training session focused on the full student recruitment journey from enquiry to enrolment, in collaboration with Charles Darwin University (CDU).",
+        "registration_url": ""
+      },
+      {
+        "name": "ECA College | upGrad GSP Partner Webinar",
+        "date": "May 6 2026",
+        "date_iso": "2026-05-06",
+        "time": "",
+        "location": "Online",
+        "format": "online",
+        "universities": [
+          "ECA College"
+        ],
+        "details": "A partner webinar hosted by upGrad GSP in collaboration with ECA College, designed to provide recruitment partners with insights and updates about ECA College's offerings.",
+        "registration_url": ""
+      },
+      {
+        "name": "upGrad GSP 2026 Onshore Partners Assembly",
+        "date": "May 21 2026",
+        "date_iso": "2026-05-21",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "upGrad GSP's 2026 Onshore Partners Assembly, bringing together onshore recruitment partners for networking, updates, and collaboration to support student recruitment success.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming upGrad GSP networking events and webinars scheduled between April and May 2026, connecting educational institutions and recruitment partners globally.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Golden Gate Education",
+    "website": "https://ggeducation.co",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Grace International Indonesia",
+    "website": "https://graceintlgroup.com",
+    "events_page_url": "https://graceintlgroup.com/events/",
+    "events": [
+      {
+        "name": "Australia and New Zealand Education Fair",
+        "date": "01 Apr",
+        "date_iso": "2025-04-01",
+        "time": "10:00 AM - 4:00 PM",
+        "location": "All Nepal",
+        "format": "in-person",
+        "universities": [],
+        "details": "An education fair focused on study opportunities in Australia and New Zealand, open to students across Nepal.",
+        "registration_url": ""
+      },
+      {
+        "name": "UK Education Fair",
+        "date": "22 Mar",
+        "date_iso": "2025-03-22",
+        "time": "10:00 AM - 4:00 PM",
+        "location": "All Nepal",
+        "format": "in-person",
+        "universities": [],
+        "details": "An education fair focused on study opportunities in the United Kingdom, open to students across Nepal.",
+        "registration_url": ""
+      },
+      {
+        "name": "USA and Canada Education Fair",
+        "date": "15 Mar",
+        "date_iso": "2025-03-15",
+        "time": "10:00 AM - 4:00 PM",
+        "location": "All Nepal",
+        "format": "in-person",
+        "universities": [],
+        "details": "An education fair focused on study opportunities in the USA and Canada, open to students across Nepal.",
+        "registration_url": ""
+      },
+      {
+        "name": "Eduverse Special 2025",
+        "date": "13 Nov",
+        "date_iso": "2025-11-13",
+        "time": "10:00 AM - 3:00 PM",
+        "location": "All Nepal",
+        "format": "in-person",
+        "universities": [],
+        "details": "A special education event titled Eduverse Special 2025, open to students across Nepal, likely covering multiple international study destinations.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists recruitment and education fair events organized by Grace International Indonesia targeting students in Nepal, covering destinations such as Australia, New Zealand, UK, USA, and Canada.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "HOPE Education",
+    "website": "http://www.hope2000education.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "I-LINK",
+    "website": "http://www.ilink.co.id",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "I-LINK",
+    "website": "https://www.ilink.co.id",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ICAN Education",
+    "website": "https://www.ican-education.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ICAN Education",
+    "website": "https://ican-education.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "IDP Education",
+    "website": "https://www.idp.com",
+    "events_page_url": "https://www.idp.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Indonesia Australia Language Foundation",
+    "website": "https://www.ialf.edu",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Institut Sains dan Teknologi Terpadu Surabaya",
+    "website": "http://www.istts.ac.id",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "JACK Study Abroad",
+    "website": "https://www.studyabroad.sg",
+    "events_page_url": "https://www.studyabroad.sg/events-in-march-2012-meet-u-of-auckland-u-of-london-bellerbys-college-and-more-in-singapore/",
+    "events": [
+      {
+        "name": "Global University Expo",
+        "date": "28 MARCH 2026",
+        "date_iso": "2026-03-28",
+        "time": "",
+        "location": "Marina Bay Sands, Singapore",
+        "format": "in-person",
+        "universities": [],
+        "details": "A university expo event held at Marina Bay Sands in Singapore, organized by JACK Study Abroad, offering students the opportunity to meet university representatives and learn about overseas study options.",
+        "registration_url": ""
+      },
+      {
+        "name": "UK & Australian University Application Day",
+        "date": "27 FEB 2026",
+        "date_iso": "2026-02-27",
+        "time": "",
+        "location": "Somerset, Singapore",
+        "format": "in-person",
+        "universities": [],
+        "details": "An application day event focused on UK and Australian university admissions, held at Somerset in Singapore, organized by JACK Study Abroad to assist students with their university applications.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page primarily covers archived March 2012 recruitment events in Singapore featuring universities from the UK and New Zealand, but also lists two upcoming 2026 events: a Global University Expo and a UK & Australian University Application Day.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "JACK Study Abroad",
+    "website": "https://www.jackstudy.co.id",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Liu Cheng International Group",
+    "website": "https://www.lcig.io",
+    "events_page_url": "https://www.lcig.io/events",
+    "events": [
+      {
+        "name": "LCI Group's International Universities Fair 2026",
+        "date": "2026-04-18",
+        "date_iso": "2026-04-18",
+        "time": "11 AM – 4 PM",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "An international universities fair organized by LCI Group, offering students the opportunity to meet representatives from universities abroad and explore educational opportunities.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming events hosted by Liu Cheng International Group, including education fairs, webinars, and networking opportunities for prospective international students.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Masiratna",
+    "website": "https://masiratna.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Naresy International Education Consultant",
+    "website": "https://www.niecindonesia.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Nathaniel Global",
+    "website": "https://nathanielglobal.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "New Plan B",
+    "website": "https://super-star.com.au",
+    "events_page_url": "https://super-star.com.au/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "New Plan B Pty Ltd trading as Superstar Education",
+    "website": "https://www.super-star.com.au",
+    "events_page_url": "https://super-star.com.au/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "PT Saksara",
+    "website": "https://www.saksara.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "PT VIC Indonesia (Vista Education Corp)",
+    "website": "https://www.vistaeducation.com",
+    "events_page_url": "https://www.vistaeducation.com/event",
+    "events": [],
+    "page_summary": "The page appears to be an events and promotions listing for Vista Education Corp (PT VIC Indonesia), but no specific upcoming or recent recruitment events with dates or details could be extracted from the available content, which only shows an English language course preparation program for TOEFL/IELTS.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Popular Education",
+    "website": "https://www.pop-edu.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Popular Education- Indonesia",
+    "website": "http://www.pop-edu.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Progress Study Consultancy",
+    "website": "https://progress-study.com.au",
+    "events_page_url": "https://progress-study.com/events",
+    "events": [
+      {
+        "name": "[Bali] Mini Expo: Study, Work, and Stay in Australia",
+        "date": "Saturday, 25 April 2026",
+        "date_iso": "2026-04-25",
+        "time": "1:00 pm",
+        "location": "Bali",
+        "format": "in-person",
+        "universities": [],
+        "details": "A mini expo event hosted by Progress Study Consultancy in Bali covering topics related to studying, working, and staying in Australia. Open to prospective students and migrants interested in Australian opportunities.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming and past recruitment events and info sessions by Progress Study Consultancy focused on study, work, and migration pathways to Australia, primarily targeting Indonesian audiences.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Progress Study Consultancy",
+    "website": "http://progress-study.com.au",
+    "events_page_url": "https://progress-study.com/events",
+    "events": [
+      {
+        "name": "[Bali] Mini Expo: Study, Work, and Stay in Australia",
+        "date": "Saturday, 25 April 2026",
+        "date_iso": "2026-04-25",
+        "time": "1:00 pm",
+        "location": "Bali",
+        "format": "in-person",
+        "universities": [],
+        "details": "A mini expo event hosted by Progress Study Consultancy in Bali, covering topics related to studying, working, and staying in Australia. Open to prospective students and migrants interested in Australian pathways.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming and past recruitment events hosted by Progress Study Consultancy in Indonesia, focused on study, work, and migration pathways to Australia.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Progress Study Consultancy",
+    "website": "http://www.progress-study.com.au",
+    "events_page_url": "https://progress-study.com/events",
+    "events": [
+      {
+        "name": "[Bali] Mini Expo: Study, Work, and Stay in Australia",
+        "date": "Saturday, 25 April 2026",
+        "date_iso": "2026-04-25",
+        "time": "1:00 pm",
+        "location": "Bali",
+        "format": "in-person",
+        "universities": [],
+        "details": "A mini expo hosted by Progress Study Consultancy in Bali covering topics related to studying, working, and staying in Australia. Open to prospective students and migrants interested in Australian pathways.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming and past recruitment events hosted by Progress Study Consultancy in Indonesia, focused on studying, working, and migrating to Australia.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Progress Study Consultancy",
+    "website": "https://www.progress-study.com.au",
+    "events_page_url": "https://progress-study.com/events",
+    "events": [
+      {
+        "name": "[Bali] Mini Expo: Study, Work, and Stay in Australia",
+        "date": "Saturday, 25 April 2026",
+        "date_iso": "2026-04-25",
+        "time": "1:00 pm",
+        "location": "Bali",
+        "format": "in-person",
+        "universities": [],
+        "details": "A mini expo event hosted by Progress Study Consultancy in Bali covering topics related to studying, working, and staying in Australia. Attendees can learn about student, work, family, and pathway visa options.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming and past recruitment events hosted by Progress Study Consultancy in Indonesia and Bali, focused on study, work, and migration opportunities in Australia.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "STUDYZONE",
+    "website": "https://studyzone.co.id",
+    "events_page_url": "https://studyzone.co.id/events/mybookingslist",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "STUDYZONE",
+    "website": "http://www.studyzone.co.id",
+    "events_page_url": "https://www.studyzone.co.id/events/mybookingslist",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "SUN Education Group",
+    "website": "https://suneducationgroup.com",
+    "events_page_url": "https://suneducationgroup.com/events",
+    "events": [],
+    "page_summary": "The SUN Education Group events page lists upcoming recruitment and counselling events for prospective international students, but no specific event details, dates, or titles are currently displayed in the page content.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "SUN Education Group",
+    "website": "https://www.suneducationgroup.com",
+    "events_page_url": "https://www.suneducationgroup.com/events",
+    "events": [],
+    "page_summary": "The SUN Education Group events page lists upcoming education events filtered by online, on-site, and expo categories, but no specific event details, dates, or titles are currently displayed in the page content.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Studyzone",
+    "website": "https://www.studyzone.co.id",
+    "events_page_url": "https://www.studyzone.co.id/events/mybookingslist",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "UniStart - UniSadhuGuna",
+    "website": "https://www.usg.education",
+    "events_page_url": "https://www.usg.education/events",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Wikati Education",
+    "website": "https://www.wikatieducation.com",
+    "events_page_url": "https://www.wikatieducation.com/events",
+    "events": [],
+    "page_summary": "The events page for Wikati Education displays a gallery of past event and expo photos but contains no specific event details such as names, dates, locations, or registration information.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Yes Education Group(Bangkok)",
+    "website": "https://yesedugroup.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Yes Education Group(Bangkok)",
+    "website": "https://www.yesedugroup.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "iae GLOBAL",
+    "website": "https://www.iae-indonesia.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "iae GLOBAL",
+    "website": "https://www.iaeglobal.co",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  }
+]

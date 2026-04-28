@@ -1,0 +1,1081 @@
+[
+  {
+    "agent_name": "360 Connect",
+    "website": "http://360connect.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "4 nations Group Pty Ltd (Vietnam)",
+    "website": "http://4nations.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "A.E&T Co",
+    "website": "https://www.aet.com.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AECC Global",
+    "website": "https://www.aeccglobal.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AGS-Vietnam",
+    "website": "https://ags-study.com",
+    "events_page_url": "https://ags-study.com/seminar-2025/",
+    "events": [
+      {
+        "name": "STARTUP & GLOBAL OPPORTUNITIES FOR VIETNAMESE STUDENTS 2025 (AGS x Hubbiz)",
+        "date": "18/4/2025",
+        "date_iso": "2025-04-18",
+        "time": "14:00 - 17:00",
+        "location": "665-669 Dien Bien Phu, Ward 1, District 3, Ho Chi Minh City (Van Hien University campus)",
+        "format": "in-person",
+        "universities": [
+          "Van Hien University"
+        ],
+        "details": "A seminar co-organized by AGS and Hubbiz focused on entrepreneurship and startup opportunities for Vietnamese students. Topics include startup ecosystems in Australia, USA, UK, Canada, and New Zealand; future-oriented fields such as Fintech, AI, Sustainability, and Digital Marketing; startup incubators, mentoring, and seed funding; and success stories from international student entrepreneurs.",
+        "registration_url": ""
+      },
+      {
+        "name": "EXPLORING THE ESSENCE OF GLOBAL CULTURE & EDUCATION 2025 (AGS x SAC)",
+        "date": "19/4/2025",
+        "date_iso": "2025-04-19",
+        "time": "08:00 - 12:00",
+        "location": "C Space Coworking Office, 62 Vo Van Tan, Ward 6, District 3, Ho Chi Minh City",
+        "format": "in-person",
+        "universities": [],
+        "details": "A seminar co-organized by AGS and SAC (Ho Chi Minh City Student Support Center) targeting students and parents interested in studying abroad. Topics include Western academic culture, international student lifestyle, global career opportunities, choosing the right country and field of study, and family-oriented study abroad planning. Features 1-on-1 consultations with international education representatives.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page covers the AGS Seminar 2025 series, featuring two in-person events in Ho Chi Minh City on April 18 and 19, 2025, focused on startup opportunities and global education/culture for Vietnamese students and their families.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ATP Service Trading Consultant Limited Company",
+    "website": "https://atp.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ATS (Avenue to Success)",
+    "website": "http://www.ats.org.vn",
+    "events_page_url": "https://ats.org.vn/events",
+    "events": [
+      {
+        "name": "Free Study Abroad Consultation & Roadmap Planning with ATS Da Nang",
+        "date": "02 April 2026",
+        "date_iso": "2026-04-02",
+        "time": "09:00 - 18:00",
+        "location": "Da Nang",
+        "format": "in-person",
+        "universities": [],
+        "details": "A free consultation event hosted by ATS Da Nang where students can receive personalized study abroad advice and roadmap planning. Covers destinations including Australia, USA, and Canada. Open to students interested in high school, undergraduate, college, postgraduate, vocational, and foundation programs.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study in Australia with the University of Adelaide",
+        "date": "21 April 2026",
+        "date_iso": "2026-04-21",
+        "time": "09:00 - 18:00",
+        "location": "Ho Chi Minh City, Hanoi, Da Nang",
+        "format": "in-person",
+        "universities": [
+          "University of Adelaide"
+        ],
+        "details": "An information event focused on studying in Australia with the University of Adelaide. Held simultaneously in three cities. Covers undergraduate, postgraduate, and foundation programs in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study Abroad & Scholarship Festival May 2026",
+        "date": "30 May 2026 | 31 May 2026",
+        "date_iso": "2026-05-30",
+        "time": "15:00 - 18:00 (Hanoi, 30 May) | 09:00 - 12:00 (Ho Chi Minh City, 31 May)",
+        "location": "Hanoi, Ho Chi Minh City",
+        "format": "in-person",
+        "universities": [],
+        "details": "A study abroad and scholarship festival held across two days in Hanoi and Ho Chi Minh City. Covers destinations including Australia, USA, and Canada. Open to students interested in high school, undergraduate, college, postgraduate, vocational, and foundation programs.",
+        "registration_url": ""
+      },
+      {
+        "name": "Become a Deakin University Student – Melbourne's Champion University",
+        "date": "28 February 2027",
+        "date_iso": "2027-02-28",
+        "time": "09:00 - 18:00",
+        "location": "Hanoi, Ho Chi Minh City, Da Nang",
+        "format": "in-person",
+        "universities": [
+          "Deakin University"
+        ],
+        "details": "An event promoting Deakin University, described as Melbourne's top-ranked university. Held simultaneously in three Vietnamese cities. Targets students interested in undergraduate, college, postgraduate, and foundation programs in Australia.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "ATS Vietnam's events page lists upcoming study abroad recruitment and consultation events for 2026–2027, featuring Australian and other international universities across multiple Vietnamese cities.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AUG",
+    "website": "https://augstudy.com",
+    "events_page_url": "https://augstudy.com/events/",
+    "events": [
+      {
+        "name": "[AUG Sydney] Assistance Desk Consultation",
+        "date": "Oct 17",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Sydney Office - Level 1/603 George St",
+        "format": "in-person",
+        "universities": [],
+        "details": "A consultation assistance desk session at the AUG Sydney office where students can receive guidance and support.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Australia] Study in New Zealand Webinar",
+        "date": "Apr 29",
+        "date_iso": "2026-04-29",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [],
+        "details": "An online webinar hosted by AUG Australia providing information about studying in New Zealand.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Melbourne] The University of Melbourne – Information and Application Day",
+        "date": "Apr 30",
+        "date_iso": "2026-04-30",
+        "time": "",
+        "location": "AUG Melbourne Office",
+        "format": "in-person",
+        "universities": [
+          "The University of Melbourne"
+        ],
+        "details": "An information and application day at the AUG Melbourne office focused on the University of Melbourne, where students can learn about programs and apply.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Brisbane] Macquarie University Application Day",
+        "date": "Apr 30",
+        "date_iso": "2026-04-30",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [
+          "Macquarie University"
+        ],
+        "details": "An online application day via Zoom for students interested in applying to Macquarie University, hosted by AUG Brisbane.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Perth] Canva Workshop",
+        "date": "May 08",
+        "date_iso": "2026-05-08",
+        "time": "",
+        "location": "AUG Perth Office",
+        "format": "in-person",
+        "universities": [],
+        "details": "A hands-on Canva design workshop held at the AUG Perth office.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Brisbane] Application Guide: Postgraduate Psychology Courses' Seminar",
+        "date": "May 14",
+        "date_iso": "2026-05-14",
+        "time": "",
+        "location": "AUG Brisbane Office",
+        "format": "in-person",
+        "universities": [],
+        "details": "A seminar at the AUG Brisbane office guiding students through the application process for postgraduate psychology courses in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Australia] Group of Eight (Go8) Universities Application Day",
+        "date": "May 21",
+        "date_iso": "2026-05-21",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [
+          "Group of Eight (Go8) Universities"
+        ],
+        "details": "An online application day via Zoom focused on Australia's Group of Eight (Go8) universities, offering students the opportunity to apply and learn about these leading institutions.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming AUG Australia recruitment and information events including university application days, webinars, and workshops scheduled from April to May 2026.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AUG",
+    "website": "https://www.augstudy.com",
+    "events_page_url": "https://augstudy.com/events/",
+    "events": [
+      {
+        "name": "[AUG Sydney] Assistance Desk Consultation",
+        "date": "17 Oct",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Sydney Office - Level 1/603 George St",
+        "format": "in-person",
+        "universities": [],
+        "details": "A consultation assistance desk session at the AUG Sydney office for students seeking guidance on study options, applications, or related services.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Australia] Study in New Zealand Webinar",
+        "date": "29 Apr",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [],
+        "details": "An online webinar hosted by AUG Australia providing information about studying in New Zealand, covering institutions, courses, and application processes.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Melbourne] The University of Melbourne – Information and Application Day",
+        "date": "30 Apr",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Melbourne Office",
+        "format": "in-person",
+        "universities": [
+          "The University of Melbourne"
+        ],
+        "details": "An information and application day at AUG Melbourne Office for prospective students interested in studying at the University of Melbourne. Attendees can get application fee waivers and speak with university representatives.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Brisbane] Macquarie University Application Day",
+        "date": "30 Apr",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [
+          "Macquarie University"
+        ],
+        "details": "An online application day via Zoom for students interested in applying to Macquarie University, facilitated by AUG Brisbane.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Perth] Canva Workshop",
+        "date": "8 May",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Perth Office",
+        "format": "in-person",
+        "universities": [],
+        "details": "A hands-on Canva workshop held at the AUG Perth Office, aimed at helping students develop design skills using the Canva platform.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Brisbane] Application Guide: Postgraduate Psychology Courses' Seminar",
+        "date": "14 May",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Brisbane Office",
+        "format": "in-person",
+        "universities": [],
+        "details": "A seminar at AUG Brisbane Office guiding prospective students through the application process for postgraduate psychology courses in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "[AUG Australia] Group of Eight (Go8) Universities Application Day",
+        "date": "21 May",
+        "date_iso": "",
+        "time": "",
+        "location": "AUG Zoom",
+        "format": "online",
+        "universities": [
+          "Group of Eight (Go8) Universities"
+        ],
+        "details": "An online application day via Zoom focused on Australia's Group of Eight (Go8) universities, helping students apply and learn about programs, scholarships, and entry requirements.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming AUG Australia recruitment and information events including university application days, webinars, and workshops held across Sydney, Melbourne, Brisbane, and Perth offices as well as online via Zoom.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AVI Education Abroad and Training Consultancy JSC",
+    "website": "https://avi.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AVSS",
+    "website": "http://www.theavss.net",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Adventus Education",
+    "website": "https://info.adventus.io",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Agent Hai",
+    "website": "http://agenthai.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Avenue To Success Company",
+    "website": "https://ats.org.vn",
+    "events_page_url": "https://ats.org.vn/events",
+    "events": [
+      {
+        "name": "Free Study Abroad Consultation & Roadmap Planning with ATS Da Nang",
+        "date": "02 April 2026",
+        "date_iso": "2026-04-02",
+        "time": "09:00 - 18:00",
+        "location": "Da Nang",
+        "format": "in-person",
+        "universities": [],
+        "details": "A free study abroad consultation and roadmap planning session hosted by ATS in Da Nang. Covers destinations including Australia, USA, and Canada. Open to students interested in high school, undergraduate, college, postgraduate, vocational, and foundation programs.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study in Australia with the University of Adelaide",
+        "date": "21 April 2026",
+        "date_iso": "2026-04-21",
+        "time": "09:00 - 18:00",
+        "location": "Ho Chi Minh City, Hanoi, Da Nang",
+        "format": "in-person",
+        "universities": [
+          "University of Adelaide"
+        ],
+        "details": "An event focused on studying in Australia with the University of Adelaide. Held simultaneously in three cities: Ho Chi Minh City, Hanoi, and Da Nang. Covers undergraduate, postgraduate, and foundation program options.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study Abroad & Scholarship Festival May 2026",
+        "date": "30 May 2026 | 31 May 2026",
+        "date_iso": "2026-05-30",
+        "time": "15:00 - 18:00 (Hanoi, 30 May) | 09:00 - 12:00 (Ho Chi Minh City, 31 May)",
+        "location": "Hanoi, Ho Chi Minh City",
+        "format": "in-person",
+        "universities": [],
+        "details": "A study abroad and scholarship festival covering Australia, USA, and Canada. Held on May 30 in Hanoi and May 31 in Ho Chi Minh City. Open to students across all levels including high school, undergraduate, college, postgraduate, vocational, and foundation programs.",
+        "registration_url": ""
+      },
+      {
+        "name": "Become a Deakin University Student - 'Champion' of Melbourne",
+        "date": "28 February 2027",
+        "date_iso": "2027-02-28",
+        "time": "09:00 - 18:00",
+        "location": "Hanoi, Ho Chi Minh City, Da Nang",
+        "format": "in-person",
+        "universities": [
+          "Deakin University"
+        ],
+        "details": "An event promoting Deakin University, highlighted as a top Melbourne university. Held simultaneously in Hanoi, Ho Chi Minh City, and Da Nang. Covers undergraduate, college, postgraduate, and foundation programs for prospective students interested in studying in Australia.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming study abroad recruitment events hosted by Avenue To Success (ATS) in Vietnam, featuring consultations and university-specific sessions for destinations including Australia, USA, and Canada.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Avenue To Success Company",
+    "website": "https://www.ats.org.vn",
+    "events_page_url": "https://ats.org.vn/events",
+    "events": [
+      {
+        "name": "Free Study Abroad Consultation & Roadmap Planning with ATS Da Nang",
+        "date": "02 April 2026",
+        "date_iso": "2026-04-02",
+        "time": "09:00 - 18:00",
+        "location": "Da Nang",
+        "format": "in-person",
+        "universities": [],
+        "details": "A free consultation event in Da Nang where students can receive personalized study abroad advice and roadmap planning. Covers destinations including Australia, USA, and Canada. Open to students interested in high school, undergraduate, college, postgraduate, vocational, and foundation programs.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study in Australia with the University of Adelaide",
+        "date": "21 April 2026",
+        "date_iso": "2026-04-21",
+        "time": "09:00 - 18:00",
+        "location": "Ho Chi Minh City, Hanoi, Da Nang",
+        "format": "in-person",
+        "universities": [
+          "University of Adelaide"
+        ],
+        "details": "An event focused on studying in Australia with the University of Adelaide, held simultaneously in three cities. Covers undergraduate, postgraduate, and foundation program options for prospective students interested in Australian higher education.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study Abroad & Scholarship Festival May 2026",
+        "date": "30 May 2026 | 31 May 2026",
+        "date_iso": "2026-05-30",
+        "time": "15:00 - 18:00 (Hanoi, 30 May) | 09:00 - 12:00 (Ho Chi Minh City, 31 May)",
+        "location": "Hanoi, Ho Chi Minh City",
+        "format": "in-person",
+        "universities": [],
+        "details": "A study abroad and scholarship festival covering Australia, USA, and Canada. Held across two days in Hanoi and Ho Chi Minh City. Open to students interested in high school, undergraduate, college, postgraduate, vocational, and foundation programs.",
+        "registration_url": ""
+      },
+      {
+        "name": "Become a Deakin University Student – Melbourne's 'Champion'",
+        "date": "28 February 2027",
+        "date_iso": "2027-02-28",
+        "time": "09:00 - 18:00",
+        "location": "Hanoi, Ho Chi Minh City, Da Nang",
+        "format": "in-person",
+        "universities": [
+          "Deakin University"
+        ],
+        "details": "An event promoting Deakin University, highlighted as Melbourne's top-ranked institution. Held simultaneously in three Vietnamese cities. Targets students interested in undergraduate, college, postgraduate, and foundation programs in Australia.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming study abroad recruitment events organized by Avenue To Success (ATS) in Vietnam, featuring consultations and university-specific fairs for Australia, USA, and Canada destinations in 2026–2027.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "BLUE SKY INTERNATIONAL EDUCATION & TRAINING COMPANY",
+    "website": "http://duhocbluesky.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Bright Can-Achieve",
+    "website": "https://www.can-achieve.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "CES Overseas Study Consultancy Company",
+    "website": "https://www.duhocces.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "CRISOP EDUCATION OFFICE - CRISOP EDUCATION CONSULTANCY",
+    "website": "http://crisop.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Career education consultancy Australia",
+    "website": "https://www.ceca.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Center for International Education Development (CIED)",
+    "website": "https://ciec.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "DEOW Co., Ltd - Ho Chi Minh City",
+    "website": "https://deow.jp",
+    "events_page_url": "https://deow.jp/seminar",
+    "events": [],
+    "page_summary": "JSON parse error: Unterminated string starting at: line 331 column 27 (char 14169)",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "DN & NT International Student Services",
+    "website": "https://www.dnnt.com.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Dream Australia Education",
+    "website": "https://dreamauseducation.com",
+    "events_page_url": "https://dreamauseducation.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Duc Anh Overseas Study Advisory & Translation Joint Stock Company",
+    "website": "https://ducanhduhoc.vn",
+    "events_page_url": "https://ducanhduhoc.vn/vi/workshop-chinh-phuc-bai-thi-pte/",
+    "events": [],
+    "page_summary": "JSON parse error: Extra data: line 5 column 1 (char 56)",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Duc Anh Overseas Study Advisory & Translation Joint Stock Company",
+    "website": "http://ducanhduhoc.vn",
+    "events_page_url": "https://ducanhduhoc.vn/vi/workshop-chinh-phuc-bai-thi-pte/",
+    "events": [],
+    "page_summary": "This page covered a past workshop about conquering the PTE Academic English test, held on April 21, 2018, which is well outside the recent 6-month window and therefore not extracted as a current event.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Duc Anh Overseas Study Advisory & Translation Joint Stock Company",
+    "website": "https://www.ducanh.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "EDUNETWORK AUSTRALIA",
+    "website": "https://edunetwork.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "EMK Global-Vietnam",
+    "website": "https://emkglobal.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Education Tower/ Hands On - BEO",
+    "website": "https://handson-beo.vn",
+    "events_page_url": "https://handson-beo.vn/events/workshop-congdan-uc-canada/",
+    "events": [],
+    "page_summary": "This page covered a past workshop held on 21 May 2023 about pathways to Australian and Canadian citizenship/residency, hosted by Hands On - BEO, which has already passed and is no longer upcoming.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Expert Education - EEVS Thailand",
+    "website": "https://experteducation.com",
+    "events_page_url": "https://experteducation.com/education-fair/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Expert Education - EEVS Thailand",
+    "website": "https://www.experteducation.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "G'Connect Hospitality Education",
+    "website": "http://gconnect.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "G'connect Hospitality Education",
+    "website": "https://gconnect.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "GRAND VIETNAM EDUCATION CONSULTING COMPANY",
+    "website": "http://grandvietnam.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Education Alliance",
+    "website": "https://www.geaworld.org",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Study Partners",
+    "website": "https://upgradgsp.com",
+    "events_page_url": "https://upgradgsp.com/events/",
+    "events": [
+      {
+        "name": "UQ Partner High Tea & Training | Pune",
+        "date": "April 29 2026",
+        "date_iso": "2026-04-29",
+        "time": "",
+        "location": "Pune",
+        "format": "in-person",
+        "universities": [
+          "University of Queensland"
+        ],
+        "details": "A partner high tea and training event held in Pune, India, in collaboration with the University of Queensland (UQ), designed to connect and train recruitment partners.",
+        "registration_url": ""
+      },
+      {
+        "name": "upGrad GSP weekly webinar in collaboration with University of Tasmania – ECA (Melbourne & Sydney campus)",
+        "date": "April 30 2026",
+        "date_iso": "2026-04-30",
+        "time": "",
+        "location": "Online",
+        "format": "online",
+        "universities": [
+          "University of Tasmania",
+          "ECA College"
+        ],
+        "details": "A weekly webinar hosted by upGrad GSP in collaboration with the University of Tasmania and ECA College, covering Melbourne and Sydney campuses, aimed at recruitment partners.",
+        "registration_url": ""
+      },
+      {
+        "name": "From Enquiry to Enrolment: Recruiting with CDU | Partner Training",
+        "date": "May 4 2026",
+        "date_iso": "2026-05-04",
+        "time": "",
+        "location": "",
+        "format": "online",
+        "universities": [
+          "Charles Darwin University"
+        ],
+        "details": "A partner training session focused on the student recruitment journey from enquiry to enrolment, in collaboration with Charles Darwin University (CDU).",
+        "registration_url": ""
+      },
+      {
+        "name": "ECA College | upGrad GSP Partner Webinar",
+        "date": "May 6 2026",
+        "date_iso": "2026-05-06",
+        "time": "",
+        "location": "Online",
+        "format": "online",
+        "universities": [
+          "ECA College"
+        ],
+        "details": "A partner webinar hosted by upGrad GSP in collaboration with ECA College, aimed at providing recruitment partners with insights and updates about ECA College's offerings.",
+        "registration_url": ""
+      },
+      {
+        "name": "upGrad GSP 2026 Onshore Partners Assembly",
+        "date": "May 21 2026",
+        "date_iso": "2026-05-21",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "upGrad GSP's 2026 Onshore Partners Assembly, bringing together onshore recruitment partners to network, share insights, and discuss strategies for student recruitment success.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming upGrad GSP networking events and webinars scheduled between April and May 2026, connecting institutions and recruitment partners globally.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "GlobalX",
+    "website": "https://globalx.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Gopal Edu JSC",
+    "website": "https://gopal.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "HEG PTE",
+    "website": "https://www.hegservices.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Hanoi university",
+    "website": "http://hanu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Ho Chi Minh City University of Technology - HCMUT",
+    "website": "http://www.hcmut.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "IDP Education",
+    "website": "https://www.idp.com",
+    "events_page_url": "https://www.idp.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ILA Vietnam Ltd. Co",
+    "website": "https://ila.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ISC Education Joint Stock Company",
+    "website": "https://www.isc.education",
+    "events_page_url": "https://www.isc.education/events",
+    "events": [
+      {
+        "name": "EDUUK Study Abroad Exhibition",
+        "date": "21/03/2026",
+        "date_iso": "2026-03-21",
+        "time": "2:30 PM - 5:30 PM",
+        "location": "Hanoi (21/03/2026) and Ho Chi Minh City (22/03/2026)",
+        "format": "in-person",
+        "universities": [],
+        "details": "The 100th EDUUK Study Abroad Exhibition featuring the largest gathering of UK universities. Held in Hanoi on Saturday 21 March 2026 (14:30–17:30) and Ho Chi Minh City on Sunday 22 March 2026 (14:30–17:30). Free registration available.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study World Study Abroad Exhibition",
+        "date": "21/03/2026",
+        "date_iso": "2026-03-21",
+        "time": "2:30 PM - 5:30 PM",
+        "location": "Hanoi (21/03/2026) and Ho Chi Minh City (22/03/2026)",
+        "format": "in-person",
+        "universities": [],
+        "details": "Study World is ISC's premier UK and Australia study abroad exhibition. Held in Hanoi on Saturday 21 March 2026 (14:30–17:30) and Ho Chi Minh City on Sunday 22 March 2026 (14:30–17:30). Free registration available.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming study abroad exhibitions organized by ISC Education in Vietnam, focusing on UK and Australian universities.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "International Network Education Consultants Co., Ltd",
+    "website": "https://duhocinec.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "JACK Study Abroad",
+    "website": "https://www.studyabroad.sg",
+    "events_page_url": "https://www.studyabroad.sg/events-in-march-2012-meet-u-of-auckland-u-of-london-bellerbys-college-and-more-in-singapore/",
+    "events": [
+      {
+        "name": "Global University Expo",
+        "date": "28 MARCH 2026",
+        "date_iso": "2026-03-28",
+        "time": "",
+        "location": "Marina Bay Sands, Singapore",
+        "format": "in-person",
+        "universities": [],
+        "details": "A global university expo event hosted by JACK Study Abroad in Singapore at Marina Bay Sands.",
+        "registration_url": ""
+      },
+      {
+        "name": "UK & Australian University Application Day",
+        "date": "27 FEB 2026",
+        "date_iso": "2026-02-27",
+        "time": "",
+        "location": "Somerset, Singapore",
+        "format": "in-person",
+        "universities": [],
+        "details": "An application day event focused on UK and Australian university admissions, hosted by JACK Study Abroad in Singapore at Somerset.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page primarily covers archived March 2012 recruitment events in Singapore featuring universities from the UK and New Zealand, but also lists two upcoming 2026 events: a Global University Expo and a UK & Australian University Application Day.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "KTM Consulting",
+    "website": "https://ktmconsultingroup.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "LEVISA Education & Migration",
+    "website": "https://levisa.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "LeVisa",
+    "website": "https://www.levisa.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "MELLINK HA NOI JSC",
+    "website": "https://mellink.net.au",
+    "events_page_url": "https://mellink.net.au/seminar-with-victorian-government-schools-at-mellink-hanoi/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "NEW PATHWAY EDUCATION DEVELOPMENT JOINT STOCK COMPANY",
+    "website": "https://www.newpathway.com.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "QTS Vietnam",
+    "website": "https://www.qts.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Rightway Education and Services -Vietnam",
+    "website": "http://duhocrightway.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "S.E.T Services for Education Consultancy and Training Joint Stock Company",
+    "website": "https://www.set-edu.com",
+    "events_page_url": "https://set-edu.com/workshop-hieu-minh-hieu-nghe-chuyen-nganh-it-va-engineering/",
+    "events": [],
+    "page_summary": "This page covers a past workshop event held on December 7, 2019, about IT and Engineering study abroad opportunities in Australia, organized by SET Education Consultancy.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "SACE College Vietnam JSC",
+    "website": "https://sace.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "SACE College Vietnam Joint Stock Company",
+    "website": "https://SACE.EDU.VN",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "SEAMEO Regional Training Center",
+    "website": "https://anhvanseameo.vn",
+    "events_page_url": "https://anhvanseameo.vn/news-events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Services for Education Consultancy & Training",
+    "website": "http://www.set-edu.com",
+    "events_page_url": "https://set-edu.com/workshop-hieu-minh-hieu-nghe-chuyen-nganh-it-va-engineering/",
+    "events": [],
+    "page_summary": "JSON parse error: Extra data: line 5 column 1 (char 56)",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "StudyIn",
+    "website": "https://www.gostudyin.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "StudyLink",
+    "website": "http://studylink.org",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "StudyLink",
+    "website": "http://www.studylink.org",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "StudyLink",
+    "website": "https://www.studylink.org",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "TNE Global",
+    "website": "https://tne.edu.vn",
+    "events_page_url": "https://tne.edu.vn/event",
+    "events": [
+      {
+        "name": "INTERNATIONAL EDUCATION DAY 2023",
+        "date": "2023-11-04",
+        "date_iso": "2023-11-04",
+        "time": "09:00",
+        "location": "Pax Sky Building, 13-15-17 Truong Dinh, District 3, Ho Chi Minh City",
+        "format": "in-person",
+        "universities": [],
+        "details": "An international study abroad fair where students can meet representatives from top Australian and American universities. The event focuses on pathways to graduating from world-leading universities.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists study abroad recruitment events organized by TNE Global in Vietnam, primarily focused on Australian and American university pathways, ranging from late 2022 to late 2023.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Times Education Consultant Service Company",
+    "website": "http://duhocedutime.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Tnc Education Consultant Company",
+    "website": "http://tncedu.com.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Trust Education Consultancy",
+    "website": "https://trustedu.com.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "UNIVERSAL STUDY CONSULTING COMPANY",
+    "website": "http://www.duhoc.usc.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Uni-Link Consultancy Joint Stock Company",
+    "website": "http://uni-link.org.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "VINEC Study Abroad",
+    "website": "https://www.vinec.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "VNPC Hanoi Professional Overseas Study Consultancy Company",
+    "website": "https://vnpc.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Vietnam Centre Point",
+    "website": "https://duhochopdiem.edu.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Yes Education Group(Bangkok)",
+    "website": "https://yesedugroup.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Yes Education Group(Bangkok)",
+    "website": "https://www.yesedugroup.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "iae GLOBAL",
+    "website": "https://iaeglobal.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "iae GLOBAL",
+    "website": "https://www.iaeglobal.vn",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "iae GLOBAL",
+    "website": "https://www.iaeglobal.co",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  }
+]

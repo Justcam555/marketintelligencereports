@@ -330,6 +330,82 @@ Consolidation results per market:
 
 ---
 
+## Session: April 28, 2026
+
+### What Was Built
+
+#### Events scraper — all 6 priority markets (`scrape_events.py`)
+
+**`load_agents()` fallback fix**
+- Script was querying only `agent_social` for agent websites — Cambodia, Vietnam, Indonesia, Sri Lanka had 0 rows there (not yet enriched)
+- Added fallback to `agents` table when `agent_social` returns 0 rows for a country
+- All 4 new markets now load correctly
+
+**Events results across all 6 markets:**
+| Market | Agents | Event Pages | Events |
+|--------|--------|-------------|--------|
+| Thailand | 37 | 9 | 31 |
+| Nepal | 101 | 37 | 62 |
+| Cambodia | 10 | 5 | 0 |
+| Vietnam | 77 | 21 | 38 |
+| Indonesia | 63 | 32 | 42 |
+| Sri Lanka | 73 | 27 | 106 |
+
+- Sri Lanka dominant: Jeewa Education had 37 events across two branches; VIEC, Nawaloka, Royal Institute of Colombo all active
+- Nepal strong: KIEC (10 events), upGrad GSP (5), Grace International (4), Education Asia (5)
+- Cambodia: 5 pages found but no upcoming events
+
+**Other fixes:**
+- ANTHROPIC_API_KEY saved to `.env`, `.gitignore` created so key is never committed
+- `PYTHONUNBUFFERED=1` added to all background runs to prevent output buffering
+
+#### Social enrichment — 4 new markets (`research_social.py`, `enrich_agents.py`)
+
+**Scripts updated to support all 6 markets** (previously hardcoded to Thailand + Nepal only):
+- `research_social.py`: `COUNTRIES` list expanded; `--country` arg already worked
+- `enrich_agents.py`: `COUNTRIES` list + SQL filter in `rebuild_profiles()` expanded
+
+**`research_social.py` run for Cambodia, Vietnam, Indonesia, Sri Lanka:**
+- Scraped each agent website for Facebook, Instagram, LinkedIn links
+- Google Places rating and review count fetched
+- Created `agent_social` rows for all 4 markets
+
+**`enrich_agents.py` — new `--batch` mode added:**
+- Old mode ran one Apify actor per agent per platform → ~$15 for 19 Cambodia agents (YouTube was the main culprit, running for every agent with a website)
+- New `--batch` mode: one Apify run per platform per country (IG batch, TikTok batch, Facebook batch, LinkedIn per-URL)
+- YouTube scraper removed from batch mode — keyword-based, unreliable, expensive
+- New functions: `enrich_tiktok_batch`, `enrich_facebook_batch`, `enrich_linkedin_batch`, `enrich_country_batch`
+- LinkedIn: `harvestapi/linkedin-company` doesn't support true batching (only processes first URL); fixed to loop per-URL — still cheap at $4/1000 companies
+
+**Enrichment results across all 6 markets:**
+| Market | Agents | IG w/data | TikTok w/data | LinkedIn w/data | Avg Score |
+|--------|--------|-----------|---------------|-----------------|-----------|
+| Nepal | 103 | 0* | 10 | 30 | 5.5 |
+| Cambodia | 19 | 8 | 2 | 3 | 5.3 |
+| Thailand | 65 | 25 | 18 | 10 | 5.2 |
+| Sri Lanka | 126 | 47 | 14 | 30 | 4.9 |
+| Vietnam | 131 | 32 | 18 | 15 | 4.4 |
+| Indonesia | 101 | 32 | 10 | 10 | 4.0 |
+
+*Nepal Instagram showing 0 with data — likely a field issue from an earlier partial run. Needs investigation.
+
+### Known Issues (Carryover)
+- Nepal Instagram followers showing 0 — field mapping issue from partial earlier run
+- Facebook follower counts not captured (Apify FB Pages Scraper returns page data but follower field often null)
+- Meta Ad Library: needs proper FB Marketing API token
+- 14 university logos still missing
+- Agent deduplication still incomplete globally
+- Report generator needs login system before sharing externally
+
+### Next Session Priorities
+1. Fix Nepal Instagram followers field issue
+2. Investigate Facebook follower count null (check raw Apify output)
+3. Run Monash scraper for all 6 markets
+4. Get FB Marketing API token and run Meta Ad Library ingestion
+5. Download 14 missing university logos manually
+
+---
+
 ## Template for Future Sessions
 
 ### Session: [Date]

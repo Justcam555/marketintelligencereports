@@ -1,0 +1,1895 @@
+[
+  {
+    "agent_name": "3W Global Education (Pvt)",
+    "website": "http://www.3wge.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "3W Global Education (Pvt)",
+    "website": "https://3wge.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "A C H Education",
+    "website": "https://www.acheducation.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ACH Education",
+    "website": "https://acheducation.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AECC Global",
+    "website": "https://www.aeccglobal.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AECC Global",
+    "website": "https://www.aeccglobal.lk",
+    "events_page_url": "https://www.aeccglobal.lk/events",
+    "events": [],
+    "page_summary": "JSON parse error: Extra data: line 5 column 1 (char 56)",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AK Unid Education (Pvt)",
+    "website": "https://akunideducation.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "APIIT (Asia Pacific Institute of Information Technology) Sri Lanka",
+    "website": "https://apiit.lk",
+    "events_page_url": "https://apiit.lk/news-events/",
+    "events": [
+      {
+        "name": "APIIT International Research Conference 2025",
+        "date": "2025",
+        "date_iso": "2025",
+        "time": "",
+        "location": "APIIT Sri Lanka",
+        "format": "in-person",
+        "universities": [
+          "APIIT Sri Lanka",
+          "University of Staffordshire"
+        ],
+        "details": "APIIT International Research Conference 2025 themed 'Advance Interdisciplinary Research for a Resilient Future'. An academic research conference hosted by APIIT Sri Lanka bringing together researchers and academics.",
+        "registration_url": "https://apiit.lk/news-events/"
+      },
+      {
+        "name": "APIIT Launches its Premier BSc in Artificial Intelligence Degree in March 2025",
+        "date": "March 2025",
+        "date_iso": "2025-03-01",
+        "time": "",
+        "location": "APIIT Sri Lanka",
+        "format": "",
+        "universities": [
+          "APIIT Sri Lanka",
+          "University of Staffordshire"
+        ],
+        "details": "APIIT Sri Lanka launched its premier BSc in Artificial Intelligence degree program in March 2025, marking a significant addition to its undergraduate offerings in technology and computing.",
+        "registration_url": "https://apiit.lk/news-events/"
+      }
+    ],
+    "page_summary": "This page covers recent news and events from APIIT Sri Lanka, including research conferences, new degree program launches, competition achievements, and academic partnerships.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Applyboard (Sri Lanka)",
+    "website": "https://www.applyboard.com",
+    "events_page_url": "https://www.applyboard.com/webinars",
+    "events": [
+      {
+        "name": "The Germany Advantage: High ROI, Zero German, Limitless Careers",
+        "date": "April 30, 2026",
+        "date_iso": "2026-04-30",
+        "time": "7:00 A.M EST / 4:30 P.M IST",
+        "location": "online",
+        "format": "online",
+        "universities": [],
+        "details": "A webinar exploring the advantages of studying in Germany, focusing on high return on investment, programs available without German language requirements, and career opportunities for international students.",
+        "registration_url": ""
+      },
+      {
+        "name": "Know What You'll Earn: Understanding Commission Estimates, Payouts, and Your Elevate Status",
+        "date": "May 5, 2026",
+        "date_iso": "2026-05-05",
+        "time": "6:30 A.M EST / 4:00 P.M IST",
+        "location": "online",
+        "format": "online",
+        "universities": [],
+        "details": "A webinar aimed at ApplyBoard recruitment partners covering how to understand commission estimates, payout structures, and Elevate status to maximize earnings.",
+        "registration_url": ""
+      },
+      {
+        "name": "The St. Clair Advantage: Navigating Top-Tier Careers in Health and Advanced Manufacturing",
+        "date": "May 13, 2026",
+        "date_iso": "2026-05-13",
+        "time": "8:30 A.M EST / 6:00 P.M IST",
+        "location": "online",
+        "format": "online",
+        "universities": [
+          "St. Clair College"
+        ],
+        "details": "A webinar highlighting St. Clair College's programs and career pathways in the health and advanced manufacturing sectors, aimed at helping recruitment partners guide students toward top-tier opportunities.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming ApplyBoard webinars exclusively for recruitment partners, covering topics such as studying in Germany, commission and payout understanding, and career programs at St. Clair College.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Asia Pacific Group",
+    "website": "https://asiapacificgroup.com",
+    "events_page_url": "https://asiapacificgroup.com/events/",
+    "events": [
+      {
+        "name": "APG Thomastown Migration Expo 2026",
+        "date": "May 16, 2026",
+        "date_iso": "2026-05-16",
+        "time": "1:00 PM",
+        "location": "Thomastown, Australia",
+        "format": "in-person",
+        "universities": [],
+        "details": "A free migration expo hosted by APG Thomastown on May 16, 2026, from 1 PM to 5 PM. Open to all interested attendees. Registration is available.",
+        "registration_url": ""
+      },
+      {
+        "name": "APG Blacktown Migration Seminar 2026",
+        "date": "March 25, 2026",
+        "date_iso": "2026-03-25",
+        "time": "11:00 AM",
+        "location": "Blacktown, Australia",
+        "format": "in-person",
+        "universities": [],
+        "details": "Asia Pacific Group Blacktown invites attendees to the APG Blacktown Migration Seminar 2026, focusing on migration-related topics and consultations.",
+        "registration_url": ""
+      },
+      {
+        "name": "APG NSW Education & Migration Expo 2026",
+        "date": "March 11, 2026",
+        "date_iso": "2026-03-11",
+        "time": "1:00 PM",
+        "location": "NSW, Australia",
+        "format": "in-person",
+        "universities": [],
+        "details": "An expo featuring 10+ universities, free consultations by registered MARA agents and QEACs, and huge scholarships and discounts across all migration services.",
+        "registration_url": ""
+      },
+      {
+        "name": "Free Webinar on Perth State Nominations & 485 Visa",
+        "date": "March 3, 2026",
+        "date_iso": "2026-03-03",
+        "time": "2:00 PM",
+        "location": "Online",
+        "format": "online",
+        "universities": [],
+        "details": "A free webinar targeting international students in Perth, covering topics related to Perth state nominations and the 485 visa pathway.",
+        "registration_url": ""
+      },
+      {
+        "name": "APG Thomastown Free Migration Expo 2026",
+        "date": "February 21, 2026",
+        "date_iso": "2026-02-21",
+        "time": "1:00 PM",
+        "location": "Thomastown, Australia",
+        "format": "in-person",
+        "universities": [],
+        "details": "A free migration expo conducted by APG Thomastown, open to all interested individuals seeking migration guidance and information.",
+        "registration_url": ""
+      },
+      {
+        "name": "Free Education & Migration Pop-Up Consultation",
+        "date": "February 13, 2026",
+        "date_iso": "2026-02-13",
+        "time": "11:00 AM",
+        "location": "Australia",
+        "format": "in-person",
+        "universities": [],
+        "details": "A free pop-up consultation session by APG where attendees can get answers to all queries related to education and migration in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "APG Education & Migration Expo 2026",
+        "date": "February 5, 2026",
+        "date_iso": "2026-02-05",
+        "time": "1:00 PM",
+        "location": "Australia",
+        "format": "in-person",
+        "universities": [],
+        "details": "APG invites all international students to the Education & Migration Expo 2026, an event of opportunities covering education and migration pathways in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "Free Education & Migration Pop-Up Consultation",
+        "date": "February 5, 2026",
+        "date_iso": "2026-02-05",
+        "time": "11:00 AM",
+        "location": "Australia",
+        "format": "in-person",
+        "universities": [],
+        "details": "A free pop-up consultation session by APG offering answers to all queries related to education and migration in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "APG Education Expo 2026",
+        "date": "January 31, 2026",
+        "date_iso": "2026-01-31",
+        "time": "1:00 PM",
+        "location": "Australia",
+        "format": "in-person",
+        "universities": [],
+        "details": "APG's Education Expo 2026, aimed at helping attendees make their Australian dream come true by providing education and migration guidance.",
+        "registration_url": ""
+      },
+      {
+        "name": "Free Webinar on Why Choose IT and Health Management in Australia",
+        "date": "January 14, 2026",
+        "date_iso": "2026-01-14",
+        "time": "4:00 PM",
+        "location": "Online",
+        "format": "online",
+        "universities": [],
+        "details": "A free webinar inviting international students to learn about the benefits and opportunities of studying IT and Health Management in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "MECAA Seminar",
+        "date": "January 16, 2026",
+        "date_iso": "2026-01-16",
+        "time": "4:00 PM",
+        "location": "Australia",
+        "format": "in-person",
+        "universities": [],
+        "details": "A seminar encouraging education and migration agents to attend the MECAA Seminar, focused on industry topics relevant to agents.",
+        "registration_url": ""
+      },
+      {
+        "name": "APG Blacktown Trade Expo 2025",
+        "date": "December 11, 2025",
+        "date_iso": "2025-12-11",
+        "time": "1:00 PM",
+        "location": "Blacktown, Australia",
+        "format": "in-person",
+        "universities": [],
+        "details": "APG Blacktown invites all international students to the APG Blacktown Trade Expo 2025, an event of opportunities covering education and migration services.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming and recent recruitment and migration events hosted by Asia Pacific Group (APG) across Australia, including expos, seminars, webinars, and pop-up consultations focused on education and migration pathways.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Asian International Academy Holdings Private",
+    "website": "http://www.aia.lk",
+    "events_page_url": "http://aia.lk/events/",
+    "events": [
+      {
+        "name": "CQU Study in Australia Webinar 2026",
+        "date": "29 Jan 2026",
+        "date_iso": "2026-01-29",
+        "time": "6:00 PM",
+        "location": "Online Zoom Session",
+        "format": "online",
+        "universities": [
+          "Central Queensland University"
+        ],
+        "details": "An exclusive virtual Zoom session with Central Queensland University (CQU) focused on study opportunities in Australia for 2026. Prospective students can learn about admissions and programs offered by CQU.",
+        "registration_url": ""
+      },
+      {
+        "name": "MDX Dubai Admission Week 2026",
+        "date": "01 Feb 2026",
+        "date_iso": "2026-02-01",
+        "time": "10:00 AM",
+        "location": "AIA Study Abroad Head office: 329 Galle Road, Colombo 04 | Kandy Branch office: 675 William Gopallawa Mw, Kandy",
+        "format": "in-person",
+        "universities": [
+          "Middlesex University Dubai"
+        ],
+        "details": "Middlesex University Dubai Admission Week event hosted at AIA's Colombo and Kandy branch offices. Prospective students can get information about admissions and study opportunities at Middlesex University Dubai.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming recruitment events by Asian International Academy Holdings, including a CQU Australia webinar and a Middlesex University Dubai admission week in early 2026.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Aspirations Education",
+    "website": "https://www.aspirations.edu.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Australian New Zealand Education Consultants",
+    "website": "https://www.anzecsl.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Bluesky Immigration and Students Consultancy Services - Sri Lanka",
+    "website": "https://www.blueskyconsultancy.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Boomerang International Educational Services-Sri Lanka",
+    "website": "https://boomerangedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "BridgeBlue",
+    "website": "https://www.bridgeblueglobal.com",
+    "events_page_url": "https://www.bridgeblueglobal.com/events/",
+    "events": [],
+    "page_summary": "The page describes Bridge Blue Global Education Roadshows and their benefits for education providers, but lists no specific upcoming or recent events with dates or locations.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Campus Direct UK",
+    "website": "https://www.cduk.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Campus Direct UK (PVT)",
+    "website": "https://www.campusdirect.io",
+    "events_page_url": "https://www.campusdirect.io/events",
+    "events": [
+      {
+        "name": "University of Plymouth Open Day",
+        "date": "21 May 2026",
+        "date_iso": "2026-05-21",
+        "time": "3:00 PM – 5:30 PM",
+        "location": "Campus Direct, 36 B Gower Street, Colombo 05, Sri Lanka",
+        "format": "in-person",
+        "universities": [
+          "University of Plymouth"
+        ],
+        "details": "One-on-one session with Wilma Paul, Regional Manager – South Asia from University of Plymouth. Topics include choosing the right course, scholarships up to GBP 6,000 for Sept 2026 intake, and part-time work opportunities in the UK. Limited seats available.",
+        "registration_url": ""
+      },
+      {
+        "name": "UK & Europe Open Day",
+        "date": "16 May 2026",
+        "date_iso": "2026-05-16",
+        "time": "11:00 AM – 4:00 PM",
+        "location": "36 B, Gower Street, Colombo 05, Sri Lanka",
+        "format": "in-person",
+        "universities": [],
+        "details": "Open day covering study opportunities in the UK and Europe. Offers free application and visa guidance, IELTS waivers, and personalized advice from experts.",
+        "registration_url": ""
+      },
+      {
+        "name": "Unitec Admissions Day - New Zealand",
+        "date": "15 May 2026",
+        "date_iso": "2026-05-15",
+        "time": "3:00 PM – 6:00 PM",
+        "location": "Campus Direct, Colombo 05, Sri Lanka",
+        "format": "in-person",
+        "universities": [
+          "Unitec"
+        ],
+        "details": "Admissions day for Unitec New Zealand. Meet representatives including Craig Robertson (Senior Academic Tutor, Business), Don Sirimanne (Associate Director), and Abhineeth Sharma (Country Manager, South Asia & Middle East) to explore study opportunities in New Zealand.",
+        "registration_url": ""
+      },
+      {
+        "name": "Adelaide Open Day",
+        "date": "9 May 2026",
+        "date_iso": "2026-05-09",
+        "time": "10:30 AM – 12:30 PM",
+        "location": "Campus Direct, 36 B Gower Street, Colombo 05, Sri Lanka",
+        "format": "in-person",
+        "universities": [
+          "Adelaide University"
+        ],
+        "details": "Open day focused on studying in Australia. Meet Shenika Surendran, Manager – Student Recruitment at Adelaide University, to explore courses, scholarships, and career pathways.",
+        "registration_url": ""
+      },
+      {
+        "name": "Dubai Open Day",
+        "date": "30 April 2026",
+        "date_iso": "2026-04-30",
+        "time": "3:00 PM – 5:00 PM",
+        "location": "Colombo Branch: 36 B, Gower Street, Colombo 05, Sri Lanka",
+        "format": "in-person",
+        "universities": [
+          "University of Bolton"
+        ],
+        "details": "Open day focused on study opportunities in the UAE/Dubai. Meet Vimukthi Weerakoon, Head of Business Development at University of Bolton Academic Centre UAE. Also held in Kandy on 22nd April (1:00 PM – 3:00 PM).",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "Campus Direct UK (PVT) lists upcoming in-person recruitment events in Colombo, Sri Lanka, featuring open days and admissions sessions for universities in the UK, Europe, Australia, New Zealand, and the UAE.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Colombo Institute of Research and Psychology",
+    "website": "https://researchandpsychology.com",
+    "events_page_url": "https://www.researchandpsychology.com/events",
+    "events": [],
+    "page_summary": "This page covers a Student Council Election event at CIRP (Colombo Institute of Research and Psychology) held in March 2023, which is too old to qualify as upcoming or recent.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Destiny Education Solutions - Sri Lanka",
+    "website": "https://destinyeducations.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ESOFT",
+    "website": "https://esoft.lk",
+    "events_page_url": "https://esoft.lk/events/",
+    "events": [
+      {
+        "name": "Kokila Wasantha Udhanaya 2025",
+        "date": "May 4, 2025",
+        "date_iso": "2025-05-04",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "An event titled 'Kokila Wasantha Udhanaya 2025' hosted by ESOFT Metro Campus. Further details are not available from the page excerpt.",
+        "registration_url": ""
+      },
+      {
+        "name": "Graduation 2025 – Day 01",
+        "date": "March 13, 2025",
+        "date_iso": "2025-03-13",
+        "time": "",
+        "location": "",
+        "format": "in-person",
+        "universities": [],
+        "details": "The first day of ESOFT Metro Campus Graduation 2025 ceremony, celebrating student achievements. Further details are not available from the page excerpt.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page covers news and events from ESOFT Metro Campus, including graduation ceremonies, cultural events, and other campus happenings.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Edlocate (Pvt)",
+    "website": "https://www.edlocate.lk",
+    "events_page_url": "https://www.edlocate.lk/news-and-events/",
+    "events": [
+      {
+        "name": "FINISHED A/L'S? Start Your Global Journey Today with Edlocate!",
+        "date": "09 May",
+        "date_iso": "2026-05-09",
+        "time": "9:00 AM",
+        "location": "Edlocate offices in Colombo | Kandy | Jaffna",
+        "format": "in-person",
+        "universities": [],
+        "details": "An event for students who have finished their A/Ls, encouraging them to begin their study abroad journey with Edlocate. Held across three office locations in Colombo, Kandy, and Jaffna.",
+        "registration_url": ""
+      },
+      {
+        "name": "Learn About Studying at Adelaide University",
+        "date": "28 April",
+        "date_iso": "2026-04-28",
+        "time": "3:00 PM",
+        "location": "Edlocate Colombo Office",
+        "format": "in-person",
+        "universities": [
+          "Adelaide University"
+        ],
+        "details": "An information session at Edlocate's Colombo office focused on studying at Adelaide University, providing prospective students with details about courses, admissions, and opportunities.",
+        "registration_url": ""
+      },
+      {
+        "name": "EDLOCATE APPLICATION WEEK",
+        "date": "06 April",
+        "date_iso": "2026-04-06",
+        "time": "10:00 AM",
+        "location": "Edlocate Colombo Office",
+        "format": "in-person",
+        "universities": [],
+        "details": "A dedicated application week hosted at Edlocate's Colombo office to assist students with their university application processes for studying abroad.",
+        "registration_url": ""
+      },
+      {
+        "name": "RMIT UNIVERSITY AUSTRALIA APPLICATION DAY",
+        "date": "26 March",
+        "date_iso": "2026-03-26",
+        "time": "3:00 PM",
+        "location": "Edlocate Colombo Office",
+        "format": "in-person",
+        "universities": [
+          "RMIT University"
+        ],
+        "details": "An application day event at Edlocate's Colombo office dedicated to helping students apply to RMIT University in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "England | Canada | Ireland | Germany Education Expo",
+        "date": "11 March 2026",
+        "date_iso": "2026-03-11",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "An education expo covering study abroad opportunities in England, Canada, Ireland, and Germany, aimed at Sri Lankan students exploring international higher education options.",
+        "registration_url": ""
+      },
+      {
+        "name": "New Zealand Open Day by Edlocate",
+        "date": "11 March 2026",
+        "date_iso": "2026-03-11",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "An open day event organized by Edlocate focused on study opportunities in New Zealand, providing information to prospective students about universities and programs available.",
+        "registration_url": ""
+      },
+      {
+        "name": "Edlocate Study Abroad Day in Kurunegala",
+        "date": "11 March 2026",
+        "date_iso": "2026-03-11",
+        "time": "",
+        "location": "Kurunegala",
+        "format": "in-person",
+        "universities": [],
+        "details": "A study abroad information day held in Kurunegala by Edlocate, offering guidance to local students on international education pathways and university applications.",
+        "registration_url": ""
+      },
+      {
+        "name": "Edlocate Study Abroad Day in Kandy 2026",
+        "date": "11 March 2026",
+        "date_iso": "2026-03-11",
+        "time": "",
+        "location": "Kandy",
+        "format": "in-person",
+        "universities": [],
+        "details": "A study abroad information day held in Kandy by Edlocate, providing students with guidance on studying overseas and available international university options.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming and recent recruitment and study abroad events organized by Edlocate (Pvt) in Sri Lanka, covering university open days, application days, and education expos for destinations including Australia, New Zealand, England, Canada, Ireland, and Germany.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Eduko Pathways (Pvt)",
+    "website": "https://edukopathways.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Eduko Pathways (Pvt)",
+    "website": "https://www.edukopathways.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Emergence Education Consultants (Pvt)",
+    "website": "https://www.emergence.edu.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Evergreen Education & VISA Consultants (Pvt.)",
+    "website": "https://evergreen.edu.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Expert Education - EEVS Thailand",
+    "website": "https://www.experteducation.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "GeeBee Edtech Private",
+    "website": "https://www.geebeeworld.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Mark Education and Vi",
+    "website": "https://www.gmeducation.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Reach",
+    "website": "https://globalreachonline.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Reach",
+    "website": "https://www.globalreach.lk",
+    "events_page_url": "https://www.globalreach.in/404-not-found.php",
+    "events": [
+      {
+        "name": "Group of Eight Virtual Fair",
+        "date": "30th Apr, 2026",
+        "date_iso": "2026-04-30",
+        "time": "2 PM - 5 PM",
+        "location": "Virtual",
+        "format": "online",
+        "universities": [],
+        "details": "A virtual fair featuring the Group of Eight (Go8) universities, hosted by Global Reach overseas education consultants. The event runs from 2 PM to 5 PM online.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists an upcoming Group of Eight Virtual Fair event on 30 April 2026, hosted by Global Reach overseas education consultants in Kolkata, India.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Reach",
+    "website": "https://www.globalreach.in",
+    "events_page_url": "https://www.globalreach.in/404-not-found.php",
+    "events": [
+      {
+        "name": "Group of Eight Virtual Fair",
+        "date": "30th Apr, 2026",
+        "date_iso": "2026-04-30",
+        "time": "2 PM - 5 PM",
+        "location": "Virtual",
+        "format": "online",
+        "universities": [],
+        "details": "A virtual fair featuring the Group of Eight (Go8) universities, hosted by Global Reach overseas education consultants. The event runs from 2 PM to 5 PM and is conducted online.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists an upcoming Group of Eight Virtual Fair on 30 April 2026, hosted by Global Reach overseas education consultants in Kolkata, India.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Study Partners",
+    "website": "https://www.upgradgsp.com",
+    "events_page_url": "https://www.upgradgsp.com/events/",
+    "events": [
+      {
+        "name": "UQ Partner High Tea & Training | Pune",
+        "date": "April 29 2026",
+        "date_iso": "2026-04-29",
+        "time": "",
+        "location": "Pune",
+        "format": "in-person",
+        "universities": [
+          "University of Queensland"
+        ],
+        "details": "A partner high tea and training event hosted by UQ (University of Queensland) for recruitment partners, taking place in Pune, India.",
+        "registration_url": ""
+      },
+      {
+        "name": "upGrad GSP weekly webinar in collaboration with University of Tasmania – ECA (Melbourne & Sydney campus)",
+        "date": "April 30 2026",
+        "date_iso": "2026-04-30",
+        "time": "",
+        "location": "online",
+        "format": "online",
+        "universities": [
+          "University of Tasmania",
+          "ECA College"
+        ],
+        "details": "A weekly webinar hosted by upGrad GSP in collaboration with the University of Tasmania and ECA College, covering Melbourne and Sydney campuses, aimed at recruitment partners.",
+        "registration_url": ""
+      },
+      {
+        "name": "From Enquiry to Enrolment: Recruiting with CDU | Partner Training",
+        "date": "May 4 2026",
+        "date_iso": "2026-05-04",
+        "time": "",
+        "location": "",
+        "format": "online",
+        "universities": [
+          "Charles Darwin University"
+        ],
+        "details": "A partner training session focused on the student recruitment journey from enquiry to enrolment, delivered in collaboration with Charles Darwin University (CDU).",
+        "registration_url": ""
+      },
+      {
+        "name": "ECA College | upGrad GSP Partner Webinar",
+        "date": "May 6 2026",
+        "date_iso": "2026-05-06",
+        "time": "",
+        "location": "",
+        "format": "online",
+        "universities": [
+          "ECA College"
+        ],
+        "details": "A partner webinar hosted by upGrad GSP in collaboration with ECA College, designed to provide recruitment partners with insights and information about the institution.",
+        "registration_url": ""
+      },
+      {
+        "name": "Recruiting with TAFE NSW | Partner Webinar",
+        "date": "May 11 2026",
+        "date_iso": "2026-05-11",
+        "time": "",
+        "location": "",
+        "format": "online",
+        "universities": [
+          "TAFE NSW"
+        ],
+        "details": "A partner webinar focused on recruiting students for TAFE NSW, providing recruitment partners with key information and strategies for student enrolment.",
+        "registration_url": ""
+      },
+      {
+        "name": "upGrad GSP 2026 Onshore Partners Assembly",
+        "date": "May 21 2026",
+        "date_iso": "2026-05-21",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "An assembly event for upGrad GSP's onshore partners in 2026, aimed at networking, sharing insights, and driving student recruitment success among partners based onshore.",
+        "registration_url": ""
+      },
+      {
+        "name": "Recruiting with TAFE Queensland | Partner Webinar",
+        "date": "May 21 2026",
+        "date_iso": "2026-05-21",
+        "time": "",
+        "location": "",
+        "format": "online",
+        "universities": [
+          "TAFE Queensland"
+        ],
+        "details": "A partner webinar focused on recruiting students for TAFE Queensland, equipping recruitment partners with the tools and knowledge needed to support student enrolments.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming upGrad GSP networking events and partner webinars scheduled between April and May 2026, connecting educational institutions and recruitment partners globally.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Uni Connect Pte",
+    "website": "https://globaluniconnect.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Grace International Sri Lanka",
+    "website": "https://graceintlgroup.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ICBT",
+    "website": "https://icbt.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ICBT",
+    "website": "https://icbtstudyabroad.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "IDP Education",
+    "website": "https://www.idp.com",
+    "events_page_url": "https://www.idp.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "International Education Consultancy (IEC)",
+    "website": "https://www.iec.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "International Education Experts (Pvt)",
+    "website": "https://www.ieduexperts.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "International Scholar Educational Services",
+    "website": "https://www.international-scholar.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Jeewa Education",
+    "website": "https://www.jeewaeducation.lk",
+    "events_page_url": "https://www.jeewaeducation.lk/events/",
+    "events": [
+      {
+        "name": "University of Canberra Open day",
+        "date": "14 March 2025",
+        "date_iso": "2025-03-14",
+        "time": "9:00 AM - 5:00 PM",
+        "location": "Battaramulla (9AM-12PM) and Panadura (2PM-5PM)",
+        "format": "in-person",
+        "universities": [
+          "University of Canberra"
+        ],
+        "details": "University of Canberra Open Day held at two locations in Sri Lanka: Battaramulla from 9AM to 12PM and Panadura from 2PM to 5PM.",
+        "registration_url": ""
+      },
+      {
+        "name": "ACU Open Day",
+        "date": "26 March 2025",
+        "date_iso": "2025-03-26",
+        "time": "10:00 AM - 10:30 AM",
+        "location": "Jeewa Education Kandy, Battaramulla & Panadura",
+        "format": "in-person",
+        "universities": [
+          "Australian Catholic University"
+        ],
+        "details": "Australian Catholic University Open Day held across three Jeewa Education offices in Kandy, Battaramulla, and Panadura.",
+        "registration_url": ""
+      },
+      {
+        "name": "ANU Virtual Open Day",
+        "date": "29 March 2025",
+        "date_iso": "2025-03-29",
+        "time": "10:00 AM - 1:00 PM",
+        "location": "Jeewa Education (online/virtual)",
+        "format": "online",
+        "universities": [
+          "Australian National University"
+        ],
+        "details": "Virtual Open Day for the Australian National University (ANU), hosted by Jeewa Education.",
+        "registration_url": ""
+      },
+      {
+        "name": "Bond University Open Day",
+        "date": "04 July 2025",
+        "date_iso": "2025-07-04",
+        "time": "10:30 AM - 12:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [
+          "Bond University"
+        ],
+        "details": "Bond University Open Day hosted at Jeewa Education offices.",
+        "registration_url": ""
+      },
+      {
+        "name": "ECU Open Day",
+        "date": "13 June 2025",
+        "date_iso": "2025-06-13",
+        "time": "2:00 PM - 5:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [
+          "Edith Cowan University"
+        ],
+        "details": "Edith Cowan University (ECU) Open Day held at Jeewa Education offices.",
+        "registration_url": ""
+      },
+      {
+        "name": "UOW Open Day",
+        "date": "14 June 2025",
+        "date_iso": "2025-06-14",
+        "time": "10:00 AM - 1:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [
+          "University of Wollongong"
+        ],
+        "details": "University of Wollongong (UOW) Open Day hosted at Jeewa Education offices.",
+        "registration_url": ""
+      },
+      {
+        "name": "Navitas Admission Day",
+        "date": "21 June 2025",
+        "date_iso": "2025-06-21",
+        "time": "10:00 AM - 2:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [
+          "Navitas"
+        ],
+        "details": "Navitas Admission Day hosted at Jeewa Education, providing prospective students the opportunity to learn about Navitas pathways and admissions.",
+        "registration_url": ""
+      },
+      {
+        "name": "Swinburne Open Day",
+        "date": "25 May 2025",
+        "date_iso": "2025-05-25",
+        "time": "9:00 AM - 12:00 PM",
+        "location": "Jeewa Education Panadura",
+        "format": "in-person",
+        "universities": [
+          "Swinburne University of Technology"
+        ],
+        "details": "Swinburne University Open Day held at Jeewa Education's Panadura office.",
+        "registration_url": ""
+      },
+      {
+        "name": "UK Open Day",
+        "date": "12 July 2025",
+        "date_iso": "2025-07-12",
+        "time": "10:00 AM - 1:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [],
+        "details": "UK universities Open Day hosted at Jeewa Education offices for students interested in studying in the United Kingdom.",
+        "registration_url": ""
+      },
+      {
+        "name": "Jeewa Education & Migration Roadshow 2025",
+        "date": "27 July 2025",
+        "date_iso": "2025-07-27",
+        "time": "9:00 AM - 5:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [],
+        "details": "A full-day education and migration roadshow hosted by Jeewa Education, covering study abroad and migration opportunities for prospective students.",
+        "registration_url": ""
+      },
+      {
+        "name": "Queensland, Sydney, Canberra Open Day",
+        "date": "24 October 2025",
+        "date_iso": "2025-10-24",
+        "time": "10:00 AM - 4:01 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [
+          "University of Queensland",
+          "University of Sydney",
+          "University of Canberra"
+        ],
+        "details": "Open Day featuring universities from Queensland, Sydney, and Canberra, hosted at Jeewa Education offices.",
+        "registration_url": ""
+      },
+      {
+        "name": "Jeewa Panadura Scholarship Day",
+        "date": "18 October 2025",
+        "date_iso": "2025-10-18",
+        "time": "9:00 AM - 2:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [],
+        "details": "Scholarship Day event hosted by Jeewa Education's Panadura office, providing information on scholarship opportunities for students.",
+        "registration_url": ""
+      },
+      {
+        "name": "Torrens Open Day",
+        "date": "28 October 2025",
+        "date_iso": "2025-10-28",
+        "time": "10:30 AM - 12:30 PM",
+        "location": "Jeewa Education Battaramulla",
+        "format": "in-person",
+        "universities": [
+          "Torrens University Australia"
+        ],
+        "details": "Torrens University Australia Open Day hosted at Jeewa Education's Battaramulla office.",
+        "registration_url": ""
+      },
+      {
+        "name": "Jeewa Virtual Roadshow 2025",
+        "date": "08 November 2025",
+        "date_iso": "2025-11-08",
+        "time": "10:00 AM - 2:01 PM",
+        "location": "Jeewa Education (online/virtual)",
+        "format": "online",
+        "universities": [],
+        "details": "Virtual roadshow hosted by Jeewa Education, connecting prospective students with university representatives and study abroad opportunities.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "Jeewa Education's events page lists a wide range of past and upcoming recruitment events in Sri Lanka, including university open days, one-to-one sessions with university representatives, roadshows, and scholarship days primarily featuring Australian and UK universities.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Jeewa Education",
+    "website": "http://www.jaec.net",
+    "events_page_url": "https://www.jeewaeducation.lk/events/",
+    "events": [
+      {
+        "name": "University of Canberra Open day",
+        "date": "14 March 2025",
+        "date_iso": "2025-03-14",
+        "time": "9:00 AM - 5:00 PM",
+        "location": "Battaramulla (9AM-12PM) and Panadura (2PM-5PM)",
+        "format": "in-person",
+        "universities": [
+          "University of Canberra"
+        ],
+        "details": "University of Canberra Open Day held at two locations in Sri Lanka: Battaramulla from 9AM to 12PM and Panadura from 2PM to 5PM.",
+        "registration_url": ""
+      },
+      {
+        "name": "ACU Open Day",
+        "date": "26 March 2025",
+        "date_iso": "2025-03-26",
+        "time": "10:00 AM - 10:30 AM",
+        "location": "Jeewa Education Kandy, Battaramulla & Panadura",
+        "format": "in-person",
+        "universities": [
+          "Australian Catholic University"
+        ],
+        "details": "ACU Open Day hosted across three Jeewa Education offices in Kandy, Battaramulla and Panadura.",
+        "registration_url": ""
+      },
+      {
+        "name": "ANU Virtual Open Day",
+        "date": "29 March 2025",
+        "date_iso": "2025-03-29",
+        "time": "10:00 AM - 1:00 PM",
+        "location": "Jeewa Education (online/virtual)",
+        "format": "online",
+        "universities": [
+          "Australian National University"
+        ],
+        "details": "Virtual Open Day for the Australian National University (ANU), hosted by Jeewa Education.",
+        "registration_url": ""
+      },
+      {
+        "name": "Swinburne Open Day",
+        "date": "25 May 2025",
+        "date_iso": "2025-05-25",
+        "time": "9:00 AM - 12:00 PM",
+        "location": "Jeewa Education Panadura",
+        "format": "in-person",
+        "universities": [
+          "Swinburne University of Technology"
+        ],
+        "details": "Swinburne University Open Day hosted at Jeewa Education's Panadura office.",
+        "registration_url": ""
+      },
+      {
+        "name": "ECU Open Day",
+        "date": "13 June 2025",
+        "date_iso": "2025-06-13",
+        "time": "2:00 PM - 5:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [
+          "Edith Cowan University"
+        ],
+        "details": "Edith Cowan University (ECU) Open Day hosted at Jeewa Education.",
+        "registration_url": ""
+      },
+      {
+        "name": "UOW Open Day",
+        "date": "14 June 2025",
+        "date_iso": "2025-06-14",
+        "time": "10:00 AM - 1:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [
+          "University of Wollongong"
+        ],
+        "details": "University of Wollongong (UOW) Open Day hosted at Jeewa Education.",
+        "registration_url": ""
+      },
+      {
+        "name": "Navitas Admission Day",
+        "date": "21 June 2025",
+        "date_iso": "2025-06-21",
+        "time": "10:00 AM - 2:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [
+          "Navitas"
+        ],
+        "details": "Navitas Admission Day hosted at Jeewa Education, providing prospective students with information on admissions to Navitas partner institutions.",
+        "registration_url": ""
+      },
+      {
+        "name": "Bond University Open Day",
+        "date": "04 July 2025",
+        "date_iso": "2025-07-04",
+        "time": "10:30 AM - 12:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [
+          "Bond University"
+        ],
+        "details": "Bond University Open Day hosted at Jeewa Education.",
+        "registration_url": ""
+      },
+      {
+        "name": "RMIT Open Day",
+        "date": "05 July 2025",
+        "date_iso": "2025-07-05",
+        "time": "2:00 PM - 5:00 PM",
+        "location": "Jeewa Education Battaramulla, Panadura",
+        "format": "in-person",
+        "universities": [
+          "RMIT University"
+        ],
+        "details": "RMIT University Open Day hosted at Jeewa Education offices in Battaramulla and Panadura.",
+        "registration_url": ""
+      },
+      {
+        "name": "UK Open Day",
+        "date": "06 July 2025",
+        "date_iso": "2025-07-06",
+        "time": "10:00 AM - 5:00 PM",
+        "location": "Jeewa Education Battaramulla, Panadura, Kandy, and Matara offices",
+        "format": "in-person",
+        "universities": [],
+        "details": "UK universities Open Day hosted across four Jeewa Education offices in Battaramulla, Panadura, Kandy and Matara.",
+        "registration_url": ""
+      },
+      {
+        "name": "UK Open Day",
+        "date": "12 July 2025",
+        "date_iso": "2025-07-12",
+        "time": "10:00 AM - 1:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [],
+        "details": "UK universities Open Day hosted at Jeewa Education.",
+        "registration_url": ""
+      },
+      {
+        "name": "SCU Open Day",
+        "date": "13 July 2025",
+        "date_iso": "2025-07-13",
+        "time": "10:00 AM - 2:00 PM",
+        "location": "Jeewa Education Battaramulla, Panadura and Kandy",
+        "format": "in-person",
+        "universities": [
+          "Southern Cross University"
+        ],
+        "details": "Southern Cross University (SCU) Open Day hosted at Jeewa Education offices in Battaramulla, Panadura and Kandy.",
+        "registration_url": ""
+      },
+      {
+        "name": "Deakin Open Day",
+        "date": "16 July 2025",
+        "date_iso": "2025-07-16",
+        "time": "10:00 AM - 2:00 PM",
+        "location": "Jeewa Education Battaramulla and Kandy",
+        "format": "in-person",
+        "universities": [
+          "Deakin University"
+        ],
+        "details": "Deakin University Open Day hosted at Jeewa Education offices in Battaramulla and Kandy.",
+        "registration_url": ""
+      },
+      {
+        "name": "University of Adelaide Open Day",
+        "date": "23 July 2025",
+        "date_iso": "2025-07-23",
+        "time": "10:00 AM - 2:00 PM",
+        "location": "Jeewa Education Battaramulla",
+        "format": "in-person",
+        "universities": [
+          "University of Adelaide"
+        ],
+        "details": "University of Adelaide Open Day hosted at Jeewa Education's Battaramulla office.",
+        "registration_url": ""
+      },
+      {
+        "name": "Curtin Open Day",
+        "date": "25 July 2025",
+        "date_iso": "2025-07-25",
+        "time": "10:00 AM - 12:00 PM",
+        "location": "Jeewa Education Battaramulla",
+        "format": "in-person",
+        "universities": [
+          "Curtin University"
+        ],
+        "details": "Curtin University Open Day hosted at Jeewa Education's Battaramulla office.",
+        "registration_url": ""
+      },
+      {
+        "name": "Federation University Open Day",
+        "date": "26 July 2025",
+        "date_iso": "2025-07-26",
+        "time": "10:00 AM - 4:30 PM",
+        "location": "Jeewa Education Battaramulla and Panadura",
+        "format": "in-person",
+        "universities": [
+          "Federation University"
+        ],
+        "details": "Federation University Open Day hosted at Jeewa Education offices in Battaramulla and Panadura.",
+        "registration_url": ""
+      },
+      {
+        "name": "Jeewa Education & Migration Roadshow 2025",
+        "date": "27 July 2025",
+        "date_iso": "2025-07-27",
+        "time": "9:00 AM - 5:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [],
+        "details": "Jeewa Education & Migration Roadshow 2025, a full-day event covering study and migration opportunities.",
+        "registration_url": ""
+      },
+      {
+        "name": "QUT Open Day",
+        "date": "31 July 2025",
+        "date_iso": "2025-07-31",
+        "time": "10:00 AM - 2:00 PM",
+        "location": "Jeewa Education Battaramulla, Panadura & Kandy",
+        "format": "in-person",
+        "universities": [
+          "Queensland University of Technology"
+        ],
+        "details": "Queensland University of Technology (QUT) Open Day hosted at Jeewa Education offices in Battaramulla, Panadura and Kandy.",
+        "registration_url": ""
+      },
+      {
+        "name": "Flinders Open Day",
+        "date": "01 August 2025",
+        "date_iso": "2025-08-01",
+        "time": "10:00 AM - 4:30 PM",
+        "location": "Jeewa Education Battaramulla and Panadura",
+        "format": "in-person",
+        "universities": [
+          "Flinders University"
+        ],
+        "details": "Flinders University Open Day hosted at Jeewa Education offices in Battaramulla and Panadura.",
+        "registration_url": ""
+      },
+      {
+        "name": "Queensland, Sydney, Canberra Open Day",
+        "date": "24 October 2025",
+        "date_iso": "2025-10-24",
+        "time": "10:00 AM - 4:01 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [
+          "University of Queensland",
+          "University of Sydney",
+          "University of Canberra"
+        ],
+        "details": "Combined Open Day featuring universities from Queensland, Sydney and Canberra, hosted at Jeewa Education.",
+        "registration_url": ""
+      },
+      {
+        "name": "Torrens Open Day",
+        "date": "28 October 2025",
+        "date_iso": "2025-10-28",
+        "time": "10:30 AM - 12:30 PM",
+        "location": "Jeewa Education Battaramulla",
+        "format": "in-person",
+        "universities": [
+          "Torrens University Australia"
+        ],
+        "details": "Torrens University Open Day hosted at Jeewa Education's Battaramulla office.",
+        "registration_url": ""
+      },
+      {
+        "name": "Jeewa Virtual Roadshow 2025",
+        "date": "08 November 2025",
+        "date_iso": "2025-11-08",
+        "time": "10:00 AM - 2:01 PM",
+        "location": "Jeewa Education (online)",
+        "format": "online",
+        "universities": [],
+        "details": "Jeewa Education's Virtual Roadshow 2025, an online event for prospective students to explore study opportunities.",
+        "registration_url": ""
+      },
+      {
+        "name": "Jeewa Panadura Scholarship Day",
+        "date": "18 October 2025",
+        "date_iso": "2025-10-18",
+        "time": "9:00 AM - 2:00 PM",
+        "location": "Jeewa Education",
+        "format": "in-person",
+        "universities": [],
+        "details": "Scholarship Day event hosted at Jeewa Education's Panadura office, providing information on scholarship opportunities for prospective students.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists recruitment and open day events hosted by Jeewa Education in Sri Lanka, featuring Australian and UK university open days, virtual roadshows, scholarship days, and one-to-one sessions with university representatives.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Jeewa Education",
+    "website": "https://www.jaec.net",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "KC Overseas Education",
+    "website": "https://www.studies-overseas.com",
+    "events_page_url": "https://www.studies-overseas.com/events",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "KTM Consulting Group",
+    "website": "https://ktmconsultingroup.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Liu Cheng International Group",
+    "website": "https://www.lcig.io",
+    "events_page_url": "https://www.lcig.io/events",
+    "events": [
+      {
+        "name": "LCI Group's International Universities Fair 2026",
+        "date": "2026-04-18",
+        "date_iso": "2026-04-18",
+        "time": "11 AM – 4 PM",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "An international universities fair organized by LCI Group, offering students the opportunity to meet representatives from international universities and explore study abroad options.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming education events hosted by Liu Cheng International Group, including education fairs, webinars, and networking opportunities for prospective international students.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Lyceum Placements (Private)",
+    "website": "https://www.lyceumplacements.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "National Institute of Business Management",
+    "website": "https://www.nibm.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Nawaloka Global Edulink (PVT)",
+    "website": "https://nawalokaedulink.com",
+    "events_page_url": "https://nawalokaedulink.com/news-and-events/",
+    "events": [
+      {
+        "name": "Nawaloka Global Edu Expo 2024",
+        "date": "October 12th 2024",
+        "date_iso": "2024-10-12",
+        "time": "",
+        "location": "Crystal Ballroom, Taj Samudra, Colombo",
+        "format": "in-person",
+        "universities": [],
+        "details": "Nawaloka Global Edulink hosted an Education Expo on October 12th at the Crystal Ballroom, Taj Samudra, Colombo. The event appears to be a major education exhibition connecting students with study abroad opportunities.",
+        "registration_url": ""
+      },
+      {
+        "name": "Master the Art of the Australian Visa SOP",
+        "date": "September 4th 2024",
+        "date_iso": "2024-09-04",
+        "time": "",
+        "location": "NCHS, Colombo",
+        "format": "in-person",
+        "universities": [],
+        "details": "An expert workshop focused on helping students master the Statement of Purpose (SOP) for Australian visa applications, held at NCHS Colombo on September 4th.",
+        "registration_url": ""
+      },
+      {
+        "name": "Visa Information Session at NCHS Kandy",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "NCHS Kandy Branch",
+        "format": "in-person",
+        "universities": [],
+        "details": "A visa information and one-to-one counseling session held at the NCHS Kandy Branch, providing students with guidance on visa processes and personalized counseling.",
+        "registration_url": ""
+      },
+      {
+        "name": "Transfer Student Info Session",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "NCHS, Colombo",
+        "format": "in-person",
+        "universities": [],
+        "details": "An information session hosted by Nawaloka Global Edulink at NCHS aimed at transfer students, providing details and guidance on transfer pathways and related processes.",
+        "registration_url": ""
+      },
+      {
+        "name": "Visa Information Day at NCHS Colombo",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "NCHS, Colombo",
+        "format": "in-person",
+        "universities": [],
+        "details": "A visa information day event held at NCHS Colombo, where students could explore visa-related information and guidance provided by Nawaloka Global Edulink.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page covers recent and upcoming events by Nawaloka Global Edulink including education expos, visa information sessions, SOP workshops, and student counseling sessions held across Colombo and Kandy in 2024.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Nawaloka Global Edulink (PVT)",
+    "website": "https://nchs.edu.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "PAC Asia",
+    "website": "http://www.pacasia.org",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "PFEC Global",
+    "website": "https://pfecglobal.com.lk",
+    "events_page_url": "https://pfecglobal.com.lk/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "REC Campus",
+    "website": "https://reccampus.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ROYAL INSTITUTE OF COLOMBO (RIC)",
+    "website": "https://ric.lk",
+    "events_page_url": "https://ric.lk/events/",
+    "events": [
+      {
+        "name": "Graduation 2026: A Celebration of Excellence, Pride and New Beginnings",
+        "date": "21 Feb 2026",
+        "date_iso": "2026-02-21",
+        "time": "",
+        "location": "Royal Institute Campus",
+        "format": "in-person",
+        "universities": [],
+        "details": "RIC's graduation ceremony for 2026, celebrating student achievements and new beginnings.",
+        "registration_url": ""
+      },
+      {
+        "name": "From London to Colombo: University of London Associate Deans Share Expertise at RIC",
+        "date": "14 Feb 2026",
+        "date_iso": "2026-02-14",
+        "time": "",
+        "location": "Royal Institute Campus",
+        "format": "in-person",
+        "universities": [
+          "University of London"
+        ],
+        "details": "University of London Associate Deans visited Royal Institute Campus in Colombo to share their academic expertise with students and staff.",
+        "registration_url": ""
+      },
+      {
+        "name": "A Night of Unity and Celebration: RIC Islamic Society's Pre-Ramadhan Fair Shines",
+        "date": "14 Feb 2026",
+        "date_iso": "2026-02-14",
+        "time": "",
+        "location": "Royal Institute Campus",
+        "format": "in-person",
+        "universities": [],
+        "details": "The RIC Islamic Society hosted a Pre-Ramadhan Fair, bringing together the campus community in a night of unity and celebration.",
+        "registration_url": ""
+      },
+      {
+        "name": "RIC Deakin Engineering Students Visit to DPL Glove Manufacturing Factory",
+        "date": "13 Feb 2026",
+        "date_iso": "2026-02-13",
+        "time": "",
+        "location": "DPL Glove Manufacturing Factory",
+        "format": "in-person",
+        "universities": [
+          "Deakin University"
+        ],
+        "details": "Deakin University engineering students from RIC visited the DPL Glove Manufacturing Factory for a practical, industry-focused learning experience.",
+        "registration_url": ""
+      },
+      {
+        "name": "RICMC 2025: Inaugural Inter-Institutional Moot Court Competition at RIC",
+        "date": "11 Jan 2026",
+        "date_iso": "2026-01-11",
+        "time": "",
+        "location": "Royal Institute Campus",
+        "format": "in-person",
+        "universities": [],
+        "details": "RIC hosted its inaugural inter-institutional moot court competition, bringing together law students from multiple institutions to compete in simulated court proceedings.",
+        "registration_url": ""
+      },
+      {
+        "name": "Learning Beyond the Classroom: Visit to the Economic History Museum",
+        "date": "23 Dec 2025",
+        "date_iso": "2025-12-23",
+        "time": "",
+        "location": "Economic History Museum",
+        "format": "in-person",
+        "universities": [],
+        "details": "RIC students visited the Economic History Museum as part of an experiential, beyond-the-classroom learning initiative.",
+        "registration_url": ""
+      },
+      {
+        "name": "Noel 25: A Night of Carols, Candlelight, and Community at RIC",
+        "date": "19 Dec 2025",
+        "date_iso": "2025-12-19",
+        "time": "",
+        "location": "Royal Institute Campus",
+        "format": "in-person",
+        "universities": [],
+        "details": "RIC held a Christmas celebration event featuring carols, candlelight, and community gatherings on campus.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists campus events hosted by Royal Institute of Colombo (RIC), including graduations, academic visits, cultural fairs, field trips, competitions, and student celebrations from late 2025 into early 2026.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "SPECTRUM Overseas Education Consultancy",
+    "website": "http://www.spectrumsrilankaedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "SPECTRUM Overseas Education Consultancy",
+    "website": "https://spectrumsrilankaedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "SSIE Pte",
+    "website": "https://ssie.lk",
+    "events_page_url": "https://ssie.lk/events",
+    "events": [
+      {
+        "name": "July 2026 Intake - Australia Universities",
+        "date": "April 30, 2026",
+        "date_iso": "2026-04-30",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "SSIE is promoting the July 2026 intake at Australia's top universities. Students are encouraged to apply early with expert guidance from SSIE. The application deadline is April 30, 2026.",
+        "registration_url": "https://ssie.lk/events"
+      }
+    ],
+    "page_summary": "The events page was not found, but a promotional popup advertises the July 2026 intake for Australian universities with an application deadline of April 30, 2026.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Sirus Consultants Australia",
+    "website": "https://sirusmigration.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Spectrum Overseas Education Consultancy (Private)",
+    "website": "https://www.spectrumsrilankaedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Students in Aus",
+    "website": "https://www.studentsinaus.com",
+    "events_page_url": "https://www.studentsinaus.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Study Path Consultants - Sri Lanka",
+    "website": "https://studypath.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "StudyIn",
+    "website": "https://www.gostudyin.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "The Next Education Consultancy",
+    "website": "https://thenext.edu.np",
+    "events_page_url": "https://thenext.edu.np/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "The Next Education Consultancy",
+    "website": "https://www.thenext.edu.np",
+    "events_page_url": "https://thenext.edu.np/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Tingo Education Australia",
+    "website": "https://tingoeducation.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "VEVS Global Lanka (Private)",
+    "website": "https://vevsglobal.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "VIEC",
+    "website": "https://www.vieceducation.com",
+    "events_page_url": "https://www.vieceducation.com/events",
+    "events": [
+      {
+        "name": "Charles Darwin University Visit",
+        "date": "29th April 2026",
+        "date_iso": "2026-04-29",
+        "time": "10:30 AM to 11:30 AM",
+        "location": "VIEC-Delhi, Lajpat Nagar (Office)",
+        "format": "in-person",
+        "universities": [
+          "Charles Darwin University"
+        ],
+        "details": "A university visit session with Charles Darwin University representative Ms. Renu Yadav at the VIEC Delhi Lajpat Nagar office.",
+        "registration_url": "https://www.vieceducation.com/events"
+      },
+      {
+        "name": "CQUniversity Australia Visit",
+        "date": "3rd May 2026",
+        "date_iso": "2026-05-03",
+        "time": "02:00 PM to 03:30 PM",
+        "location": "VIEC-Nepal, Kathmandu (Office)",
+        "format": "in-person",
+        "universities": [
+          "CQUniversity Australia"
+        ],
+        "details": "A university visit session with CQUniversity Australia representative Mr. Sanjeev Sharma at the VIEC Nepal Kathmandu office.",
+        "registration_url": "https://www.vieceducation.com/events"
+      },
+      {
+        "name": "The University of Western Australia Visit",
+        "date": "7th May 2026",
+        "date_iso": "2026-05-07",
+        "time": "11:30 AM to 12:30 PM",
+        "location": "VIEC-Sri Lanka, Colombo (Office)",
+        "format": "in-person",
+        "universities": [
+          "The University of Western Australia"
+        ],
+        "details": "A university visit session with The University of Western Australia representative Mr. Roshan KJM at the VIEC Sri Lanka Colombo office.",
+        "registration_url": "https://www.vieceducation.com/events"
+      },
+      {
+        "name": "Griffith University Visit - Nehru Place",
+        "date": "11th May 2026",
+        "date_iso": "2026-05-11",
+        "time": "12:00 PM to 01:00 PM",
+        "location": "VIEC-Delhi (HO), Nehru Place (Office)",
+        "format": "in-person",
+        "universities": [
+          "Griffith University"
+        ],
+        "details": "A university visit session with Griffith University representative Ms. Srishti Jha at the VIEC Delhi Head Office, Nehru Place.",
+        "registration_url": "https://www.vieceducation.com/events"
+      },
+      {
+        "name": "Griffith University Visit - Lajpat Nagar",
+        "date": "12th May 2026",
+        "date_iso": "2026-05-12",
+        "time": "03:30 PM to 04:30 PM",
+        "location": "VIEC-Delhi, Lajpat Nagar (Office)",
+        "format": "in-person",
+        "universities": [
+          "Griffith University"
+        ],
+        "details": "A university visit session with Griffith University representative Ms. Srishti Jha at the VIEC Delhi Lajpat Nagar office.",
+        "registration_url": "https://www.vieceducation.com/events"
+      },
+      {
+        "name": "JCU Singapore Visit",
+        "date": "19th May 2026",
+        "date_iso": "2026-05-19",
+        "time": "1:00 PM",
+        "location": "VIEC-Bhutan (Office)",
+        "format": "in-person",
+        "universities": [
+          "JCU Singapore"
+        ],
+        "details": "A university visit session with JCU Singapore representative Mr. Tanuj Soni at the VIEC Bhutan office.",
+        "registration_url": "https://www.vieceducation.com/events"
+      }
+    ],
+    "page_summary": "This page lists upcoming university visit events hosted by VIEC Education at various branch offices across India, Nepal, Sri Lanka, and Bhutan, featuring representatives from Australian and Singaporean universities in April and May 2026.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "VIEC",
+    "website": "https://vieceducation.com",
+    "events_page_url": "https://www.vieceducation.com/events",
+    "events": [
+      {
+        "name": "Charles Darwin University Visit",
+        "date": "29th April 2026",
+        "date_iso": "2026-04-29",
+        "time": "10:30 AM to 11:30 AM",
+        "location": "VIEC-Delhi, Lajpat Nagar (Office)",
+        "format": "in-person",
+        "universities": [
+          "Charles Darwin University"
+        ],
+        "details": "A university visit session with Charles Darwin University, hosted at the VIEC Delhi Lajpat Nagar office. The session is conducted by Ms. Renu Yadav and runs for one hour.",
+        "registration_url": "https://www.vieceducation.com/events"
+      },
+      {
+        "name": "CQUniversity Australia Visit",
+        "date": "3rd May 2026",
+        "date_iso": "2026-05-03",
+        "time": "02:00 PM to 03:30 PM",
+        "location": "VIEC-Nepal, Kathmandu (Office)",
+        "format": "in-person",
+        "universities": [
+          "CQUniversity Australia"
+        ],
+        "details": "A university visit session with CQUniversity Australia, hosted at the VIEC Nepal Kathmandu office. The session is conducted by Mr. Sanjeev Sharma and runs for one and a half hours.",
+        "registration_url": "https://www.vieceducation.com/events"
+      },
+      {
+        "name": "The University of Western Australia Visit",
+        "date": "7th May 2026",
+        "date_iso": "2026-05-07",
+        "time": "11:30 AM to 12:30 PM",
+        "location": "VIEC-Sri Lanka, Colombo (Office)",
+        "format": "in-person",
+        "universities": [
+          "The University of Western Australia"
+        ],
+        "details": "A university visit session with The University of Western Australia, hosted at the VIEC Sri Lanka Colombo office. The session is conducted by Mr. Roshan KJM and runs for one hour.",
+        "registration_url": "https://www.vieceducation.com/events"
+      },
+      {
+        "name": "Griffith University Visit - Delhi Nehru Place",
+        "date": "11th May 2026",
+        "date_iso": "2026-05-11",
+        "time": "12:00 PM to 01:00 PM",
+        "location": "VIEC-Delhi (HO), Nehru Place (Office)",
+        "format": "in-person",
+        "universities": [
+          "Griffith University"
+        ],
+        "details": "A university visit session with Griffith University, hosted at the VIEC Delhi Head Office in Nehru Place. The session is conducted by Ms. Srishti Jha and runs for one hour.",
+        "registration_url": "https://www.vieceducation.com/events"
+      },
+      {
+        "name": "Griffith University Visit - Delhi Lajpat Nagar",
+        "date": "12th May 2026",
+        "date_iso": "2026-05-12",
+        "time": "03:30 PM to 04:30 PM",
+        "location": "VIEC-Delhi, Lajpat Nagar (Office)",
+        "format": "in-person",
+        "universities": [
+          "Griffith University"
+        ],
+        "details": "A university visit session with Griffith University, hosted at the VIEC Delhi Lajpat Nagar office. The session is conducted by Ms. Srishti Jha and runs for one hour.",
+        "registration_url": "https://www.vieceducation.com/events"
+      },
+      {
+        "name": "JCU Singapore Visit",
+        "date": "19th May 2026",
+        "date_iso": "2026-05-19",
+        "time": "1:00 PM",
+        "location": "VIEC-Bhutan (Office)",
+        "format": "in-person",
+        "universities": [
+          "JCU Singapore"
+        ],
+        "details": "A university visit session with JCU Singapore, hosted at the VIEC Bhutan office. The session is conducted by Mr. Tanuj Soni.",
+        "registration_url": "https://www.vieceducation.com/events"
+      }
+    ],
+    "page_summary": "This page lists upcoming university visit events hosted by VIEC Education across their various offices in India, Nepal, Sri Lanka, and Bhutan, featuring representatives from Australian and Singaporean universities in April and May 2026.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "VXL Migration & Education Consultants",
+    "website": "https://vxlmigration.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Vision International Education Consultants (Pvt.)",
+    "website": "http://www.vision.edu.lk",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Wise Education & Migration",
+    "website": "https://wiseeducationandmigration.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "i-Ed Australia",
+    "website": "https://iedaus.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  }
+]

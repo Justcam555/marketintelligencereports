@@ -1,0 +1,1598 @@
+[
+  {
+    "agent_name": "4Nations International Education & Migration Services - Nepal",
+    "website": "https://4nations.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AAET-StudyCo",
+    "website": "https://studyco.com",
+    "events_page_url": "https://studyco.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "ABC Global Education Consultancy Kathmandu",
+    "website": "https://abcglobalstudy.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AE Global",
+    "website": "https://aenepal.net",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AECC Global",
+    "website": "https://www.aeccglobal.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "AIP Education P",
+    "website": "http://aipedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Adventus Education",
+    "website": "https://info.adventus.io",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Agri Education Consultants",
+    "website": "https://www.agriedu.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Alfa Beta Institute Private",
+    "website": "https://www.alfabetaedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Aus Studies Consultants Global",
+    "website": "https://ausstudies.com",
+    "events_page_url": "https://ausstudies.com/events",
+    "events": [
+      {
+        "name": "University of South Australia Admission Day 2023",
+        "date": "2023",
+        "date_iso": "",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [
+          "University of South Australia"
+        ],
+        "details": "An admission day event hosted by Aus Studies Consultants Global for the University of South Australia, providing prospective students with information and guidance on applying and enrolling.",
+        "registration_url": ""
+      },
+      {
+        "name": "James Cook University, Brisbane Admission Day 2023",
+        "date": "2023",
+        "date_iso": "",
+        "time": "",
+        "location": "Brisbane",
+        "format": "",
+        "universities": [
+          "James Cook University"
+        ],
+        "details": "An admission day event for James Cook University's Brisbane campus, offering prospective students an opportunity to learn about courses, admission requirements, and enrollment procedures.",
+        "registration_url": ""
+      },
+      {
+        "name": "University of Canberra Admission Day 2023",
+        "date": "2023",
+        "date_iso": "",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [
+          "University of Canberra"
+        ],
+        "details": "An admission day event for the University of Canberra, helping prospective students understand application processes, available programs, and enrollment opportunities.",
+        "registration_url": ""
+      },
+      {
+        "name": "Western Sydney University Admission Day 2023",
+        "date": "2023",
+        "date_iso": "",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [
+          "Western Sydney University"
+        ],
+        "details": "An admission day event for Western Sydney University, designed to assist prospective students with information on courses, entry requirements, and the enrollment process.",
+        "registration_url": ""
+      },
+      {
+        "name": "ACAP Admission Day 2023",
+        "date": "2023",
+        "date_iso": "",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [
+          "ACAP (Australian College of Applied Professions)"
+        ],
+        "details": "An admission day event for ACAP, providing prospective students with details about available programs, admission requirements, and how to apply and enroll.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists 2023 university admission day events organized by Aus Studies Consultants Global for several Australian universities including UniSA, James Cook University, University of Canberra, Western Sydney University, and ACAP.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Aussie Education Migration",
+    "website": "https://aussieeducation.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "BMW Educational Consultancy",
+    "website": "https://www.bmwconsultancy.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Bada Education Centre",
+    "website": "https://www.badaedu.com",
+    "events_page_url": "https://www.badaedu.com/seminar",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Bluesky Immigration and Students Consultancy Services",
+    "website": "https://blueskyconsultancy.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Boomerang International Educational Services - Nepal",
+    "website": "https://www.boomerangedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "BridgeBlue Nepal",
+    "website": "https://www.bridgeblueglobal.com",
+    "events_page_url": "https://www.bridgeblueglobal.com/events/",
+    "events": [],
+    "page_summary": "The page describes Bridge Blue Global Education Roadshows and invites education providers to participate, but lists no specific upcoming or recent events with dates or locations.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "CLUB STUDY Global",
+    "website": "https://www.clubstudyglobal.com",
+    "events_page_url": "https://www.clubstudyglobal.com/events",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Connect Australian Education and Visa Services",
+    "website": "https://connectforstudy.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Dolphin Education Consultancy Center Pvt. Ltd. - Kathmandu",
+    "website": "https://www.dolphineducation.com.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Dream Australia Education Kathmandu",
+    "website": "https://dreamauseducation.com",
+    "events_page_url": "https://dreamauseducation.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "EHUB International",
+    "website": "https://ehubinternational.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Education Asia (P)",
+    "website": "https://www.educationasia.com",
+    "events_page_url": "https://www.educationasia.com/events",
+    "events": [
+      {
+        "name": "University of Europe for Applied Sciences visit to Education Asia",
+        "date": "08 May",
+        "date_iso": "2025-05-08",
+        "time": "",
+        "location": "Education Asia office",
+        "format": "in-person",
+        "universities": [
+          "University of Europe for Applied Sciences"
+        ],
+        "details": "A representative visit from the University of Europe for Applied Sciences to the Education Asia office, providing students an opportunity to learn about programs and admissions.",
+        "registration_url": ""
+      },
+      {
+        "name": "Bangor University Visit to Education Asia",
+        "date": "08 May",
+        "date_iso": "2025-05-08",
+        "time": "",
+        "location": "Education Asia office",
+        "format": "in-person",
+        "universities": [
+          "Bangor University"
+        ],
+        "details": "A representative visit from Bangor University to the Education Asia office, giving prospective students the chance to learn about courses and admissions directly from university representatives.",
+        "registration_url": ""
+      },
+      {
+        "name": "University of West London visit to Education Asia",
+        "date": "20 April",
+        "date_iso": "2025-04-20",
+        "time": "",
+        "location": "Education Asia office",
+        "format": "in-person",
+        "universities": [
+          "University of West London"
+        ],
+        "details": "A visit by University of West London representatives to the Education Asia office to meet prospective students and provide information about university programs and admissions.",
+        "registration_url": ""
+      },
+      {
+        "name": "UK/EUROPE Admission Day",
+        "date": "30 April",
+        "date_iso": "2025-04-30",
+        "time": "",
+        "location": "Education Asia office",
+        "format": "in-person",
+        "universities": [],
+        "details": "An admissions day event focused on UK and European universities, offering prospective students guidance and information about studying in the UK and Europe.",
+        "registration_url": ""
+      },
+      {
+        "name": "La Trobe University Sydney Campus, Australia",
+        "date": "18 January",
+        "date_iso": "2025-01-18",
+        "time": "",
+        "location": "Education Asia office",
+        "format": "in-person",
+        "universities": [
+          "La Trobe University"
+        ],
+        "details": "A visit or information session featuring La Trobe University's Sydney Campus in Australia, providing students with details about studying at the Sydney campus and available programs.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming and recent recruitment events hosted by Education Asia, featuring university representative visits and admission days for institutions from the UK, Europe, and Australia.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Education Connect",
+    "website": "https://educationconnect.com.au",
+    "events_page_url": "https://educationconnect.com.au/event/",
+    "events": [
+      {
+        "name": "Study in New Zealand & Australia – Application Day Dhaka",
+        "date": "30 April 2026",
+        "date_iso": "2026-04-30",
+        "time": "",
+        "location": "Dhaka",
+        "format": "in-person",
+        "universities": [
+          "Torrens University",
+          "Southern Cross University"
+        ],
+        "details": "An application day event in Dhaka focused on study opportunities in Australia and New Zealand. Attendees can meet representatives from Torrens University, Southern Cross University, and other institutions to explore admission opportunities and apply on the spot.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming recruitment events hosted by Education Connect, currently featuring one event in April 2026 focused on studying in Australia and New Zealand, held in Dhaka.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Education Park",
+    "website": "https://www.educationpark.net",
+    "events_page_url": "https://www.educationpark.net/events",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Education Planet",
+    "website": "https://www.eplanet.edu.np",
+    "events_page_url": "https://www.eplanet.edu.np/events/",
+    "events": [],
+    "page_summary": "The Education Planet events page currently lists no upcoming events, with all listed events being past sessions held in early-to-mid 2024.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Education Tree Global",
+    "website": "https://educationtreeglobal.com",
+    "events_page_url": "https://educationtreeglobal.com/event/",
+    "events": [
+      {
+        "name": "Study Abroad Application Day – UK, Australia & New Zealand | Education Tree Global",
+        "date": "February 20, 2026",
+        "date_iso": "2026-02-20",
+        "time": "11:00 AM – 4:00 PM",
+        "location": "5th Floor, Opposite City Centre, Kamalpokhari, Kathmandu",
+        "format": "in-person",
+        "universities": [],
+        "details": "An application day event focused on study abroad opportunities in the UK, Australia, and New Zealand, hosted by Education Tree Global at their Kathmandu office.",
+        "registration_url": ""
+      },
+      {
+        "name": "ETG Multi Destination Admissions Day 2025: Nepal's Most Valuable Event for Abroad Study",
+        "date": "August 12, 2025",
+        "date_iso": "2025-08-12",
+        "time": "11:00 AM to 4:00 PM",
+        "location": "5th Floor, Opposite City Centre, Kamalpokhari, Kathmandu",
+        "format": "in-person",
+        "universities": [],
+        "details": "A multi-destination admissions day event covering various study abroad destinations, described as Nepal's most valuable event for students planning to study abroad, hosted by Education Tree Global.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists recruitment and study abroad events hosted by Education Tree Global in Kathmandu, Nepal, targeting students interested in studying in the UK, Australia, New Zealand, and other destinations.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Empire International Education and Visa Service - Nepal",
+    "website": "https://empireint.com.au",
+    "events_page_url": "https://empireint.com.au/events",
+    "events": [],
+    "page_summary": "The events page lists three past events (Empire T20 Cup Cricket League, Empire Valentine Event, and Empire Education Fair 2020) with no dates provided, none of which appear to be upcoming or recent within the last 6 months.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Espire Education - Nepal",
+    "website": "https://www.espireeducation.com",
+    "events_page_url": "https://www.espireeducation.com/event/",
+    "events": [],
+    "page_summary": "The page promotes Espire Education's study abroad events for Australia, Canada, and UK, but the only listed event (Virtual & Hybrid UK Universities Fair) is from 23 October 2021, which is too old to qualify as upcoming or recent.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Expert Group Holdings",
+    "website": "https://experteducation.com",
+    "events_page_url": "https://experteducation.com/education-fair/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Genix Education and Migration Global",
+    "website": "https://www.genixeducation.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Consulting and Business Services",
+    "website": "https://globalconsult.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Opportunities",
+    "website": "https://www.global-opportunities.net",
+    "events_page_url": "https://www.global-opportunities.net/upcoming-events/",
+    "events": [],
+    "page_summary": "The upcoming events page for Global Opportunities, an India-based study abroad consultancy, lists University Visit and Exhibition & Fairs categories but contains no specific event details, dates, or locations at this time.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Reach",
+    "website": "https://www.globalreach.in",
+    "events_page_url": "https://www.globalreach.in/404-not-found.php",
+    "events": [
+      {
+        "name": "Group of Eight Virtual Fair",
+        "date": "30th Apr, 2026",
+        "date_iso": "2026-04-30",
+        "time": "2 PM - 5 PM",
+        "location": "Virtual",
+        "format": "online",
+        "universities": [],
+        "details": "A virtual fair featuring the Group of Eight (Go8) universities, hosted by Global Reach overseas education consultants. The event runs from 2 PM to 5 PM online.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists an upcoming Group of Eight Virtual Fair on 30 April 2026, hosted by Global Reach overseas education consultants in Kolkata, India.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Select Education and Migration Services",
+    "website": "https://www.globalselect.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Select education and Migration Services",
+    "website": "https://www.globalselect.com.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Global Study Partners",
+    "website": "https://www.upgradgsp.com",
+    "events_page_url": "https://www.upgradgsp.com/events/",
+    "events": [
+      {
+        "name": "UQ Partner High Tea & Training | Pune",
+        "date": "April 29 2026",
+        "date_iso": "2026-04-29",
+        "time": "",
+        "location": "Pune",
+        "format": "in-person",
+        "universities": [
+          "University of Queensland"
+        ],
+        "details": "A partner high tea and training event hosted in Pune, India, in collaboration with the University of Queensland (UQ), designed for recruitment partners.",
+        "registration_url": ""
+      },
+      {
+        "name": "upGrad GSP weekly webinar in collaboration with University of Tasmania – ECA (Melbourne & Sydney campus)",
+        "date": "April 30 2026",
+        "date_iso": "2026-04-30",
+        "time": "",
+        "location": "online",
+        "format": "online",
+        "universities": [
+          "University of Tasmania",
+          "ECA College"
+        ],
+        "details": "A weekly webinar hosted by upGrad GSP in collaboration with the University of Tasmania and ECA College, covering Melbourne and Sydney campuses, aimed at recruitment partners.",
+        "registration_url": ""
+      },
+      {
+        "name": "From Enquiry to Enrolment: Recruiting with CDU | Partner Training",
+        "date": "May 4 2026",
+        "date_iso": "2026-05-04",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [
+          "Charles Darwin University"
+        ],
+        "details": "A partner training session focused on the student recruitment journey from enquiry to enrolment, conducted in collaboration with Charles Darwin University (CDU).",
+        "registration_url": ""
+      },
+      {
+        "name": "ECA College | upGrad GSP Partner Webinar",
+        "date": "May 6 2026",
+        "date_iso": "2026-05-06",
+        "time": "",
+        "location": "online",
+        "format": "online",
+        "universities": [
+          "ECA College"
+        ],
+        "details": "A partner webinar hosted by upGrad GSP in collaboration with ECA College, providing recruitment partners with insights and updates relevant to student recruitment.",
+        "registration_url": ""
+      },
+      {
+        "name": "upGrad GSP 2026 Onshore Partners Assembly",
+        "date": "May 21 2026",
+        "date_iso": "2026-05-21",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "An assembly event for upGrad GSP's onshore partners in 2026, designed to connect and engage recruitment partners operating within the country for networking and strategic discussions.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming upGrad GSP networking events and webinars for 2026, designed to connect institutions and recruitment partners globally to support student recruitment success.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Globancy",
+    "website": "https://www.globancy.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Golden Wattle Education Services",
+    "website": "http://goldenwattle.com.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Grace International",
+    "website": "https://graceintlgroup.com",
+    "events_page_url": "https://graceintlgroup.com/events/",
+    "events": [
+      {
+        "name": "Australia and New Zealand Education Fair",
+        "date": "01 Apr",
+        "date_iso": "2025-04-01",
+        "time": "10:00 AM - 4:00 PM",
+        "location": "All Nepal",
+        "format": "in-person",
+        "universities": [],
+        "details": "An education fair covering Australia and New Zealand study opportunities, open across all Nepal locations.",
+        "registration_url": ""
+      },
+      {
+        "name": "UK Education Fair",
+        "date": "22 Mar",
+        "date_iso": "2025-03-22",
+        "time": "10:00 AM - 4:00 PM",
+        "location": "All Nepal",
+        "format": "in-person",
+        "universities": [],
+        "details": "An education fair focused on UK study opportunities, held across all Nepal locations.",
+        "registration_url": ""
+      },
+      {
+        "name": "USA and Canada Education Fair",
+        "date": "15 Mar",
+        "date_iso": "2025-03-15",
+        "time": "10:00 AM - 4:00 PM",
+        "location": "All Nepal",
+        "format": "in-person",
+        "universities": [],
+        "details": "An education fair covering USA and Canada study opportunities, open across all Nepal locations.",
+        "registration_url": ""
+      },
+      {
+        "name": "Eduverse Special 2025",
+        "date": "13 Nov",
+        "date_iso": "2025-11-13",
+        "time": "10:00 AM - 3:00 PM",
+        "location": "All Nepal",
+        "format": "in-person",
+        "universities": [],
+        "details": "A special education event called Eduverse 2025, held across all Nepal locations, likely featuring multiple international study destinations.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "Grace International's events page lists education fairs and special events focused on international study destinations including Australia, New Zealand, UK, USA, Canada, and Dubai, primarily held across Nepal.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Himalayan World Wide Education Consultancy",
+    "website": "https://hwwec.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "IDP Education",
+    "website": "https://www.idp.com",
+    "events_page_url": "https://www.idp.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "IEAVS",
+    "website": "https://ieavs.com",
+    "events_page_url": "https://ieavs.com/events/",
+    "events": [],
+    "page_summary": "The IEAVS events page only contains past/archived events with no upcoming or recent events listed.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Idyllic Education Consultants (Kathmandu)",
+    "website": "https://idylliceducation.com",
+    "events_page_url": "https://idylliceducation.com/events",
+    "events": [
+      {
+        "name": "NAAER Australian Education Expo 2025",
+        "date": "9 November 2025",
+        "date_iso": "2025-11-09",
+        "time": "",
+        "location": "The Everest Hotel, New Baneshwor, Kathmandu",
+        "format": "in-person",
+        "universities": [],
+        "details": "The NAAER Australian Education Expo 2025 will be held on Sunday, 9th November 2025, at The Everest Hotel, New Baneshwor, Kathmandu. The event is scheduled to take place right after Chhath Parva and focuses on Australian education opportunities.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists recruitment and celebration events hosted or promoted by Idyllic Education Consultants in Kathmandu, including an upcoming Australian education expo in November 2025.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "KBA Global Education & Migration - Nepal",
+    "website": "https://kbaglobal.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "KC Overseas Education",
+    "website": "https://www.studies-overseas.com",
+    "events_page_url": "https://www.studies-overseas.com/events",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "KIEC Education",
+    "website": "https://kiec.edu.np",
+    "events_page_url": "https://kiec.edu.np/events/",
+    "events": [
+      {
+        "name": "Dreaming of New Zealand? Meet the Experts Face-to-Face",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "Kathmandu",
+        "format": "in-person",
+        "universities": [],
+        "details": "A face-to-face information session for students interested in studying in New Zealand, hosted by KIEC Education in Kathmandu.",
+        "registration_url": "https://kiec.edu.np/events/"
+      },
+      {
+        "name": "Meet Chisholm Institute: Live in Kathmandu",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "Chisholm Institute"
+        ],
+        "details": "A live in-person event in Kathmandu where students can meet representatives from Chisholm Institute, Australia, to learn about study options and admissions.",
+        "registration_url": "https://kiec.edu.np/events/"
+      },
+      {
+        "name": "Shape Your Future at Western Sydney University",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "Western Sydney University"
+        ],
+        "details": "An information session with Western Sydney University representatives for students interested in studying in Australia.",
+        "registration_url": "https://kiec.edu.np/events/"
+      },
+      {
+        "name": "Meet the expert who can make it happen. Massey University",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "Massey University"
+        ],
+        "details": "A face-to-face meeting with Massey University experts for Nepali students exploring study opportunities in New Zealand.",
+        "registration_url": "https://kiec.edu.np/events/"
+      },
+      {
+        "name": "Meet the Representative session with CQUniversity Australia featuring Sanjeev Sharma",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "CQUniversity Australia"
+        ],
+        "details": "A representative session with CQUniversity Australia featuring Sanjeev Sharma, offering students a chance to learn about courses, scholarships, and admissions at CQU.",
+        "registration_url": "https://kiec.edu.np/events/"
+      },
+      {
+        "name": "Meet face-to-face with representatives from Edith Cowan University (ECU) and Edith Cowan College (ECC) right here in Kathmandu!",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "Edith Cowan University",
+          "Edith Cowan College"
+        ],
+        "details": "An in-person event in Kathmandu where students can meet representatives from both Edith Cowan University (ECU) and Edith Cowan College (ECC) to explore study options in Australia.",
+        "registration_url": "https://kiec.edu.np/events/"
+      },
+      {
+        "name": "Exclusive Information Session and Admissions Day with Western Sydney University",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "Western Sydney University"
+        ],
+        "details": "An exclusive information and admissions day with Western Sydney University, ranked #1 in the world for impact (2022–2025), giving students an opportunity to apply and get guidance on-site.",
+        "registration_url": "https://kiec.edu.np/events/"
+      },
+      {
+        "name": "Australia is Calling! Meet the University of Newcastle in Kathmandu.",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "University of Newcastle"
+        ],
+        "details": "A meet-and-greet event in Kathmandu with representatives from the University of Newcastle, Australia, for students interested in Australian higher education.",
+        "registration_url": "https://kiec.edu.np/events/"
+      },
+      {
+        "name": "Meet the Experts from Malvern International",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "Malvern International"
+        ],
+        "details": "An information session with experts from Malvern International, providing guidance for students interested in studying abroad through the Malvern International pathway.",
+        "registration_url": "https://kiec.edu.np/events/"
+      },
+      {
+        "name": "Griffith College: Your Fast-Track to Griffith University",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "Griffith College",
+          "Griffith University"
+        ],
+        "details": "An event highlighting how Griffith College serves as a fast-track pathway to Griffith University in Australia, with representatives available to answer student queries.",
+        "registration_url": "https://kiec.edu.np/events/"
+      }
+    ],
+    "page_summary": "KIEC Education's events page lists upcoming (forthcoming) recruitment and information sessions in Kathmandu, Nepal, featuring representatives from universities and colleges in Australia, New Zealand, and other countries.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "KTM Consulting",
+    "website": "https://www.ktmconsultingroup.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Kangaroo Education Foundation Education & Visa Services",
+    "website": "https://kangarooedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Landmark Education",
+    "website": "https://landmarkedu.com",
+    "events_page_url": "https://landmarkedu.com/events",
+    "events": [
+      {
+        "name": "Macquarie Application Day 2025",
+        "date": "12th December, 2025",
+        "date_iso": "2025-12-12",
+        "time": "",
+        "location": "Landmark Education, Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "Macquarie University"
+        ],
+        "details": "An application day event hosted by Landmark Education for prospective students interested in applying to Macquarie University, scheduled for December 2025.",
+        "registration_url": ""
+      },
+      {
+        "name": "Macquarie Application Day",
+        "date": "30th March, 2025",
+        "date_iso": "2025-03-30",
+        "time": "",
+        "location": "Landmark Education, Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "Macquarie University"
+        ],
+        "details": "An application day event hosted by Landmark Education for prospective students interested in applying to Macquarie University.",
+        "registration_url": ""
+      },
+      {
+        "name": "Australian Fair 2025",
+        "date": "15th January, 2025",
+        "date_iso": "2025-01-15",
+        "time": "",
+        "location": "Landmark Education, Kathmandu",
+        "format": "in-person",
+        "universities": [],
+        "details": "An education fair focused on Australian study destinations, hosted by Landmark Education to help students explore opportunities for studying in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "Representative Visit Raffhat Mir",
+        "date": "6th January, 2025",
+        "date_iso": "2025-01-06",
+        "time": "",
+        "location": "Landmark Education, Kathmandu",
+        "format": "in-person",
+        "universities": [],
+        "details": "A representative visit by Raffhat Mir to Landmark Education, likely to provide information to students about university or study abroad opportunities.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming and recent recruitment and education events hosted by Landmark Education in Nepal, including application days, education fairs, and university representative visits.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Leap Geebee Edtech",
+    "website": "https://www.geebeeworld.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Lumos Global",
+    "website": "https://lumosglobal.com.au",
+    "events_page_url": "https://lumosglobal.com.au/events",
+    "events": [
+      {
+        "name": "Australian Application Day, Dhanmondi",
+        "date": "09 October",
+        "date_iso": "2024-10-09",
+        "time": "11:00 AM - 05:00 PM",
+        "location": "Delvistaa Fuljhuri, Level 12, 59 (NEW), 759 (old), Satmasjid Road, Dhanmondi, Dhaka-1209",
+        "format": "in-person",
+        "universities": [],
+        "details": "An Australian Application Day event held in Dhanmondi, Dhaka, Bangladesh. Attendees can meet university representatives and expert counselors, ask questions about study in Australia, verify entry requirements, and receive on-the-spot assessments and personalized guidance.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming education seminars, application days, and webinars organized by Lumos Global, connecting prospective international students with university representatives and counselors across various study destinations.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Mates Education",
+    "website": "https://matesedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Mentor institute (P.)",
+    "website": "https://mentornepal.edu.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Merit Education & Migration Services- Nepal",
+    "website": "https://www.meritservices.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Motif Education Abroad",
+    "website": "https://motif.com.np",
+    "events_page_url": "https://motif.com.np/event/",
+    "events": [
+      {
+        "name": "Go Global Admissions Day 2025",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "An admissions fair event for students dreaming of studying abroad, titled Go Global Admissions Fair 2025. Further details are truncated on the page.",
+        "registration_url": ""
+      },
+      {
+        "name": "Western Sydney University | Meet University Official",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "Motif Education Abroad",
+        "format": "in-person",
+        "universities": [
+          "Western Sydney University"
+        ],
+        "details": "An opportunity to meet an official representative from Western Sydney University at Motif Education Abroad for students dreaming of studying in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "Meet The Universities Representative | Counselling & Info Session",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "An info and counselling session for students interested in studying in the USA or the UK, featuring university representatives.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study in USA | Counselling & Info Session",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [
+          "Christian Brothers University"
+        ],
+        "details": "An exclusive info and counselling session focused on studying in the USA with Christian Brothers University (CBU), targeting students interested in US higher education.",
+        "registration_url": ""
+      },
+      {
+        "name": "CEG Counselling & Info Session",
+        "date": "",
+        "date_iso": "",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "A counselling and info session for students dreaming of studying in the UK, addressing concerns such as low GPA and providing guidance on UK study opportunities.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming and recent recruitment and counselling events hosted by Motif Education Abroad in Nepal, covering study abroad opportunities in Australia, the USA, and the UK.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "NEC",
+    "website": "https://www.nepalec.edu.np",
+    "events_page_url": "https://www.nepalec.edu.np/events",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Nepalese Encounters",
+    "website": "https://www.nepaleseencounters.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Nepcoms services",
+    "website": "https://nepcoms.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Nirvana Counselling Center",
+    "website": "https://www.nirvanacc.edu.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Nobel Education Foundation (P.)",
+    "website": "https://nobelef.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "North Easterns Educational Consultancy",
+    "website": "https://northeasternsedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "OAA Study",
+    "website": "https://www.oaastudy.com",
+    "events_page_url": "https://www.oaastudy.com/events/",
+    "events": [],
+    "page_summary": "JSON parse error: Extra data: line 5 column 1 (char 56)",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "OLI AND ASSOCIATES",
+    "website": "https://www.oli.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Oasis Education Group P",
+    "website": "https://www.oasiseducationgroup.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Oceania Education Consultancy",
+    "website": "https://oevs.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "October Education",
+    "website": "https://www.octoberedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Oxford Edu Study Consultancy",
+    "website": "http://oxfordedu.com.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "PAC Asia Services",
+    "website": "https://www.pacasia.org",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Planet Education - Nepal",
+    "website": "https://www.planeteducation.info",
+    "events_page_url": "https://www.planeteducation.info/education-news",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Professional Education Consultancy",
+    "website": "https://professional.edu.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Professional Visa and Education Services",
+    "website": "https://www.provisa.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Right & Associates",
+    "website": "https://rassociates.edu.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Royal Educational Foundation",
+    "website": "https://www.royaleducation.edu.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "SIEC Education",
+    "website": "https://www.siecindia.com",
+    "events_page_url": "https://www.siecindia.com/events",
+    "events": [],
+    "page_summary": "The SIEC Education events page lists upcoming university visit events and online sessions, but no specific event details, dates, or registration links were available in the extracted page content.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "STUDENT WORLD PTY",
+    "website": "https://studentworld.com.au",
+    "events_page_url": "https://studentworld.com.au/event-confirmation/",
+    "events": [
+      {
+        "name": "StudentWorld Recruitment Event",
+        "date": "March 12, 2026",
+        "date_iso": "2026-03-12",
+        "time": "",
+        "location": "",
+        "format": "",
+        "universities": [],
+        "details": "A registration confirmation page indicating an upcoming StudentWorld event scheduled for March 12, 2026. No further details about the event name, location, format, or participating universities are provided on this confirmation page.",
+        "registration_url": "https://studentworld.com.au/event-confirmation/"
+      }
+    ],
+    "page_summary": "This page is an event registration confirmation for a StudentWorld event taking place on March 12, 2026.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Search Education Nepal",
+    "website": "https://www.searcheducation.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Sig ( Storm International Group) - Nepal",
+    "website": "https://sigoverseas.com",
+    "events_page_url": "https://sigoverseas.com/events",
+    "events": [
+      {
+        "name": "Global Scholarship Day",
+        "date": "2026-01-30",
+        "date_iso": "2026-01-30",
+        "time": "10:30 AM - 04:00 PM",
+        "location": "203, Manjeera Majestic Commercial, JNTU Rd, Kukatpally Housing Board Colony, Kukatpally, Hyderabad, Telangana 500072",
+        "format": "in-person",
+        "universities": [
+          "USA",
+          "UK",
+          "Australia",
+          "Europe",
+          "France",
+          "Germany"
+        ],
+        "details": "A scholarship and admissions event where students can meet university experts directly, receive spot admissions, and learn about scholarship opportunities across USA, UK, Australia, Europe, France, and Germany.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists recruitment and admissions events hosted by SIG (Storm International Group) Nepal, primarily held in Hyderabad, connecting students with international universities from the USA, UK, Australia, Canada, and Europe.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Study International - Nepal",
+    "website": "http://www.studyinternational.net.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Study Path Consultants Pty Ltd - Nepal",
+    "website": "http://www.studypath.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Study Square Nepal",
+    "website": "https://studysquare.com",
+    "events_page_url": "https://www.studysquare.com/event",
+    "events": [
+      {
+        "name": "Fleming College Canada Info Session",
+        "date": "27 Feb 2025",
+        "date_iso": "2025-02-27",
+        "time": "3 PM Onwards",
+        "location": "Study Square Tower, Gyaneshwor, Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "Fleming College"
+        ],
+        "details": "Meet Mr. Ajit Singh, International Recruitment Advisor (South Asia) at Fleming College Canada, for personalized guidance on academic pathways, admission requirements, and program selection.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming and past recruitment events hosted by Study Square Nepal, including university info sessions, education fairs, and workshops held primarily in Kathmandu.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "StudyIn",
+    "website": "https://www.gostudyin.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "StudyNet",
+    "website": "https://studynet.io",
+    "events_page_url": "https://studynet.io/Account/Login?ReturnUrl=%2Fevents",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Studylane International",
+    "website": "https://www.studylanenepal.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Success Education and Visa Service",
+    "website": "https://www.successedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Sydney Express Education Consultancy - Nepal",
+    "website": "https://www.sydneyxpress.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "The Next Education Consultancy",
+    "website": "https://thenext.edu.np",
+    "events_page_url": "https://thenext.edu.np/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "The Professional Network (TPNL)",
+    "website": "https://tpnl.org",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Three Sixty Education Solutions",
+    "website": "https://360education.global",
+    "events_page_url": "https://360education.global/events/",
+    "events": [
+      {
+        "name": "Meet the Expert- USA Event",
+        "date": "August 18, 2025",
+        "date_iso": "2025-08-18",
+        "time": "",
+        "location": "Kamalpokhari",
+        "format": "in-person",
+        "universities": [],
+        "details": "An expert session focused on USA study abroad opportunities, hosted at the Kamalpokhari office of Three Sixty Education Solutions.",
+        "registration_url": ""
+      },
+      {
+        "name": "Australia Education Fair 2025",
+        "date": "August 14, 2025",
+        "date_iso": "2025-08-14",
+        "time": "",
+        "location": "Kamalpokhari",
+        "format": "in-person",
+        "universities": [],
+        "details": "An education fair dedicated to Australian study opportunities, providing students with information on universities, courses, and admissions in Australia.",
+        "registration_url": ""
+      },
+      {
+        "name": "Macquarie Visit",
+        "date": "August 17, 2025",
+        "date_iso": "2025-08-17",
+        "time": "",
+        "location": "Kamalpokhari",
+        "format": "in-person",
+        "universities": [
+          "Macquarie University"
+        ],
+        "details": "A visit session with representatives from Macquarie University, offering students the chance to learn about programs and admissions directly from the university.",
+        "registration_url": ""
+      },
+      {
+        "name": "Macquarie University Visit",
+        "date": "September 4, 2025",
+        "date_iso": "2025-09-04",
+        "time": "",
+        "location": "Kamalpokhari",
+        "format": "in-person",
+        "universities": [
+          "Macquarie University"
+        ],
+        "details": "A follow-up visit session with Macquarie University representatives at the Kamalpokhari office, providing prospective students with information on courses and admission requirements.",
+        "registration_url": ""
+      },
+      {
+        "name": "Australia Scholarship Fair",
+        "date": "November 6, 2025",
+        "date_iso": "2025-11-06",
+        "time": "",
+        "location": "Kamalpokhari, Kathmandu",
+        "format": "in-person",
+        "universities": [],
+        "details": "A dedicated fair focused on scholarship opportunities for students wishing to study in Australia, hosted at the Kamalpokhari, Kathmandu office.",
+        "registration_url": ""
+      },
+      {
+        "name": "Meet the Official Representative: University of Akron",
+        "date": "November 7, 2025",
+        "date_iso": "2025-11-07",
+        "time": "",
+        "location": "Kamalpokhari, Kathmandu",
+        "format": "in-person",
+        "universities": [
+          "University of Akron"
+        ],
+        "details": "A meet-and-greet session with the official representative of the University of Akron, giving students direct access to information about programs and admissions at this US institution.",
+        "registration_url": ""
+      },
+      {
+        "name": "Student Interaction Session",
+        "date": "November 13, 2025",
+        "date_iso": "2025-11-13",
+        "time": "",
+        "location": "Kamalpokhari, Kathmandu",
+        "format": "in-person",
+        "universities": [],
+        "details": "An interactive session for students to engage with counselors and experts, discuss study abroad options, and get guidance on university applications and visa processes.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming and past study abroad recruitment events organized by Three Sixty Education Solutions in Nepal, covering education fairs, university visits, and expert sessions for destinations including Australia, USA, and UK.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Trans Globe Education",
+    "website": "https://www.transglobeedu.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Unicampus Education Network",
+    "website": "https://myunicampus.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Universal Thought Consult",
+    "website": "https://utc.com.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "VEVS - Value Education and Visa Services - Nepal",
+    "website": "https://www.vevsglobal.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "VIEC",
+    "website": "https://www.vieceducation.com",
+    "events_page_url": "https://www.vieceducation.com/events",
+    "events": [
+      {
+        "name": "Curtin University Visit",
+        "date": "27th April 2026",
+        "date_iso": "2026-04-27",
+        "time": "03:30 PM to 04:30 PM",
+        "location": "VIEC-Hyderabad (Office)",
+        "format": "in-person",
+        "universities": [
+          "Curtin University"
+        ],
+        "details": "A university visit session with Curtin University representative Mr. Alok Kumar Singh at the VIEC Hyderabad office.",
+        "registration_url": ""
+      },
+      {
+        "name": "Victoria University Visit",
+        "date": "27th April 2026",
+        "date_iso": "2026-04-27",
+        "time": "12:30 PM to 01:30 PM",
+        "location": "VIEC-Hyderabad (Office)",
+        "format": "in-person",
+        "universities": [
+          "Victoria University"
+        ],
+        "details": "A university visit session with Victoria University representative Ms. Priyanka Choudhary at the VIEC Hyderabad office.",
+        "registration_url": ""
+      },
+      {
+        "name": "Study Group Visit",
+        "date": "27th April 2026",
+        "date_iso": "2026-04-27",
+        "time": "03:00 PM to 04:00 PM",
+        "location": "VIEC-Mumbai, Andheri (Office)",
+        "format": "in-person",
+        "universities": [
+          "Study Group"
+        ],
+        "details": "A university visit session with Study Group representative Ms. Syeda Humera Anjum at the VIEC Mumbai, Andheri office.",
+        "registration_url": ""
+      },
+      {
+        "name": "CQUniversity Australia Visit",
+        "date": "3rd May 2026",
+        "date_iso": "2026-05-03",
+        "time": "02:00 PM to 03:30 PM",
+        "location": "VIEC-Nepal, Kathmandu (Office)",
+        "format": "in-person",
+        "universities": [
+          "CQUniversity Australia"
+        ],
+        "details": "A university visit session with CQUniversity Australia representative Mr. Sanjeev Sharma at the VIEC Nepal, Kathmandu office.",
+        "registration_url": ""
+      },
+      {
+        "name": "The University of Western Australia Visit",
+        "date": "7th May 2026",
+        "date_iso": "2026-05-07",
+        "time": "11:30 AM to 12:30 PM",
+        "location": "VIEC-Sri Lanka, Colombo (Office)",
+        "format": "in-person",
+        "universities": [
+          "The University of Western Australia"
+        ],
+        "details": "A university visit session with The University of Western Australia representative Mr. Roshan KJM at the VIEC Sri Lanka, Colombo office.",
+        "registration_url": ""
+      },
+      {
+        "name": "Griffith University Visit - Delhi Nehru Place",
+        "date": "11th May 2026",
+        "date_iso": "2026-05-11",
+        "time": "12:00 PM to 01:00 PM",
+        "location": "VIEC-Delhi (HO), Nehru Place (Office)",
+        "format": "in-person",
+        "universities": [
+          "Griffith University"
+        ],
+        "details": "A university visit session with Griffith University representative Ms. Srishti Jha at the VIEC Delhi Head Office, Nehru Place.",
+        "registration_url": ""
+      },
+      {
+        "name": "Griffith University Visit - Delhi Lajpat Nagar",
+        "date": "12th May 2026",
+        "date_iso": "2026-05-12",
+        "time": "03:30 PM to 04:30 PM",
+        "location": "VIEC-Delhi, Lajpat Nagar (Office)",
+        "format": "in-person",
+        "universities": [
+          "Griffith University"
+        ],
+        "details": "A university visit session with Griffith University representative Ms. Srishti Jha at the VIEC Delhi, Lajpat Nagar office.",
+        "registration_url": ""
+      },
+      {
+        "name": "JCU Singapore Visit",
+        "date": "19th May 2026",
+        "date_iso": "2026-05-19",
+        "time": "1:00 PM",
+        "location": "VIEC-Bhutan (Office)",
+        "format": "in-person",
+        "universities": [
+          "JCU Singapore"
+        ],
+        "details": "A university visit session with JCU Singapore representative Mr. Tanuj Soni at the VIEC Bhutan office.",
+        "registration_url": ""
+      }
+    ],
+    "page_summary": "This page lists upcoming university visit events hosted by VIEC Education across various office locations in India, Nepal, Sri Lanka, and Bhutan, featuring representatives from multiple universities in April and May 2026.",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "VXL Migration & Education Consultants",
+    "website": "https://vxlmigration.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Venus International Consultancy",
+    "website": "https://www.vic.com.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Videsh International Consultants",
+    "website": "https://www.vicnepal.com.np",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Visa Alliance",
+    "website": "https://www.visaalliance.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Yes Education Group - Kathmandu",
+    "website": "https://www.yesedugroup.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "York International Educational Consultancy",
+    "website": "https://www.yorknepal.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "iStudy Global",
+    "website": "https://www.istudyglobal.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "iae GLOBAL",
+    "website": "https://www.iaeglobalnepal.net",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  }
+]

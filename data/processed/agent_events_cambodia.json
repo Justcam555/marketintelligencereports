@@ -1,0 +1,82 @@
+[
+  {
+    "agent_name": "Auswin International",
+    "website": "http://www.theauswin.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Bright Education Consultant and Travel Company",
+    "website": "https://www.brightcambodia.com",
+    "events_page_url": "https://www.brightcambodia.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Expert Education - EEVS Thailand",
+    "website": "https://experteducation.com",
+    "events_page_url": "https://experteducation.com/education-fair/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Expert Education - EEVS Thailand",
+    "website": "https://www.experteducation.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "IDP Education",
+    "website": "https://www.idp.com",
+    "events_page_url": "https://www.idp.com/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Popular Education- Cambodia",
+    "website": "http://www.pop-edu.com.au",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "SpringBoard4Education (Cambodia) Co",
+    "website": "https://www.springboard4education.com",
+    "events_page_url": "https://www.springboard4education.com/events",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "StudyIn",
+    "website": "https://gostudyin.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "Superstar Education",
+    "website": "https://www.super-star.com.au",
+    "events_page_url": "https://super-star.com.au/events/",
+    "events": [],
+    "page_summary": "no events found",
+    "scraped_at": "2026-04-27"
+  },
+  {
+    "agent_name": "WEduAbroad (WEduShare Co., Ltd.)",
+    "website": "http://weduabroad.com",
+    "events_page_url": null,
+    "events": [],
+    "page_summary": "no events page found",
+    "scraped_at": "2026-04-27"
+  }
+]
