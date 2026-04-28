@@ -406,6 +406,41 @@ Consolidation results per market:
 
 ---
 
+## Session: April 28, 2026 (continued — profile links for all 6 markets)
+
+### What Was Built
+
+#### SOCIAL_INDEX expanded to all 6 markets (`build_agent_html.py`, `agent-network.html`)
+
+**Root cause**: `SOCIAL_INDEX` was hardcoded with only Thailand + Nepal agents. Directory tab profile links showed "View Profile" for Thailand/Nepal only; all 4 new markets showed no link even after social enrichment.
+
+**Fix**: Added `build_social_index(conn)` function to `build_agent_html.py`:
+- Queries all 6 markets from `agent_social`
+- Deduplicates by `(canonical_name, country)` — keeps highest `presence_score`, tiebreak by highest `id`
+- Returns `{canonical_name: {country: agent_social_id}}`
+- Wired into `main()` after COUNTRIES_META replacement; replaces `SOCIAL_INDEX` in `agent-network.html` on every build
+
+**Result**: 522 country-agent entries across 466 agents (was ~145 Thailand+Nepal only)
+
+### What's Working
+- Profile links now appear in directory for all 6 markets: Thailand, Nepal, Cambodia, Vietnam, Indonesia, Sri Lanka
+
+### Known Issues (Carryover)
+- Nepal Instagram followers showing 0 — field mapping issue from partial earlier run
+- Facebook follower counts mostly null (Apify FB Pages Scraper field naming)
+- Meta Ad Library: needs proper FB Marketing API token
+- 14 university logos still missing
+- Report generator needs login system before sharing externally
+
+### Next Session Priorities
+1. Fix Nepal Instagram followers field issue
+2. Investigate Facebook follower count null (check raw Apify output)
+3. Run Monash scraper for all 6 markets
+4. Get FB Marketing API token and run Meta Ad Library ingestion
+5. Download 14 missing university logos manually
+
+---
+
 ## Template for Future Sessions
 
 ### Session: [Date]

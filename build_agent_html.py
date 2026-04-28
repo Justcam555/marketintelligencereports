@@ -352,6 +352,35 @@ def build_countries_meta(all_data):
     return meta
 
 
+def build_social_index(conn: sqlite3.Connection) -> dict:
+    """
+    SOCIAL_INDEX = {canonical_name: {country: agent_social_id}}
+    Used by agent-network.html to link directory rows to profile pages.
+    Deduplicates by (canonical_name, country) — keeps highest presence_score,
+    tiebreak by highest id (matches rebuild_profiles logic).
+    """
+    rows = conn.execute("""
+        SELECT canonical_name, country, id, COALESCE(presence_score, 0)
+        FROM agent_social
+        WHERE country IN ('Thailand','Nepal','Cambodia','Vietnam','Indonesia','Sri Lanka')
+          AND canonical_name IS NOT NULL AND TRIM(canonical_name) != ''
+        ORDER BY COALESCE(presence_score, 0) DESC, id DESC
+    """).fetchall()
+
+    seen: dict = {}  # (canonical_name, country) → (score, sid)
+    for name, country, sid, score in rows:
+        key = (name, country)
+        if key not in seen:
+            seen[key] = (score, sid)
+
+    index: dict = {}
+    for (name, country), (_, sid) in seen.items():
+        if name not in index:
+            index[name] = {}
+        index[name][country] = sid
+    return index
+
+
 def replace_js_const(html: str, const_name: str, new_value: str) -> str:
     """Replace a single-line JS const assignment (safe for unicode content)."""
     prefix = f"const {const_name} = "
@@ -501,6 +530,13 @@ def main():
 
     print("Replacing COUNTRIES_META …")
     html = replace_js_const(html, "COUNTRIES_META", json.dumps(countries_meta, ensure_ascii=False, separators=(',', ':')))
+
+    print("Replacing SOCIAL_INDEX …")
+    conn2 = sqlite3.connect(DB_PATH)
+    social_index = build_social_index(conn2)
+    conn2.close()
+    print(f"  {sum(len(v) for v in social_index.values())} country-agent entries across {len(social_index)} agents")
+    html = replace_js_const(html, "SOCIAL_INDEX", json.dumps(social_index, ensure_ascii=False, separators=(',', ':')))
 
     NETWORK_HTML.write_text(html)
     print(f"  ✅ {NETWORK_HTML.name} written ({len(html):,} bytes)")
