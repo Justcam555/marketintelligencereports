@@ -360,11 +360,11 @@ def build_social_index(conn: sqlite3.Connection) -> dict:
     tiebreak by highest id (matches rebuild_profiles logic).
     """
     rows = conn.execute("""
-        SELECT canonical_name, country, id, COALESCE(presence_score, 0)
+        SELECT canonical_name, country, agent_id, COALESCE(presence_score, 0)
         FROM agent_social
         WHERE country IN ('Thailand','Nepal','Cambodia','Vietnam','Indonesia','Sri Lanka')
           AND canonical_name IS NOT NULL AND TRIM(canonical_name) != ''
-        ORDER BY COALESCE(presence_score, 0) DESC, id DESC
+        ORDER BY COALESCE(presence_score, 0) DESC, agent_id DESC
     """).fetchall()
 
     seen: dict = {}  # (canonical_name, country) → (score, sid)

@@ -428,16 +428,32 @@ Consolidation results per market:
 ### Known Issues (Carryover)
 - Nepal Instagram followers showing 0 — field mapping issue from partial earlier run
 - Facebook follower counts mostly null (Apify FB Pages Scraper field naming)
-- Meta Ad Library: needs proper FB Marketing API token
 - 14 university logos still missing
 - Report generator needs login system before sharing externally
+- **Events cross-country contamination**: Indonesian events appearing on AECC Thailand profile — agent_events JSONs are keyed by `agent_name` only (no country), so a shared canonical name (e.g. "AECC Global") across markets merges events from all countries into one bucket. Fix: key events by `(agent_name, country)` tuple in `scrape_events.py` output and `build_agent_html.py` ingestion; pass country into `renderEvents()` in `agent-profile.html` and filter on it.
+- **Events pages not linked**: Profile page shows events but no link to the source events page. Fix: `scrape_events.py` already captures `events_page_url` per agent — surface it in `renderEvents()` as a "See all events →" link.
+- **Agent card layout responsive**: Cards appeared broken on Vietnam profiles — resolved by widening browser window. The `stat-grid` uses `repeat(auto-fit,minmax(150px,1fr))` which collapses at narrow widths. Consider a min-width on the container or a 2-column floor for small screens.
+
+### Meta Ad Library — What Does NOT Work (do not retry these)
+- **Official Meta Marketing API (`ads_read`)**: Requires Facebook app approval + identity verification. Blocked. Do not attempt.
+- **`apify/facebook-ads-scraper` with `view_all_page_id=` URLs**: Returns `page: null` and `results: []` for all agents — this actor doesn't resolve page-specific queries without auth. Do not use.
+- **`apify/facebook-ads-scraper` with keyword search**: Gets blocked on Facebook's GraphQL endpoint (`403 BLOCKED`) on every search request. Do not use.
+- **Facebook Pages Scraper (`4Hv5RhChiaDk6iwad`) page IDs**: Returns IDs in `100064XXXXXXXXX` format which do NOT match what the Ad Library uses (shorter legacy IDs like `126353198623`). Never filter Ad Library results by these cached IDs — use `snapshot.page_profile_uri` slug matching instead.
+- **`maxResults` on `XtaWFhbtfxyzqrFmd`**: This parameter is NOT a per-URL limit — actor ignores it and fetches everything until timeout. 19 agent name searches → 6,000+ ads in 10 minutes → ~$4.50. Only use this actor with a short `timeout_secs` or single search terms.
+
+### Meta Ad Library — What Works
+- Actor `XtaWFhbtfxyzqrFmd` (`facebook-ads-library-scraper`) with keyword search by agent canonical name, filtered by `snapshot.page_profile_uri` slug
+- Thailand run (April 28 2026): 6,098 ads fetched, 57 matched to 4 agents (IDP 29, WIN 25, Hands On 2, OEC 1)
+- Correct real page IDs discovered: IDP=`126353198623`, WIN=`1805916103018074`, Hands On=`108080895911317`, OEC=`166840886665467`
 
 ### Next Session Priorities
-1. Fix Nepal Instagram followers field issue
-2. Investigate Facebook follower count null (check raw Apify output)
-3. Run Monash scraper for all 6 markets
-4. Get FB Marketing API token and run Meta Ad Library ingestion
-5. Download 14 missing university logos manually
+1. Fix events cross-country contamination — key by (agent_name, country), filter in profile render
+2. Add "See all events →" link to profile page using existing `events_page_url` field
+3. Fix Nepal Instagram followers field issue
+4. Investigate Facebook follower count null (check raw Apify output)
+5. Run Monash scraper for all 6 markets
+6. Get FB Marketing API token and run Meta Ad Library ingestion
+7. Download 14 missing university logos manually
 
 ---
 
