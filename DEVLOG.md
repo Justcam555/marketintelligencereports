@@ -452,8 +452,61 @@ Consolidation results per market:
 3. Fix Nepal Instagram followers field issue
 4. Investigate Facebook follower count null (check raw Apify output)
 5. Run Monash scraper for all 6 markets
-6. Get FB Marketing API token and run Meta Ad Library ingestion
+6. Get FB Graph API user token and run page ID batch resolver
 7. Download 14 missing university logos manually
+
+---
+
+## Session: April 30, 2026
+
+### What Was Built
+
+#### Meta Ad Library — Playwright Scraper (all 6 markets)
+- `mentions/scrape_meta_ads_playwright.py` rewritten to handle all 6 markets
+- Two-phase approach: resolve page IDs first (cached to `fb_page_id_cache.json`), then scrape ad library using `view_all_page_id` — eliminates keyword bleed
+- University alias table (`university_alias_table_v2.xlsx`) loaded for uni detection including Thai-script variants
+- `mentions/resolve_fb_page_ids.py` written (click-through approach — ultimately didn't work, see issues)
+- Per-market CSV output: `meta_ads_{country}_{date}.csv`
+
+#### Results (April 30 run — 209 agents across 6 markets)
+**Verified clean results (view_all_page_id with legacy IDs):**
+- Thailand — WIN Education: 180 ads (Melbourne, UNSW, Sydney mentioned)
+- Thailand — IDP Education: 27 ads (Melbourne mentioned)
+- Thailand — Hands On Education: 59 ads
+- Thailand — OEC: 2 ads
+- Sri Lanka — Asian International Academy: 9 ads
+- Vietnam — Universal Study Consulting: 8 ads
+
+### Issues Encountered
+
+#### Facebook Legacy Page ID Problem
+- `view_all_page_id` in the Ad Library URL requires a **legacy numeric page ID** (e.g. `126353198623`), not the new-format IDs (`100064...`) that appear in modern Facebook page HTML
+- New-format IDs (`100064...`, `100063...` etc.) are NOT accepted by the Ad Library — returns 0 results
+- Facebook has removed `fb://page/LEGACY_ID` and other legacy ID patterns from page HTML for pages created post-~2020
+- `search_type=page` in the Ad Library URL is silently redirected to `search_type=keyword_unordered` — page-specific search doesn't work via URL parameter
+- Click-through approach (search → click page card → extract ID from URL) failed — Facebook shows the landing/category page, not the search results page, for this URL pattern
+- Autocomplete search box is not a standard `<input>` and couldn't be reliably targeted
+
+#### What Gets Clean Results
+- Only agents with a verified legacy ID in `fb_page_id_cache.json` give bleed-free results
+- 16 verified IDs total: 4 patched from April 28 Apify run (IDP, WIN, Hands On, OEC Thailand), 12 others found via HTML parsing
+
+#### What Does NOT Work (do not retry)
+- Parsing `fb://page/`, `pageID`, `page_id` from Facebook page HTML → returns new-format `100064...` IDs for modern pages
+- `search_type=page&q=SLUG` URL parameter → Facebook redirects to keyword search
+- Click-through via Ad Library search results → landing page shown, not search results
+
+### What's Working
+- 4 Thailand competitor pages fully clean via `view_all_page_id`
+- Per-market CSV files with `page_id` column to distinguish verified vs unverified results
+- University alias detection including Thai-script
+
+### Next Session Priorities
+1. **Get FB Graph API user token** (basic token from developers.facebook.com/tools/explorer — no app review needed, just FB login) to batch-resolve all remaining page IDs across 6 markets. Script ready at `mentions/resolve_fb_page_ids.py` — just needs token wired in.
+2. Fix events cross-country contamination
+3. Add "See all events →" link to profile page
+4. Fix Nepal Instagram followers field issue
+5. Download 14 missing university logos manually
 
 ---
 
