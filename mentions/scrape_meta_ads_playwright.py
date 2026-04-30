@@ -2,20 +2,22 @@
 """
 scrape_meta_ads_playwright.py
 
-Scrapes the Meta Ad Library (Thailand) using a real Playwright/Chromium browser.
-By default loads all Thailand agents that have a facebook_url in agent_social,
-extracts the page slug, and searches by slug — exact match, no keyword bleed.
+Scrapes the Meta Ad Library for all 6 markets using a real Playwright/Chromium
+browser. First resolves each agent's numeric Facebook page ID (cached to JSON),
+then queries the ad library with view_all_page_id — no keyword bleed.
 
 Usage:
-    python3 mentions/scrape_meta_ads_playwright.py              # all DB agents
+    python3 mentions/scrape_meta_ads_playwright.py                 # all 6 markets
     python3 mentions/scrape_meta_ads_playwright.py --headless
-    python3 mentions/scrape_meta_ads_playwright.py --slug "AECCThailand"
-    python3 mentions/scrape_meta_ads_playwright.py --competitors  # hardcoded list only
+    python3 mentions/scrape_meta_ads_playwright.py --market Thailand
+    python3 mentions/scrape_meta_ads_playwright.py --resolve-ids-only  # cache IDs, no ad scrape
+    python3 mentions/scrape_meta_ads_playwright.py --slug AECCThailand --market Thailand
 """
 
 import argparse
 import asyncio
 import csv
+import json
 import re
 import sqlite3
 import urllib.parse
@@ -29,45 +31,96 @@ from playwright.async_api import async_playwright, TimeoutError as PWTimeout
 REPO_DIR = Path(__file__).resolve().parent.parent
 DB_PATH  = Path.home() / "Desktop" / "Agent Scraper" / "data" / "agents.db"
 
-COUNTRY    = "Thailand"
-MAX_ADS    = 25
-LOAD_WAIT  = 5_000   # ms after domcontentloaded
+MARKETS = {
+    "Thailand":  "TH",
+    "Nepal":     "NP",
+    "Cambodia":  "KH",
+    "Vietnam":   "VN",
+    "Indonesia": "ID",
+    "Sri Lanka": "LK",
+}
+
+MAX_ADS      = 25
+LOAD_WAIT    = 5_000   # ms after domcontentloaded
+ID_WAIT      = 2_500   # ms when resolving page IDs
 PAGE_TIMEOUT = 30_000
 
-OUTPUT_DIR = REPO_DIR / "mentions" / "data" / "raw"
-OUTPUT_CSV = OUTPUT_DIR / f"meta_ads_playwright_{date.today()}.csv"
-DEBUG_DIR  = OUTPUT_DIR / "debug_screenshots"
+OUTPUT_DIR    = REPO_DIR / "mentions" / "data" / "raw"
+DEBUG_DIR     = OUTPUT_DIR / "debug_screenshots"
+PAGE_ID_CACHE = OUTPUT_DIR / "fb_page_id_cache.json"
 
-UNIVERSITIES = [
-    "Monash","Melbourne","RMIT","Deakin","Swinburne","La Trobe",
-    "UNSW","UTS","Macquarie","Wollongong","Newcastle","ANU","Canberra",
-    "ACU","Charles Sturt","Charles Darwin","CQU","Southern Cross",
-    "Griffith","QUT","Bond","JCU","USQ","Sunshine Coast","Murdoch",
-    "Curtin","ECU","Edith Cowan","Flinders","Adelaide","UniSA",
-    "Tasmania","Federation","Torrens","Victoria University",
-]
+ALIAS_FILE = Path(__file__).parent / "university_alias_table_v2.xlsx"
+
+# ── University alias loader ───────────────────────────────────────────────────
+
+def load_uni_aliases():
+    """
+    Returns list of (canonical_name, alias) pairs from the alias Excel file,
+    sorted longest alias first so longer matches win over shorter ones.
+    Falls back to hardcoded list if file not available.
+    """
+    try:
+        import openpyxl
+        wb = openpyxl.load_workbook(ALIAS_FILE, read_only=True, data_only=True)
+        ws = wb.active
+        pairs = []
+        for row in ws.iter_rows(min_row=2, values_only=True):
+            canonical, alias = row[0], row[1]
+            if canonical and alias:
+                pairs.append((str(canonical).strip(), str(alias).strip()))
+        wb.close()
+        # Sort longest alias first so "Macquarie University" wins over "Macquarie"
+        pairs.sort(key=lambda x: -len(x[1]))
+        return pairs
+    except Exception:
+        pass
+    # Fallback
+    names = [
+        "Monash University","University of Melbourne","RMIT University",
+        "Deakin University","Swinburne University","La Trobe University",
+        "UNSW Sydney","UTS","Macquarie University","University of Wollongong",
+        "University of Newcastle","ANU","University of Canberra","ACU",
+        "Charles Sturt University","Charles Darwin University","CQU",
+        "Southern Cross University","Griffith University","QUT","Bond University",
+        "JCU","USQ","University of the Sunshine Coast","Murdoch University",
+        "Curtin University","ECU","Edith Cowan University","Flinders University",
+        "University of Adelaide","UniSA","University of Tasmania",
+        "Federation University","Torrens University","Victoria University",
+    ]
+    return [(n, n) for n in names]
+
+UNI_ALIASES = load_uni_aliases()
+
+# ── Cache helpers ─────────────────────────────────────────────────────────────
+
+def load_id_cache():
+    if PAGE_ID_CACHE.exists():
+        return json.loads(PAGE_ID_CACHE.read_text())
+    return {}
+
+
+def save_id_cache(cache):
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    PAGE_ID_CACHE.write_text(json.dumps(cache, indent=2))
 
 # ── DB loader ─────────────────────────────────────────────────────────────────
 
 def slug_from_url(url):
-    """Extract page slug from https://www.facebook.com/SLUG"""
     if not url:
         return None
     url = url.rstrip("/")
     slug = url.split("facebook.com/")[-1].split("?")[0].split("/")[0]
-    # Filter out invalid/generic slugs
     if slug.lower() in ("", "pg", "media", "pages", "profile.php", "groups"):
         return None
     return slug
 
 
-def load_agents_from_db(country=COUNTRY):
-    """Return list of (canonical_name, slug, facebook_url) deduped by facebook_url."""
+def load_agents_from_db(country):
     conn = sqlite3.connect(DB_PATH)
     rows = conn.execute("""
         SELECT canonical_name, facebook_url
         FROM agent_social
-        WHERE LOWER(country) = LOWER(?)
+        WHERE country = ?
           AND facebook_url IS NOT NULL
           AND TRIM(facebook_url) != ''
         ORDER BY COALESCE(presence_score, 0) DESC, agent_id DESC
@@ -89,21 +142,62 @@ def load_agents_from_db(country=COUNTRY):
 
 # ── URL builder ───────────────────────────────────────────────────────────────
 
-URL_COUNTRY = "TH"
-
-def ad_library_url(slug):
+def ad_library_url(slug, page_id, country_code):
+    if page_id:
+        return (
+            f"https://www.facebook.com/ads/library/"
+            f"?active_status=active&ad_type=all&country={country_code}"
+            f"&view_all_page_id={page_id}"
+        )
     q = urllib.parse.quote_plus(slug)
     return (
         f"https://www.facebook.com/ads/library/"
-        f"?active_status=active&ad_type=all&country={URL_COUNTRY}"
+        f"?active_status=active&ad_type=all&country={country_code}"
         f"&search_type=page&q={q}"
     )
+
+# ── Page ID resolver ──────────────────────────────────────────────────────────
+
+# Patterns ordered to prefer legacy page IDs (shorter, pre-2020 format).
+# New-format IDs (100063…/100064…/100066… etc.) are 15-digit and start with
+# 1000 — the Ad Library view_all_page_id does NOT accept them, so we skip any
+# match that starts with 1000.
+_ID_PATTERNS = [
+    r'fb://page/(\d{8,})',            # meta tag — most reliable legacy ID
+    r'content="fb://page/(\d+)"',     # alternate meta tag encoding
+    r'/pages/[^/"]+/(\d{10,})',       # legacy /pages/Name/ID URL
+    r'"pageID"\s*:\s*"(\d+)"',        # JSON blob
+    r'"page_id"\s*:\s*"(\d+)"',       # JSON blob alternate key
+    r'"ownerID"\s*:\s*"(\d+)"',       # owner ID
+]
+
+_NEW_FORMAT = re.compile(r'^1000[0-9]')  # 100063…/100064… etc. — not accepted by Ad Library
+
+
+async def resolve_page_id(page, facebook_url):
+    """Visit the Facebook page and extract its legacy numeric page ID."""
+    try:
+        await page.goto(facebook_url, wait_until="domcontentloaded", timeout=PAGE_TIMEOUT)
+        await page.wait_for_timeout(ID_WAIT)
+        html = await page.content()
+        for pat in _ID_PATTERNS:
+            for m in re.finditer(pat, html):
+                pid = m.group(1)
+                if len(pid) >= 8 and not _NEW_FORMAT.match(pid):
+                    return pid
+    except Exception:
+        pass
+    return None
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def find_unis(text):
-    t = text.lower()
-    return sorted({u for u in UNIVERSITIES if u.lower() in t})
+    """Return sorted list of canonical uni names found in text, using alias table."""
+    found = set()
+    for canonical, alias in UNI_ALIASES:
+        if alias.lower() in text.lower():
+            found.add(canonical)
+    return sorted(found)
 
 
 def parse_active_count(text):
@@ -143,7 +237,7 @@ def extract_ad_snippets(text, max_ads):
     return [s[:400] for s in snippets]
 
 
-async def screenshot(page, name, suffix=""):
+async def take_screenshot(page, name, suffix=""):
     try:
         DEBUG_DIR.mkdir(parents=True, exist_ok=True)
         safe = re.sub(r'[^\w]', '_', name)
@@ -174,11 +268,11 @@ async def accept_cookies(page):
 
 # ── Core scrape ───────────────────────────────────────────────────────────────
 
-async def scrape_one(page, name, slug):
-    url = ad_library_url(slug)
+async def scrape_one(page, name, slug, page_id, country_code):
+    url = ad_library_url(slug, page_id, country_code)
     result = {
-        "name": name, "slug": slug, "url": url,
-        "active_ads": "?", "ad_snippets": [],
+        "name": name, "slug": slug, "page_id": page_id or "",
+        "url": url, "active_ads": "?", "ad_snippets": [],
         "unis_found": [], "status": "ok", "error": "",
     }
 
@@ -193,7 +287,7 @@ async def scrape_one(page, name, slug):
 
     if "login" in page.url or "checkpoint" in page.url:
         result.update(status="blocked", error="Redirected to login")
-        await screenshot(page, slug, "_blocked")
+        await take_screenshot(page, slug, "_blocked")
         return result
 
     try:
@@ -208,7 +302,7 @@ async def scrape_one(page, name, slug):
     )
     if no_results:
         result.update(active_ads="0", status="no_results")
-        await screenshot(page, slug, "_noresults")
+        await take_screenshot(page, slug, "_noresults")
         return result
 
     result["active_ads"] = parse_active_count(body)
@@ -217,16 +311,47 @@ async def scrape_one(page, name, slug):
     result["unis_found"]  = find_unis(" ".join(snippets))
 
     if not snippets:
-        result.update(status="no_snippets",
-                      error="Loaded but no snippets extracted")
-        await screenshot(page, slug, "_nosnippets")
+        result.update(status="no_snippets", error="Loaded but no snippets extracted")
+        await take_screenshot(page, slug, "_nosnippets")
 
     return result
 
+# ── Browser context factory ───────────────────────────────────────────────────
+
+async def new_context(browser, timezone="Asia/Bangkok"):
+    ctx = await browser.new_context(
+        viewport={"width": 1280, "height": 900},
+        user_agent=(
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        ),
+        locale="en-US",
+        timezone_id=timezone,
+    )
+    await ctx.add_init_script(
+        "Object.defineProperty(navigator,'webdriver',{get:()=>undefined});"
+    )
+    return ctx
+
 # ── Runner ────────────────────────────────────────────────────────────────────
 
-async def run(agents, headless):
+MARKET_TZ = {
+    "Thailand":  "Asia/Bangkok",
+    "Nepal":     "Asia/Kathmandu",
+    "Cambodia":  "Asia/Phnom_Penh",
+    "Vietnam":   "Asia/Ho_Chi_Minh",
+    "Indonesia": "Asia/Jakarta",
+    "Sri Lanka": "Asia/Colombo",
+}
+
+
+async def run(market_agents, headless, resolve_ids_only=False):
+    """
+    market_agents: list of (country, country_code, name, slug, fb_url)
+    """
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    id_cache = load_id_cache()
     all_results = []
 
     async with async_playwright() as pw:
@@ -236,82 +361,114 @@ async def run(agents, headless):
                   "--no-sandbox", "--disable-dev-shm-usage"],
         )
 
-        for i, (name, slug, fb_url) in enumerate(agents):
-            print(f"\n[{i+1}/{len(agents)}] {name}  (@{slug})")
-            ctx = await browser.new_context(
-                viewport={"width": 1280, "height": 900},
-                user_agent=(
-                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) "
-                    "Chrome/124.0.0.0 Safari/537.36"
-                ),
-                locale="en-US",
-                timezone_id="Asia/Bangkok",
-            )
-            await ctx.add_init_script(
-                "Object.defineProperty(navigator,'webdriver',{get:()=>undefined});"
-            )
+        total = len(market_agents)
+
+        # ── Phase 1: resolve missing page IDs ────────────────────────────────
+        needs_id = [(i, c, cc, n, s, u) for i, (c, cc, n, s, u) in enumerate(market_agents)
+                    if u not in id_cache]
+
+        if needs_id:
+            print(f"\n── Resolving page IDs ({len(needs_id)} missing from cache) ──")
+            for idx, (i, country, cc, name, slug, fb_url) in enumerate(needs_id):
+                print(f"  [{idx+1}/{len(needs_id)}] {name}  ({fb_url})", end="", flush=True)
+                tz = MARKET_TZ.get(country, "Asia/Bangkok")
+                ctx = await new_context(browser, tz)
+                page = await ctx.new_page()
+                pid = await resolve_page_id(page, fb_url)
+                await ctx.close()
+                id_cache[fb_url] = pid
+                print(f"  → {pid or 'not found'}")
+                if idx < len(needs_id) - 1:
+                    await asyncio.sleep(3)
+
+            save_id_cache(id_cache)
+            print(f"  Cache saved ({len(id_cache)} entries)")
+
+        if resolve_ids_only:
+            await browser.close()
+            return
+
+        # ── Phase 2: scrape ad library ────────────────────────────────────────
+        print(f"\n── Scraping ad library ({total} agents across {len(MARKETS)} markets) ──")
+
+        for i, (country, cc, name, slug, fb_url) in enumerate(market_agents):
+            page_id = id_cache.get(fb_url)
+            id_label = f"id={page_id}" if page_id else "slug-fallback"
+            print(f"\n[{i+1}/{total}] [{country}] {name}  ({id_label})")
+
+            tz = MARKET_TZ.get(country, "Asia/Bangkok")
+            ctx = await new_context(browser, tz)
             page = await ctx.new_page()
-            result = await scrape_one(page, name, slug)
+            result = await scrape_one(page, name, slug, page_id, cc)
             result["facebook_url"] = fb_url
+            result["country"] = country
             await ctx.close()
             all_results.append(result)
 
-            icons = {"ok":"✓","no_results":"○","blocked":"✗",
-                     "timeout":"⏱","error":"!","no_snippets":"?"}
-            print(f"  {icons.get(result['status'],'?')}  "
+            icons = {"ok": "✓", "no_results": "○", "blocked": "✗",
+                     "timeout": "⏱", "error": "!", "no_snippets": "?"}
+            print(f"  {icons.get(result['status'], '?')}  "
                   f"ads={result['active_ads']}  "
                   f"snippets={len(result['ad_snippets'])}  "
                   f"unis={result['unis_found']}")
             if result["error"]:
                 print(f"     ⚠  {result['error']}")
 
-            if i < len(agents) - 1:
-                await asyncio.sleep(6)
+            if i < total - 1:
+                await asyncio.sleep(5)
 
         await browser.close()
 
     # ── Summary ───────────────────────────────────────────────────────────────
-    print(f"\n{'='*66}")
-    print(f"  META AD LIBRARY — THAILAND  ({len(all_results)} agents)")
-    print(f"{'='*66}")
-    print(f"  {'Agent':<32}  {'Ads':>5}  {'Status':<12}  Unis")
-    print(f"  {'-'*32}  {'-'*5}  {'-'*12}  {'-'*24}")
-    for r in sorted(all_results,
-                    key=lambda x: -int(x["active_ads"])
-                    if str(x["active_ads"]).isdigit() else 0):
-        unis = ", ".join(r["unis_found"]) or "—"
-        print(f"  {r['name'][:32]:<32}  {str(r['active_ads']):>5}  "
-              f"{r['status']:<12}  {unis}")
+    for country in MARKETS:
+        market_results = [r for r in all_results if r["country"] == country]
+        if not market_results:
+            continue
+        cc = MARKETS[country]
+        print(f"\n{'='*66}")
+        print(f"  META AD LIBRARY — {country.upper()} ({cc})  ({len(market_results)} agents)")
+        print(f"{'='*66}")
+        print(f"  {'Agent':<32}  {'ID':>15}  {'Ads':>5}  {'Status':<12}  Unis")
+        print(f"  {'-'*32}  {'-'*15}  {'-'*5}  {'-'*12}  {'-'*20}")
+        for r in sorted(market_results,
+                        key=lambda x: -int(x["active_ads"])
+                        if str(x["active_ads"]).isdigit() else 0):
+            unis = ", ".join(r["unis_found"]) or "—"
+            print(f"  {r['name'][:32]:<32}  {str(r['page_id']):>15}  "
+                  f"{str(r['active_ads']):>5}  {r['status']:<12}  {unis}")
 
-    # ── CSV ───────────────────────────────────────────────────────────────────
-    rows = []
+    # ── CSV (one file per market) ─────────────────────────────────────────────
+    by_country = {}
     for r in all_results:
-        base = {
-            "agent_name":    r["name"],
-            "fb_slug":       r["slug"],
-            "facebook_url":  r["facebook_url"],
-            "active_ads":    r["active_ads"],
-            "unis_found":    "; ".join(r["unis_found"]),
-            "status":        r["status"],
-            "search_url":    r["url"],
-        }
-        if r["ad_snippets"]:
-            for idx, snippet in enumerate(r["ad_snippets"], 1):
-                rows.append({**base, "ad_num": idx, "ad_text": snippet})
-        else:
-            rows.append({**base, "ad_num": 0, "ad_text": r["error"]})
+        by_country.setdefault(r["country"], []).append(r)
 
-    if not rows:
-        print("\n  ⚠  No rows to write — no agents loaded from DB.")
-        return
+    for country, results in by_country.items():
+        rows = []
+        for r in results:
+            base = {
+                "country":       r["country"],
+                "agent_name":    r["name"],
+                "fb_slug":       r["slug"],
+                "page_id":       r["page_id"],
+                "facebook_url":  r["facebook_url"],
+                "active_ads":    r["active_ads"],
+                "unis_found":    "; ".join(r["unis_found"]),
+                "status":        r["status"],
+                "search_url":    r["url"],
+            }
+            if r["ad_snippets"]:
+                for idx, snippet in enumerate(r["ad_snippets"], 1):
+                    rows.append({**base, "ad_num": idx, "ad_text": snippet})
+            else:
+                rows.append({**base, "ad_num": 0, "ad_text": r["error"]})
 
-    with open(OUTPUT_CSV, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
-        writer.writeheader()
-        writer.writerows(rows)
+        out = OUTPUT_DIR / f"meta_ads_{country.lower().replace(' ', '_')}_{date.today()}.csv"
+        with open(out, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+            writer.writeheader()
+            writer.writerows(rows)
+        print(f"\n  ✅  {len(rows)} rows → {out.name}")
 
-    print(f"\n  ✅  {len(rows)} rows → {OUTPUT_CSV.name}")
     shots = list(DEBUG_DIR.glob("*.png")) if DEBUG_DIR.exists() else []
     if shots:
         print(f"  📸  {len(shots)} debug screenshots → {DEBUG_DIR.name}/")
@@ -320,29 +477,36 @@ async def run(agents, headless):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--headless",    action="store_true")
-    parser.add_argument("--slug",        help='Single slug to test e.g. "AECCThailand"')
-    parser.add_argument("--competitors", action="store_true",
-                        help="Use hardcoded competitor list instead of DB")
+    parser.add_argument("--headless",         action="store_true")
+    parser.add_argument("--market",           help="Single market e.g. Thailand")
+    parser.add_argument("--slug",             help='Single slug to test e.g. "AECCThailand"')
+    parser.add_argument("--resolve-ids-only", action="store_true",
+                        help="Only resolve and cache page IDs, skip ad scraping")
     args = parser.parse_args()
 
     if args.slug:
-        agents = [("Test", args.slug, f"https://www.facebook.com/{args.slug}")]
-    elif args.competitors:
-        hardcoded = [
-            ("IDP",           "IDPEducationThailand"),
-            ("WIN Education", "WINed.thailand"),
-            ("Hands On",      "HandsOnEdu"),
-            ("OEC",           "oecbangkok"),
-            ("AECC",          "AECCThailand"),
-            ("One Education", "OneEducationGroup"),
-        ]
-        agents = [(l, s, f"https://www.facebook.com/{s}") for l, s in hardcoded]
+        country = args.market or "Thailand"
+        cc = MARKETS.get(country, "TH")
+        market_agents = [(country, cc, "Test", args.slug,
+                          f"https://www.facebook.com/{args.slug}")]
+    elif args.market:
+        if args.market not in MARKETS:
+            print(f"Unknown market '{args.market}'. Choose from: {', '.join(MARKETS)}")
+            return
+        cc = MARKETS[args.market]
+        agents = load_agents_from_db(args.market)
+        print(f"Loaded {len(agents)} {args.market} agents with Facebook URLs from DB")
+        market_agents = [(args.market, cc, n, s, u) for n, s, u in agents]
     else:
-        agents = load_agents_from_db()
-        print(f"Loaded {len(agents)} Thailand agents with Facebook URLs from DB")
+        market_agents = []
+        for country, cc in MARKETS.items():
+            agents = load_agents_from_db(country)
+            print(f"  {country}: {len(agents)} agents")
+            market_agents.extend([(country, cc, n, s, u) for n, s, u in agents])
+        print(f"Total: {len(market_agents)} agents across {len(MARKETS)} markets\n")
 
-    asyncio.run(run(agents, headless=args.headless))
+    asyncio.run(run(market_agents, headless=args.headless,
+                    resolve_ids_only=args.resolve_ids_only))
 
 
 if __name__ == "__main__":

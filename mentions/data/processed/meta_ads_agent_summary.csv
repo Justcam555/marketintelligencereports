@@ -1,21 +1,180 @@
 agent_name,facebook_url,canonical_university,alias_matched,total_ads,active_ads,est_reach_min,est_reach_max,ad_library_url,as_of_date
-IDP Education,https://www.facebook.com/IDPEducationThailand,,,35,33,0,0,https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=TH&search_type=page&view_all_page_id=126353198623,2026-04-30
-WIN Education,https://www.facebook.com/WINed.thailand,,,26,26,0,0,https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=TH&search_type=page&view_all_page_id=1805916103018074,2026-04-30
-One Education Consulting,https://www.facebook.com/OneEducationGroup,,,25,25,0,0,,2026-04-30
-Chulalongkorn University (Faculty of Psychology),https://www.facebook.com/ChulalongkornUniversity,,,24,24,0,0,,2026-04-30
-Beyond Study Center Co,https://www.facebook.com/BeyondStudyCenter,,,18,18,0,0,,2026-04-30
-Eduyoung.Com - Thailand,https://www.facebook.com/EduyoungThailand,,,6,6,0,0,,2026-04-30
-EDNET CO,https://www.facebook.com/EdNETCoLtd,,,4,4,0,0,,2026-04-30
-Hands On Education,https://www.facebook.com/HandsOnEdu,,,3,3,0,0,https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=TH&search_type=page&view_all_page_id=108080895911317,2026-04-30
+AAET-StudyCo,https://www.facebook.com/StudyCo,,,100,100,0,0,,2026-04-30
+IDP Education,https://www.facebook.com/IDPEducationThailand,,,75,73,0,0,https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=TH&search_type=page&view_all_page_id=126353198623,2026-04-30
+Global Study Partners,https://www.facebook.com/upGradGSP,,,72,72,0,0,,2026-04-30
+One Education Consulting,https://www.facebook.com/OneEducationGroup,,,50,50,0,0,,2026-04-30
+WIN Education,https://www.facebook.com/WINed.thailand,,,50,50,0,0,https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=TH&search_type=page&view_all_page_id=1805916103018074,2026-04-30
+Chulalongkorn University (Faculty of Psychology),https://www.facebook.com/ChulalongkornUniversity,,,48,48,0,0,,2026-04-30
+ATS (Avenue to Success),https://www.facebook.com/ATSCo.Ltd,,,25,25,0,0,,2026-04-30
+American Education Centre,https://www.facebook.com/ancedu,,,25,25,0,0,,2026-04-30
+Aussie Education Migration,https://www.facebook.com/photo,,,25,25,0,0,,2026-04-30
+CES - Comprehensive Education Solutions,https://www.facebook.com/CES,,,25,25,0,0,,2026-04-30
+Eduko Pathways (Pvt),https://www.facebook.com/edukopathways,,,25,25,0,0,,2026-04-30
+GRAND VIETNAM EDUCATION CONSULTING COMPANY,https://www.facebook.com/messages,,,25,25,0,0,,2026-04-30
+Insight Education Consulting - Phnom Penh,https://www.facebook.com/OneEducationGroup,,,25,25,0,0,,2026-04-30
+Global Education Alliance (GEA),https://www.facebook.com/Gea.WeNavigate,,,24,24,0,0,,2026-04-30
+AGS-Vietnam,https://www.facebook.com/AdvanceGlobalStudy,,,21,21,0,0,,2026-04-30
+Beyond Study Center Co,https://www.facebook.com/BeyondStudyCenter,,,19,19,0,0,,2026-04-30
+STUDENT WORLD PTY,https://www.facebook.com/StudentWorldAustralia,,,19,19,0,0,,2026-04-30
+New World Study Abroad Consulting Company,https://www.facebook.com/newworldstudyabroad,,,18,18,0,0,,2026-04-30
+Landmark Education,https://www.facebook.com/LandmarkEducation,,,17,17,0,0,,2026-04-30
+360 Connect,https://www.facebook.com/c360connect,,,14,14,0,0,,2026-04-30
+AS Student Service,https://www.facebook.com/as.studentservices,,,14,14,0,0,,2026-04-30
+Global Uni Connect Pte,https://www.facebook.com/SLIITGlobalEducation,,,14,14,0,0,,2026-04-30
+Eduyoung.Com - Thailand,https://www.facebook.com/EduyoungThailand,,,12,12,0,0,,2026-04-30
+Global Education Services Company,https://www.facebook.com/gse.tuvanduhoc,,,12,12,0,0,,2026-04-30
+Mentor institute (P.),https://www.facebook.com/MentorNepal,,,12,12,0,0,,2026-04-30
+UEH-International School of Business,https://www.facebook.com/ueh.isb,,,11,11,0,0,,2026-04-30
+Achieve-Via Education,https://www.facebook.com/achievevia,,,10,10,0,0,,2026-04-30
+Asian International Academy Holdings Private,https://www.facebook.com/aia.lk,,,9,9,0,0,,2026-04-30
+Students First (Pvt),https://www.facebook.com/studentsfirst.lk,,,9,9,0,0,,2026-04-30
+EDNET CO,https://www.facebook.com/EdNETCoLtd,,,8,8,0,0,,2026-04-30
+G'connect Hospitality Education,https://www.facebook.com/GConnect.Education,,,8,8,0,0,,2026-04-30
+SpringBoard4Education (Cambodia) Co,https://www.facebook.com/SB4ECambodia,,,8,8,0,0,,2026-04-30
+UNIVERSAL STUDY CONSULTING COMPANY,https://www.facebook.com/TrungtamUSC,,,8,8,0,0,,2026-04-30
+Gateway Abroad,https://www.facebook.com/GatewayAbroadGlobalEducation,,,7,7,0,0,,2026-04-30
+Sydney Express Education Consultancy - Nepal,https://www.facebook.com/Sydney.Express,,,7,7,0,0,,2026-04-30
+AECC Global,https://www.facebook.com/AECCGLOBALIN,,,6,6,0,0,,2026-04-30
+Applyboard (Sri Lanka),https://www.facebook.com/applyboard,,,6,6,0,0,,2026-04-30
+Liu Cheng International Group,https://www.facebook.com/LCIGroupWorldwide,,,6,6,0,0,,2026-04-30
+PT VIC Indonesia (Vista Education Corp),https://facebook.com/vistaeducation,,,6,6,0,0,,2026-04-30
+BridgeBlue,https://www.facebook.com/AMSBBgroup,,,5,5,0,0,,2026-04-30
+Education Tree Global,https://www.facebook.com/EducationTreeGlobal,,,5,5,0,0,,2026-04-30
+Grace International,https://www.facebook.com/graceintlgroup,,,5,5,0,0,,2026-04-30
+Edlocate (Pvt),https://www.facebook.com/Edlocate,,,4,4,0,0,,2026-04-30
+Hands On Education,https://www.facebook.com/HandsOnEdu,,,4,4,0,0,https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=TH&search_type=page&view_all_page_id=108080895911317,2026-04-30
+Oec Global Education,https://www.facebook.com/oecbangkok,,,4,4,0,0,https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=TH&search_type=page&view_all_page_id=166840886665467,2026-04-30
+Trans Aus Migration - Sri Lanka,https://www.facebook.com/transausmigration,,,4,4,0,0,,2026-04-30
+Adventus Education,https://www.facebook.com/adventus.io,,,3,3,0,0,,2026-04-30
+Expert Education - EEVS Thailand,https://www.facebook.com/experteducationau,,,3,3,0,0,,2026-04-30
+Intergreat Education Group Ltd - Vietnam,https://www.facebook.com/InterGreatEducation,,,3,3,0,0,,2026-04-30
+QTS Vietnam,https://www.facebook.com/QTSAustralia,,,3,3,0,0,,2026-04-30
+SSIE Pte,https://www.facebook.com/ACBTSriLanka,,,3,3,0,0,,2026-04-30
 ,,,,2,2,0,0,,2026-04-30
-Oec Global Education,https://www.facebook.com/oecbangkok,,,2,2,0,0,https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=TH&search_type=page&view_all_page_id=166840886665467,2026-04-30
-AECC Global,https://www.facebook.com/AECCThailand,,,1,1,0,0,,2026-04-30
-Adventus Education,https://www.facebook.com/adventus.io,,,1,1,0,0,,2026-04-30
-Apex Education Consultant,https://www.facebook.com/ApexEducationConsultant,,,1,1,0,0,,2026-04-30
-Chulalongkorn University (Faculty of Political Science),https://www.facebook.com/polscichulaofficial,,,1,1,0,0,,2026-04-30
-Complete Education and Touring Australia Co,https://www.facebook.com/cetaworldwideeducation,,,1,1,0,0,,2026-04-30
-Imagine Global Edu and Migration- iGEM (Bangkok),https://www.facebook.com/igemeduphilippines,,,1,1,0,0,,2026-04-30
-Liu Cheng International Group,https://www.facebook.com/LCIGroupWorldwide,,,1,1,0,0,,2026-04-30
-SOL Edu,https://www.facebook.com/SOLEdu.Eng,,,1,1,0,0,,2026-04-30
-The Best Language and Education Centre Company,https://www.facebook.com/TheBestEducationCentre,,,1,1,0,0,,2026-04-30
-Union Plus,https://www.facebook.com/Aussmart,,,1,1,0,0,,2026-04-30
+Apex Education Consultant,https://www.facebook.com/ApexEducationConsultant,,,2,2,0,0,,2026-04-30
+Aspirations Education,https://www.facebook.com/aspirationseducation,,,2,2,0,0,,2026-04-30
+Bada Global,https://www.facebook.com/badaglobal,,,2,2,0,0,,2026-04-30
+Chulalongkorn University (Faculty of Political Science),https://www.facebook.com/polscichulaofficial,,,2,2,0,0,,2026-04-30
+Complete Education and Touring Australia Co,https://www.facebook.com/cetaworldwideeducation,,,2,2,0,0,,2026-04-30
+Imagine Global Edu and Migration- iGEM (Bangkok),https://www.facebook.com/igemeduphilippines,,,2,2,0,0,,2026-04-30
+KC Overseas Education,https://www.facebook.com/kcoverseasindia,,,2,2,0,0,,2026-04-30
+PAC Asia,https://www.facebook.com/mapmystudy.global,,,2,2,0,0,,2026-04-30
+Planet Education,https://www.facebook.com/PLANETEDUCATIONINDIA,,,2,2,0,0,,2026-04-30
+SOL Edu,https://www.facebook.com/SOLEdu.Eng,,,2,2,0,0,,2026-04-30
+The Best Language and Education Centre Company,https://www.facebook.com/TheBestEducationCentre,,,2,2,0,0,,2026-04-30
+The Next Education Consultancy,https://www.facebook.com/thenextedu,,,2,2,0,0,,2026-04-30
+Times Education Consultant Service Company,https://facebook.com/duhocedutime,,,2,2,0,0,,2026-04-30
+Union Plus,https://www.facebook.com/Aussmart,,,2,2,0,0,,2026-04-30
+3W Global Education (Pvt),https://facebook.com/3wgelk,,,1,1,0,0,,2026-04-30
+4 nations Group Pty Ltd (Vietnam),https://www.facebook.com/4nationsintl,,,1,1,0,0,,2026-04-30
+4Nations International Education & Migration Services - Nepal,https://www.facebook.com/4nationsintl,,,1,1,0,0,,2026-04-30
+AE Global,https://www.facebook.com/aeglobalnepal,,,1,1,0,0,,2026-04-30
+APIIT (Asia Pacific Institute of Information Technology) Sri Lanka,https://www.facebook.com/APIITofficial,,,1,1,0,0,,2026-04-30
+ATP Service Trading Consultant Limited Company,https://www.facebook.com/tuvanduhoc.atp,,,1,1,0,0,,2026-04-30
+AVI Education Abroad and Training Consultancy JSC,https://www.facebook.com/nhatanhavi,,,1,1,0,0,,2026-04-30
+Aemc Consultants,https://www.facebook.com/unisnapceo,,,1,1,0,0,,2026-04-30
+Agent Hai,https://www.facebook.com/agenthai,,,1,1,0,0,,2026-04-30
+Agri Education Consultants,https://www.facebook.com/agriedu.india,,,1,1,0,0,,2026-04-30
+Anton Gautama Trading as Alfalink,https://www.facebook.com/alfalink.studyoverseas,,,1,1,0,0,,2026-04-30
+Asia Pacific Group,https://www.facebook.com/asiapacificaustralia,,,1,1,0,0,,2026-04-30
+Aus Studies Consultants Global,https://www.facebook.com/ausstudies,,,1,1,0,0,,2026-04-30
+AusEd Global,https://www.facebook.com/ausedsrilanka,,,1,1,0,0,,2026-04-30
+Aussizz Migration & Education Consultants,https://www.facebook.com/aussizz,,,1,1,0,0,,2026-04-30
+Bada Education Centre,https://www.facebook.com/badaedu1999,,,1,1,0,0,,2026-04-30
+Basya Pty Ltd _T/A RACC Education and Migration Services,https://www.facebook.com/raccaustraliamigrationagenteducationagent,,,1,1,0,0,,2026-04-30
+Bluesky Immigration and Students Consultancy Services,https://www.facebook.com/blueskystudyinaustralia,,,1,1,0,0,,2026-04-30
+Bluesky Immigration and Students Consultancy Services - Sri Lanka,https://www.facebook.com/blueskystudyinaustralia,,,1,1,0,0,,2026-04-30
+Bright Education Consultant and Travel Company,https://www.facebook.com/BrightCambodiaECT,,,1,1,0,0,,2026-04-30
+CV Jembatan Dwitama,https://www.facebook.com/edubridgeid,,,1,1,0,0,,2026-04-30
+CV. MEDIA EDUCATION CONSULTANT T AS MEDIA,https://www.facebook.com/MediaEducationServices.2006,,,1,1,0,0,,2026-04-30
+Campus Direct UK (PVT),https://www.facebook.com/CDUKL,,,1,1,0,0,,2026-04-30
+Connect Australian Education and Visa Services,https://www.facebook.com/connectforstudy,,,1,1,0,0,,2026-04-30
+Consulting Marketing International P/ L,https://www.facebook.com/cmiduhoc,,,1,1,0,0,,2026-04-30
+Công Ty Tnhh Giáo D?c Pse (Pse Education Pty Ltd),https://www.facebook.com/tuvanduhoc.tuvandinhcu.PSE,,,1,1,0,0,,2026-04-30
+"DEOW Co., Ltd - Ho Chi Minh City",https://www.facebook.com/studyabroadinformation,,,1,1,0,0,,2026-04-30
+DK Science & Learning,https://www.facebook.com/dksydney,,,1,1,0,0,,2026-04-30
+Digital Silver,https://www.facebook.com/teteduau,,,1,1,0,0,,2026-04-30
+Dilinger Consultants Sri Lanka,https://www.facebook.com/dilinger.consultants,,,1,1,0,0,,2026-04-30
+EDUNETWORK AUSTRALIA,https://www.facebook.com/edunetworkaustralia,,,1,1,0,0,,2026-04-30
+EMK Global-Vietnam,https://www.facebook.com/EMKGlobalHQ,,,1,1,0,0,,2026-04-30
+Education Connect,https://www.facebook.com/educationconnect.dhaka,,,1,1,0,0,,2026-04-30
+Education Park,https://facebook.com/educationparknepal,,,1,1,0,0,,2026-04-30
+Education Planet,https://www.facebook.com/planet4edu,,,1,1,0,0,,2026-04-30
+Education Republic,https://www.facebook.com/edurepublic,,,1,1,0,0,,2026-04-30
+Empire International Education and Visa Service - Nepal,https://www.facebook.com/empireedubrisbane,,,1,1,0,0,,2026-04-30
+Espire Education - Nepal,https://www.facebook.com/espire.education,,,1,1,0,0,,2026-04-30
+Evergreen Education & VISA Consultants (Pvt.),https://www.facebook.com/evergreeneducation.lk,,,1,1,0,0,,2026-04-30
+Fortrust Education,https://www.facebook.com/FortrustId,,,1,1,0,0,,2026-04-30
+GeeBee Edtech Private,https://www.facebook.com/geebeeworld,,,1,1,0,0,,2026-04-30
+GeeBee Education Pvt Ltd (Vietnam),https://www.facebook.com/geebeeworld,,,1,1,0,0,,2026-04-30
+Gia Linh Nguyen Co,https://www.facebook.com/gbookgln,,,1,1,0,0,,2026-04-30
+Global Consulting and Business Services,https://www.facebook.com/globalconsultsydney,,,1,1,0,0,,2026-04-30
+Global Opportunities,https://www.facebook.com/GlobalOpportunitie,,,1,1,0,0,,2026-04-30
+Global Reach,https://www.facebook.com/globalreachedu,,,1,1,0,0,,2026-04-30
+Global Select Education and Migration Services,https://www.facebook.com/globalselectaustralia,,,1,1,0,0,,2026-04-30
+Global Select education and Migration Services,https://www.facebook.com/Globalselectnepal,,,1,1,0,0,,2026-04-30
+Globancy,https://www.facebook.com/GlobancyGlobal,,,1,1,0,0,,2026-04-30
+Golden Wattle Education Services,https://www.facebook.com/Goldenwattlee,,,1,1,0,0,,2026-04-30
+Grace International Indonesia,https://www.facebook.com/graceintlgroup,,,1,1,0,0,,2026-04-30
+Grace International Sri Lanka,https://www.facebook.com/graceintloceania,,,1,1,0,0,,2026-04-30
+HOPE Education,https://www.facebook.com/HOPE-2000-EDUCATION-101588614187,,,1,1,0,0,,2026-04-30
+Hanoi university,https://www.facebook.com/hanutuyensinh,,,1,1,0,0,,2026-04-30
+Himalayan World Wide Education Consultancy,https://www.facebook.com/HWWEC.Official,,,1,1,0,0,,2026-04-30
+I-LINK,https://www.facebook.com/ilinkjakarta,,,1,1,0,0,,2026-04-30
+ICBT,https://facebook.com/ICBTsrilanka,,,1,1,0,0,,2026-04-30
+IEAVS,https://www.facebook.com/IEAVS-609891712380517,,,1,1,0,0,,2026-04-30
+ISC Education Joint Stock Company,https://www.facebook.com/tuvanduhoc.isc,,,1,1,0,0,,2026-04-30
+Idyllic Education Consultants (Kathmandu),https://www.facebook.com/idyllicec,,,1,1,0,0,,2026-04-30
+InterestED,https://www.facebook.com/interestedu,,,1,1,0,0,,2026-04-30
+International Education Consultancy (IEC),https://www.facebook.com/IEC.SL90,,,1,1,0,0,,2026-04-30
+International Education Experts (Pvt),https://www.facebook.com/International-Education-Experts-270060606994122,,,1,1,0,0,,2026-04-30
+"International Network Education Consultants Co., Ltd",https://www.facebook.com/tuvanduhocinec,,,1,1,0,0,,2026-04-30
+JACK Study Abroad,https://www.facebook.com/jackstudyindonesia,,,1,1,0,0,,2026-04-30
+KBA Global Education & Migration - Nepal,https://www.facebook.com/Kbaglobal,,,1,1,0,0,,2026-04-30
+KIEC Education,https://www.facebook.com/kiec.officialpage,,,1,1,0,0,,2026-04-30
+LeVisa,https://www.facebook.com/levisaaustralia,,,1,1,0,0,,2026-04-30
+Leap Geebee Edtech,https://www.facebook.com/geebeeworld,,,1,1,0,0,,2026-04-30
+MELLINK HA NOI JSC,https://www.facebook.com/mellinkaustralia,,,1,1,0,0,,2026-04-30
+Mates Education,https://www.facebook.com/matesedu,,,1,1,0,0,,2026-04-30
+Motif Education Abroad,https://www.facebook.com/motifeducation,,,1,1,0,0,,2026-04-30
+Nawaloka Global Edulink (PVT),https://www.facebook.com/Nawalokaglobaledulink,,,1,1,0,0,,2026-04-30
+Nobel Education Foundation (P.),https://www.facebook.com/nobelef9,,,1,1,0,0,,2026-04-30
+North Easterns Educational Consultancy,https://www.facebook.com/NeasternsAnamnagar,,,1,1,0,0,,2026-04-30
+October Education,https://www.facebook.com/octobereduconsultancy,,,1,1,0,0,,2026-04-30
+PFEC Global,https://www.facebook.com/PFEC.Srilanka,,,1,1,0,0,,2026-04-30
+Professional Education Consultancy,https://www.facebook.com/pe.consultancy,,,1,1,0,0,,2026-04-30
+Professional Visa and Education Services,https://www.facebook.com/professionalvisa,,,1,1,0,0,,2026-04-30
+Quoc Anh Iec,https://www.facebook.com/quocanh.duhoc,,,1,1,0,0,,2026-04-30
+REC Campus,https://www.facebook.com/RECCampusSL,,,1,1,0,0,,2026-04-30
+ROYAL INSTITUTE OF COLOMBO (RIC),https://www.facebook.com/RoyalInstituteCMB,,,1,1,0,0,,2026-04-30
+Rightway Education and Services -Vietnam,https://www.facebook.com/Rightway.Australia,,,1,1,0,0,,2026-04-30
+Rivil International (Pvt),https://www.facebook.com/riviledu,,,1,1,0,0,,2026-04-30
+Royal Educational Foundation,https://www.facebook.com/royaleducation.edu.np,,,1,1,0,0,,2026-04-30
+S.E.T Services for Education Consultancy and Training Joint Stock Company,https://www.facebook.com/duhocSET,,,1,1,0,0,,2026-04-30
+SACE College Vietnam Joint Stock Company,https://www.facebook.com/sacecollegevietnam,,,1,1,0,0,,2026-04-30
+SEAMEO Regional Training Center,https://www.facebook.com/TIENGANHSEAMEO,,,1,1,0,0,,2026-04-30
+Sig ( Storm International Group) - Nepal,https://www.facebook.com/SIGoverseasindia,,,1,1,0,0,,2026-04-30
+Spectrum Overseas Education Consultancy (Private),https://www.facebook.com/SPECTRUMSRILANKA,,,1,1,0,0,,2026-04-30
+Students in Aus,https://facebook.com/studentinaus,,,1,1,0,0,,2026-04-30
+Study Square Indonesia,https://www.facebook.com/StudySquareEdu,,,1,1,0,0,,2026-04-30
+StudyLink,https://www.facebook.com/studylink.international,,,1,1,0,0,,2026-04-30
+StudyNet,https://www.facebook.com/StudyNet.au,,,1,1,0,0,,2026-04-30
+Studylane International,https://www.facebook.com/studylaneinternational,,,1,1,0,0,,2026-04-30
+Studyzone,https://www.facebook.com/studyzone.edu,,,1,1,0,0,,2026-04-30
+TNE Global,https://www.facebook.com/TNEGlobalVietnam,,,1,1,0,0,,2026-04-30
+The Professional Network (TPNL),https://www.facebook.com/TPNL.Bangladesh,,,1,1,0,0,,2026-04-30
+Three Sixty Education Solutions,https://www.facebook.com/360education.global,,,1,1,0,0,,2026-04-30
+Tingo Education Australia,https://facebook.com/tingoedu,,,1,1,0,0,,2026-04-30
+Trust Education Consultancy,https://www.facebook.com/trustedu.com.vn,,,1,1,0,0,,2026-04-30
+Unicampus Education Network,https://www.facebook.com/unicampusnepal,,,1,1,0,0,,2026-04-30
+VEVS - Value Education and Visa Services - Nepal,https://www.facebook.com/vevsglobal,,,1,1,0,0,,2026-04-30
+VINEC Study Abroad,https://www.facebook.com/duhocvinec,,,1,1,0,0,,2026-04-30
+Vietnam Centre Point,https://www.facebook.com/duhochopdiem,,,1,1,0,0,,2026-04-30
+Vietnam Intellectual Services Co,https://www.facebook.com/duhocvisco,,,1,1,0,0,,2026-04-30
+Viv's International Education Centre (VIEC),https://www.facebook.com/viec.india,,,1,1,0,0,,2026-04-30
+"WEduAbroad (WEduShare Co., Ltd.)",https://www.facebook.com/WEduAbroad,,,1,1,0,0,,2026-04-30
+Wise Education & Migration,https://www.facebook.com/WiseEducationAndMigration,,,1,1,0,0,,2026-04-30
+Worldlink Education Company,https://www.facebook.com/worldlink.education,,,1,1,0,0,,2026-04-30
+York International Educational Consultancy,https://www.facebook.com/yieceducation,,,1,1,0,0,,2026-04-30
+iStudy Global,https://www.facebook.com/istudyglobalconsultants,,,1,1,0,0,,2026-04-30
+iae GLOBAL,https://www.facebook.com/iaeglobalvietnam,,,1,1,0,0,,2026-04-30
