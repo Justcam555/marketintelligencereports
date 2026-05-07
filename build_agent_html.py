@@ -399,23 +399,24 @@ def build_uk_data(conn: sqlite3.Connection) -> dict:
 
     placeholders = ",".join("?" * len(uk_uni_ids))
     rows = conn.execute(f"""
-        SELECT company_name, country, website, email, university_id
+        SELECT COALESCE(canonical_name, company_name) AS display_name,
+               country, website, email, university_id, company_name
         FROM   agents
         WHERE  university_id IN ({placeholders})
           AND  company_name IS NOT NULL
           AND  TRIM(company_name) != ''
-        ORDER  BY company_name
+        ORDER  BY display_name
     """, list(uk_uni_ids.keys())).fetchall()
 
-    # Build: market → agent_name → {unis, website, email}
+    # Build: market → canonical_name → {unis, website, email, raw_name}
     markets: dict = {}
-    for company_name, country, website, email, uni_id in rows:
+    for display_name, country, website, email, uni_id, company_name in rows:
         uni_name = uk_uni_ids.get(uni_id, "")
         if not country or not uni_name:
             continue
         if country not in markets:
             markets[country] = {}
-        key = company_name.strip()
+        key = (display_name or company_name).strip()
         if key not in markets[country]:
             markets[country][key] = {"unis": [], "website": website, "email": email}
         if uni_name not in markets[country][key]["unis"]:
