@@ -121,7 +121,9 @@ def load_data(conn: sqlite3.Connection):
     """
     uni_names = {
         row[0]: row[1]
-        for row in conn.execute("SELECT id, name FROM universities").fetchall()
+        for row in conn.execute(
+            "SELECT id, name FROM universities WHERE COALESCE(country,'Australia') = 'Australia'"
+        ).fetchall()
     }
 
     rows = conn.execute("""
@@ -381,6 +383,67 @@ def build_social_index(conn: sqlite3.Connection) -> dict:
     return index
 
 
+def build_uk_data(conn: sqlite3.Connection) -> dict:
+    """
+    Build UK_DATA: per-market breakdown of UK university agents.
+    Structure: {market: {universities: [...], agents: [{name, unis, website, email}]}}
+    """
+    uk_uni_ids = {
+        row[0]: row[1]
+        for row in conn.execute(
+            "SELECT id, name FROM universities WHERE country = 'United Kingdom'"
+        ).fetchall()
+    }
+    if not uk_uni_ids:
+        return {}
+
+    placeholders = ",".join("?" * len(uk_uni_ids))
+    rows = conn.execute(f"""
+        SELECT company_name, country, website, email, university_id
+        FROM   agents
+        WHERE  university_id IN ({placeholders})
+          AND  company_name IS NOT NULL
+          AND  TRIM(company_name) != ''
+        ORDER  BY company_name
+    """, list(uk_uni_ids.keys())).fetchall()
+
+    # Build: market → agent_name → {unis, website, email}
+    markets: dict = {}
+    for company_name, country, website, email, uni_id in rows:
+        uni_name = uk_uni_ids.get(uni_id, "")
+        if not country or not uni_name:
+            continue
+        if country not in markets:
+            markets[country] = {}
+        key = company_name.strip()
+        if key not in markets[country]:
+            markets[country][key] = {"unis": [], "website": website, "email": email}
+        if uni_name not in markets[country][key]["unis"]:
+            markets[country][key]["unis"].append(uni_name)
+
+    # Convert to sorted lists
+    result = {}
+    for market, agent_map in sorted(markets.items()):
+        all_unis = sorted({
+            u for entry in agent_map.values() for u in entry["unis"]
+        })
+        agents = sorted(
+            [
+                {
+                    "name": name,
+                    "unis": sorted(entry["unis"]),
+                    "website": entry["website"] or "",
+                    "email": entry["email"] or "",
+                }
+                for name, entry in agent_map.items()
+            ],
+            key=lambda a: (-len(a["unis"]), a["name"].lower()),
+        )
+        result[market] = {"universities": all_unis, "agents": agents}
+
+    return result
+
+
 def replace_js_const(html: str, const_name: str, new_value: str) -> str:
     """Replace a single-line JS const assignment (safe for unicode content)."""
     prefix = f"const {const_name} = "
@@ -497,7 +560,7 @@ def main():
     # Stats for index.html
     # unique agents across all markets (distinct company names per country)
     total_agents = sum(len(d["agents"]) for d in all_data.values())
-    total_unis   = len([u for u in uni_names.values() if u])  # all universities in DB
+    total_unis   = len([u for u in uni_names.values() if u])  # Australian universities only
 
     if args.dry_run:
         print(f"\n[dry run] Would write:")
@@ -537,6 +600,14 @@ def main():
     conn2.close()
     print(f"  {sum(len(v) for v in social_index.values())} country-agent entries across {len(social_index)} agents")
     html = replace_js_const(html, "SOCIAL_INDEX", json.dumps(social_index, ensure_ascii=False, separators=(',', ':')))
+
+    print("Replacing UK_DATA …")
+    conn3 = sqlite3.connect(DB_PATH)
+    uk_data = build_uk_data(conn3)
+    conn3.close()
+    total_uk = sum(len(m["agents"]) for m in uk_data.values())
+    print(f"  {total_uk} UK agent-country entries across {len(uk_data)} markets")
+    html = replace_js_const(html, "UK_DATA", json.dumps(uk_data, ensure_ascii=False, separators=(',', ':')))
 
     NETWORK_HTML.write_text(html)
     print(f"  ✅ {NETWORK_HTML.name} written ({len(html):,} bytes)")

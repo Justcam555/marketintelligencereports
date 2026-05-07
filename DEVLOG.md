@@ -510,6 +510,65 @@ Consolidation results per market:
 
 ---
 
+## Session: May 7, 2026
+
+### What Was Built
+
+#### UK University Agent Scraper (`scrape_uk_universities.py`)
+- New script scraping 11 UK universities across 6 priority markets
+- **405 total UK agent records** inserted into agents.db (university_id 43–53)
+- Universities: Bristol, Warwick, Bath, Newcastle, Exeter, Lancaster, York, Loughborough, Swansea, Durham, Cardiff
+- 9 universities use `requests` + BeautifulSoup (no bot protection)
+- Durham: Playwright + playwright-stealth (Cloudflare WAF) — uses rowspan table structure
+- Cardiff: Playwright + playwright-stealth (Cloudflare WAF) — per-country URL pattern
+
+#### DB Migration
+- Added `country` column to `universities` table (DEFAULT 'Australia')
+- All 42 existing Australian university rows backfilled as 'Australia'
+- UK universities inserted with `country = 'United Kingdom'`
+- `build_agent_html.py` updated to filter `universities` table by `country = 'Australia'` for the "X Australian universities" stat — prevents UK unis inflating the count
+
+#### Agent counts per UK university (6 markets total):
+| University | TH | VN | NP | ID | LK | KH | Total |
+|---|---|---|---|---|---|---|---|
+| Swansea | 13 | 17 | 18 | 15 | 17 | 8 | 88 |
+| Exeter | 8 | 16 | 11 | 10 | 12 | 3 | 60 |
+| York | 10 | 9 | 4 | 8 | 5 | 2 | 38 |
+| Newcastle | 5 | 11 | 5 | 10 | 5 | 0 | 36 |
+| Lancaster | 7 | 9 | 6 | 6 | 4 | 4 | 36 |
+| Loughborough | 9 | 9 | 3 | 6 | 6 | 1 | 34 |
+| Bath | 8 | 5 | 8 | 4 | 3 | 1 | 29 |
+| Bristol | 7 | 6 | 1 | 5 | 3 | 2 | 24 |
+| Durham | 6 | 7 | 3 | 4 | 4 | 0 | 24 |
+| Cardiff | 5 | 6 | 0 | 6 | 4 | 0 | 21 |
+| Warwick | 2 | 4 | 2 | 3 | 2 | 2 | 15 |
+
+### Issues Encountered / Notes
+- Newcastle has no Cambodia page (404) — no agents for Cambodia
+- Durham has no Cambodia agents in their SEA table
+- Cardiff has no Nepal or Cambodia advisor pages
+- Durham table uses `rowspan` on country cells — each continuation row has only 1 `<td>` (agent name); had to track `current_country` across rows
+- Cardiff parser initially grabbed whole-page content (332 agents/country); fixed to target the `<div>` sibling after `<h1>Advisors in...`
+- Swansea counts are inflated by "Global*" agents listed in the regional table — these are legitimately authorised globally
+
+### Known Issues (Carryover)
+- Nepal Instagram followers showing 0 — field mapping issue
+- Facebook follower counts mostly null
+- 14 missing Australian university logos
+- Report generator needs login system before sharing externally
+- Thai text truncation in events scraper (partially fixed earlier)
+- UK agents not yet normalised (normalise_agents.py not run yet)
+- UK agents not yet in agent-network.html (build_agent_html.py targets AU universities only — need to decide whether to include UK unis in the public network view or keep them as a separate dataset)
+
+### Next Session Priorities
+1. Decide: should UK agents appear in agent-network.html alongside Australian unis, or as a separate view?
+2. Run normalise_agents.py for UK university agents
+3. Optionally run social enrichment (enrich_agents.py) for UK agents
+4. Get FB Graph API token for page ID resolver
+5. Fix Nepal Instagram followers field issue
+
+---
+
 ## Template for Future Sessions
 
 ### Session: [Date]
