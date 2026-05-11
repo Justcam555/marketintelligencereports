@@ -102,7 +102,7 @@ def search_youtube_apify(client: ApifyClient, query: str, max_results: int) -> l
     return items
 
 
-def run(apify_token: str, uni_filter: str, days: int, max_per_query: int):
+def run(apify_token: str, uni_filter: str, days: int, max_per_query: int, search_suffix: str = " study australia"):
     client  = ApifyClient(apify_token)
     matcher = AliasMatcher()
     today   = datetime.now(timezone.utc)
@@ -142,7 +142,7 @@ def run(apify_token: str, uni_filter: str, days: int, max_per_query: int):
         print(f"\n[{canonical}] {len(search_aliases)} search terms")
 
         for alias_rec in search_aliases:
-            query = alias_rec["alias"] + " study australia"
+            query = alias_rec["alias"] + search_suffix
             try:
                 items = search_youtube_apify(client, query, max_per_query)
             except Exception as e:
@@ -212,13 +212,15 @@ def main():
                         help="Drop videos older than N days (default 90)")
     parser.add_argument("--max-per-query", type=int, default=25,
                         help="Max results per search query (default 25)")
+    parser.add_argument("--search-suffix", default=" study australia",
+                        help="Suffix appended to each search query (default: ' study australia')")
     args = parser.parse_args()
 
     if not args.apify_token:
         print("Error: Apify token required. Set APIFY_API_TOKEN or use --apify-token")
         sys.exit(1)
 
-    run(args.apify_token, args.uni, args.days, args.max_per_query)
+    run(args.apify_token, args.uni, args.days, args.max_per_query, args.search_suffix)
 
 
 if __name__ == "__main__":
