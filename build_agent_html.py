@@ -408,6 +408,16 @@ def build_uk_data(conn: sqlite3.Connection) -> dict:
         ORDER  BY display_name
     """, list(uk_uni_ids.keys())).fetchall()
 
+    # Load social handles from uk_agent_social (may not exist on older DBs)
+    social_lookup: dict = {}
+    try:
+        for cname, platform, handle in conn.execute(
+            "SELECT agent_cname, platform, handle FROM uk_agent_social"
+        ).fetchall():
+            social_lookup.setdefault(cname, {})[platform] = handle
+    except Exception:
+        pass
+
     # Build: market → canonical_name → {unis, website, email, raw_name}
     markets: dict = {}
     for display_name, country, website, email, uni_id, company_name in rows:
@@ -435,6 +445,7 @@ def build_uk_data(conn: sqlite3.Connection) -> dict:
                     "unis": sorted(entry["unis"]),
                     "website": entry["website"] or "",
                     "email": entry["email"] or "",
+                    "social": social_lookup.get(name, {}),
                 }
                 for name, entry in agent_map.items()
             ],
