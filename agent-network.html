@@ -547,6 +547,10 @@ function uniShort(name) {
              .replace('UNSW Sydney','UNSW').replace('UniSQ','USQ').replace('UniSC','USC').trim();
 }
 
+let _overlapUnis = [];
+let _overlapSets = {};
+let auOverlapSelected = [];
+
 function buildAUOverlap() {
   const el = document.getElementById('auOverlapContent');
   if (!currentAgents || !currentUnis || !currentUnis.length) {
@@ -554,60 +558,103 @@ function buildAUOverlap() {
     return;
   }
 
-  // Only unis with ≥1 agent in this market
-  const unis = currentUnis.slice().sort();
-
-  // Build agent sets per uni
-  const agentSets = {};
-  unis.forEach(u => {
-    agentSets[u] = new Set(
+  _overlapSets = {};
+  currentUnis.forEach(u => {
+    _overlapSets[u] = new Set(
       currentAgents.filter(a => a.unis.includes(u)).map(a => (a.canonical || a.name).toLowerCase().trim())
     );
   });
+  _overlapUnis = currentUnis.slice().sort((a,b) => _overlapSets[b].size - _overlapSets[a].size);
 
-  // Sort unis by agent count descending for readability
-  const sortedUnis = unis.slice().sort((a,b) => agentSets[b].size - agentSets[a].size);
+  // Reset to top 6 whenever market changes
+  if (!auOverlapSelected.length || !auOverlapSelected.every(u => _overlapSets[u])) {
+    auOverlapSelected = _overlapUnis.slice(0, 6);
+  }
 
-  let h = `<div style="padding:1rem 0 .5rem">
-  <p style="font-size:.78rem;color:#64748B;margin-bottom:.8rem">
-    Jaccard similarity between Australian universities: % of agents shared relative to unique agents across both universities.
-    Diagonal shows total agents per university in <strong>${currentCountry}</strong>. Hover for exact values.
-  </p>
-  <div style="overflow-x:auto">
-  <table style="border-collapse:collapse;font-size:.7rem">
-  <thead><tr><th style="padding:.4rem .5rem;background:#f8fafc;min-width:90px"></th>`;
+  _renderAUOverlap();
+}
 
-  sortedUnis.forEach(u => {
-    h += `<th style="padding:.3rem .4rem;background:#f8fafc;font-weight:600;white-space:nowrap;writing-mode:vertical-rl;text-orientation:mixed;height:80px;vertical-align:bottom" title="${u}">${uniShort(u)}</th>`;
+function _renderAUOverlap() {
+  const el = document.getElementById('auOverlapContent');
+  const sel = auOverlapSelected;
+
+  // ── Picker ──
+  let h = `<div style="padding:1rem 1.5rem .9rem;border-bottom:1px solid var(--border)">
+    <div style="font-size:.78rem;color:#64748B;margin-bottom:.55rem">
+      Select up to 6 universities to compare
+      <span style="color:#94A3B8;font-size:.73rem">&nbsp;(${sel.length}/6 selected — click to toggle)</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:.35rem">`;
+
+  _overlapUnis.forEach(u => {
+    const active  = sel.includes(u);
+    const short   = uniShort(u);
+    const count   = _overlapSets[u].size;
+    const bg      = active ? '#1E293B' : '#f1f5f9';
+    const color   = active ? '#fff'    : '#374151';
+    const border  = active ? '#1E293B' : '#e2e8f0';
+    const esc     = u.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    h += `<button onclick="toggleOverlapUni('${esc}')"
+      style="padding:.28rem .65rem;background:${bg};color:${color};border:1px solid ${border};border-radius:20px;font-size:.72rem;cursor:pointer;white-space:nowrap;transition:background .15s"
+      title="${u} — ${count} agents">${short} <span style="opacity:.65;font-size:.68rem">${count}</span></button>`;
   });
-  h += '</tr></thead><tbody>';
 
-  sortedUnis.forEach(uA => {
-    const setA = agentSets[uA];
-    h += `<tr><td style="padding:.3rem .5rem;font-weight:600;white-space:nowrap;background:#f8fafc;font-size:.68rem" title="${uA}">${uniShort(uA)} <span style="font-weight:400;color:#94A3B8">(${setA.size})</span></td>`;
-    sortedUnis.forEach(uB => {
-      if (uA === uB) {
-        h += `<td style="padding:.3rem .4rem;text-align:center;background:#1E293B;color:#fff;font-weight:700;min-width:32px" title="${uA}: ${setA.size} agents">${setA.size}</td>`;
-      } else {
-        const setB = agentSets[uB];
-        const inter = [...setA].filter(x => setB.has(x)).length;
-        const union = new Set([...setA, ...setB]).size;
-        const pct = union ? Math.round(inter / union * 100) : 0;
-        const g = Math.round(pct * 1.5);
-        const bg = pct === 0 ? '#f8fafc' : `rgb(${220-g},${240-Math.round(g*.3)},${220-g})`;
-        const fg = pct > 40 ? '#fff' : '#374151';
-        const tip = `${uniShort(uA)} ∩ ${uniShort(uB)}: ${inter} shared / ${union} total = ${pct}%`;
-        h += `<td style="padding:.3rem .4rem;text-align:center;background:${bg};color:${fg};cursor:default;min-width:32px" title="${tip}">${pct > 0 ? pct+'%' : ''}</td>`;
-      }
+  h += `</div></div>`;
+
+  // ── Heatmap ──
+  if (sel.length >= 2) {
+    h += `<div style="padding:1rem 1.5rem;overflow-x:auto">
+    <p style="font-size:.78rem;color:#64748B;margin-bottom:.8rem">
+      Jaccard similarity: % of agents shared relative to unique agents across both universities.
+      Diagonal = total agents per university in <strong>${currentCountry}</strong>. Hover cells for exact values.
+    </p>
+    <table style="border-collapse:collapse;font-size:.7rem">
+    <thead><tr><th style="padding:.4rem .5rem;background:#f8fafc;min-width:110px"></th>`;
+
+    sel.forEach(u => {
+      h += `<th style="padding:.3rem .4rem;background:#f8fafc;font-weight:600;white-space:nowrap;writing-mode:vertical-rl;text-orientation:mixed;height:80px;vertical-align:bottom" title="${u}">${uniShort(u)}</th>`;
     });
-    h += '</tr>';
-  });
+    h += '</tr></thead><tbody>';
 
-  h += `</tbody></table></div>
-  <p style="font-size:.72rem;color:#94A3B8;margin-top:.6rem">${sortedUnis.length} universities · ${currentAgents.length} agents in ${currentCountry}</p>
-  </div>`;
+    sel.forEach(uA => {
+      const setA = _overlapSets[uA];
+      h += `<tr><td style="padding:.3rem .5rem;font-weight:600;white-space:nowrap;background:#f8fafc;font-size:.68rem" title="${uA}">${uniShort(uA)} <span style="font-weight:400;color:#94A3B8">(${setA.size})</span></td>`;
+      sel.forEach(uB => {
+        if (uA === uB) {
+          h += `<td style="padding:.3rem .4rem;text-align:center;background:#1E293B;color:#fff;font-weight:700;min-width:36px" title="${uA}: ${setA.size} agents">${setA.size}</td>`;
+        } else {
+          const setB = _overlapSets[uB];
+          const inter = [...setA].filter(x => setB.has(x)).length;
+          const union = new Set([...setA, ...setB]).size;
+          const pct   = union ? Math.round(inter / union * 100) : 0;
+          const g     = Math.round(pct * 1.5);
+          const bg    = pct === 0 ? '#f8fafc' : `rgb(${220-g},${240-Math.round(g*.3)},${220-g})`;
+          const fg    = pct > 40 ? '#fff' : '#374151';
+          const tip   = `${uniShort(uA)} ∩ ${uniShort(uB)}: ${inter} shared / ${union} total = ${pct}%`;
+          h += `<td style="padding:.3rem .4rem;text-align:center;background:${bg};color:${fg};cursor:default;min-width:36px" title="${tip}">${pct > 0 ? pct+'%' : ''}</td>`;
+        }
+      });
+      h += '</tr>';
+    });
+
+    h += `</tbody></table>
+    <p style="font-size:.72rem;color:#94A3B8;margin-top:.6rem">${sel.length} universities compared · ${currentAgents.length} agents in ${currentCountry}</p>
+    </div>`;
+  } else {
+    h += `<p style="color:#94A3B8;padding:1.5rem 1.5rem;font-size:.82rem">Select at least 2 universities above to compare.</p>`;
+  }
 
   el.innerHTML = h;
+}
+
+function toggleOverlapUni(name) {
+  const idx = auOverlapSelected.indexOf(name);
+  if (idx >= 0) {
+    auOverlapSelected.splice(idx, 1);
+  } else if (auOverlapSelected.length < 6) {
+    auOverlapSelected.push(name);
+  }
+  _renderAUOverlap();
 }
 
 // ── UK Universities tab ────────────────────────────────────────────────────────
