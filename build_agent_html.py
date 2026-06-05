@@ -21,7 +21,7 @@ import sqlite3
 from collections import defaultdict
 from pathlib import Path
 
-DB_PATH      = Path.home() / "Desktop" / "Agent Scraper" / "data" / "agents.db"
+DB_PATH      = Path.home() / "projects" / "intelligence" / "university-platform" / "data" / "agents.db"
 REPO_DIR     = Path(__file__).parent
 NETWORK_HTML  = REPO_DIR / "agent-network.html"
 PROFILE_HTML  = REPO_DIR / "agent-profile.html"
@@ -422,6 +422,7 @@ def build_uk_data(conn: sqlite3.Connection) -> dict:
     markets: dict = {}
     for display_name, country, website, email, uni_id, company_name in rows:
         uni_name = uk_uni_ids.get(uni_id, "")
+        country = normalise_country(country)
         if not country or not uni_name:
             continue
         if country not in markets:
@@ -451,9 +452,33 @@ def build_uk_data(conn: sqlite3.Connection) -> dict:
             ],
             key=lambda a: (-len(a["unis"]), a["name"].lower()),
         )
+        if len(agents) < MIN_AGENTS_IN_COUNTRY:
+            continue   # same sidebar noise filter the AU path uses
         result[market] = {"universities": all_unis, "agents": agents}
 
     return result
+
+
+def build_agent_dest(conn: sqlite3.Connection) -> dict:
+    """
+    AGENT_DEST = {canonical_name_lower: 'au' | 'uk' | 'both'}
+    Which destination(s) each agent serves, by the country of the universities
+    it links to. Used to badge agents in the (combined) directory & cards.
+    """
+    rows = conn.execute("""
+        SELECT LOWER(TRIM(COALESCE(a.canonical_name, a.company_name))) AS name,
+               u.country
+        FROM   agents a JOIN universities u ON a.university_id = u.id
+        WHERE  a.company_name IS NOT NULL AND TRIM(a.company_name) != ''
+    """).fetchall()
+    flags: dict = {}   # name → {'au','uk'}
+    for name, ucountry in rows:
+        if not name:
+            continue
+        d = "uk" if ucountry == "United Kingdom" else ("au" if (ucountry or "Australia") == "Australia" else None)
+        if d:
+            flags.setdefault(name, set()).add(d)
+    return {name: ("both" if len(s) == 2 else next(iter(s))) for name, s in flags.items()}
 
 
 def replace_js_const(html: str, const_name: str, new_value: str) -> str:
@@ -620,6 +645,14 @@ def main():
     total_uk = sum(len(m["agents"]) for m in uk_data.values())
     print(f"  {total_uk} UK agent-country entries across {len(uk_data)} markets")
     html = replace_js_const(html, "UK_DATA", json.dumps(uk_data, ensure_ascii=False, separators=(',', ':')))
+
+    print("Replacing AGENT_DEST …")
+    conn4 = sqlite3.connect(DB_PATH)
+    agent_dest = build_agent_dest(conn4)
+    conn4.close()
+    both = sum(1 for v in agent_dest.values() if v == "both")
+    print(f"  {len(agent_dest)} agents flagged ({both} serve both AU+UK)")
+    html = replace_js_const(html, "AGENT_DEST", json.dumps(agent_dest, ensure_ascii=False, separators=(',', ':')))
 
     NETWORK_HTML.write_text(html)
     print(f"  ✅ {NETWORK_HTML.name} written ({len(html):,} bytes)")

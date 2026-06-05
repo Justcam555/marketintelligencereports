@@ -2,6 +2,26 @@
 
 ---
 
+## Session: June 5, 2026
+
+### What Was Built — UK universities integrated into Agent Network
+
+- **DB path fixed**: machine moved `~/Desktop/` → `~/projects/intelligence/`. `build_agent_html.py` `DB_PATH` and `CLAUDE.md` paths updated to `~/projects/intelligence/university-platform/data/agents.db`.
+- **UK agent data**: DB now holds ~5,900 UK university↔agent relationships across 156 UK universities (scraped via LLM extraction in the university-platform repo) + ANU re-scraped (9 junk rows → 1,047 valid).
+- **UK market normalisation**: `build_uk_data` now runs `normalise_country` + the `MIN_AGENTS_IN_COUNTRY` filter → 305 junk markets down to 158 clean ones.
+- **Matrix AU ⇄ UK toggle**: the standalone "🇬🇧 UK Universities" tab was **replaced** with an in-matrix destination toggle (`setMatrixDest`/`renderMatrixPanel`). Coverage Matrix swaps between `ALL_DATA` (AU) and `UK_DATA` (UK) columns per market — each stays narrow (AU ~38, UK ~22 cols). UK methodology disclaimer shows on the UK side.
+- **Combined directory/cards + destination badges**: new `AGENT_DEST` const ({canonical: au|uk|both}, 3,461 au / 1,769 uk / 214 both) injected by `build_agent_dest`. Directory & Agent Cards now show the merged AU+UK agent list (`buildCombined`) with 🇦🇺/🇬🇧/🇦🇺🇬🇧 badges.
+
+### Known Issues / Notes
+- **UK universities have no logos** in `Uni logos/` → UK matrix columns + cards show names/abbreviations, no logo image (graceful gap, not broken). Future: fetch UK logos via `fetch_uni_logos.py` + `uk_universities.json` websites.
+- UK coverage is intentionally lower than AU (UK has no legal mandate to publish agent lists, unlike Australia's ESOS) — the disclaimer explains this. Agent-claimed (marketing-inflated) relationships were deliberately excluded; verified university-published data only.
+
+### Next Session Priorities
+1. (Optional) Fetch UK university logos.
+2. (Optional) Social enrichment for UK agents.
+
+---
+
 ## Session: April 14-19, 2026
 
 ### What Was Built

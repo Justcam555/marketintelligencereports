@@ -11,10 +11,10 @@ Never start building without completing these three steps first.
 ---
 
 ## Project Location
-- Main project: `~/Desktop/marketintelligencereports/`
-- Agent scraper database: `~/Desktop/Agent Scraper/data/agents.db`
-- Uni logos: `~/Desktop/marketintelligencereports/Uni logos/`
-- Mentions tracking: `~/Desktop/marketintelligencereports/mentions/`
+- Main project: `~/projects/intelligence/marketintelligencereports/`
+- Agent scraper database: `~/projects/intelligence/university-platform/data/agents.db`
+- Uni logos: `~/projects/intelligence/marketintelligencereports/Uni logos/`
+- Mentions tracking: `~/projects/intelligence/marketintelligencereports/mentions/`
 
 ## Key Commands
 
