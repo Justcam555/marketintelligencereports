@@ -15,6 +15,7 @@ Usage:
 """
 
 import argparse
+import datetime
 import json
 import re
 import sqlite3
@@ -653,6 +654,18 @@ def main():
     both = sum(1 for v in agent_dest.values() if v == "both")
     print(f"  {len(agent_dest)} agents flagged ({both} serve both AU+UK)")
     html = replace_js_const(html, "AGENT_DEST", json.dumps(agent_dest, ensure_ascii=False, separators=(',', ':')))
+
+    # Refresh the static footer with live combined stats (AU + UK)
+    conn5 = sqlite3.connect(DB_PATH)
+    uk_uni_count = conn5.execute(
+        "SELECT COUNT(*) FROM universities WHERE country = 'United Kingdom'").fetchone()[0]
+    conn5.close()
+    all_markets = set(all_data) | set(uk_data)
+    footer = (f"University Agent Database · {total_unis} AU + {uk_uni_count} UK universities · "
+              f"{len(all_markets)} markets · {len(agent_dest):,} agents · "
+              f"Updated {datetime.date.today().isoformat()}")
+    html = re.sub(r"<footer>[^<]*</footer>", f"<footer>{footer}</footer>", html)
+    print(f"  footer: {footer}")
 
     NETWORK_HTML.write_text(html)
     print(f"  ✅ {NETWORK_HTML.name} written ({len(html):,} bytes)")
