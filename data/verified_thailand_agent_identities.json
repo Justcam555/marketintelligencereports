@@ -21,6 +21,7 @@
       "youtube": {"url": "https://www.youtube.com/channel/UCY2u9Z6M8TmY5hrDEvVt4bQ", "status": "official_global_channel"},
       "line": {"handle": "@aoc5757l", "status": "unverified_existing_profile_link"},
       "identity_status": "global_channels_only",
+      "profile_note": "Thailand-specific social channels were not found. Official global AECC channels are shown where available.",
       "evidence": "The official Thai site links global Facebook and YouTube accounts. No Thailand-only social account was verified. The existing LINE entry is retained for review, not publication as verified."
     },
     {
