@@ -1,6 +1,6 @@
 {
   "market": "Thailand",
-  "collected_at": "2026-09-15T05:11:45.543449+00:00",
+  "collected_at": "2026-09-15T05:41:35.627047+00:00",
   "identity_register": "data/verified_thailand_agent_identities.json",
   "method": "direct public-page metadata; no Apify; unavailable values are not replacements",
   "agents": [
@@ -23,8 +23,49 @@
       "name": "AECC Global",
       "platforms": {
         "youtube": {
-          "status": "unavailable",
-          "reason": "public subscriber count not present",
+          "status": "collected",
+          "channel_name": "AECC Official",
+          "subscribers": 2130,
+          "total_views": 520649,
+          "video_count": 500,
+          "recent_videos": [
+            {
+              "title": "First Things to Do in Australia as an International Student #studyinaustralia",
+              "url": "https://www.youtube.com/watch?v=RgW6t89nRvg",
+              "published_at": "2026-09-09T03:42:59Z",
+              "views": 19,
+              "likes": 0
+            },
+            {
+              "title": "AECC Was So Attentive & Responsive! #studenttestimonial",
+              "url": "https://www.youtube.com/watch?v=a_gf9GPa9gM",
+              "published_at": "2026-09-08T05:41:58Z",
+              "views": 4,
+              "likes": 0
+            },
+            {
+              "title": "Applying to Universities Abroad Alone Is SO Overwhelming! #applicationprocess",
+              "url": "https://www.youtube.com/watch?v=L5ma4ggtl4I",
+              "published_at": "2026-09-08T05:19:14Z",
+              "views": 28,
+              "likes": 0
+            },
+            {
+              "title": "No University Application Fees with AECC! #studyinaustralia",
+              "url": "https://www.youtube.com/watch?v=i7cPnmB1g74",
+              "published_at": "2026-09-08T04:39:57Z",
+              "views": 23,
+              "likes": 0
+            },
+            {
+              "title": "Why Is Food Science One of the Most Future-Ready Careers in 2026? #topcourses #studyinitaly",
+              "url": "https://www.youtube.com/watch?v=ykj-X0IwGN4",
+              "published_at": "2026-09-01T08:22:17Z",
+              "views": 70,
+              "likes": 1
+            }
+          ],
+          "source": "YouTube Data API v3",
           "url": "https://www.youtube.com/channel/UCY2u9Z6M8TmY5hrDEvVt4bQ",
           "identity_status": "official_global_channel"
         }
@@ -43,8 +84,49 @@
           "identity_status": "verified"
         },
         "youtube": {
-          "status": "unavailable",
-          "reason": "public subscriber count not present",
+          "status": "collected",
+          "channel_name": "One Education",
+          "subscribers": 414,
+          "total_views": 201574,
+          "video_count": 339,
+          "recent_videos": [
+            {
+              "title": "พาทัวร์รอบรั้วมหาวิทยาลัย UTS โดยพี่เอม",
+              "url": "https://www.youtube.com/watch?v=SIZ9J9grp6I",
+              "published_at": "2026-09-09T13:00:24Z",
+              "views": 106,
+              "likes": 0
+            },
+            {
+              "title": "รีวิวไปเรียนต่อที่ ANU เป็นยังไง | น้องกะทิ",
+              "url": "https://www.youtube.com/watch?v=iBW__jXMMiE",
+              "published_at": "2026-09-07T13:00:26Z",
+              "views": 12,
+              "likes": 0
+            },
+            {
+              "title": "อยากเรียนต่อออสเตรเลีย มาพบกันได้ที่งาน 𝐀𝐮𝐬𝐭𝐫𝐚𝐥𝐢𝐚𝐧 𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐢𝐭𝐲 𝐀𝐝𝐦𝐢𝐬𝐬𝐢𝐨𝐧 𝐃𝐚𝐲 | 19 กันยายน 2569",
+              "url": "https://www.youtube.com/watch?v=Ur5p9yPDd4Q",
+              "published_at": "2026-08-29T12:00:32Z",
+              "views": 101,
+              "likes": 0
+            },
+            {
+              "title": "เรียน Master of Business Analytics ที่ 𝐌𝐚𝐜𝐪𝐮𝐚𝐫𝐢𝐞 𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐢𝐭𝐲 เป็นยังไง? 🇦🇺🎓",
+              "url": "https://www.youtube.com/watch?v=weIMtf4ZtOY",
+              "published_at": "2026-08-26T13:00:27Z",
+              "views": 15,
+              "likes": 0
+            },
+            {
+              "title": "รีวิวไปเรียน 𝐔𝐧𝐢𝐯𝐞𝐫𝐬𝐢𝐭𝐲 𝐨𝐟 𝐌𝐞𝐥𝐛𝐨𝐮𝐫𝐧𝐞 จริงเป็นยังไง | น้องซัน",
+              "url": "https://www.youtube.com/watch?v=qVolEz3oU5I",
+              "published_at": "2026-08-19T13:00:24Z",
+              "views": 30,
+              "likes": 0
+            }
+          ],
+          "source": "YouTube Data API v3",
           "url": "https://www.youtube.com/channel/UCNxMuZC3DQ1dPC1-ZjW-luA",
           "identity_status": "verified"
         },
@@ -74,8 +156,49 @@
           "identity_status": "verified"
         },
         "youtube": {
-          "status": "unavailable",
-          "reason": "public subscriber count not present",
+          "status": "collected",
+          "channel_name": "Stellar Education & Visa Centre",
+          "subscribers": 961,
+          "total_views": 37714,
+          "video_count": 82,
+          "recent_videos": [
+            {
+              "title": "เรียนต่อต่างประเทศ ไม่ยากอย่างที่คิด 🇦🇺🇨🇦🇨🇭🇳🇿 #scholarship",
+              "url": "https://www.youtube.com/watch?v=WF43QK-PSas",
+              "published_at": "2026-07-06T04:23:22Z",
+              "views": 169,
+              "likes": 3
+            },
+            {
+              "title": "เรียนโทออสเตรเลีย ทุนเรียนต่อออสเตรเลีย🔥 #stellaraus",
+              "url": "https://www.youtube.com/watch?v=UD_qHWB1eF8",
+              "published_at": "2026-04-30T11:52:56Z",
+              "views": 383,
+              "likes": 8
+            },
+            {
+              "title": "ทุนเรียนต่อออสเตรเลีย อัปเดต 2026 🇦🇺 #stellaraus",
+              "url": "https://www.youtube.com/watch?v=kyhvqv44Ao8",
+              "published_at": "2026-04-19T08:00:52Z",
+              "views": 103,
+              "likes": 0
+            },
+            {
+              "title": "Stellar แจก Cashback หลังค่าธรรมเนียมวีซ่า SC485 ขึ้นเป็น 4,600AUD 😱 #university #stellaraus",
+              "url": "https://www.youtube.com/watch?v=Q92yxYbIhb0",
+              "published_at": "2026-03-06T09:36:55Z",
+              "views": 1320,
+              "likes": 13
+            },
+            {
+              "title": "ต่อวีซ่านร.ในออสเตรเลีย ต้องเตรียมเงินเท่าไหร่? 🇦🇺💵",
+              "url": "https://www.youtube.com/watch?v=PpcewIjlyZM",
+              "published_at": "2026-02-28T15:45:52Z",
+              "views": 15,
+              "likes": 0
+            }
+          ],
+          "source": "YouTube Data API v3",
           "url": "https://www.youtube.com/user/stellareducation",
           "identity_status": "verified"
         }
@@ -95,7 +218,7 @@
         },
         "youtube": {
           "status": "unavailable",
-          "reason": "public subscriber count not present",
+          "reason": "channel not resolved by API",
           "url": "https://www.youtube.com/c/HandsOnEdu/videos",
           "identity_status": "verified"
         }
@@ -134,8 +257,49 @@
           "identity_status": "verified"
         },
         "youtube": {
-          "status": "unavailable",
-          "reason": "public subscriber count not present",
+          "status": "collected",
+          "channel_name": "Education For Life Thailand",
+          "subscribers": 553,
+          "total_views": 555703,
+          "video_count": 137,
+          "recent_videos": [
+            {
+              "title": "QS Ranking เขาดูอะไรก่อนตัดสินว่ามหาวิทยาลัยไหนดีที่สุด?",
+              "url": "https://www.youtube.com/watch?v=Cvsn7BnHhFM",
+              "published_at": "2026-09-13T06:58:58Z",
+              "views": 26,
+              "likes": 0
+            },
+            {
+              "title": "มหาวิทยาลัยจัดอันดับกันยังไง? 🏆📊",
+              "url": "https://www.youtube.com/watch?v=oIG2X6djDUM",
+              "published_at": "2026-09-11T11:05:15Z",
+              "views": 69,
+              "likes": 1
+            },
+            {
+              "title": "ทำไมถึงกลับมาเรียน OT อีกรอบ? 🤔💭 EP.4 น้องฟ่าง",
+              "url": "https://www.youtube.com/watch?v=42FvZwcbJrM",
+              "published_at": "2026-09-08T11:00:39Z",
+              "views": 152,
+              "likes": 0
+            },
+            {
+              "title": "เรียน OT ที่ USYD ยากแค่ไหน? 😅📚",
+              "url": "https://www.youtube.com/watch?v=2y3TU2sMpLE",
+              "published_at": "2026-09-06T11:15:36Z",
+              "views": 7,
+              "likes": 0
+            },
+            {
+              "title": "ASMS ไฮสคูลออสที่ไม่มีห้องเรียน ไม่มีโต๊ะเรียงแถว ไม่มีกระดานดำ?! 😮",
+              "url": "https://www.youtube.com/watch?v=C25hfbFyDWE",
+              "published_at": "2026-09-04T10:53:21Z",
+              "views": 3,
+              "likes": 0
+            }
+          ],
+          "source": "YouTube Data API v3",
           "url": "https://www.youtube.com/@EducationForLifeTH",
           "identity_status": "verified"
         },
@@ -160,8 +324,49 @@
           "identity_status": "verified"
         },
         "youtube": {
-          "status": "unavailable",
-          "reason": "public subscriber count not present",
+          "status": "collected",
+          "channel_name": "SOL Edu & Migration Australia",
+          "subscribers": 9030,
+          "total_views": 1814209,
+          "video_count": 512,
+          "recent_videos": [
+            {
+              "title": "🎉 Another round of Partner Visa (Subclass 801) grants! 💍🇦🇺",
+              "url": "https://www.youtube.com/watch?v=p8wjTJbid8A",
+              "published_at": "2026-08-26T05:36:53Z",
+              "views": 81,
+              "likes": 0
+            },
+            {
+              "title": "August Study Fair 2026 | Australia Migration Policy Update Seminar",
+              "url": "https://www.youtube.com/watch?v=WFvnC6sa8qY",
+              "published_at": "2026-08-06T03:52:42Z",
+              "views": 89,
+              "likes": 0
+            },
+            {
+              "title": "August Study Fair 2026 | Australia Migration Policy Update Seminar",
+              "url": "https://www.youtube.com/watch?v=dt2cZap-If8",
+              "published_at": "2026-08-05T06:15:51Z",
+              "views": 9,
+              "likes": 1
+            },
+            {
+              "title": "Nursing Job Ads Up 20%? Here's How I Got My Australian PR#nursinginaustralia",
+              "url": "https://www.youtube.com/watch?v=WF548xwCg_E",
+              "published_at": "2026-07-20T05:58:55Z",
+              "views": 98,
+              "likes": 3
+            },
+            {
+              "title": "Still unsure what to study after your English course or Working Holiday Visa?",
+              "url": "https://www.youtube.com/watch?v=bDCLG_M3qgQ",
+              "published_at": "2026-05-07T06:16:07Z",
+              "views": 44,
+              "likes": 1
+            }
+          ],
+          "source": "YouTube Data API v3",
           "url": "https://www.youtube.com/channel/UC_WBVB2Dl6hbXaHDtCO2VWg",
           "identity_status": "verified"
         },

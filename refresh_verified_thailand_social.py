@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -67,15 +68,52 @@ def instagram(url: str) -> dict:
 
 
 def youtube(url: str) -> dict:
-    page, error = get(url)
-    if error:
-        return {"status": "unavailable", "reason": error}
-    # The channel HTML normally exposes this in the initial JSON payload.
-    match = re.search(r'"subscriberCountText":\{"simpleText":"([^"]+)', page)
-    if not match:
-        return {"status": "unavailable", "reason": "public subscriber count not present"}
-    value = match.group(1).replace(" subscribers", "").strip()
-    return {"status": "collected", "subscribers": number(value), "raw_display": match.group(1)}
+    """Use the official API for public channel statistics and recent videos."""
+    key = os.environ.get("YOUTUBE_API_KEY")
+    if not key:
+        return {"status": "unavailable", "reason": "YOUTUBE_API_KEY not configured"}
+    path = url.split("youtube.com/", 1)[-1].strip("/")
+    params = {"part": "snippet,statistics,contentDetails", "key": key}
+    if path.startswith("channel/"):
+        params["id"] = path.split("/", 1)[1]
+    elif path.startswith("@"):
+        params["forHandle"] = path.split("/", 1)[0]
+    elif path.startswith("user/"):
+        params["forUsername"] = path.split("/", 1)[1]
+    else:  # Custom channel URLs are commonly equivalent to a public handle.
+        params["forHandle"] = path.split("/")[-1]
+    try:
+        channel_response = requests.get("https://www.googleapis.com/youtube/v3/channels",
+                                        params=params, timeout=TIMEOUT).json()
+        channel = (channel_response.get("items") or [None])[0]
+        if not channel:
+            return {"status": "unavailable", "reason": "channel not resolved by API"}
+        statistics = channel["statistics"]
+        uploads = channel["contentDetails"]["relatedPlaylists"]["uploads"]
+        recent_response = requests.get("https://www.googleapis.com/youtube/v3/playlistItems",
+                                       params={"part": "snippet,contentDetails", "playlistId": uploads,
+                                               "maxResults": 5, "key": key}, timeout=TIMEOUT).json()
+        video_ids = [item["contentDetails"]["videoId"] for item in recent_response.get("items", [])]
+        videos_response = requests.get("https://www.googleapis.com/youtube/v3/videos",
+                                       params={"part": "snippet,statistics", "id": ",".join(video_ids),
+                                               "key": key}, timeout=TIMEOUT).json() if video_ids else {"items": []}
+        videos = [{
+            "title": item["snippet"]["title"],
+            "url": f"https://www.youtube.com/watch?v={item['id']}",
+            "published_at": item["snippet"]["publishedAt"],
+            "views": int(item["statistics"].get("viewCount", 0)),
+            "likes": int(item["statistics"].get("likeCount", 0)),
+        } for item in videos_response.get("items", [])]
+        return {
+            "status": "collected", "channel_name": channel["snippet"]["title"],
+            "subscribers": int(statistics.get("subscriberCount", 0)),
+            "total_views": int(statistics.get("viewCount", 0)),
+            "video_count": int(statistics.get("videoCount", 0)),
+            "recent_videos": sorted(videos, key=lambda item: item["published_at"], reverse=True),
+            "source": "YouTube Data API v3",
+        }
+    except (requests.RequestException, ValueError, KeyError, TypeError) as exc:
+        return {"status": "unavailable", "reason": type(exc).__name__}
 
 
 def tiktok(url: str) -> dict:
