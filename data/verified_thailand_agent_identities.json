@@ -17,11 +17,11 @@
       "profile_id": 2658,
       "name": "AECC Global",
       "website": "https://www.aeccglobal.co.th/en/contact-us",
-      "facebook": {"url": "https://www.facebook.com/AECCThailand", "status": "review_required"},
-      "instagram": {"url": "https://www.instagram.com/aecc_global_thailand", "status": "review_required"},
+      "facebook": {"url": "https://www.facebook.com/AECCGLOBALIN", "status": "official_global_account"},
       "youtube": {"url": "https://www.youtube.com/channel/UCY2u9Z6M8TmY5hrDEvVt4bQ", "status": "official_global_channel"},
-      "line": {"handle": "@aoc5757l", "status": "existing_profile_link_needs_recheck"},
-      "evidence": "Thai site footer links global Facebook/YouTube; Thailand-specific social links require a final visual ownership check"
+      "line": {"handle": "@aoc5757l", "status": "unverified_existing_profile_link"},
+      "identity_status": "global_channels_only",
+      "evidence": "The official Thai site links global Facebook and YouTube accounts. No Thailand-only social account was verified. The existing LINE entry is retained for review, not publication as verified."
     },
     {
       "profile_id": 5881,
