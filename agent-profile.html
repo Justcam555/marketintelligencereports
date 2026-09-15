@@ -304,8 +304,20 @@ const LINK_CHECK_OVERRIDES = {
   3698: { link_verified_at: "15 Sep 2026" }
 };
 
+// Manual verification from the agents' own YouTube channel pages on 15 Sep 2026.
+// The original keyword-based collection matched unrelated channels for One Education.
+const YOUTUBE_OVERRIDES = {
+  5881: {
+    yt_channel_name: "One Education",
+    yt_channel_url: "https://www.youtube.com/channel/UCNxMuZC3DQ1dPC1-ZjW-luA",
+    yt_subscribers: 414,
+    yt_video_count: 339,
+    yt_videos: []
+  }
+};
+
 function renderProfile(a) {
-  a = { ...a, ...(LINK_CHECK_OVERRIDES[a.id] || {}) };
+  a = { ...a, ...(LINK_CHECK_OVERRIDES[a.id] || {}), ...(YOUTUBE_OVERRIDES[a.id] || {}) };
   // OEC's search feed included unrelated videos.  Keep only videos attributed
   // to its claimed channel; the remaining clips are explicitly third-party.
   if (a.id === 25263) {
