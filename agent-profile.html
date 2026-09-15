@@ -551,6 +551,9 @@ function renderProfile(a) {
   const metaAds = a.facebook_url
     ? { ...(META_ADS_DATA[a.facebook_url] || {}), ...(META_ADS_REFRESH[a.facebook_url] || {}) }
     : null;
+  // Earlier collection runs used active_ads; a later renderer expected
+  // active_ads_30d. Support both, with the current page-specific value first.
+  const activeAds = metaAds ? (metaAds.active_ads ?? metaAds.active_ads_30d ?? 0) : 0;
   let metaAdsHtml = "";
   if (metaAds) {
     const pageName = a.facebook_url.replace(/^https?:\/\/(www\.)?facebook\.com\//, "").split("/")[0];
@@ -565,13 +568,13 @@ function renderProfile(a) {
       <div class="section-header">
         <div class="icon" style="background:#e8f0fe">${ICONS.facebook}</div>
         <h3>Active Ads</h3>
-        <span class="badge${metaAds.active_ads_30d > 0 ? '' : ' na'}" style="margin-left:auto">${metaAds.active_ads_30d} active in 30d</span>
+        <span class="badge${activeAds > 0 ? '' : ' na'}" style="margin-left:auto">${activeAds} active now</span>
         <a href="${libUrl}" target="_blank" rel="noopener" class="ext-link" style="margin-left:8px">Ad Library ↗</a>
       </div>
       <div class="data-card" style="margin-bottom:0">
         <div class="meta-ads-grid">
           <div class="meta-ads-stat"><div class="val">${metaAds.total_ads || 0}</div><div class="lbl">Total ads</div></div>
-          <div class="meta-ads-stat"><div class="val">${metaAds.active_ads_30d || 0}</div><div class="lbl">Active now</div></div>
+          <div class="meta-ads-stat"><div class="val">${activeAds}</div><div class="lbl">Active now</div></div>
           ${reachStr ? `<div class="meta-ads-stat"><div class="val" style="font-size:18px">${reachStr}</div><div class="lbl">Est. reach</div></div>` : ""}
         </div>
         ${uniTags ? `<div class="meta-ads-unis"><span style="font-size:10px;color:#888;letter-spacing:1px;text-transform:uppercase;margin-right:6px;align-self:center">Unis mentioned:</span>${uniTags}</div>` : ""}
