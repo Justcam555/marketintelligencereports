@@ -311,7 +311,10 @@ const YOUTUBE_OVERRIDES = {
     yt_channel_name: "One Education",
     yt_channel_url: "https://www.youtube.com/channel/UCNxMuZC3DQ1dPC1-ZjW-luA",
     yt_subscribers: 414,
+    yt_total_views: null,
     yt_video_count: 339,
+    yt_top_video_title: null,
+    yt_top_video_views: null,
     yt_videos: []
   }
 };
@@ -455,8 +458,8 @@ function renderProfile(a) {
     </div>`;
   } else {
     ytHtml = `<div class="section">
-      <div class="section-header"><div class="icon" style="background:#ffebee">${ICONS.youtube}</div><h3>YouTube</h3><span class="badge na" style="margin-left:auto">No results</span></div>
-      <div class="coming-soon"><div class="icon">${ICONS.youtube}</div><h4>No YouTube Videos Found</h4><p>No search results found for this agent on YouTube.</p></div>
+      <div class="section-header"><div class="icon" style="background:#ffebee">${ICONS.youtube}</div><h3>YouTube</h3><span class="badge ${a.yt_channel_url ? "info" : "na"}" style="margin-left:auto">${a.yt_channel_url ? "Verified channel" : "No results"}</span></div>
+      <div class="coming-soon"><div class="icon">${ICONS.youtube}</div><h4>${a.yt_channel_url ? esc(a.yt_channel_name || "YouTube channel") : "No YouTube Videos Found"}</h4><p>${a.yt_channel_url ? `<a href="${esc(a.yt_channel_url)}" target="_blank" rel="noopener">Open official channel ↗</a>${a.yt_subscribers ? ` · ${fmt(a.yt_subscribers)} subscribers` : ""}<br>Video-level metrics have not been refreshed.` : "No search results found for this agent on YouTube."}</p></div>
     </div>`;
   }
 
