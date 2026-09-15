@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "market": "Thailand",
+  "last_reviewed": "2026-09-15",
+  "purpose": "Curated source of truth for high-confidence official social identities and Meta Ad Library lookups. Only links evidenced on an agent's own official website, or explicitly confirmed by the project owner, belong here.",
+  "agents": [
+    {
+      "profile_id": 2646,
+      "name": "IDP Education",
+      "website": "https://www.idp.com/thailand/",
+      "facebook": {"url": "https://www.facebook.com/IDPEducationThailand", "legacy_page_id": "126353198623", "status": "verified"},
+      "instagram": {"url": "https://www.instagram.com/idp.thailand", "status": "verified"},
+      "line": {"handle": "@idpthailand", "status": "verified"},
+      "evidence": "Official IDP Thailand contact and announcement pages"
+    },
+    {
+      "profile_id": 2658,
+      "name": "AECC Global",
+      "website": "https://www.aeccglobal.co.th/en/contact-us",
+      "facebook": {"url": "https://www.facebook.com/AECCThailand", "status": "review_required"},
+      "instagram": {"url": "https://www.instagram.com/aecc_global_thailand", "status": "review_required"},
+      "youtube": {"url": "https://www.youtube.com/channel/UCY2u9Z6M8TmY5hrDEvVt4bQ", "status": "official_global_channel"},
+      "line": {"handle": "@aoc5757l", "status": "existing_profile_link_needs_recheck"},
+      "evidence": "Thai site footer links global Facebook/YouTube; Thailand-specific social links require a final visual ownership check"
+    },
+    {
+      "profile_id": 5881,
+      "name": "One Education Consulting",
+      "website": "https://one-educationgroup.com/contact-us/",
+      "facebook": {"url": "https://www.facebook.com/OneEducationGroup", "status": "verified"},
+      "instagram": {"url": "https://www.instagram.com/oneeducationthailand", "status": "verified"},
+      "youtube": {"url": "https://www.youtube.com/channel/UCNxMuZC3DQ1dPC1-ZjW-luA", "status": "verified"},
+      "tiktok": {"url": "https://www.tiktok.com/@oneeducationthailand", "status": "verified"},
+      "line": {"handle": "@one-edu", "url": "https://lin.ee/Cf6mjl6", "status": "verified"},
+      "evidence": "Official One Education contact page"
+    },
+    {
+      "profile_id": 2665,
+      "name": "AVSS",
+      "website": "https://www.theavss.net/",
+      "identity_status": "research_required",
+      "evidence": "Official website did not expose stable social links in the initial crawl"
+    },
+    {
+      "profile_id": 2663,
+      "name": "Stellar Education",
+      "website": "https://www.stellaraustralia.com/branchs/",
+      "facebook": {"url": "https://www.facebook.com/stellaraus", "status": "verified"},
+      "instagram": {"url": "https://www.instagram.com/stellaraus", "status": "verified"},
+      "youtube": {"url": "https://www.youtube.com/user/stellareducation", "status": "verified"},
+      "line": {"handle": "@stellaraus", "status": "verified"},
+      "evidence": "Official Stellar branch page footer"
+    },
+    {
+      "profile_id": 5864,
+      "name": "Hands On Education",
+      "website": "https://www.hands-on.co.th/",
+      "facebook": {"url": "https://www.facebook.com/HandsOnEdu", "legacy_page_id": "108080895911317", "status": "verified"},
+      "instagram": {"url": "https://www.instagram.com/handsonedu/", "status": "verified"},
+      "youtube": {"url": "https://www.youtube.com/c/HandsOnEdu/videos", "status": "verified"},
+      "line": {"handle": "@handson", "status": "verified"},
+      "evidence": "Official Hands On website"
+    },
+    {
+      "profile_id": 2668,
+      "name": "iae GLOBAL",
+      "website": "https://www.iaeglobal.in.th/",
+      "facebook": {"url": "https://www.facebook.com/iaethailand", "status": "verified"},
+      "instagram": {"url": "https://www.instagram.com/iae_thailand", "status": "verified"},
+      "tiktok": {"url": "https://www.tiktok.com/@iae.thailand", "status": "verified"},
+      "evidence": "Official iae Thailand website"
+    },
+    {
+      "profile_id": 2660,
+      "name": "Education For Life",
+      "website": "https://www.eduforlife.net/",
+      "facebook": {"url": "https://www.facebook.com/eduforlife", "status": "verified"},
+      "instagram": {"url": "https://www.instagram.com/eduforlife.bkk/", "status": "verified"},
+      "youtube": {"url": "https://www.youtube.com/@EducationForLifeTH", "status": "verified"},
+      "tiktok": {"url": "https://www.tiktok.com/@EducationForLifeTH", "status": "verified"},
+      "line": {"handle": "@eflbkk", "status": "verified"},
+      "evidence": "Official Education For Life website footer"
+    },
+    {
+      "profile_id": 2667,
+      "name": "SOL Edu",
+      "website": "https://www.soledu.net/",
+      "facebook": {"url": "https://www.facebook.com/SOLEdu.Eng", "status": "verified"},
+      "instagram": {"url": "https://www.instagram.com/soleduaustralia/", "status": "verified"},
+      "youtube": {"url": "https://www.youtube.com/channel/UC_WBVB2Dl6hbXaHDtCO2VWg", "status": "verified"},
+      "tiktok": {"url": "https://www.tiktok.com/@soleduaustralia", "status": "verified"},
+      "evidence": "Official SOL Edu website footer"
+    },
+    {
+      "profile_id": 3698,
+      "name": "WIN Education",
+      "website": "https://win-ed.com/",
+      "facebook": {"url": "https://www.facebook.com/WINed.thailand", "legacy_page_id": "1805916103018074", "status": "verified"},
+      "instagram": {"url": "https://www.instagram.com/wined_th/", "status": "verified"},
+      "tiktok": {"url": "https://www.tiktok.com/@win.educationthailand", "status": "verified"},
+      "line": {"handle": "@vxk6871p", "status": "verified"},
+      "evidence": "Official WIN Education website"
+    }
+  ]
+}
