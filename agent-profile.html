@@ -306,6 +306,11 @@ const LINK_CHECK_OVERRIDES = {
 
 function renderProfile(a) {
   a = { ...a, ...(LINK_CHECK_OVERRIDES[a.id] || {}) };
+  // OEC's search feed included unrelated videos.  Keep only videos attributed
+  // to its claimed channel; the remaining clips are explicitly third-party.
+  if (a.id === 25263) {
+    a.yt_videos = (a.yt_videos || []).filter(v => v.owned && v.channel === a.yt_channel_name);
+  }
   document.title = a.name + " — Market Intelligence Hub";
   const score = a.presence_score || 0;
   const city  = a.city || "";
