@@ -38,8 +38,9 @@
       "profile_id": 2665,
       "name": "AVSS",
       "website": "https://www.theavss.net/",
-      "identity_status": "research_required",
-      "evidence": "Official website did not expose stable social links in the initial crawl"
+      "facebook": {"url": "https://www.facebook.com/AVSSBangkok/", "status": "verified"},
+      "identity_status": "partially_verified",
+      "evidence": "Official website and Facebook page confirmed by the project owner; remaining social channels still require discovery"
     },
     {
       "profile_id": 2663,
