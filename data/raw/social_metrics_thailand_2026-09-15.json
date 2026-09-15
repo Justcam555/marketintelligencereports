@@ -1,0 +1,197 @@
+{
+  "market": "Thailand",
+  "collected_at": "2026-09-15T05:11:45.543449+00:00",
+  "identity_register": "data/verified_thailand_agent_identities.json",
+  "method": "direct public-page metadata; no Apify; unavailable values are not replacements",
+  "agents": [
+    {
+      "profile_id": 2646,
+      "name": "IDP Education",
+      "platforms": {
+        "instagram": {
+          "status": "collected",
+          "followers": 28000,
+          "post_count": 3511,
+          "raw_description": "28K Followers, 49 Following, 3,511 Posts - See Instagram photos and videos from IDP Thailand (@idp.thailand)",
+          "url": "https://www.instagram.com/idp.thailand",
+          "identity_status": "verified"
+        }
+      }
+    },
+    {
+      "profile_id": 2658,
+      "name": "AECC Global",
+      "platforms": {
+        "youtube": {
+          "status": "unavailable",
+          "reason": "public subscriber count not present",
+          "url": "https://www.youtube.com/channel/UCY2u9Z6M8TmY5hrDEvVt4bQ",
+          "identity_status": "official_global_channel"
+        }
+      }
+    },
+    {
+      "profile_id": 5881,
+      "name": "One Education Consulting",
+      "platforms": {
+        "instagram": {
+          "status": "collected",
+          "followers": 3273,
+          "post_count": 2202,
+          "raw_description": "3,273 Followers, 121 Following, 2,202 Posts - See Instagram photos and videos from เรียนต่อออสเตรเลีย 🇦🇺 & อังกฤษ 🇬🇧 (@oneeducationthailand)",
+          "url": "https://www.instagram.com/oneeducationthailand",
+          "identity_status": "verified"
+        },
+        "youtube": {
+          "status": "unavailable",
+          "reason": "public subscriber count not present",
+          "url": "https://www.youtube.com/channel/UCNxMuZC3DQ1dPC1-ZjW-luA",
+          "identity_status": "verified"
+        },
+        "tiktok": {
+          "status": "unavailable",
+          "reason": "public metrics not present or access challenged",
+          "url": "https://www.tiktok.com/@oneeducationthailand",
+          "identity_status": "verified"
+        }
+      }
+    },
+    {
+      "profile_id": 2665,
+      "name": "AVSS",
+      "platforms": {}
+    },
+    {
+      "profile_id": 2663,
+      "name": "Stellar Education",
+      "platforms": {
+        "instagram": {
+          "status": "collected",
+          "followers": 449,
+          "post_count": 325,
+          "raw_description": "449 Followers, 14 Following, 325 Posts - See Instagram photos and videos from Stellar Education & Visa Centre (@stellaraus)",
+          "url": "https://www.instagram.com/stellaraus",
+          "identity_status": "verified"
+        },
+        "youtube": {
+          "status": "unavailable",
+          "reason": "public subscriber count not present",
+          "url": "https://www.youtube.com/user/stellareducation",
+          "identity_status": "verified"
+        }
+      }
+    },
+    {
+      "profile_id": 5864,
+      "name": "Hands On Education",
+      "platforms": {
+        "instagram": {
+          "status": "collected",
+          "followers": 14000,
+          "post_count": 3429,
+          "raw_description": "14K Followers, 3 Following, 3,429 Posts - See Instagram photos and videos from Study Abroad Experts (@handsonedu)",
+          "url": "https://www.instagram.com/handsonedu/",
+          "identity_status": "verified"
+        },
+        "youtube": {
+          "status": "unavailable",
+          "reason": "public subscriber count not present",
+          "url": "https://www.youtube.com/c/HandsOnEdu/videos",
+          "identity_status": "verified"
+        }
+      }
+    },
+    {
+      "profile_id": 2668,
+      "name": "iae GLOBAL",
+      "platforms": {
+        "instagram": {
+          "status": "collected",
+          "followers": 892,
+          "post_count": 419,
+          "raw_description": "892 Followers, 79 Following, 419 Posts - See Instagram photos and videos from iae Global Thailand (@iae_thailand)",
+          "url": "https://www.instagram.com/iae_thailand",
+          "identity_status": "verified"
+        },
+        "tiktok": {
+          "status": "unavailable",
+          "reason": "public metrics not present or access challenged",
+          "url": "https://www.tiktok.com/@iae.thailand",
+          "identity_status": "verified"
+        }
+      }
+    },
+    {
+      "profile_id": 2660,
+      "name": "Education For Life",
+      "platforms": {
+        "instagram": {
+          "status": "collected",
+          "followers": 696,
+          "post_count": 476,
+          "raw_description": "696 Followers, 2 Following, 476 Posts - See Instagram photos and videos from Education For Life (@eduforlife.bkk)",
+          "url": "https://www.instagram.com/eduforlife.bkk/",
+          "identity_status": "verified"
+        },
+        "youtube": {
+          "status": "unavailable",
+          "reason": "public subscriber count not present",
+          "url": "https://www.youtube.com/@EducationForLifeTH",
+          "identity_status": "verified"
+        },
+        "tiktok": {
+          "status": "unavailable",
+          "reason": "public metrics not present or access challenged",
+          "url": "https://www.tiktok.com/@EducationForLifeTH",
+          "identity_status": "verified"
+        }
+      }
+    },
+    {
+      "profile_id": 2667,
+      "name": "SOL Edu",
+      "platforms": {
+        "instagram": {
+          "status": "collected",
+          "followers": 6587,
+          "post_count": 837,
+          "raw_description": "6,587 Followers, 91 Following, 837 Posts - See Instagram photos and videos from SOL Edu & Migration (@soleduaustralia)",
+          "url": "https://www.instagram.com/soleduaustralia/",
+          "identity_status": "verified"
+        },
+        "youtube": {
+          "status": "unavailable",
+          "reason": "public subscriber count not present",
+          "url": "https://www.youtube.com/channel/UC_WBVB2Dl6hbXaHDtCO2VWg",
+          "identity_status": "verified"
+        },
+        "tiktok": {
+          "status": "unavailable",
+          "reason": "public metrics not present or access challenged",
+          "url": "https://www.tiktok.com/@soleduaustralia",
+          "identity_status": "verified"
+        }
+      }
+    },
+    {
+      "profile_id": 3698,
+      "name": "WIN Education",
+      "platforms": {
+        "instagram": {
+          "status": "collected",
+          "followers": 920,
+          "post_count": 667,
+          "raw_description": "920 Followers, 11 Following, 667 Posts - See Instagram photos and videos from WIN Education (@wined_th)",
+          "url": "https://www.instagram.com/wined_th/",
+          "identity_status": "verified"
+        },
+        "tiktok": {
+          "status": "unavailable",
+          "reason": "public metrics not present or access challenged",
+          "url": "https://www.tiktok.com/@win.educationthailand",
+          "identity_status": "verified"
+        }
+      }
+    }
+  ]
+}
