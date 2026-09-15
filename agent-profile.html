@@ -521,7 +521,16 @@ function renderProfile(a) {
 
   // ── Facebook ──
   // ── Meta Ads block ──
-  const metaAds = a.facebook_url ? (META_ADS_DATA[a.facebook_url] || null) : null;
+  // Page-specific Ad Library queries verified on 15 Sep 2026.
+  const META_ADS_REFRESH = {
+    "https://www.facebook.com/IDPEducationThailand": { active_ads: 40, last_scraped: "2026-09-15" },
+    "https://www.facebook.com/HandsOnEdu": { active_ads: 42, last_scraped: "2026-09-15" },
+    "https://www.facebook.com/WINed.thailand": { active_ads: 51, last_scraped: "2026-09-15" },
+    "https://www.facebook.com/oecbangkok": { active_ads: 8, last_scraped: "2026-09-15" }
+  };
+  const metaAds = a.facebook_url
+    ? { ...(META_ADS_DATA[a.facebook_url] || {}), ...(META_ADS_REFRESH[a.facebook_url] || {}) }
+    : null;
   let metaAdsHtml = "";
   if (metaAds) {
     const pageName = a.facebook_url.replace(/^https?:\/\/(www\.)?facebook\.com\//, "").split("/")[0];
