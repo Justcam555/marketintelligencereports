@@ -80,6 +80,8 @@ def youtube(url: str) -> dict:
         params["forHandle"] = path.split("/", 1)[0]
     elif path.startswith("user/"):
         params["forUsername"] = path.split("/", 1)[1]
+    elif path.startswith("c/"):
+        params["forHandle"] = path.split("/")[1]
     else:  # Custom channel URLs are commonly equivalent to a public handle.
         params["forHandle"] = path.split("/")[-1]
     try:

@@ -60,6 +60,32 @@ def main() -> int:
         agent["social_metrics_checked_at"] = snapshot["collected_at"]
         updates.append(f"{agent['name']}: {instagram['followers']} followers")
 
+        # Continue below: platform failures never clear existing values.
+        
+        
+    for record in snapshot["agents"]:
+        agent = by_id.get(record["profile_id"])
+        youtube = record["platforms"].get("youtube") if agent else None
+        if not youtube or youtube.get("status") != "collected":
+            continue
+        agent["yt_channel_name"] = youtube["channel_name"]
+        agent["yt_channel_url"] = youtube["url"]
+        agent["yt_subscribers"] = youtube["subscribers"]
+        agent["yt_total_views"] = youtube["total_views"]
+        agent["yt_video_count"] = youtube["video_count"]
+        videos = [{
+            "title": video["title"], "channel": youtube["channel_name"],
+            "views": video["views"], "subscribers": youtube["subscribers"],
+            "url": video["url"], "date": video["published_at"][:10], "owned": True,
+        } for video in youtube.get("recent_videos", [])]
+        agent["yt_videos"] = videos
+        if videos:
+            top = max(videos, key=lambda video: video["views"])
+            agent["yt_top_video_title"] = top["title"]
+            agent["yt_top_video_views"] = top["views"]
+        agent["social_metrics_checked_at"] = snapshot["collected_at"]
+        updates.append(f"{agent['name']}: {youtube['subscribers']} YouTube subscribers")
+
     print("\n".join(updates) if updates else "No collected metrics to apply")
     if args.dry_run:
         return 0

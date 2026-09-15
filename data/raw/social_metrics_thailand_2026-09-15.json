@@ -1,6 +1,6 @@
 {
   "market": "Thailand",
-  "collected_at": "2026-09-15T05:41:35.627047+00:00",
+  "collected_at": "2026-09-15T05:43:06.389661+00:00",
   "identity_register": "data/verified_thailand_agent_identities.json",
   "method": "direct public-page metadata; no Apify; unavailable values are not replacements",
   "agents": [
@@ -217,8 +217,49 @@
           "identity_status": "verified"
         },
         "youtube": {
-          "status": "unavailable",
-          "reason": "channel not resolved by API",
+          "status": "collected",
+          "channel_name": "Hands On Education Consultants",
+          "subscribers": 2890,
+          "total_views": 1995423,
+          "video_count": 541,
+          "recent_videos": [
+            {
+              "title": "ลิสต์กิจกรรมที่ต้องลองในงาน Hands On Study Abroad Exhibition 2026",
+              "url": "https://www.youtube.com/watch?v=6LeZ6wya-LA",
+              "published_at": "2026-09-14T07:40:38Z",
+              "views": 195,
+              "likes": 0
+            },
+            {
+              "title": "รีวิวจริงจากคนได้ Offer - Cambridge, Imperial, NUS",
+              "url": "https://www.youtube.com/watch?v=m9j2OxDwz6Y",
+              "published_at": "2026-09-10T05:02:47Z",
+              "views": 65,
+              "likes": 0
+            },
+            {
+              "title": "งานเรียนต่อรวมหลายประเทศ | เสาร์ 7 พ.ย.นี้ ฟรีตลอดงาน",
+              "url": "https://www.youtube.com/watch?v=T-4XaCLd2ZA",
+              "published_at": "2026-09-09T08:07:51Z",
+              "views": 91,
+              "likes": 0
+            },
+            {
+              "title": "Hands On Study Abroad Exhibition 2026 งานเรียนต่อต่างประเทศแห่งปี",
+              "url": "https://www.youtube.com/watch?v=Qe1rCBgS16A",
+              "published_at": "2026-09-04T05:25:27Z",
+              "views": 57,
+              "likes": 0
+            },
+            {
+              "title": "Before & After ก่อนไปเรียน UK เป็นแบบนั้น ช่วงหลังเป็นแบบนี้ จริงมั้ย?",
+              "url": "https://www.youtube.com/watch?v=J_OmTn3TjFw",
+              "published_at": "2026-09-01T07:51:21Z",
+              "views": 152,
+              "likes": 2
+            }
+          ],
+          "source": "YouTube Data API v3",
           "url": "https://www.youtube.com/c/HandsOnEdu/videos",
           "identity_status": "verified"
         }
